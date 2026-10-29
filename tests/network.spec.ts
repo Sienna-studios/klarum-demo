@@ -55,10 +55,18 @@ test("budget: <=410 KB and <=25 requests before load (mobile, cold)", async ({ b
   expect(bytes, "bytes before load").toBeLessThanOrEqual(BYTES_BUDGET);
 });
 
-test("no video, iframe or images above the fold", async ({ page }) => {
+const aboveFold = (page: import("@playwright/test").Page) =>
+  page.locator("img").evaluateAll((els) =>
+    els.filter((e) => e.getBoundingClientRect().top < window.innerHeight).map((e) => (e.closest("[data-photo]") as HTMLElement | null)?.dataset.photo ?? "other"));
+
+test("no video, iframe or images above the fold with ?photos=0", async ({ page }) => {
+  await page.goto("/?photos=0");
+  expect(await page.locator("video, iframe").count()).toBe(0);
+  expect(await aboveFold(page)).toEqual([]);
+});
+
+test("with photos, the hero photo is the only image above the fold", async ({ page }) => {
   await page.goto("/");
   expect(await page.locator("video, iframe").count()).toBe(0);
-  const imgs = await page.locator("img").evaluateAll((els) =>
-    els.filter((e) => e.getBoundingClientRect().top < window.innerHeight).length);
-  expect(imgs).toBe(0);
+  expect(await aboveFold(page)).toEqual(["hero"]);
 });

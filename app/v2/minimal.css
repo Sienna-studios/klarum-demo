@@ -3,7 +3,7 @@
 html:has(.m) {
   --bg: #ffffff; --surf: #f6f6f3; --ink: #14202c; --body: #26323d; --sub: #3a4652; --mute: #4b5762;
   --line: #e3e6e8; --off: #c9cfd5; --dot: #d3d8dc; --redt: #c2261c; --tile: rgba(239, 65, 54, 0.12);
-  --btn-ink: #0d0d10; color-scheme: light; background: #fff;
+  --btn-ink: #0d0d10; --scrim: 255, 255, 255; color-scheme: light; background: #fff;
 }
 html:has(.m) body { background: #fff; color: var(--body); }
 

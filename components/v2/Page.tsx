@@ -6,9 +6,10 @@ import { KMark } from "@/components/KMark";
 import { NoticeList } from "@/components/NoticeFeed";
 import { Pricing } from "@/components/Pricing";
 import { Hero, type HeroId } from "./Hero";
+import { LazyPhoto } from "@/components/LazyPhoto";
 import { Switcher } from "./Switcher";
 
-export function Page({ hero }: { hero: HeroId }) {
+export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }) {
   return (
     <div className="m">
       <a href="#main" className="m-skip">Skip to content</a>
@@ -27,7 +28,7 @@ export function Page({ hero }: { hero: HeroId }) {
       </header>
 
       <main id="main">
-        <Hero id={hero} />
+        <Hero id={hero} photos={photos} />
 
         <section className="m-proof">
           <div className="m-wrap">
@@ -102,7 +103,8 @@ export function Page({ hero }: { hero: HeroId }) {
           </div>
         </section>
 
-        <section className="m-section m-cta">
+        <section className={photos ? "m-section m-cta has-photo" : "m-section m-cta"}>
+          {photos && <LazyPhoto name="glass-facade" sizes="100vw" className="ph-cta" />}
           <div className="m-wrap">
             <h2>See it on your own pipeline.</h2>
             <div className="m-actions">

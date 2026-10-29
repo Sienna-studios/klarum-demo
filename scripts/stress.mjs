@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import sharp from "sharp";
-import { PAGES, launch, main, newPage, outDir, pageKeys, settle } from "./lib/review.mjs";
+import { PAGES, launch, main, newPage, outDir, pageKeys, scrollThrough, settle, withQuery } from "./lib/review.mjs";
 
 const CONFIGS = [
   { name: "320", width: 320, height: 640, mobile: true },
@@ -89,9 +89,10 @@ main(async (base) => {
     for (const theme of cfg.themes) {
       for (const c of CONFIGS) {
         const { ctx, page } = await newPage(browser, { theme, width: c.width, height: c.height, mobile: c.mobile, reducedMotion: c.reducedMotion });
-        await page.goto(`${base}${cfg.path}?stress=1`, { waitUntil: "load" });
+        await page.goto(base + withQuery(cfg.path, "stress=1"), { waitUntil: "load" });
         await page.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
         await settle(page);
+        await scrollThrough(page);
         const stressed = await page.evaluate(() => document.body.innerText.includes("(1/2)"));
         const findings = await page.evaluate(layoutChecks);
         const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"]).analyze();
@@ -114,7 +115,7 @@ main(async (base) => {
         console.log(`[stress] ${key} ${name}: overflow ${findings.overflow.length}, clip ${findings.clip.length}, overlap ${findings.overlap.length}, axe blocking ${blocking.length}${stressed ? "" : "  (STRESS NOT ACTIVE)"}`);
       }
     }
-    writeFileSync(join(dir, "stress.json"), JSON.stringify({ page: `${cfg.path}?stress=1`, results }, null, 1));
+    writeFileSync(join(dir, "stress.json"), JSON.stringify({ page: withQuery(cfg.path, "stress=1"), results }, null, 1));
   }
   await browser.close();
 });

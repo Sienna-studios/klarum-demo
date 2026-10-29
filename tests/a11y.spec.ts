@@ -1,12 +1,14 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+const HOME = process.env.PHOTOS === "0" ? "/?photos=0" : "/";
+
 for (const theme of ["dark", "light"] as const) {
   test(`axe: no serious or critical issues (${theme})`, async ({ page }) => {
     await page.addInitScript((t) => {
       try { localStorage.setItem("theme", t); } catch {}
     }, theme);
-    await page.goto("/");
+    await page.goto(HOME);
     await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
     // open every disclosure so contrast of revealed content is checked too
     await page.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
@@ -21,7 +23,7 @@ for (const theme of ["dark", "light"] as const) {
 }
 
 test("axe: pressed shortlist, open popover and mobile menu", async ({ page }) => {
-  await page.goto("/");
+  await page.goto(HOME);
   await page.locator("#notices").getByRole("button", { name: /Shortlist/ }).first().click();
   await page.locator("#notices").getByRole("button", { name: /^Rev A/ }).first().focus();
   const { violations } = await new AxeBuilder({ page }).analyze();

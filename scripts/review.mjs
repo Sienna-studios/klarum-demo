@@ -10,7 +10,7 @@ import { PAGES, PORT, ROOT, ROUND, outDir, pageKeys, sh } from "./lib/review.mjs
 
 const base = `http://localhost:${PORT}`;
 const env = { ...process.env, BASE_URL: base };
-const tools = ["token-audit", "overlay", "squint", "stress", "lighthouse"];
+const tools = ["token-audit", "overlay", "squint", "stress", "photo-contrast", "lighthouse"];
 
 try { await fetch(base); throw new Error(`port ${PORT} is already serving something; stop it or set REVIEW_PORT`); } catch (e) { if (/already serving/.test(e.message)) throw e; }
 sh("npm", ["run", "build"]);
@@ -19,7 +19,10 @@ const read = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : null)
 
 try {
   for (let i = 0; i < 60; i++) { try { if ((await fetch(base)).ok) break; } catch {} await sleep(500); }
-  for (const t of tools) sh("node", [`scripts/${t}.mjs`], { env });
+  for (const t of tools) {
+    if (t === "photo-contrast") spawnSync("node", [`scripts/${t}.mjs`], { cwd: ROOT, env, stdio: "inherit" }); // a failing ratio is a finding, not a crash
+    else sh("node", [`scripts/${t}.mjs`], { env });
+  }
 
   // Playwright's own HAR + budget test (mobile, cold) and the existing axe test, run unchanged
   for (const key of pageKeys()) {
@@ -51,12 +54,13 @@ const lines = [`# Review ${ROUND}`, ""];
 for (const key of pageKeys()) {
   const cfg = PAGES[key];
   const d = (f) => read(join(ROOT, "screenshots/review", ROUND, key, f));
-  const audit = d("token-audit.json"), ov = d("overlay/overlay.json"), st = d("stress/stress.json"), lh = d("lighthouse/lighthouse.json"), net = d("network/network.json");
+  const ct = d("contrast/photo-contrast.json"), audit = d("token-audit.json"), ov = d("overlay/overlay.json"), st = d("stress/stress.json"), lh = d("lighthouse/lighthouse.json"), net = d("network/network.json");
   lines.push(`## ${key}: ${cfg.path}`, "");
   if (audit) lines.push(`- Off-token values: ${audit.summary.distinctValues} distinct (${audit.summary.uses} uses). Top: ${audit.summary.top.slice(0, 3).map((v) => `${v.kind} ${v.value} x${v.uses}`).join("; ")}`);
   if (ov) { const s = ov[cfg.primaryTheme]; lines.push(`- Overlay vs Brief: build ${s.buildSize.join("x")}, target ${s.targetSize.join("x")}; pixel mismatch ${s.firstScreenMismatchPct}% first screen, ${s.fullMismatchPct}% full page`); }
   if (st) lines.push(`- Stress: ${st.results.map((r) => `${r.config} o${r.counts.overflow}/c${r.counts.clip}/v${r.counts.overlap}`).join(", ")} (o overflow, c clip, v overlap)`);
   if (st) lines.push(`- Axe (stress, serious+critical): ${st.results.reduce((n, r) => n + r.axe.blocking.length, 0)} across ${st.results.length} configs`);
+  if (ct) lines.push(`- Contrast over photos: worst ${Math.min(...ct.results.filter((r) => r.worst).map((r) => r.worst.ratio))}:1 (min ${ct.min}); failing text boxes: ${ct.results.reduce((n, r) => n + r.failing.length, 0)}`);
   if (lh) lines.push(`- Lighthouse mobile median of ${lh.runs}: perf ${lh.median.performance}, LCP ${lh.median.lcpMs} ms, TBT ${lh.median.tbtMs} ms, CLS ${lh.median.cls}; budget ${lh.budgetAssertions.passed ? "pass" : "FAIL"}`);
   if (net) lines.push(`- Before load (mobile, cold): ${net.kbBeforeLoad} KB, ${net.requestsBeforeLoad} requests; HAR + budget tests ${net.passed ? "pass" : "FAIL"}`);
   lines.push("");

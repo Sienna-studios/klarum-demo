@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import pixelmatch from "pixelmatch";
 import sharp from "sharp";
-import { PAGES, ROOT, launch, main, newPage, outDir, pageKeys, settle } from "./lib/review.mjs";
+import { PAGES, ROOT, launch, main, newPage, outDir, pageKeys, scrollThrough, settle } from "./lib/review.mjs";
 
 const W = 1440;
 const FIRST = 900;
@@ -65,6 +65,7 @@ main(async (base) => {
       const { ctx, page } = await newPage(browser, { theme, width: W, height: FIRST, reducedMotion: "reduce" });
       await page.goto(base + cfg.path, { waitUntil: "load" });
       await settle(page);
+      await scrollThrough(page);
       const build = await page.screenshot({ fullPage: true });
       await ctx.close();
       const targetPng = await sharp(join(ROOT, cfg.target)).png().toBuffer();

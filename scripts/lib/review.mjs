@@ -9,16 +9,21 @@ export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const ROUND = process.env.ROUND || "round-0";
 export const PORT = Number(process.env.REVIEW_PORT || 3200);
 
+/** PHOTOS=0 reviews the `?photos=0` baseline (same pages, no photos). */
+export const NO_PHOTOS = process.env.PHOTOS === "0";
+const Q = NO_PHOTOS ? "?photos=0" : "";
+export const withQuery = (path, extra) => path + (path.includes("?") ? "&" : "?") + extra;
+
 /** The two versions kept in DECISIONS.md. Both share tokens.css and the components. */
 export const PAGES = {
   dark: {
-    path: "/",
+    path: "/" + Q,
     target: "design/brief/renders/Home-Draft-Dark.webp",
     themes: ["dark", "light"], // `/` follows the data-theme switch
     primaryTheme: "dark",
   },
   light: {
-    path: "/v2/c",
+    path: "/v2/c" + Q,
     target: "design/brief/renders/Home-Draft-Light.webp",
     // /v2 has no theme switch. "native" = no stored theme, OS dark (how the earlier screenshots were taken):
     // minimal.css re-points the tokens. "os-light" = OS light: the tokens.css light block outranks minimal.css.
@@ -90,3 +95,16 @@ export async function settle(page) {
 }
 
 export const median = (a) => { const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+
+/** Scrolls the whole page so IntersectionObserver photos load, waits for every image, returns to the top. */
+export async function scrollThrough(page) {
+  await page.evaluate(async () => {
+    const h = document.documentElement.scrollHeight;
+    for (let y = 0; y < h; y += 400) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 80)); }
+    window.scrollTo(0, h);
+    await new Promise((r) => setTimeout(r, 250));
+  });
+  await page.waitForFunction(() => [...document.images].every((i) => i.complete), null, { timeout: 15000 }).catch(() => {});
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(400);
+}

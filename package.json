@@ -14,7 +14,9 @@
     "review:overlay": "node scripts/overlay.mjs",
     "review:squint": "node scripts/squint.mjs",
     "review:stress": "node scripts/stress.mjs",
-    "review:lighthouse": "node scripts/lighthouse.mjs"
+    "review:lighthouse": "node scripts/lighthouse.mjs",
+    "photos": "node scripts/photos.mjs",
+    "review:contrast": "node scripts/photo-contrast.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

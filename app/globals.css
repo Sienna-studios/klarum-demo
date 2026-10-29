@@ -75,6 +75,23 @@
   }
   @media (min-width: 761px) { .mobile-menu { display: none; } }
 
+
+  /* photos: decorative backgrounds behind a scrim, only where a slot exists. ?photos=0 renders none of this. */
+  .has-photo { position: relative; isolation: isolate; }
+  .ph { position: absolute; inset: 0; z-index: -1; display: block; overflow: hidden; pointer-events: none; }
+  .ph picture, .ph img { display: block; width: 100%; height: 100%; }
+  .ph img { object-fit: cover; }
+  .ph::after { content: ""; position: absolute; inset: 0; }
+  .ph-hero::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 58%, rgba(var(--scrim), 0.35) 100%); }
+  .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 50%, rgba(var(--scrim), 0.4) 100%); }
+  .ph-card::after { background: rgba(var(--scrim), 0.45); }
+  .ph-lazy img { opacity: 0; transition: opacity var(--t-fast); }
+  .ph-lazy[data-loaded="true"] img { opacity: 1; }
+  .ph-card img { object-position: 50% 45%; }
+  @media (max-width: 960px) {
+    .ph-hero::after, .ph-cta::after { background: linear-gradient(180deg, rgba(var(--scrim), 0.94), rgba(var(--scrim), 0.86)); }
+  }
+
   /* hero */
   .hero { min-height: 640px; display: flex; align-items: center; padding-block: 64px; }
   .hero-in { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: 64px; align-items: center; width: 100%; }

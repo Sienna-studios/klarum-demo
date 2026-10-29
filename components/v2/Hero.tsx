@@ -1,5 +1,6 @@
 import { URLS, notices } from "@/lib/data";
 import { CompactNotice } from "@/components/NoticeFeed";
+import { HeroPhoto } from "@/components/HeroPhoto";
 import { Field, type FieldKind } from "./Field";
 
 export type HeroId = "c" | "e" | "f" | "g";
@@ -21,9 +22,10 @@ function Actions({ note = true }: { note?: boolean }) {
   );
 }
 
-function C() {
+function C({ photos }: { photos: boolean }) {
   return (
-    <section className="m-hero m-hero-c">
+    <section className={photos ? "m-hero m-hero-c has-photo" : "m-hero m-hero-c"}>
+      {photos && <HeroPhoto />}
       <div className="m-wrap m-split">
         <div>
           <p className="m-lab">For infrastructure bid teams</p>
@@ -62,6 +64,6 @@ const E = () => <FieldHero kind="mass" title="Source more of the work that fits.
 const F = () => <FieldHero kind="signal" title="The right work, resolved from the noise." lead="Klarum finds open tenders that fit your similar assignments." />;
 const G = () => <FieldHero kind="lens" title="The whole market, filtered by what you can deliver." lead="Sources include national procurement portals, TED and the development banks. Klarum marks the notices that fit your similar assignments." />;
 
-export function Hero({ id }: { id: HeroId }) {
-  return { c: <C />, e: <E />, f: <F />, g: <G /> }[id];
+export function Hero({ id, photos = false }: { id: HeroId; photos?: boolean }) {
+  return { c: <C photos={photos} />, e: <E />, f: <F />, g: <G /> }[id];
 }
