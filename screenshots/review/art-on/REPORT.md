@@ -7,7 +7,7 @@
 - Stress: dark-320 o0/c4/v0, dark-390 o0/c4/v0, dark-zoom200 o0/c4/v0, dark-reduced-motion o0/c4/v3, light-320 o0/c4/v0, light-390 o0/c4/v0, light-zoom200 o0/c4/v0, light-reduced-motion o0/c4/v3 (o overflow, c clip, v overlap)
 - Axe (stress, serious+critical): 0 across 8 configs
 - Contrast over photos: worst 5.06:1 (min 4.5); failing text boxes: 0
-- Lighthouse mobile median of 3: perf 85, LCP 2641 ms, TBT 482 ms, CLS 0; budget FAIL
+- Lighthouse mobile median of 3: perf 99, LCP 1700 ms, TBT 120 ms, CLS 0; budget pass
 - Before load (mobile, cold): 226.3 KB, 10 requests; HAR + budget tests pass
 
 ## light: /v2/c
@@ -16,6 +16,6 @@
 - Overlay vs Brief: build 1440x6673, target 1440x5461; pixel mismatch 20.7% first screen, 31% full page
 - Stress: native-320 o0/c1/v10, native-390 o0/c1/v8, native-zoom200 o0/c1/v5, native-reduced-motion o0/c1/v3, os-light-320 o0/c1/v10, os-light-390 o0/c1/v8, os-light-zoom200 o0/c1/v5, os-light-reduced-motion o0/c1/v3 (o overflow, c clip, v overlap)
 - Axe (stress, serious+critical): 0 across 8 configs
-- Contrast over photos: worst 2.78:1 (min 4.5); failing text boxes: 2
-- Lighthouse mobile median of 3: perf 98, LCP 1813 ms, TBT 136 ms, CLS 0; budget pass
+- Contrast over photos: worst 5.06:1 (min 4.5); failing text boxes: 0
+- Lighthouse mobile median of 3: perf 97, LCP 2433 ms, TBT 147 ms, CLS 0; budget pass
 - Before load (mobile, cold): 227.8 KB, 11 requests; HAR + budget tests pass

@@ -4,11 +4,11 @@
  "formFactor": "mobile",
  "throttling": "simulate",
  "median": {
-  "performance": 98,
-  "lcpMs": 1813,
-  "tbtMs": 136,
+  "performance": 97,
+  "lcpMs": 2433,
+  "tbtMs": 147,
   "cls": 0,
-  "fcpMs": 913,
+  "fcpMs": 909,
   "transferKB": 228.1,
   "requests": 12
  },

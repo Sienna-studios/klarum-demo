@@ -4,31 +4,20 @@
  "formFactor": "mobile",
  "throttling": "simulate",
  "median": {
-  "performance": 85,
-  "lcpMs": 2641,
-  "tbtMs": 482,
+  "performance": 99,
+  "lcpMs": 1700,
+  "tbtMs": 120,
   "cls": 0,
-  "fcpMs": 780,
+  "fcpMs": 755,
   "transferKB": 226.6,
   "requests": 11
  },
  "budgetAssertions": {
-  "passed": false,
+  "passed": true,
   "output": [
-   "        expected: <=\u001b[32m2500\u001b[0m",
-   "           found: \u001b[31m2641.3584\u001b[0m",
-   "      \u001b[2mall values: 2641.3584, 2782.2042, 1729.6557\u001b[0m",
+   "Checking assertions against 1 URL(s), 3 total run(s)",
    "",
-   "",
-   "  \u001b[31m✘\u001b[0m  \u001b[1mtotal-blocking-time\u001b[0m failure for \u001b[1mmaxNumericValue\u001b[0m assertion",
-   "       Total Blocking Time",
-   "       https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/",
-   "",
-   "        expected: <=\u001b[32m200\u001b[0m",
-   "           found: \u001b[31m482.32079999999996\u001b[0m",
-   "      \u001b[2mall values: 482.32079999999996, 625, 232\u001b[0m",
-   "",
-   "Assertion failed. Exiting with status code 1."
+   "All results processed!"
   ]
  }
 }

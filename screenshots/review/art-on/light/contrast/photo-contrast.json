@@ -31,19 +31,12 @@
    "view": "390",
    "textBoxes": 5,
    "worst": {
-    "ratio": 2.79,
-    "sel": "section.m-section a.m-link",
-    "text": "See pricing",
+    "ratio": 5.06,
+    "sel": "section.m-section a.m-btn",
+    "text": "Start the Business trial",
     "size": "16px"
    },
-   "failing": [
-    {
-     "sel": "section.m-section a.m-link",
-     "text": "See pricing",
-     "size": "16px",
-     "ratio": 2.79
-    }
-   ]
+   "failing": []
   },
   {
    "theme": "os-light",
@@ -74,19 +67,12 @@
    "view": "390",
    "textBoxes": 5,
    "worst": {
-    "ratio": 2.78,
-    "sel": "section.m-section a.m-link",
-    "text": "See pricing",
+    "ratio": 5.06,
+    "sel": "section.m-section a.m-btn",
+    "text": "Start the Business trial",
     "size": "16px"
    },
-   "failing": [
-    {
-     "sel": "section.m-section a.m-link",
-     "text": "See pricing",
-     "size": "16px",
-     "ratio": 2.78
-    }
-   ]
+   "failing": []
   }
  ]
 }
