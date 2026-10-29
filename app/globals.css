@@ -85,6 +85,7 @@
   .ph-lazy[data-loaded="true"] img { opacity: 1; }
   /* riso scanlines from SP-Articles, as a gradient so they cost no bytes */
   .ph-riso::before { content: ""; position: absolute; inset: 0; z-index: 1; background: repeating-linear-gradient(0deg, rgba(var(--scrim), 0) 0 3px, rgba(var(--scrim), 0.6) 3px 5px); }
+  .ph-riso[data-grade="light"]::before { background: repeating-linear-gradient(0deg, rgba(var(--scrim), 0) 0 3px, rgba(var(--scrim), 0.35) 3px 4px); } /* lighter pass on the light grade: 3 px clear, 1 px at 35% */
   /* scrim only behind the CTA text, fading out so the rest of the plate shows */
   .ph-cta::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 46%, rgba(var(--scrim), 0) 68%); }
   @media (max-width: 760px) { .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 80%, rgba(var(--scrim), 0) 100%); } }

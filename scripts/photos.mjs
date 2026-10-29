@@ -2,8 +2,8 @@
 //   bridges (hero-background-poster.jpg) -> "plate", full-bleed between the workflow and the open notices
 //   rail    (aerial-fields.jpg)          -> "cta", the closing call-to-action band
 // Per slot: one crop per breakpoint (scripts/photo-crops.mjs CHOSEN), two grades, both baked here with sharp:
-//   dark  : grayscale, duotone --bg -> --ink, --red ink layer multiplied over the highlights
-//   light : the inverse: duotone --ink -> --bg, --red ink layer screened over the shadows
+//   dark  : grayscale, duotone --bg -> --ink, --red ink layer multiplied over the top highlights
+//   light : the inverse: duotone --ink -> --bg, --red ink layer screened over the darkest areas only
 // (SP-Articles.dc.html does this with CSS blend modes; baking it means the browser ships one small image.)
 // The scanline pass of that treatment stays CSS (.ph-riso::before), so it costs no bytes.
 // Output: public/photos/<slot>-<grade>-<mobile|desktop>-<width>.{avif,webp} and lib/photos.json.
@@ -13,40 +13,15 @@ import { readFileSync, readdirSync, rmSync, mkdirSync, writeFileSync } from "nod
 import { join } from "node:path";
 import sharp from "sharp";
 import { CANDIDATES, CHOSEN, SLOTS } from "./photo-crops.mjs";
+import { GRADES as G, gradeBuffer } from "./photo-grade.mjs";
 import { ROOT } from "./lib/review.mjs";
 
 const WIDTHS = { mobile: [640, 960], desktop: [1440, 1920] };
 const CAP_KB = { mobile: 110, desktop: 220 }; // quality search target on the largest file that bp serves most (960 / 1440); the hard cap is 120 KB on mobile
 const SEARCH_W = { mobile: 960, desktop: 1440 };
 
-// tokens.css
-const T = { bg: [13, 13, 16], ink: [255, 255, 255], red: [239, 65, 54], lightBg: [246, 246, 243], lightInk: [20, 32, 44] };
-const clamp = (v) => Math.max(0, Math.min(1, v));
-const mix = (a, b, t) => a + (b - a) * t;
-
-/** Duotone grade on an RGB raw buffer. */
-function grade(buf, grade) {
-  const out = Buffer.alloc(buf.length);
-  for (let i = 0; i < buf.length; i += 3) {
-    const L = (0.2126 * buf[i] + 0.7152 * buf[i + 1] + 0.0722 * buf[i + 2]) / 255;
-    if (grade === "dark") {
-      const g = clamp(((L - 0.5) * 1.45 + 0.5) * 1.05);
-      const m = 0.92 * g * g; // red ink coverage, heaviest in the highlights
-      for (let c = 0; c < 3; c++) {
-        const base = mix(T.bg[c], T.ink[c], g);
-        out[i + c] = Math.round(base * (1 - m + (m * T.red[c]) / 255)); // multiply
-      }
-    } else {
-      const g = clamp(((L - 0.5) * 1.65 + 0.5) * 0.98);
-      const m = 0.6 * Math.pow(1 - g, 1.8); // red ink coverage, heaviest in the shadows (kept lighter than dark's: a full-bleed red slab swamps a light page)
-      for (let c = 0; c < 3; c++) {
-        const base = mix(T.lightInk[c], T.lightBg[c], g) / 255;
-        out[i + c] = Math.round(255 * (1 - (1 - base) * (1 - (m * T.red[c]) / 255))); // screen
-      }
-    }
-  }
-  return out;
-}
+// grade parameters live in scripts/photo-grade.mjs (LIGHT=lightA|lightB picks the light strength)
+const PARAMS = { dark: G.dark, light: G[process.env.LIGHT || "lightA"] };
 
 const crop = (slot, bp) => {
   const c = CANDIDATES[slot][bp].find((x) => x.id === CHOSEN[slot][bp]);
@@ -56,7 +31,7 @@ const crop = (slot, bp) => {
 async function render(src, c, w, g) {
   const h = Math.round(w / c.aspect);
   const { data } = await sharp(src).extract({ left: c.x, top: c.y, width: c.w, height: c.h }).resize(w, h, { fit: "fill" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  return sharp(grade(data, g), { raw: { width: w, height: h, channels: 3 } });
+  return sharp(gradeBuffer(data, PARAMS[g]), { raw: { width: w, height: h, channels: 3 } });
 }
 
 const enc = async (img, fmt, q) => (fmt === "avif" ? img.clone().avif({ quality: q, effort: 4 }) : img.clone().webp({ quality: q, effort: 6 })).toBuffer();

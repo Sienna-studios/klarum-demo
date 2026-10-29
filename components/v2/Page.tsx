@@ -8,6 +8,7 @@ import { Pricing } from "@/components/Pricing";
 import { Hero, type HeroId } from "./Hero";
 import { LazyPhoto } from "@/components/LazyPhoto";
 import { Plate } from "@/components/Plate";
+import { DevOnly } from "@/components/DevOnly";
 import { Switcher } from "./Switcher";
 
 export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }) {
@@ -118,7 +119,7 @@ export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }
         </section>
       </main>
       <Footer />
-      <Switcher current={hero} />
+      <DevOnly><Switcher current={hero} /></DevOnly>
     </div>
   );
 }

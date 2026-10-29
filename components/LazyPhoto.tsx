@@ -45,7 +45,7 @@ export function LazyPhoto({ slot, grade = "auto", sizes, className }: { slot: Ph
   const g: Grade = grade === "auto" ? theme : grade;
   const fb = photoFallback(slot, g);
   return (
-    <span ref={el} className={`ph ph-lazy ph-riso ${className}`} data-photo={slot} data-loaded={loaded} aria-hidden="true">
+    <span ref={el} className={`ph ph-lazy ph-riso ${className}`} data-photo={slot} data-grade={g} data-loaded={loaded} aria-hidden="true">
       {near && (
         <picture key={g}>
           {photoSources(slot, g).map((s) => <source key={s.type + (s.media ?? "")} media={s.media} type={s.type} srcSet={s.srcSet} sizes={sizes} />)}
