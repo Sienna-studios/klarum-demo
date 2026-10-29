@@ -1,0 +1,613 @@
+{
+ "page": "/v2/c?stress=1",
+ "results": [
+  {
+   "config": "native-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "65x25",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "65x19",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 10
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "28x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "28x17",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 8
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "49x44",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 5
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "div.m-actions > p.m-fine",
+     "aText": "7-day trial, one per organisation, no pa",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "65x25",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x19",
+     "fixed": false
+    },
+    {
+     "a": "div > a.m-link.m-quiet",
+     "aText": "Or review one upcoming tender with us",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "65x19",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 10
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Tender notice · Roads · Supervision · Pu",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "28x25",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x17",
+     "fixed": false
+    },
+    {
+     "a": "span.nrow-main > span.nrow-meta",
+     "aText": "Closes · See notice",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "28x17",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 8
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero C: Feed. Notices beside the promise",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero E: The mass. The K as a field of do",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero F: Signal in the shape. Red is what",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a",
+     "bText": "Hero G: Lens. The market filtered by fit",
+     "area": "44x44",
+     "fixed": false
+    },
+    {
+     "a": "div > p.m-lead",
+     "aText": "Klarum then drafts the EOI. Every experi",
+     "b": "nav.m-switch > a.m-switch-dark",
+     "bText": "Dark version →",
+     "area": "49x44",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 5
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  }
+ ]
+}

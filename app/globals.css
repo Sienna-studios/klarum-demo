@@ -87,7 +87,7 @@
   .ph-riso::before { content: ""; position: absolute; inset: 0; z-index: 1; background: repeating-linear-gradient(0deg, rgba(var(--scrim), 0) 0 3px, rgba(var(--scrim), 0.6) 3px 5px); }
   /* scrim only behind the CTA text, fading out so the rest of the plate shows */
   .ph-cta::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 46%, rgba(var(--scrim), 0) 68%); }
-  @media (max-width: 760px) { .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 62%, rgba(var(--scrim), 0) 92%); } }
+  @media (max-width: 760px) { .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 80%, rgba(var(--scrim), 0) 100%); } }
   .plate { margin: 0; border-top: 1px solid var(--line); background: var(--bg); }
   .plate-img { position: relative; isolation: isolate; aspect-ratio: 12 / 5; max-height: 680px; width: 100%; background: var(--surf); }
   .plate-cap { padding-block: 16px 0; }
