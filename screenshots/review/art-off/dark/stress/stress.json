@@ -1,0 +1,383 @@
+{
+ "page": "/?photos=0&stress=1",
+ "results": [
+  {
+   "config": "dark-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "813x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "813x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "813x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "286x95",
+     "content": "314x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "356x95",
+     "content": "384x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "606x95",
+     "content": "634x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "01",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "02",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "article.surface.card > div.card-top",
+     "text": "03",
+     "box": "366x95",
+     "content": "394x104"
+    },
+    {
+     "selector": "footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "813x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "813x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "813x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 4,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  }
+ ]
+}
