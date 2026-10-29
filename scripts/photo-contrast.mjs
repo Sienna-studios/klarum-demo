@@ -1,6 +1,6 @@
 // Contrast over photos: for every text element inside a photo slot (hero, card tops, closing CTA), renders the page with
 // the text made transparent, reads the worst background pixel behind each text box, and computes the WCAG ratio against
-// the text's colour. Fails below 4.5:1 (11 px labels included). axe cannot judge text over images, so this is the check.
+// the text's colour (the fixed /v2 hero switcher is hidden: it is a prototype control, not part of the photo slots). Fails below 4.5:1 (11 px labels included). axe cannot judge text over images, so this is the check.
 // Run: npm run review:contrast
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -22,15 +22,22 @@ const collect = () => {
       if (![...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) continue;
       const cs = getComputedStyle(el);
       if (cs.display === "none" || cs.visibility === "hidden") continue;
-      const r = el.getBoundingClientRect();
-      if (r.width < 1 || r.height < 1) continue;
       const m = cs.color.match(/[\d.]+/g).map(Number);
       const nm = (e) => e.tagName.toLowerCase() + ([...e.classList][0] ? "." + [...e.classList][0] : "");
-      out.push({
-        sel: `${nm(slot)} ${nm(el)}`, text: el.textContent.trim().replace(/\s+/g, " ").slice(0, 36), size: cs.fontSize,
-        color: m.slice(0, 3), alpha: m[3] ?? 1,
-        box: { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height },
-      });
+      // the text's own line boxes (Range rects), so rings, borders and padding around it are not sampled
+      for (const node of el.childNodes) {
+        if (node.nodeType !== 3 || !node.textContent.trim()) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        for (const r of range.getClientRects()) {
+          if (r.width < 1 || r.height < 1) continue;
+          out.push({
+            sel: `${nm(slot)} ${nm(el)}`, text: node.textContent.trim().replace(/\s+/g, " ").slice(0, 36), size: cs.fontSize,
+            color: m.slice(0, 3), alpha: m[3] ?? 1,
+            box: { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height },
+          });
+        }
+      }
     }
   }
   return out;
@@ -48,8 +55,9 @@ main(async (base) => {
         await page.goto(base + cfg.path, { waitUntil: "load" });
         await settle(page);
         await scrollThrough(page);
+        if (process.env.CONTRAST_NO_SCRIM) await page.addStyleTag({ content: ".ph::after{display:none!important}" }); // negative control: the check must fail without the scrims
         const boxes = await page.evaluate(collect);
-        await page.addStyleTag({ content: "*{color:transparent!important;-webkit-text-fill-color:transparent!important;text-decoration-color:transparent!important;caret-color:transparent!important}" });
+        await page.addStyleTag({ content: ".m-switch{visibility:hidden!important}*{color:transparent!important;-webkit-text-fill-color:transparent!important;text-decoration-color:transparent!important;caret-color:transparent!important}" });
         await page.waitForTimeout(150);
         const shot = await page.screenshot({ fullPage: true });
         await ctx.close();
