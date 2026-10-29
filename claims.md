@@ -29,3 +29,4 @@ Every factual line the homepage may use. Status: **sourced** (with where), **sam
 | 23 | Office: Medborgarplatsen 25, 118 72 Stockholm; um@klarum.com; Klarum Technologies AB | sourced | Live footer, 29 Oct 2026 |
 | 24 | "Book a meeting" goes to /contact#bookings | sourced | Live header, 29 Oct 2026 (v0.9.49) |
 | 25 | The free tier is the floor of the plan ladder, not a trial that expires | sourced | Live homepage SDG 8 text, 28 Oct 2026 |
+| 26 | "The system of record for AI-native bid management. Built in Stockholm." | sourced | Live footer and menus, 29 Oct 2026 (v0.9.49) |

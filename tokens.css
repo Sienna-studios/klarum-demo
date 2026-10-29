@@ -99,7 +99,8 @@
   }
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"],
+[data-theme="light"] {
   --bg: #f6f6f3;
   --surf: #ffffff;
   --ink: #14202c;
@@ -124,4 +125,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   :root { --t-fast: 0s; }
+}
+
+/* Force dark on an element (or the root) even when the OS is light. */
+[data-theme="dark"] {
+  --bg: #0d0d10;
+  --surf: #15161b;
+  --ink: #ffffff;
+  --body: #e4e7ea;
+  --sub: #c9ced3;
+  --mute: #a9b1ba;
+  --line: #2a2e35;
+  --off: #39424c;
+  --dot: #2e343c;
+  --pin: #ffe2d6;
+  --pinb: #0d0d10;
+  --redt: #ffb3aa;
+  --card: rgba(21, 22, 27, 0.94);
+  --scrim: 13, 13, 16;
+  --tile: rgba(239, 65, 54, 0.18);
+  color-scheme: dark;
 }

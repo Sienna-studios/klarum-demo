@@ -1,0 +1,170 @@
+.foot {
+  position: relative;
+  overflow: hidden;
+  border-top: var(--stroke) solid var(--line);
+  color: var(--ink);
+}
+
+.grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: var(--s-48);
+  padding-top: var(--s-64);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-8);
+  min-height: var(--touch);
+  text-decoration: none;
+}
+
+.brandMark {
+  color: var(--red);
+}
+
+.brand b {
+  font-family: var(--font-display);
+  font-size: var(--fs-28);
+  font-weight: 800;
+  letter-spacing: var(--ls-wordmark);
+  line-height: 1;
+}
+
+.blurb {
+  max-width: 300px;
+  margin: var(--s-16) 0 0;
+  font-size: var(--fs-14);
+  line-height: 1.5;
+  color: var(--sub);
+}
+
+.links {
+  display: grid;
+  gap: 0;
+  margin: var(--s-12) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-15);
+  color: var(--body);
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--redt);
+}
+
+.sheetRow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-24);
+  padding-top: var(--s-48);
+  padding-bottom: var(--s-64);
+}
+
+/* The title block: ruled cells, mono keys, the revision letter in red. */
+.tb {
+  width: min(640px, 100%);
+  border-collapse: collapse;
+  background: var(--bg);
+}
+
+.tb td {
+  padding: var(--s-8) var(--s-12);
+  border: var(--stroke) solid var(--off);
+  vertical-align: top;
+}
+
+.tbMark {
+  width: 34%;
+  vertical-align: middle !important;
+  color: var(--ink);
+}
+
+.k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.v {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-14);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+a.v {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.code {
+  font-family: var(--font-mono);
+}
+
+.red {
+  color: var(--redt);
+}
+
+.copy {
+  font-size: var(--fs-11);
+}
+
+/* The giant K behind everything, in the surface colour. */
+.bigMark {
+  position: absolute;
+  left: 50%;
+  bottom: -260px;
+  z-index: 1;
+  width: min(1180px, 120%);
+  transform: translateX(-50%);
+  color: var(--surf);
+  pointer-events: none;
+}
+
+.bigMark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-24);
+  }
+
+  .tb td {
+    padding: 6px 8px;
+  }
+
+  .tbMark svg {
+    height: 18px;
+    width: auto;
+  }
+}

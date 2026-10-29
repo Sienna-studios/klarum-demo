@@ -1,0 +1,206 @@
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: var(--s-8) 20px;
+  padding: var(--s-16) 20px;
+  border-top: var(--stroke) solid var(--line);
+  transition: background-color var(--t-fast);
+}
+
+.row:first-child {
+  border-top: 0;
+}
+
+.row[data-shortlisted] {
+  background: var(--tile);
+}
+
+.titleBlock {
+  min-width: 0;
+}
+
+.meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.title {
+  margin: 4px 0;
+  font-size: var(--fs-16);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.title a {
+  text-decoration: none;
+}
+
+.title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.row[data-shortlisted] .title a {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Fit: five squares. Filled = fit, outlined = not. Shortlisted = hatched (kept from Print). */
+.fit {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.fit i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  box-shadow: inset 0 0 0 1.5px var(--off);
+}
+
+.fit i.on {
+  background: var(--red);
+  box-shadow: none;
+}
+
+.fit i.hatch {
+  background: repeating-linear-gradient(-45deg, var(--red) 0 2px, transparent 2px 5px);
+  box-shadow: inset 0 0 0 1.5px var(--red);
+}
+
+.fitSmall {
+  gap: 3px;
+}
+
+.fitSmall i {
+  width: 7px;
+  height: 7px;
+}
+
+/* Revision tag: a drawing's revision letter, with its history on hover or focus. */
+.rev {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--touch);
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  font: 500 var(--fs-11) / 1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--redt);
+  cursor: help;
+}
+
+/* The visible tag is 26px; the 44px button is the hit area. */
+.rev::before {
+  content: "";
+  position: absolute;
+  inset: 9px 0;
+  border: var(--stroke) solid var(--red);
+  pointer-events: none;
+}
+
+.pop {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 2px);
+  z-index: 2;
+  width: 280px;
+  padding: 12px 14px;
+  background: var(--ink);
+  color: var(--bg);
+  font: 500 var(--fs-11) / 1.8 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.16s, transform 0.16s;
+}
+
+.rev:hover .pop,
+.rev:focus-visible .pop {
+  opacity: 1;
+  transform: none;
+}
+
+.shortlist {
+  min-height: var(--touch);
+  padding: 0 14px;
+  border: var(--stroke) solid var(--off);
+  border-radius: var(--r-ctl);
+  background: transparent;
+  color: var(--ink);
+  font: 600 13px / 1 var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.shortlist:hover {
+  border-color: var(--ink);
+}
+
+.shortlist[aria-pressed="true"] {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--btn-ink);
+}
+
+.compact {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: var(--s-12) var(--s-16);
+}
+
+.compact .title {
+  font-size: var(--fs-14);
+  line-height: var(--lh-title);
+}
+
+@media (max-width: 760px) {
+  .row:not(.compact) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .row:not(.compact) .titleBlock {
+    grid-column: 1 / -1;
+  }
+
+  .row:not(.compact) .fit {
+    grid-column: 1;
+  }
+
+  .row:not(.compact) .rev {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .row:not(.compact) .shortlist {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .pop {
+    width: min(280px, 80vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .pop {
+    transition: none;
+  }
+}

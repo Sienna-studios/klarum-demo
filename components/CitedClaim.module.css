@@ -1,0 +1,127 @@
+.claim {
+  margin: 0;
+  background: var(--surf);
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r-surf);
+}
+
+.req {
+  display: grid;
+  gap: 6px;
+  padding: var(--s-16) 20px;
+  border-bottom: var(--stroke) dashed var(--off);
+}
+
+.reqText {
+  font-size: var(--fs-15);
+  line-height: 1.45;
+  color: var(--body);
+}
+
+.reqSource {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--sub);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.reqSource:hover {
+  color: var(--redt);
+}
+
+.draft {
+  display: grid;
+  gap: var(--s-12);
+  padding: var(--s-16) 20px 20px;
+}
+
+.quote {
+  margin: 0;
+  padding-left: var(--s-8);
+  border-left: var(--stroke-strong) solid var(--red);
+}
+
+.quote p {
+  margin: 0;
+  font-size: var(--fs-16);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.cite {
+  justify-self: start;
+  max-width: 100%;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--touch);
+  padding: 0 10px;
+  border: var(--stroke) solid var(--red);
+  border-radius: var(--r-ctl);
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  font-weight: 500;
+  letter-spacing: var(--ls-meta);
+  color: var(--redt);
+  cursor: pointer;
+  list-style: none;
+}
+
+.chip::-webkit-details-marker {
+  display: none;
+}
+
+.chip:hover,
+.cite[open] .chip {
+  background: var(--tile);
+}
+
+.chipIcon {
+  font-size: 13px;
+}
+
+.panel {
+  margin-top: var(--s-8);
+  padding: var(--s-12) 14px;
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--bg);
+  animation: reveal var(--t-fast) ease-out;
+}
+
+.excerpt {
+  margin: 6px 0 0;
+  font-size: var(--fs-14);
+  line-height: 1.5;
+  color: var(--body);
+}
+
+.sample {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

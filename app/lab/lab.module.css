@@ -1,0 +1,57 @@
+.top {
+  padding-top: var(--s-64);
+  padding-bottom: var(--s-48);
+}
+
+.h1 {
+  margin: var(--s-12) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-display);
+}
+
+.panel {
+  background: var(--bg);
+  color: var(--ink);
+  padding-top: var(--s-64);
+  border-top: var(--stroke) solid var(--line);
+}
+
+.block {
+  margin-top: var(--s-48);
+}
+
+.h {
+  margin: 0;
+  font-size: var(--fs-24);
+  font-weight: 700;
+  letter-spacing: var(--ls-wordmark);
+}
+
+.note {
+  max-width: 640px;
+  margin: var(--s-8) 0 0;
+  font-size: var(--fs-15);
+  line-height: 1.5;
+  color: var(--sub);
+}
+
+.sub {
+  margin-top: var(--s-32);
+}
+
+.feed {
+  margin: var(--s-16) 0 0;
+  padding: 0;
+  list-style: none;
+  background: var(--surf);
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r-surf);
+}
+
+.narrow {
+  max-width: 460px;
+  margin-top: var(--s-16);
+}
