@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { type Notice, closesLine, metaLine } from "@/lib/data";
+import { useStress } from "@/lib/stress";
 import { Pips } from "./Pips";
 
 /** P1, compact variant: hero feed and workflow card. Whole row is one link to the original publication. */
-export function CompactNotice({ n }: { n: Notice }) {
+export function CompactNotice({ n: base, i = -1 }: { n: Notice; i?: number }) {
+  const n = useStress(base, i);
   return (
     <li className="nrow compact">
       <a href={n.source_url} rel="noopener" className="nrow-link">
@@ -23,7 +25,8 @@ export function CompactNotice({ n }: { n: Notice }) {
 }
 
 /** P1, full variant: fit pips, hatched shortlist state, revision tag with history popover. */
-function NoticeRow({ n }: { n: Notice }) {
+function NoticeRow({ n: base, i }: { n: Notice; i: number }) {
+  const n = useStress(base, i);
   const [on, setOn] = useState(false);
   const pop = `rev-${n.id}`;
   const title = `title-${n.id}`;
@@ -73,8 +76,8 @@ function NoticeRow({ n }: { n: Notice }) {
 export function NoticeList({ items }: { items: Notice[] }) {
   return (
     <ul className="surface nlist" data-component="notice-list">
-      {items.map((n) => (
-        <NoticeRow key={n.id} n={n} />
+      {items.map((n, i) => (
+        <NoticeRow key={n.id} n={n} i={i} />
       ))}
     </ul>
   );

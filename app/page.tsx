@@ -53,7 +53,7 @@ export default function Home() {
             <div className="surface feed">
               <p className="lab feed-h">Open notices · Sample fit</p>
               <ul>
-                {notices.map((n) => <CompactNotice key={n.id} n={n} />)}
+                {notices.map((n, i) => <CompactNotice key={n.id} n={n} i={i} />)}
               </ul>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function Home() {
                 <p className="lab">Sourcing</p>
                 <h3>Every notice worth your time, in one feed.</h3>
                 <ul className="surface mini">
-                  {notices.map((n) => <CompactNotice key={n.id} n={n} />)}
+                  {notices.map((n, i) => <CompactNotice key={n.id} n={n} i={i} />)}
                 </ul>
               </article>
               <article className="surface card">

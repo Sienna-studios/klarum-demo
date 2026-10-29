@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redesign: how it works, explained step by step</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#55534e;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.abs{position:absolute;box-sizing:border-box}
+.open{box-shadow:inset 0 0 0 1.5px #ef4136}
+.hatch{background:repeating-linear-gradient(-45deg,#ef4136 0 2px,rgba(239,65,54,0) 2px 5px);box-shadow:inset 0 0 0 1.5px #ef4136}
+.sheet{transition:opacity .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.tick{transition:background .2s,box-shadow .2s}
+.fadeT{transition:opacity .25s}
+.stripes{background-image:url(../../assets/ee4e59dc5b6bb2377cca9d7040f5c508.webp);background-size:1440px auto;background-position:0 -620px}
+.cta2{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;background:#141b21;color:#f3f2ec;font-size:17px;font-weight:600}
+.cta2:hover{background:#1d2931}
+</style>
+</helmet>
+<div style="width: 1440px; height: 874px; background: #fbfdf6; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1d2931; overflow: hidden">
+<header style="height: 64px; box-sizing: border-box; padding: 0 64px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-bottom: 1px solid #e8e6dd">
+<img src="../../assets/f7bec00e914435d1ef69a6793858ef3c.svg" alt="Klarum" style="height: 24px; width: auto; display: block">
+<nav aria-label="Main" style="display: flex; gap: 32px; font-size: 13.5px"><a href="#">Notices</a><a href="#">Pricing</a><a href="#">Articles</a></nav>
+<div style="display: flex; align-items: center; justify-content: flex-end; gap: 18px; font-size: 13px"><span class="mono" style="font-size: 12px; letter-spacing: 0">EN</span><a href="#">sign in</a><a href="#" style="padding: 9px 16px; background: #1d2931; color: #ffffff; font-weight: 500">Start free</a></div>
+</header>
+<div onScroll="{{onScroll}}" style="height: 810px; overflow-y: auto; overflow-x: hidden">
+<section aria-labelledby="how-h" style="position: relative; height: 4860px">
+<div style="position: sticky; top: 0; height: 810px; overflow: hidden">
+<svg aria-hidden="true" width="0" height="0" style="position: absolute"><filter id="inkonly" x="-2%" y="-12%" width="104%" height="124%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" result="warp"></feTurbulence><feDisplacementMap in="SourceAlpha" in2="warp" scale="5" xChannelSelector="R" yChannelSelector="G" result="rough"></feDisplacementMap><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="1" seed="9" result="grain"></feTurbulence><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 5.6" result="speck"></feColorMatrix><feFlood flood-color="#141b21" result="inkFill"></feFlood><feComposite in="inkFill" in2="rough" operator="in" result="inkShape"></feComposite><feComposite in="inkShape" in2="speck" operator="in"></feComposite></filter></svg>
+
+<p class="mono" style="position: absolute; left: 64px; top: 56px; margin: 0; font-size: 12px; color: #d42a1f">How Klarum works</p>
+<h2 id="how-h" style="position: absolute; left: 64px; top: 84px; margin: 0; font-size: 44px; font-weight: 400; line-height: 48px; letter-spacing: -0.04em">From scattered notices<br>to a signed contract.</h2>
+<ol style="position: absolute; left: 64px; top: 232px; width: 380px; margin: 0; padding: 0; list-style: none; border-top: 1px solid #1d2931">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<li aria-current="{{s.cur}}" style="padding: 16px 0; border-bottom: 1px solid #e8e6dd; opacity: {{s.op}}; transition: opacity 0.3s">
+<div style="display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="display: grid; place-items: center; width: 30px; height: 30px; border: 1.5px solid #ef4136; border-radius: 50%; background: {{s.bg}}; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: {{s.nc}}; transition: background 0.3s, color 0.3s">{{s.n}}</span>
+<span style="font-size: 22px; font-weight: 500">{{s.label}}</span>
+<span class="mono" style="margin-left: auto; font-size: 11px; color: #55534e">{{s.sub}}</span>
+</div>
+<span aria-hidden="true" style="display: block; margin: 12px 0 0 44px; height: 2px; background: #e8e6dd"><i style="display: block; height: 2px; width: {{s.fill}}%; background: #ef4136"></i></span>
+</li>
+</sc-for>
+</ol>
+<div aria-live="polite" style="position: absolute; left: 64px; top: 520px; width: 360px">
+<p class="mono" style="margin: 0; font-size: 11px; color: #d42a1f">{{beatK}}</p>
+<p style="margin: 10px 0 0; font-size: 18px; line-height: 27px">{{beatT}}</p>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 500px; top: 70px; width: 876px; height: 680px">
+<p class="mono abs" style="left: 0; top: 30px; margin: 0; font-size: 11px; color: #55534e; opacity: {{feedO}}">One feed · [X] new notices today · sorted by fit</p>
+<p class="mono abs" style="left: 0; top: 14px; margin: 0; font-size: 11px; color: #d42a1f; opacity: {{tenderO}}">Tender · found on Regional portal</p>
+
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="9">
+<div class="abs" style="left: 0; top: 0; width: {{t.w}}px; height: {{t.h}}px; transform: translate({{t.x}}px, {{t.y}}px) rotate({{t.r}}deg); opacity: {{t.o}}">
+<div class="abs" style="inset: 0; padding: 10px 12px; background: {{t.bg}}; border: {{t.bd}}; color: {{t.fg}}; opacity: {{t.a}}">
+<p class="mono" style="margin: 0; font-size: 10px; color: {{t.lc}}">{{t.src}}</p>
+<p style="margin: 6px 0 0; font-size: 13px; line-height: 17px">{{t.title}}</p>
+</div>
+<div class="abs" style="inset: 0; display: flex; align-items: center; gap: 12px; padding: 0 12px; background: {{t.rowBg}}; border-bottom: 1px solid #e8e6dd; opacity: {{t.b}}">
+<i class="open" style="flex: none; display: block; width: 14px; height: 14px"></i>
+<span style="flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: {{t.fs}}px; font-weight: 500">{{t.title}}</span>
+<span class="mono" style="flex: none; display: flex; align-items: center; gap: 8px; font-size: 11px; color: {{t.fitC}}; opacity: {{t.chip}}"><i style="display: block; width: 44px; height: 4px; background: #e8e6dd"><i style="display: block; height: 4px; width: {{t.fit}}%; background: {{t.fitC}}"></i></i>Fit {{t.fit}}%</span>
+</div>
+</div>
+</sc-for>
+
+<p class="mono abs" style="left: 520px; top: 14px; margin: 0; font-size: 11px; color: #d42a1f; opacity: {{capO}}">Your capabilities · [Company]</p>
+<p class="abs" style="left: 520px; top: 40px; margin: 0; width: 356px; height: 52px; padding: 0 14px; display: flex; align-items: center; background: #1d2931; color: #ffffff; font-size: 15px; font-weight: 500; opacity: {{capO}}; transform: translateX({{capX}}px)">Company profile · [X] past projects</p>
+<sc-for list="{{caps}}" as="c" hint-placeholder-count="6">
+<p class="abs" style="left: 520px; top: {{c.y}}px; width: 356px; height: 40px; margin: 0; padding: 0 14px; display: flex; align-items: center; gap: 10px; border: 1px solid {{c.bc}}; background: #ffffff; font-size: 14px; opacity: {{c.o}}; transform: translateX({{c.x}}px)"><i style="flex: none; display: block; width: 8px; height: 8px; border-radius: 50%; background: {{c.dot}}"></i>{{c.t}}</p>
+</sc-for>
+<svg class="abs" width="876" height="680" viewBox="0 0 876 680" fill="none" style="left: 0; top: 0; overflow: visible">
+<path d="{{l0.d}}" stroke="#ef4136" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="{{l0.off}}" style="opacity: {{l0.o}}"></path>
+<path d="{{l1.d}}" stroke="#ef4136" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="{{l1.off}}" style="opacity: {{l1.o}}"></path>
+<path d="{{l2.d}}" stroke="#ef4136" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="{{l2.off}}" style="opacity: {{l2.o}}"></path>
+<path d="{{l3.d}}" stroke="#ef4136" stroke-width="1.6" stroke-dasharray="4 4" style="opacity: {{l3.o}}"></path>
+<path d="{{l4.d}}" stroke="#ef4136" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="{{l4.off}}" style="opacity: {{l4.o}}"></path>
+<path d="{{l5.d}}" stroke="#ef4136" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="{{l5.off}}" style="opacity: {{l5.o}}"></path>
+</svg>
+<p class="mono abs" style="left: 452px; top: {{gapY}}px; margin: 0; padding: 3px 6px; border: 1.5px solid #ef4136; background: #fbfdf6; font-size: 10px; color: #d42a1f; opacity: {{gapO}}">Gap</p>
+<div class="abs" style="left: 0; top: 420px; width: 400px; opacity: {{meterO}}">
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{segs}}" as="g" hint-placeholder-count="6"><i style="display: block; height: 14px; background: {{g.bg}}; box-shadow: inset 0 0 0 1.5px {{g.bd}}"></i></sc-for>
+</div>
+<p style="margin: 12px 0 0; font-size: 20px; font-weight: 500">Fit 5 of 6 · <span style="color: #d42a1f">Go</span></p>
+<p style="margin: 4px 0 0; font-size: 15px; line-height: 22px; color: #55534e">One gap, ISO 14001: bid with a certified partner. Decided before a day is spent writing.</p>
+</div>
+
+<div class="abs" style="left: 160px; top: 20px; width: 460px; height: 470px; border: 1px solid #1d2931; background: #ffffff; opacity: {{listO}}">
+<p class="mono" style="margin: 18px 0 0 20px; font-size: 11px; color: #d42a1f">Bid checklist · one place</p>
+<p style="margin: 6px 0 0 20px; font-size: 18px; font-weight: 500">Bridge deck rehabilitation</p>
+<p class="mono" style="position: absolute; left: 20px; bottom: 16px; margin: 0; font-size: 11px; color: #55534e">{{done}} of 6 reviewed by the team</p>
+</div>
+<sc-for list="{{reqs}}" as="q" hint-placeholder-count="6">
+<div class="abs" style="left: 0; top: 0; width: {{q.w}}px; height: {{q.h}}px; transform: translate({{q.x}}px, {{q.y}}px); opacity: {{q.o}}; display: flex; align-items: center; gap: 10px; padding: 0 12px; border: 1px solid {{q.bc}}; background: #ffffff; overflow: hidden">
+<i class="tick" style="flex: none; display: grid; place-items: center; width: {{q.cbw}}px; height: 16px; overflow: hidden; background: {{q.cb}}; box-shadow: inset 0 0 0 1.5px #ef4136"><svg width="12" height="12" viewBox="0 0 12 12" style="opacity: {{q.tk}}"><path d="M2 6.5l2.5 2.5 5.5 -6" fill="none" stroke="#ffffff" stroke-width="1.8"></path></svg></i>
+<span style="flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; color: {{q.c}}">{{q.t}}</span>
+<span class="mono" style="flex: none; font-size: 10px; color: {{q.tagC}}; opacity: {{q.tagO}}">{{q.tag}}</span>
+<span class="mono fadeT" style="flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #1d2931; color: #ffffff; font-size: 9px; letter-spacing: 0.04em; opacity: {{q.who}}">{{q.init}}</span>
+</div>
+</sc-for>
+
+<div class="abs" style="left: 652px; top: 110px; width: 210px; height: 300px; opacity: {{stackO}}; transform: translateX({{stackX}}px)">
+<sc-for list="{{sheets}}" as="h" hint-placeholder-count="6">
+<div class="abs sheet" style="left: {{h.x}}px; top: {{h.y}}px; width: 170px; height: 220px; padding: 16px; background: #ffffff; border: 1px solid #1d2931; opacity: {{h.o}}; transform: translateY({{h.ty}}px)">
+<p class="mono" style="margin: 0; font-size: 9px; color: #d42a1f">{{h.k}}</p>
+<i style="display: block; margin-top: 12px; height: 2px; width: 120px; background: #d4d6d0"></i><i style="display: block; margin-top: 8px; height: 2px; width: 96px; background: #d4d6d0"></i><i style="display: block; margin-top: 8px; height: 2px; width: 128px; background: #d4d6d0"></i><i style="display: block; margin-top: 8px; height: 2px; width: 70px; background: #d4d6d0"></i>
+</div>
+</sc-for>
+<p class="mono abs" style="left: 0; top: 262px; margin: 0; padding: 4px 8px; background: {{stackTagBg}}; color: {{stackTagC}}; font-size: 11px; white-space: nowrap">{{stackTag}}</p>
+</div>
+</div>
+
+<div style="position: absolute; left: 64px; bottom: 40px; display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="position: relative; display: block; width: 120px; height: 1px; background: #d4d6d0"><i style="position: absolute; left: 0; top: -0.5px; height: 2px; width: {{bar}}px; background: #ef4136"></i></span>
+<span class="mono" style="font-size: 11px; color: #55534e">Scroll inside · the drawing explains each step</span>
+</div>
+
+<div style="position: absolute; inset: 0; background: #ef4136; color: #141b21; clip-path: inset({{wipe}}% 0 0 0)">
+<div aria-hidden="true" class="stripes" style="position: absolute; left: 0; bottom: 0; width: 1440px; height: 96px"></div>
+<p class="mono" style="position: absolute; left: 64px; top: 56px; margin: 0; font-size: 12px">3 · Award</p>
+<p style="position: absolute; left: 50px; top: 88px; margin: 0; font-size: 210px; font-weight: 400; line-height: 200px; letter-spacing: -0.06em; filter: url(#inkonly); opacity: {{awO}}; transform: translateY({{awY}}px)">Awarded.</p>
+<p style="position: absolute; left: 64px; top: 318px; width: 560px; margin: 0; font-size: 22px; line-height: 32px; opacity: {{awO}}">The contract is signed, and the win goes back into your profile as a reference for the next bid.</p>
+<div style="position: absolute; left: 64px; top: 450px; width: 760px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; opacity: {{factO}}">
+<div style="border-top: 2px solid #141b21; padding-top: 12px"><p class="mono" style="margin: 0; font-size: 11px">Contract value</p><p style="margin: 6px 0 0; font-size: 28px; letter-spacing: -0.02em">[Value]</p></div>
+<div style="border-top: 2px solid #141b21; padding-top: 12px"><p class="mono" style="margin: 0; font-size: 11px">Sourced</p><p style="margin: 6px 0 0; font-size: 28px; letter-spacing: -0.02em">[Date]</p></div>
+<div style="border-top: 2px solid #141b21; padding-top: 12px"><p class="mono" style="margin: 0; font-size: 11px">Bid assembled in</p><p style="margin: 6px 0 0; font-size: 28px; letter-spacing: -0.02em">[X] days</p></div>
+</div>
+<a class="cta2" href="#" style="position: absolute; left: 64px; top: 580px; opacity: {{factO}}">Find your next award
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+<div aria-hidden="true" style="position: absolute; left: 1010px; top: 120px; width: 330px; height: 430px; box-sizing: border-box; padding: 26px; background: #fbfdf6; border: 1.5px solid #141b21; transform: translateY({{awCardY}}px); opacity: {{awO}}">
+<p class="mono" style="margin: 0; font-size: 10px; color: #d42a1f">Contract · Bridge deck rehabilitation</p>
+<i style="display: block; margin-top: 18px; height: 2px; width: 240px; background: #d4d6d0"></i><i style="display: block; margin-top: 10px; height: 2px; width: 200px; background: #d4d6d0"></i><i style="display: block; margin-top: 10px; height: 2px; width: 260px; background: #d4d6d0"></i><i style="display: block; margin-top: 10px; height: 2px; width: 150px; background: #d4d6d0"></i><i style="display: block; margin-top: 26px; height: 2px; width: 240px; background: #d4d6d0"></i><i style="display: block; margin-top: 10px; height: 2px; width: 210px; background: #d4d6d0"></i>
+<svg width="140" height="40" viewBox="0 0 140 40" style="position: absolute; left: 26px; bottom: 40px"><path d="M2 28c14 -22 22 6 34 -6s18 14 30 -2 20 8 34 -4" fill="none" stroke="#141b21" stroke-width="1.6"></path><path d="M0 36h140" stroke="#141b21" stroke-width="1"></path></svg>
+<div style="position: absolute; left: 40px; top: 150px; padding: 10px 18px; border: 4px solid #ef4136; color: #ef4136; transform: rotate(-9deg) scale({{stampS}}); opacity: {{stampO}}; transform-origin: 50% 50%">
+<p class="mono" style="margin: 0; font-size: 44px; font-weight: 500; letter-spacing: 0.06em; line-height: 46px">AWARDED</p>
+<p class="mono" style="margin: 2px 0 0; font-size: 11px">[Date] · Rev final</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"preview":{"editor":"range","default":0.44,"min":0,"max":1,"step":0.01},"$preview":{"width":1440,"height":874}}'>
+class Component extends DCLogic {
+// One continuous drawing, scrubbed by scroll. 1 Source: scattered notices from many formats settle into one feed,
+// each scored for fit; the best one is mapped requirement by requirement against the company's capabilities.
+// 2 Bid: the requirements become one checklist, reviewed and assembled into a bid package. 3 Award: a full-frame takeover.
+scroll(e) {
+const el = e.currentTarget;
+const p = el.scrollTop / Math.max(1, el.scrollHeight - el.clientHeight);
+if (Math.abs(((this.state || {}).p ?? -1) - p) > 0.002) this.setState({ p });
+}
+renderVals() {
+const s = this.state || {};
+const P = s.p ?? (this.props.preview ?? 0.44);
+const cl = (v) => Math.max(0, Math.min(1, v));
+const seg = (a, b) => cl((P - a) / (b - a));
+const E = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+const L = (a, b, t) => a + (b - a) * t;
+const r1 = (v) => Math.round(v * 10) / 10;
+
+// 1a · Gather: scattered notices in different formats settle into one sorted feed.
+const SRC = [
+['TED · EU journal', 'Rail signalling renewal, single-track section', 61, 10, 20, -6, 0],
+['Municipal website', 'Cycle path and street lighting, phase 1', 22, 240, 0, 4, 2],
+['PDF attachment', 'Water main replacement, city centre', 48, 500, 34, -3, 1],
+['Regional portal', 'Bridge deck rehabilitation, three crossings', 92, 650, 160, 7, 3],
+['Email alert', 'Substation civil works and cable trenches', 35, 40, 214, 5, 0],
+['Utility buyer site', 'Tunnel ventilation upgrade', 18, 300, 178, -8, 2],
+['Newsletter', 'Harbour quay repair, north basin', 74, 110, 430, -4, 1],
+['National portal', 'Road resurfacing, regional network lot 2', 66, 420, 384, 6, 0],
+['Spreadsheet export', 'Culvert replacement programme', 40, 640, 470, -5, 2]
+];
+// Feed order: by fit, highest first, so sorting is part of the explanation.
+const order = SRC.map((d, i) => i).sort((a, b) => SRC[b][2] - SRC[a][2]);
+const looks = [
+{ bg: '#fbfdf6', bd: '1px solid #1d2931', fg: '#1d2931', lc: '#55534e' },
+{ bg: '#1d2931', bd: '1px solid #1d2931', fg: '#f3f2ec', lc: '#ef4136' },
+{ bg: '#ffffff', bd: '1.5px dashed #8b8e88', fg: '#1d2931', lc: '#55534e' },
+{ bg: '#fbfdf6', bd: '2px solid #ef4136', fg: '#1d2931', lc: '#d42a1f' }
+];
+const CH = 3;
+const pick = E(seg(0.30, 0.34));
+const tenderFade = E(seg(0.46, 0.5));
+const tiles = SRC.map(([src, title, fit, sx, sy, sr, look], i) => {
+const rank = order.indexOf(i);
+const t = E(seg(0.04 + i * 0.012, 0.13 + i * 0.012));
+let x = L(sx, 0, t), y = L(sy, 62 + rank * 46, t), w = L(200, 440, t), h = L(76, 40, t), r = L(sr, 0, t);
+let o = 1 - (fit < 60 ? 0.7 * E(seg(0.25, 0.29)) : 0);
+if (i === CH) { x = L(x, 0, pick); y = L(y, 40, pick); w = L(w, 400, pick); h = L(h, 52, pick); o = 1 - tenderFade; }
+else { o *= 1 - pick; x -= pick * 24; }
+const lk = looks[look];
+return {
+src, title, fit, x: r1(x), y: r1(y), w: r1(w), h: r1(h), r: r1(r), o: o.toFixed(3),
+a: (1 - t).toFixed(3), b: t.toFixed(3), chip: E(seg(0.2, 0.24)).toFixed(3),
+fitC: fit >= 60 ? '#d42a1f' : '#8b8e88', fs: i === CH && pick > 0.5 ? 16 : 14,
+rowBg: i === CH && pick > 0.5 ? '#fbfdf6' : '#fbfdf6', ...lk
+};
+});
+
+// 1b · Fit: requirements of the chosen tender mapped against capabilities. Requirement 3 has no match.
+const REQ = ['Bridge repair, three concrete decks', 'Waterproofing and surfacing', 'Traffic management on live roads', 'ISO 14001 environmental certificate', 'Three references within five years', 'Annual turnover above [X]'];
+const CAP = ['Concrete bridge repair · [14] projects', 'Traffic management · in-house', 'References · [9] bridges since 2021', 'Turnover · [X]', 'Waterproofing · approved installer', 'ISO 9001 quality'];
+const MAP = [0, 4, 1, -1, 2, 3];
+const capIn = E(seg(0.34, 0.39)) * (1 - tenderFade);
+const lineK = (i) => E(seg(0.38 + i * 0.008, 0.41 + i * 0.008));
+const lines = MAP.map((j, i) => {
+const y1 = 110 + i * 50 + 20;
+if (j < 0) return { d: 'M400 ' + y1 + 'H450', off: 0, o: (lineK(i) * (1 - tenderFade)).toFixed(3) };
+const y2 = 110 + j * 50 + 20;
+return { d: 'M400 ' + y1 + 'C460 ' + y1 + ' 460 ' + y2 + ' 520 ' + y2, off: (1 - lineK(i)).toFixed(3), o: (1 - tenderFade).toFixed(3) };
+});
+const matched = MAP.filter((j, i) => j >= 0 && lineK(i) > 0.95).length;
+const caps = CAP.map((t, j) => {
+const hit = MAP.some((m, i) => m === j && lineK(i) > 0.95);
+return { t, y: 110 + j * 50, o: capIn.toFixed(3), x: r1(L(40, 0, capIn)), bc: hit ? '#ef4136' : '#d4d6d0', dot: hit ? '#ef4136' : '#d4d6d0' };
+});
+const meterIn = E(seg(0.40, 0.43)) * (1 - tenderFade);
+const segs = Array.from({ length: 6 }, (_, k) => ({ bg: k < matched ? '#ef4136' : 'transparent', bd: k < 5 ? '#ef4136' : '#8b8e88' }));
+
+// 2 · Bid: requirement rows travel into one checklist, are reviewed one by one, and each adds a sheet to the package.
+const listIn = E(seg(0.47, 0.52));
+const collapse = E(seg(0.72, 0.77));
+const INIT = ['AB', 'LK', 'AB', 'MS', 'LK', 'AB'];
+const SH = ['Method statement', 'Price schedule', 'Traffic plan', 'Partner certificate', 'References', 'Financials'];
+let done = 0;
+const reqs = REQ.map((t, i) => {
+const a = E(seg(0.33 + i * 0.008, 0.37 + i * 0.008));
+const m = E(seg(0.47 + i * 0.01, 0.53 + i * 0.01));
+const c = E(seg(0.72 + i * 0.006, 0.77));
+const checked = P >= 0.55 + i * 0.025 && P < 0.8;
+if (P >= 0.55 + i * 0.025) done++;
+const gap = i === 3;
+let x = L(L(-16, 0, a), 180, m), y = L(110 + i * 50, 90 + i * 56, m), w = L(400, 420, m), h = L(40, 44, m);
+x = L(x, 700, c); y = L(y, 230, c); w = L(w, 150, c); h = L(h, 24, c);
+return {
+x: r1(x), y: r1(y), w: r1(w), h: r1(h), o: (a * (1 - c)).toFixed(3),
+t: gap && P >= 0.55 + i * 0.025 ? 'ISO 14001 · partner certificate attached' : t,
+c: gap && m < 0.5 ? '#d42a1f' : '#1d2931', bc: gap && m < 0.5 ? '#ef4136' : '#d4d6d0',
+tag: gap ? 'No match' : 'Match', tagC: gap ? '#d42a1f' : '#55534e', tagO: (a * (1 - m)).toFixed(3),
+cbw: Math.round(16 * E(seg(0.5, 0.53))), cb: checked || P >= 0.8 ? '#ef4136' : 'transparent', tk: P >= 0.55 + i * 0.025 ? 1 : 0,
+who: checked ? 1 : 0, init: INIT[i]
+};
+});
+const sheets = SH.map((k, i) => {
+const on = P >= 0.55 + i * 0.025;
+return { k, x: i * 6, y: 20 - i * 6, o: on ? 1 : 0, ty: on ? 0 : -24 };
+});
+const submitted = P >= 0.77;
+
+// 3 · Award: the package slides to the centre, then the whole frame turns red and the stamp lands.
+const wipe = E(seg(0.8, 0.86));
+const aw = E(seg(0.84, 0.9));
+const st = E(seg(0.87, 0.9));
+
+const beats = [
+['1 · Source · gather', 'Notices scattered across [X] portals, buyer sites, PDFs and email alerts land in one feed, sorted by how well each one fits you.'],
+['1 · Source · fit before you bid', 'The best match is mapped requirement by requirement against your capabilities. Matches, gaps and a go / no-go, before anyone writes a word.'],
+['2 · Bid · one checklist', 'Every requirement becomes one checklist item. The team reviews each one, and each adds its document to the bid package.'],
+['3 · Award', 'Submitted on time and tracked to the signed contract. The win feeds your profile for the next fit check.']
+];
+const beat = P < 0.22 ? 0 : P < 0.45 ? 1 : P < 0.72 ? 2 : 3;
+const R = [[0, 0.45], [0.45, 0.72], [0.72, 0.92]];
+const active = P < 0.45 ? 0 : P < 0.72 ? 1 : 2;
+const steps = [['Source', 'Gather · fit'], ['Bid', 'Checklist · assemble'], ['Award', 'Signed']].map(([label, sub], i) => ({
+n: i + 1, label, sub, cur: i === active ? 'step' : 'false', op: i === active ? 1 : 0.5,
+bg: i === active ? '#ef4136' : 'transparent', nc: i === active ? '#ffffff' : '#d42a1f',
+fill: Math.round(seg(R[i][0], R[i][1]) * 100)
+}));
+
+return {
+steps, beatK: beats[beat][0], beatT: beats[beat][1],
+tiles, caps, segs, reqs, sheets,
+l0: lines[0], l1: lines[1], l2: lines[2], l3: lines[3], l4: lines[4], l5: lines[5],
+gapY: 110 + 3 * 50 + 9, gapO: (lineK(3) * (1 - tenderFade)).toFixed(3),
+feedO: (E(seg(0.14, 0.18)) * (1 - E(seg(0.3, 0.33)))).toFixed(3),
+tenderO: (E(seg(0.32, 0.36)) * (1 - tenderFade)).toFixed(3),
+capO: capIn.toFixed(3), capX: r1(L(40, 0, capIn)), meterO: meterIn.toFixed(3),
+listO: (listIn * (1 - E(seg(0.72, 0.76)))).toFixed(3), done,
+stackO: E(seg(0.5, 0.54)).toFixed(3), stackX: r1(L(0, -330, E(seg(0.75, 0.8)))),
+stackTag: submitted ? 'Submitted · [date]' : 'Bid package · ' + done + ' / 6',
+stackTagBg: submitted ? '#1d2931' : 'transparent', stackTagC: submitted ? '#ffffff' : '#55534e',
+wipe: r1((1 - wipe) * 100), awO: aw.toFixed(3), awY: r1(L(80, 0, aw)), awCardY: r1(L(60, 0, aw)),
+stampS: L(2.4, 1, st).toFixed(3), stampO: cl(st * 3).toFixed(3), factO: E(seg(0.9, 0.95)).toFixed(3),
+bar: Math.round(cl(P) * 120),
+onScroll: (e) => this.scroll(e)
+};
+}
+}
+</script>
+</body>
+</html>

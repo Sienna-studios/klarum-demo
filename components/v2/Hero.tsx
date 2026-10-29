@@ -34,7 +34,7 @@ function C() {
         </div>
         <div className="m-feed">
           <p className="m-lab">Open notices · Sample fit</p>
-          <ul>{notices.map((n) => <CompactNotice key={n.id} n={n} />)}</ul>
+          <ul>{notices.map((n, i) => <CompactNotice key={n.id} n={n} i={i} />)}</ul>
         </div>
       </div>
     </section>

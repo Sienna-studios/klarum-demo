@@ -8,7 +8,13 @@
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "lhci": "lhci autorun --config=lighthouserc.json",
-    "baseline": "node scripts/baseline.mjs"
+    "baseline": "node scripts/baseline.mjs",
+    "review": "node scripts/review.mjs",
+    "review:audit": "node scripts/token-audit.mjs",
+    "review:overlay": "node scripts/overlay.mjs",
+    "review:squint": "node scripts/squint.mjs",
+    "review:stress": "node scripts/stress.mjs",
+    "review:lighthouse": "node scripts/lighthouse.mjs"
   },
   "dependencies": {
     "next": "16.4.3",
@@ -23,6 +29,8 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "pixelmatch": "^7.1.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "4.3.3",
     "typescript": "^5.9"
   },

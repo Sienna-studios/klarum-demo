@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>E2 Trace and provenance view</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{box-sizing:border-box;--paper:#fbfaf6;--paper-2:#f4f2eb;--paper-3:#ece9df;--card:#fff;--ink:#0e0e10;--ink-2:#45464a;--rule:rgba(14,14,16,.12);--signal:#ef4136;--signal-ink:#c4301f;--signal-wash:#fbeae8;--pos:#1c703f;--pos-bg:#eaf3eb;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif}
+.k *{box-sizing:border-box}
+.k :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.heads{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;padding:0 14px 10px;border-bottom:1px solid var(--ink)}
+.tr{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch;width:100%;padding:14px;border:0;border-bottom:1px solid var(--rule);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:background-color .15s}
+.tr:hover,.tr.h{background:var(--paper-2)}
+.tr[aria-pressed="true"],.tr.sel{background:var(--signal-wash)}
+.tr.f{outline:2px solid var(--ink);outline-offset:-2px}
+.node{padding:10px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--card);font-size:13.5px;line-height:1.4}
+.node .l{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px}
+.node.ok{border-color:var(--pos)}
+.node.miss{border:1.5px dashed var(--signal);background:transparent;color:var(--signal-ink)}
+.node.none{border-style:dashed;background:transparent;color:var(--ink-2)}
+.link{display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink-2)}
+.link.brk{color:var(--signal-ink)}
+.chip{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.c-met{color:var(--pos);background:var(--pos-bg)}.c-gap{color:var(--signal-ink);background:var(--signal-wash)}.c-unm{color:var(--ink-2);background:var(--paper-3)}
+.sk{display:block;height:12px;border-radius:2px;background:var(--paper-3)}
+.st{display:flex;flex-direction:column;gap:8px}
+.st .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.st .note{font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+.tag{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);box-shadow:inset 0 0 0 1px rgba(14,14,16,.4);background:repeating-linear-gradient(135deg,transparent 0 4px,rgba(14,14,16,.05) 4px 5px)}
+.demo{box-shadow:inset 0 0 0 1px var(--rule);background:var(--paper)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:0;border-radius:4px;font:600 15px/1 'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+kbd{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:24px;padding:0 6px;border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;background:var(--card);font-family:'IBM Plex Mono',monospace;font-size:11px}
+@media (prefers-reduced-motion:reduce){.k *{transition:none !important}}
+</style>
+</helmet>
+<div class="k" style="width: 1440px; min-height: 1900px; padding: 56px 64px 64px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+<div><p class="mono" style="margin: 0; color: var(--signal-ink)">E2 · Requirements and evidence · trace</p><h2 style="margin: 12px 0 0; font-size: 40px; font-weight: 400; letter-spacing: -0.025em">How a tender becomes a system of record</h2><p style="margin: 12px 0 0; max-width: 820px; font-size: 16px; line-height: 1.6; color: var(--ink-2)">Each line traces one requirement from the tender text to the evidence you hold and the sentence it supports. A gap shows as a broken link, at the exact place the chain stops.</p></div>
+<div style="display: flex; gap: 6px"><span class="tag demo">Demo workspace rows</span><span class="tag">Statuses illustrative</span></div>
+</div>
+
+<div style="margin-top: 32px; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding-top: 14px">
+<div class="heads mono" aria-hidden="true" style="font-size: 10.5px; color: var(--ink-2)"><span>1 · Tender or template text</span><span></span><span>2 · Requirement</span><span></span><span>3 · Evidence in Knowledge</span><span></span><span>4 · In the draft</span></div>
+<div role="group" aria-label="Requirement traces">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+<button type="button" class="tr" aria-pressed="{{r.sel}}" aria-label="{{r.aria}}" onClick="{{r.pick}}">
+<span class="node"><span class="l">{{r.srcL}}</span>{{r.src}}</span>
+<span class="link" aria-hidden="true">→</span>
+<span class="node"><span class="l"><span class="chip {{r.cc}}" style="height: 20px; font-size: 10px">{{r.st}}</span></span>{{r.req}}</span>
+<span class="{{r.l2}}" aria-hidden="true">{{r.g2}}</span>
+<span class="{{r.evc}}"><span class="l">{{r.evL}}</span>{{r.ev}}</span>
+<span class="{{r.l3}}" aria-hidden="true">{{r.g3}}</span>
+<span class="{{r.drc}}"><span class="l">{{r.drL}}</span>{{r.dr}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<section aria-live="polite" style="margin-top: 20px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px; padding: 20px 24px; border: 1px solid var(--ink); border-radius: 6px; background: var(--card)">
+<div><p class="mono" style="margin: 0; color: var(--signal-ink)">Selected trace</p><p style="margin: 8px 0 0; font-size: 18px; font-weight: 600; line-height: 1.3">{{d.req}}</p><p style="margin: 6px 0 0"><span class="chip {{d.cc}}">{{d.st}}</span></p></div>
+<div><p style="margin: 0; font-size: 16px; line-height: 1.6">{{d.explain}}</p><p style="margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2)">The chain stops at: <b style="color: var(--ink)">{{d.stop}}</b></p></div>
+</section>
+
+<h3 style="margin: 56px 0 0; font-size: 24px; font-weight: 500">States</h3>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 24px; margin-top: 18px">
+<div class="st"><span class="lab">Rest · complete chain</span><div class="node ok"><span class="l">Evidence</span>Kenya Roads completion report, p.47</div><span class="note">Solid links, green evidence rule. All four nodes filled.</span></div>
+<div class="st"><span class="lab">Hover</span><div style="padding: 10px; background: var(--paper-2); border-radius: 4px"><div class="node">Relevant experience on comparable rural corridors</div></div><span class="note">Whole line takes the sunk surface; nodes keep their own rules.</span></div>
+<div class="st"><span class="lab">Focus-visible</span><div style="padding: 10px; outline: 2px solid var(--ink); outline-offset: -2px; border-radius: 4px"><div class="node">Relevant experience on comparable rural corridors</div></div><span class="note">The line is one button; its accessible name reads the chain in order.</span></div>
+<div class="st"><span class="lab">Selected</span><div style="padding: 10px; background: var(--signal-wash); border-radius: 4px"><div class="node">ISO 27001 certificate, current and in the supplier’s name</div></div><span class="note">Wash on the line; the explanation panel below updates.</span></div>
+<div class="st"><span class="lab">Met</span><div style="display: grid; grid-template-columns: 1fr 24px 1fr; gap: 6px; align-items: center"><div class="node">Requirement</div><span class="link">→</span><div class="node ok"><span class="l">p.47</span>Kenya Roads</div></div><span class="note">Arrow continues to the draft.</span></div>
+<div class="st"><span class="lab">Gap · broken link</span><div style="display: grid; grid-template-columns: 1fr 24px 1fr; gap: 6px; align-items: center"><div class="node">Requirement</div><span class="link brk">╳</span><div class="node miss"><span class="l" style="color: #c4301f">Missing</span>No certificate</div></div><span class="note">Red cross where the chain stops, plus the word “Missing”. Never colour alone.</span></div>
+<div class="st"><span class="lab">Unmapped</span><div style="display: grid; grid-template-columns: 1fr 24px 1fr; gap: 6px; align-items: center"><div class="node none">Not yet extracted</div><span class="link">·</span><div class="node none">—</div></div><span class="note">Dashed neutral nodes: nothing to trace yet.</span></div>
+<div class="st"><span class="lab">Loading</span><div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 12px; border: 1px solid var(--rule); border-radius: 4px; background: var(--card)" aria-busy="true"><span class="sk"></span><span class="sk"></span><span class="sk"></span><span class="sk"></span></div><span class="note">One fixed-height skeleton line per expected row.</span></div>
+<div class="st"><span class="lab">Empty</span><div class="node" style="padding: 16px"><b>No traces yet</b><br><span style="color: var(--ink-2)">Traces appear once requirements are accepted from the tender documents.</span></div><span class="note">Points to the step that creates traces.</span></div>
+<div class="st"><span class="lab">Error</span><div class="node" role="alert" style="padding: 16px"><span class="chip c-gap">Error</span><p style="margin: 8px 0 0"><b>Evidence index unavailable</b></p><p style="margin: 2px 0 0; color: var(--ink-2)">Requirements are shown; evidence links will return when the index reloads.</p><button type="button" class="btn" style="margin-top: 10px">Try again</button></div><span class="note">Partial failure keeps the readable half.</span></div>
+<div class="st"><span class="lab">Keyboard</span><div class="node" style="padding: 14px; line-height: 2"><kbd>Tab</kbd> to the trace list<br><kbd>↑</kbd> <kbd>↓</kbd> move line · <kbd>Enter</kbd> select<br><kbd>→</kbd> step into nodes that open a document</div><span class="note">Read as one sentence: “Tender text, then requirement, Met, then evidence…”.</span></div>
+<div class="st"><span class="lab">Reduced motion</span><div class="node" style="padding: 14px; color: var(--ink-2)"><b style="color: var(--ink)">No drawing-in.</b> Links are static glyphs. Selection is a colour swap, instant when reduce is set.</div><span class="note">Default: 180 ms wash on the selected line, nothing else moves.</span></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = (this.state && this.state.s) ?? 0;
+// Rows: demo workspace (live previews). Row 4 and statuses are illustrative.
+const R = [
+['Tender · Rwanda Revenue Authority', '“The tender requires a valid ISO 27001 certificate at submission.”', 'ISO 27001 certificate, current and in the supplier’s name', 'Gap', 'c-gap', 'brk', 'Missing', 'No current certificate in Knowledge', 'miss', 'Not drafted', 'Paragraph held until the gap is decided', 'none', 'The tender asks for a current ISO 27001 certificate. Knowledge holds none in the supplier’s name, so nothing is drafted: decide to certify, partner, or skip before writing.', 'Evidence (step 3)'],
+['Template · Macedonia e-platform consortium', '“One reference of comparable scope delivered in the last three years.”', 'Reference case: national e-procurement rollout', 'Met', 'c-met', 'ok', 'Template', 'One comparable reference, last three years', 'ok', 'Drafted', 'From your bid template', 'ok', 'The requirement comes from your template, the reference exists, and the draft uses it.', 'Nowhere: complete'],
+['Tender · N2 Motorway, section 3', '“Relevant experience”', 'Relevant experience on comparable rural corridors', 'Met', 'c-met', 'ok', 'Knowledge · p.47', 'Kenya Roads completion report', 'ok', 'EOI § 3', '“…including 28 km of rural road in Kenya…”', 'ok', 'The draft sentence cites page 47 of the Kenya Roads completion report, so a reviewer can open the page behind the claim.', 'Nowhere: complete'],
+['Annex · scanned · illustrative row', 'Not yet extracted', 'Requirement in a scanned annex', 'Unmapped', 'c-unm', 'none', '—', 'Not yet matched', 'none', '—', 'Nothing to draft', 'none', 'The annex is a scan, so the requirement is flagged for the bid team instead of guessed.', 'Requirement (step 2)']
+];
+const glyph = (k) => (k === 'brk' ? '╳' : k === 'none' ? '·' : '→');
+const lcls = (k) => (k === 'brk' ? 'link brk' : 'link');
+const rows = R.map((r, i) => ({ srcL: r[0], src: r[1], req: r[2], st: r[3], cc: r[4], l2: lcls(r[5]), g2: glyph(r[5]), evL: r[6], ev: r[7], evc: 'node ' + (r[8] === 'ok' ? 'ok' : r[8]), l3: lcls(r[8] === 'miss' ? 'brk' : r[11]), g3: glyph(r[8] === 'miss' ? 'brk' : r[11]), drL: r[9], dr: r[10], drc: 'node ' + (r[11] === 'ok' ? '' : 'none'),
+  aria: r[0] + ', ' + r[2] + ', ' + r[3] + ', evidence: ' + r[7] + ', draft: ' + r[9], sel: i === s ? 'true' : 'false', pick: () => this.setState({ s: i }) }));
+const r = R[s];
+return { rows, d: { req: r[2], st: r[3], cc: r[4], explain: r[12], stop: r[13] } };
+}
+}
+</script>
+</body>
+</html>

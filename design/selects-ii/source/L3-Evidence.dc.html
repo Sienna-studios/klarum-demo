@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>L3 Evidence-led product model</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{box-sizing:border-box;--paper:#fbfaf6;--paper-2:#f4f2eb;--paper-3:#ece9df;--card:#fff;--ink:#0e0e10;--ink-2:#45464a;--rule:rgba(14,14,16,.12);--signal:#ef4136;--signal-ink:#c4301f;--signal-wash:#fbeae8;--pos:#1c703f;--pos-bg:#eaf3eb;--warn:#7a4f00;--warn-bg:#faf1de;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif}
+.k *{box-sizing:border-box}
+.k a{color:inherit}
+.k :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:6px}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:1px solid var(--rule)}
+.meta div{padding:12px 18px;border-left:1px solid var(--rule)}
+.meta div:first-child{border-left:0}
+.meta dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.meta dd{margin:4px 0 0;font-size:14px}
+.mk{display:inline;padding:0 1px;border:0;background:transparent;font:inherit;color:inherit;text-decoration:underline;text-decoration-color:var(--signal);text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;transition:background-color .15s}
+.mk:hover,.mk[aria-pressed="true"]{background:var(--signal-wash)}
+.mk.out{text-decoration-color:var(--ink-2);text-decoration-style:dashed}
+.ix{padding:12px 16px;border-top:1px solid var(--rule);transition:background-color .15s}
+.ix.on{background:var(--signal-wash);box-shadow:inset 3px 0 0 var(--signal)}
+.meter{display:inline-flex;gap:3px}
+.meter i{display:block;width:12px;height:12px;box-shadow:inset 0 0 0 1.5px rgba(14,14,16,.3)}
+.meter i.on{background:var(--signal);box-shadow:none}
+.act{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:0;border-radius:4px;font:600 15px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.a1{background:var(--ink);color:var(--paper)}.a2{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}.a3{background:transparent;color:var(--ink-2)}
+.other{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;align-items:center;width:100%;padding:12px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--card);text-align:left;font:inherit;color:inherit;cursor:pointer}
+.other:hover{background:var(--paper-2)}
+.other[aria-pressed="true"]{border-color:var(--signal);background:var(--signal-wash)}
+.tag{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);box-shadow:inset 0 0 0 1px rgba(14,14,16,.4);background:repeating-linear-gradient(135deg,transparent 0 4px,rgba(14,14,16,.05) 4px 5px)}
+.live{background:var(--pos-bg);color:var(--pos);box-shadow:none}
+@media (prefers-reduced-motion:reduce){.k *{transition:none !important}}
+</style>
+</helmet>
+<div class="k" style="width: 1440px; min-height: 1100px; padding: 56px 64px 64px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+<div><p class="mono" style="margin: 0; color: var(--signal-ink)">01 · Sourcing · evidence model</p><h2 style="margin: 12px 0 0; font-size: 40px; font-weight: 400; letter-spacing: -0.025em">Every notice worth your time</h2><p style="margin: 12px 0 0; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--ink-2)">One notice read closely. Each underlined phrase is the evidence the score rests on; select it to see the index entry it matched.</p></div>
+<div style="display: flex; gap: 6px"><span class="tag live">Notice text live</span><span class="tag">Index and fit illustrative</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; margin-top: 32px; align-items: start">
+<article class="panel" aria-labelledby="l3-t">
+<div class="ph"><span class="mono" style="color: var(--ink-2)">Notice · Mercell (Sweden)</span><a href="#" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 14px; font-weight: 500; text-underline-offset: 3px">Original publication<svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a></div>
+<div style="padding: 20px 18px 16px"><h3 id="l3-t" style="margin: 0; font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em">{{n.t}}</h3><p style="margin: 6px 0 0; font-size: 14px; color: var(--ink-2)">{{n.i}}</p></div>
+<dl class="meta" style="margin: 0; border-top: 1px solid var(--rule)">
+<div><dt>Closes</dt><dd><b>{{n.d}}</b> · in {{n.days}}</dd></div>
+<div><dt>Published</dt><dd>24 Oct 2026</dd></div>
+<div><dt>Value · category</dt><dd>Not stated by source</dd></div>
+<div><dt>Source record</dt><dd>8 of 13 fields filled</dd></div>
+</dl>
+<div style="padding: 20px 18px">
+<p class="mono" style="margin: 0; font-size: 10.5px; color: var(--ink-2)">Overview, as published</p>
+<p style="margin: 10px 0 0; font-size: 16px; line-height: 1.75; max-width: 760px"><sc-for list="{{segs}}" as="g" hint-placeholder-count="5"><sc-if value="{{g.mark}}" hint-placeholder-val="{{false}}"><button type="button" class="{{g.cls}}" aria-pressed="{{g.on}}" onClick="{{g.pick}}">{{g.t}}</button></sc-if><sc-if value="{{g.plain}}" hint-placeholder-val="{{true}}"><span>{{g.t}}</span></sc-if></sc-for></p>
+<p style="margin: 12px 0 0; font-size: 13px; color: var(--ink-2)">{{n.note}}</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 18px; border-top: 1px solid var(--rule); background: var(--paper)">
+<span class="mono" style="font-size: 10.5px; color: var(--ink-2); margin-right: 6px">Decide</span>
+<button type="button" class="act a1">Develop</button><button type="button" class="act a2">Send to Featured</button><button type="button" class="act a3">Hide</button>
+</div>
+</article>
+
+<aside class="panel" aria-labelledby="l3-fit">
+<div style="padding: 16px">
+<p id="l3-fit" class="mono" style="margin: 0; color: var(--ink-2)">Fit against your index</p>
+<p style="margin: 10px 0 0; display: flex; align-items: center; gap: 12px"><span class="meter" role="img" aria-label="{{n.fitL}}"><i class="{{n.c1}}"></i><i class="{{n.c2}}"></i><i class="{{n.c3}}"></i><i class="{{n.c4}}"></i><i class="{{n.c5}}"></i></span><span style="font-size: 22px; font-weight: 500">{{n.f}} of 5</span></p>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-2)">{{n.verdict}}</p>
+</div>
+<sc-for list="{{ix}}" as="x" hint-placeholder-count="3"><div class="{{x.cls}}"><p style="margin: 0; display: flex; justify-content: space-between; gap: 8px"><b style="font-weight: 600">{{x.name}}</b><span class="mono" style="font-size: 10.5px; color: var(--ink-2)">{{x.state}}</span></p><p style="margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: var(--ink-2)">{{x.ref}}</p></div></sc-for>
+<div class="ix" style="background: var(--paper)"><p class="mono" style="margin: 0; font-size: 10.5px; color: var(--ink-2)">Not counted</p><p style="margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: var(--ink-2)">{{n.outside}}</p></div>
+</aside>
+</div>
+
+<section aria-labelledby="l3-others" style="margin-top: 28px">
+<h3 id="l3-others" class="mono" style="margin: 0; color: var(--ink-2)">The same six notices · select one to read it</h3>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px">
+<sc-for list="{{all}}" as="o" hint-placeholder-count="6"><button type="button" class="other" aria-pressed="{{o.sel}}" onClick="{{o.pick}}"><span class="meter" role="img" aria-label="{{o.fitL}}"><i class="{{o.c1}}"></i><i class="{{o.c2}}"></i><i class="{{o.c3}}"></i><i class="{{o.c4}}"></i><i class="{{o.c5}}"></i></span><span style="font-size: 14px; font-weight: 600; line-height: 1.3">{{o.t}}</span><span></span><span style="font-size: 13px; line-height: 1.4; color: var(--ink-2)">{{o.short}}</span></button></sc-for>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const s = st.s ?? 0, m = st.m ?? 0;
+// Overviews are verbatim from klarum.com/notices (24 Oct 2026). Marks, index states and fit are illustrative.
+// seg: [text, indexEntry or -1 for plain, inIndex]
+const N = [
+['Entreprenad G/C broar över Linnèkanalen', 'Växjö kommun', '16 Nov 2026', '22 days', 5, 'Reaches your feed, rank 1. Both marked phrases match the same entry, and a comparable reference exists.', 'Nothing outside the index.', 'Reaches your feed: bridges scope and reference match',
+ [['The project involves the ', -1], ['replacement of two (2) existing foot and cycle bridges', 0, true], [' over Linnékanalen within Växjö municipality through ', -1], ['delivery and installation of new bridges', 0, true], [' according to the inquiry specification.', -1]], ''],
+['Byte av transformatorstation Karlsborg', 'Fortifikationsverket', '23 Nov 2026', '29 days', 4, 'Reaches your feed, rank 2. The station replacement matches; the surrounding work is not covered by a reference.', '“All surrounding work”: civil scope with no reference.', 'Reaches your feed: power scope matches, civil part open',
+ [['This tender covers the ', -1], ['replacement of 1st. transformer station', 1, true], [' within Karlsborg municipality… with new, ', -1], ['including all surrounding work', -1, false, true], [' to ensure a complete installation.', -1]], ''],
+['Ramavtal Årsentreprenörer Karlsborg, El/tele-installationer', 'Fortifikationsverket', '17 Nov 2026', '23 days', 3, 'Reaches your feed, rank 3, on the title alone.', 'The overview gives no scope to check.', 'Reaches your feed on title only; read the documents',
+ [['See attached documents', -1]], 'The source gives no overview, so the score rests on the title “El/tele-installationer”. Read the attached documents before deciding.'],
+['Uppgradering travers panna A1', 'Karlskoga Kraftvärmeverk AB', '25 Nov 2026', '31 days', 2, 'Below threshold. Only the electrical part matches.', 'Lifting machinery, drive systems and PLC control.', 'Below threshold: mostly mechanical',
+ [['The upgrade should modernize the travers’ ', -1], ['machine', -1, false, true], [', ', -1], ['electrical', 2, true], [' and ', -1], ['control systems', -1, false, true], [' and meet current requirements on functionality, accessibility and safety.', -1]], ''],
+['Byte Ventilationsaggregat och kylsystem, Vallhamn', 'Tjörns Hamnar AB', '23 Nov 2026', '29 days', 1, 'Below threshold. Ventilation and cooling are building services.', 'Building services (from the title).', 'Below threshold: building services',
+ [['Tjörns harbor AB invites interested contractors to tendering in the specified procurement.', -1]], 'The overview gives no scope; the title names ventilation units and a cooling system.'],
+['Sänglinnen, täcke och kuddar', 'Myndigheten för civilt försvar', '23 Nov 2026', '29 days', 0, 'Below threshold. Nothing in the scope matches.', 'Textile supply.', 'Below threshold: textile supply',
+ [['Procurement of framework agreement for ', -1], ['bed linens, blankets and pillows', -1, false, true], [' to meet the needs of the Civil Defence Authority.', -1]], '']
+];
+const IX = [['Bridges and structures', 'Example reference: footbridge replacement, municipal client'], ['Power and grid', 'Example reference: substation works'], ['Electrical installation', 'Example reference: electrical frameworks']];
+const n0 = N[s];
+const sq = (f) => ({ c1: f >= 1 ? 'on' : '', c2: f >= 2 ? 'on' : '', c3: f >= 3 ? 'on' : '', c4: f >= 4 ? 'on' : '', c5: f >= 5 ? 'on' : '', fitL: 'Fit ' + f + ' of 5, illustrative' });
+let k = 0;
+const segs = n0[8].map((g) => {
+  const isMark = g[1] >= 0 || g[3] === true;
+  const id = isMark ? k++ : -1;
+  return { t: g[0], mark: isMark, plain: !isMark, cls: g[1] >= 0 ? 'mk' : 'mk out', on: id === m ? 'true' : 'false', pick: () => this.setState({ m: id }), entry: g[1] };
+});
+const marks = segs.filter((g) => g.mark);
+const activeEntry = marks[m] ? marks[m].entry : -1;
+const used = new Set(n0[8].filter((g) => g[1] >= 0).map((g) => g[1]));
+const titleOnly = s === 2;
+const ix = IX.map((x, i) => ({ name: x[0], ref: x[1], cls: (i === activeEntry || (titleOnly && i === 2)) ? 'ix on' : 'ix', state: used.has(i) || (titleOnly && i === 2) ? 'Matched' : 'Not matched' }));
+const n = { t: n0[0], i: n0[1], d: n0[2], days: n0[3], f: String(n0[4]), verdict: n0[5], outside: n0[6], note: n0[9] || 'Red underline: matched an index entry. Dashed: read, but outside your index.', ...sq(n0[4]) };
+const all = N.map((x, i) => ({ t: x[0], short: x[7], sel: i === s ? 'true' : 'false', pick: () => this.setState({ s: i, m: 0 }), ...sq(x[4]) }));
+return { n, segs, ix, all };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+{
+ "page": "/",
+ "themes": [
+  "dark",
+  "light"
+ ],
+ "viewports": [
+  1440,
+  390
+ ],
+ "summary": {
+  "distinctValues": 12,
+  "distinctOffenders": 26,
+  "uses": 106,
+  "byKind": {
+   "spacing": {
+    "distinct": 23,
+    "uses": 101
+   },
+   "font-size": {
+    "distinct": 1,
+    "uses": 3
+   },
+   "background": {
+    "distinct": 2,
+    "uses": 2
+   }
+  },
+  "top": [
+   {
+    "kind": "spacing",
+    "value": "20px",
+    "uses": 26,
+    "selectors": [
+     "ul.plan-list > li",
+     "ul.surface.nlist > li.nrow.full",
+     "div.wrap > div.dashed.docs"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "10px",
+    "uses": 20,
+    "selectors": [
+     "ol.stages > li",
+     "div.wrap.head-in > a.logo",
+     "a.logo > span.wordmark"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "2px",
+    "uses": 18,
+    "selectors": [
+     "a.nrow-link > span.nrow-main",
+     "div.rev-wrap > div#rev-ted-535663-2026",
+     "div.rev-wrap > div#rev-wb-p167382-vanuatu"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "6px",
+    "uses": 14,
+    "selectors": [
+     "div.card-top > span.chiplab",
+     "li.nrow.full > div.nrow-fit",
+     "details.cite > div.cite-panel.surface"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "3px",
+    "uses": 12,
+    "selectors": [
+     "span.nrow-fit > span.pips"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "14px",
+    "uses": 6,
+    "selectors": [
+     "li.nrow.full > button.shortlist"
+    ]
+   },
+   {
+    "kind": "font-size",
+    "value": "13px",
+    "uses": 3,
+    "selectors": [
+     "li.nrow.full > button.shortlist"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "18px",
+    "uses": 2,
+    "selectors": [
+     "div.head-r > a.btn.btn-sec"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "40px",
+    "uses": 2,
+    "selectors": [
+     "section#hero > div.wrap.hero-in"
+    ]
+   },
+   {
+    "kind": "spacing",
+    "value": "9.5625px",
+    "uses": 1,
+    "selectors": [
+     "article.surface.card > figure.claim"
+    ]
+   }
+  ]
+ },
+ "items": [
+  {
+   "kind": "spacing",
+   "value": "2px",
+   "selector": "a.nrow-link > span.nrow-main",
+   "count": 12,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "3px",
+   "selector": "span.nrow-fit > span.pips",
+   "count": 12,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "20px",
+   "selector": "ul.plan-list > li",
+   "count": 10,
+   "props": [
+    "padding-left"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "20px",
+   "selector": "ul.surface.nlist > li.nrow.full",
+   "count": 9,
+   "props": [
+    "padding-right",
+    "padding-left",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "ol.stages > li",
+   "count": 8,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "6px",
+   "selector": "div.card-top > span.chiplab",
+   "count": 6,
+   "props": [
+    "padding-top",
+    "padding-bottom"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "6px",
+   "selector": "li.nrow.full > div.nrow-fit",
+   "count": 6,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "14px",
+   "selector": "li.nrow.full > button.shortlist",
+   "count": 6,
+   "props": [
+    "padding-right",
+    "padding-left"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "20px",
+   "selector": "div.wrap > div.dashed.docs",
+   "count": 4,
+   "props": [
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    390
+   ]
+  },
+  {
+   "kind": "font-size",
+   "value": "13px",
+   "selector": "li.nrow.full > button.shortlist",
+   "count": 3,
+   "props": [
+    "font-size"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "20px",
+   "selector": "ul.plan-list > li.no",
+   "count": 3,
+   "props": [
+    "padding-left"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "div.wrap.head-in > a.logo",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "a.logo > span.wordmark",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "18px",
+   "selector": "div.head-r > a.btn.btn-sec",
+   "count": 2,
+   "props": [
+    "padding-right",
+    "padding-left"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "6px",
+   "selector": "details.cite > div.cite-panel.surface",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "div.rev-wrap > div#rev-ted-535663-2026",
+   "count": 2,
+   "props": [
+    "padding-top",
+    "padding-bottom"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "2px",
+   "selector": "div.rev-wrap > div#rev-ted-535663-2026",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "div.rev-wrap > div#rev-wb-p167382-vanuatu",
+   "count": 2,
+   "props": [
+    "padding-top",
+    "padding-bottom"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "2px",
+   "selector": "div.rev-wrap > div#rev-wb-p167382-vanuatu",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "div.rev-wrap > div#rev-wb-ibrd9290-srilanka",
+   "count": 2,
+   "props": [
+    "padding-top",
+    "padding-bottom"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "2px",
+   "selector": "div.rev-wrap > div#rev-wb-ibrd9290-srilanka",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "10px",
+   "selector": "div > p.wordmark",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "40px",
+   "selector": "section#hero > div.wrap.hero-in",
+   "count": 2,
+   "props": [
+    "row-gap",
+    "column-gap"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    390
+   ]
+  },
+  {
+   "kind": "spacing",
+   "value": "9.5625px",
+   "selector": "article.surface.card > figure.claim",
+   "count": 1,
+   "props": [
+    "margin-top"
+   ],
+   "themes": [
+    "dark",
+    "light"
+   ],
+   "viewports": [
+    1440
+   ]
+  },
+  {
+   "kind": "background",
+   "value": "color(srgb 0.0509804 0.0509804 0.0627451 / 0.85)",
+   "selector": "div.wrap.foot-in > table.tb",
+   "count": 1,
+   "props": [
+    "background-color"
+   ],
+   "themes": [
+    "dark"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  },
+  {
+   "kind": "background",
+   "value": "color(srgb 0.964706 0.964706 0.952941 / 0.85)",
+   "selector": "div.wrap.foot-in > table.tb",
+   "count": 1,
+   "props": [
+    "background-color"
+   ],
+   "themes": [
+    "light"
+   ],
+   "viewports": [
+    1440,
+    390
+   ]
+  }
+ ]
+}

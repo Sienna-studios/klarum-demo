@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum brief: space and layout tokens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.lab{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;margin:0}
+.sp{display:grid;grid-template-columns:56px 470px minmax(0,1fr);gap:16px;align-items:center;min-height:40px;border-top:1px solid #d6d7d9;font-size:13px}
+.st{font-family:'DM Mono',monospace;font-size:16px;font-weight:500}
+.bar{display:block;height:14px;background:#16171a}
+.m{font-family:'DM Mono',monospace;font-size:12px;color:#5b5f66}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;line-height:1.45}
+.tbl th{text-align:left;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;padding:0 16px 10px 0;border-bottom:1.5px solid #16171a}
+.tbl td{padding:11px 16px 11px 0;border-bottom:1px solid #d6d7d9;vertical-align:top}
+.tbl td:first-child{font-weight:500}
+.rad{display:flex;flex-direction:column;gap:8px;align-items:flex-start;font-size:13px}
+.rad i{display:block;width:72px;height:48px;border:1.5px solid #16171a;background:#ffffff}
+</style>
+</helmet>
+<div style="width: 1600px; height: 1700px; box-sizing: border-box; padding: 72px 80px; background: #f2f2f0; color: #16171a; font-family: 'DM Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 48px">
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; border-bottom: 1.5px solid #16171a; padding-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p class="lab">Klarum website · design brief · 3 of 4 · tokens</p>
+<h1 style="margin: 0; font-size: 64px; line-height: 1; letter-spacing: -.03em; font-weight: 600">Space, radius, layout.</h1>
+</div>
+<p style="margin: 0; max-width: 600px; font-size: 15px; line-height: 1.5; color: #4a4e55">Every padding, margin and gap in px was collected and snapped to a nine-step scale. Both directions land on the same steps, so the scale holds whichever direction is chosen.</p>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px">
+<div><p class="lab" style="margin-bottom: 10px">Print · spacing</p>
+<sc-for list="{{pS}}" as="s" hint-placeholder-count="9"><div class="sp"><span class="st">{{s.step}}</span><span><span class="bar" style="width: {{s.w}}"></span></span><span class="m">merges {{s.merged}} · {{s.use}}</span></div></sc-for>
+</div>
+<div><p class="lab" style="margin-bottom: 10px">Night · spacing</p>
+<sc-for list="{{nS}}" as="s" hint-placeholder-count="9"><div class="sp"><span class="st">{{s.step}}</span><span><span class="bar" style="width: {{s.w}}"></span></span><span class="m">merges {{s.merged}} · {{s.use}}</span></div></sc-for>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px">
+<div><p class="lab" style="margin-bottom: 16px">Print · radius</p>
+<div style="display: flex; gap: 28px">
+<div class="rad"><i style="border-radius: 0"></i><b>0</b><span class="m">Everything square</span></div>
+<div class="rad"><i style="width: 48px; border-radius: 50%"></i><b>50%</b><span class="m">Step numbers, pins · 28 · 8</span></div>
+</div></div>
+<div><p class="lab" style="margin-bottom: 16px">Night · radius</p>
+<div style="display: flex; gap: 28px">
+<div class="rad"><i style="border-radius: 2px"></i><b>2</b><span class="m">Bars · 36 · 16</span></div>
+<div class="rad"><i style="border-radius: 4px"></i><b>4</b><span class="m">Controls · merges 3 · 163 · 22</span></div>
+<div class="rad"><i style="border-radius: 6px"></i><b>6</b><span class="m">Surfaces · 32 · 20</span></div>
+<div class="rad"><i style="width: 48px; border-radius: 50%"></i><b>50%</b><span class="m">Pins · 36 · 24</span></div>
+</div></div>
+</section>
+
+<section>
+<p class="lab" style="margin-bottom: 14px">Layout · values read from the site page CSS</p>
+<table class="tbl">
+<thead><tr><th style="width: 22%">Token</th><th style="width: 26%">Print</th><th style="width: 26%">Night</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Container</td><td>max-width 1312, padding 0 64</td><td>max-width 1312, padding 0 64</td><td>Same in both. Padding drops to 20 at ≤760.</td></tr>
+<tr><td>Header</td><td>64 tall, 3-column grid, hairline below</td><td>72 tall, flex, no rule</td><td>Phone: padding 0 8 0 20, menu button 44 × 44.</td></tr>
+<tr><td>Section</td><td>padding 112 0, top border 1px line</td><td>padding 112 0, top border 1px line</td><td>72 at ≤760.</td></tr>
+<tr><td>Grids</td><td>3 columns, gap 24</td><td>3 columns gap 24 · 2 columns gap 64</td><td>One column at ≤960.</td></tr>
+<tr><td>Notices layout</td><td>3fr / 9fr, gap 48, sticky filters top 24</td><td>3fr / 9fr, gap 40, sticky filters top 24</td><td>Stacks at ≤960, filters stop sticking.</td></tr>
+<tr><td>Footer grid</td><td>12 columns, gap 24</td><td>1.4fr 1fr 1fr 1fr, gap 48</td><td>Night: 2 columns at ≤960, 1 at ≤760.</td></tr>
+<tr><td>Breakpoints</td><td>960 · 760</td><td>960 · 760</td><td>Same in both.</td></tr>
+<tr><td>Primary button</td><td>min-height 52, padding 0 24</td><td>min-height 48, padding 0 24, radius 4</td><td>Closing CTA in Print grows to 60.</td></tr>
+<tr><td>Touch targets</td><td>Links 44, chips 40</td><td>Links 44, chips 40</td><td>Raise chips and the Night shortlist button to 44.</td></tr>
+<tr><td>Strokes</td><td>1 hairline · 1.5 strong</td><td>1 hairline · 1.5 strong</td><td>Strong: search field, ghost button, selected plan.</td></tr>
+<tr><td>Motion</td><td>.15s on background and color</td><td>.15s on filter and background</td><td>Print turns all motion off under reduced motion; Night stops pulses and loops.</td></tr>
+</tbody>
+</table>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+const mk = ([step, merged, use]) => ({ step, merged, use, w: (step * 4) + 'px' });
+return {
+pS: [[4, '2, 3, 4, 6', '214 uses · 32 boards'], [8, '7, 8, 9, 10', '358 · 40'], [12, '12, 14', '224 · 26'], [16, '16, 18, 20', '300 · 40'], [24, '22, 24, 26, 28', '222 · 40'], [32, '30, 32, 36, 40', '148 · 34'], [48, '44, 48, 52, 56', '62 · 20'], [64, '64, 72', '72 · 34'], [112, '96, 112, 150, 200, 300', '24 · 8']].map(mk),
+nS: [[4, '2, 3, 4, 6', '140 uses · 22 boards'], [8, '8, 9, 10', '202 · 22'], [12, '12, 14', '164 · 22'], [16, '16, 18, 20', '254 · 22'], [24, '22, 24, 28', '158 · 22'], [32, '32, 40', '82 · 20'], [48, '48, 56', '22 · 10'], [64, '64, 72, 88', '68 · 22'], [112, '96 to 520', '62 · 16']].map(mk)
+};
+}
+}
+</script>
+</body>
+</html>
