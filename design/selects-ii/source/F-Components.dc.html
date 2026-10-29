@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Components and states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{box-sizing:border-box;--paper:#fbfaf6;--paper-2:#f4f2eb;--paper-3:#ece9df;--card:#fff;--ink:#0e0e10;--ink-2:#45464a;--rule:rgba(14,14,16,.12);--rule-2:rgba(14,14,16,.5);--signal:#ef4136;--signal-ink:#c4301f;--signal-wash:#fbeae8;--pos:#1c703f;--pos-bg:#eaf3eb;--info:#0f4d92;--info-bg:#e8eef8;--warn:#7a4f00;--warn-bg:#faf1de;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif}
+.k *{box-sizing:border-box}
+.k :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.spec{display:grid;grid-template-columns:220px repeat(4,minmax(0,1fr));gap:16px;padding:16px 0;border-top:1px solid var(--rule);font-size:13px;line-height:1.5;color:var(--ink-2)}
+.spec b{display:block;margin-bottom:3px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.spec .nm{font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
+.spec .nm span{display:block;margin-top:4px;font-size:12.5px;font-weight:400;color:var(--ink-2)}
+.st{display:flex;flex-direction:column;gap:8px}
+.st .lab{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.box{padding:14px;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border:0;border-radius:4px;font:600 15px/1 'IBM Plex Sans',sans-serif}
+.bp{background:var(--signal);color:var(--ink)}.bpH{background:var(--ink);color:var(--paper)}.bs{box-shadow:inset 0 0 0 1.5px var(--ink);background:transparent;color:var(--ink)}.bd{background:var(--paper-3);color:#45464a}
+.f{outline:2px solid var(--ink);outline-offset:2px}
+.meter{display:inline-flex;gap:3px}
+.meter i{display:block;width:12px;height:12px;box-shadow:inset 0 0 0 1.5px var(--rule-2)}
+.meter i.on{background:var(--signal);box-shadow:none}
+.meter i.sk{background:var(--paper-3);box-shadow:none}
+.chip{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.c-live{color:var(--pos);background:var(--pos-bg)}.c-demo{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--paper)}.c-ill{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2);background:repeating-linear-gradient(135deg,transparent 0 4px,rgba(14,14,16,.05) 4px 5px)}.c-calc{color:var(--info);background:var(--info-bg)}.c-tbc{color:var(--warn);background:var(--warn-bg)}.c-gap{color:var(--signal-ink);background:var(--signal-wash)}.c-pass{background:var(--ink);color:var(--paper)}.c-out{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--card);font-size:14px}
+.sk{display:block;height:12px;border-radius:2px;background:var(--paper-3)}
+.seg{display:inline-flex;padding:3px;border:1px solid var(--rule);border-radius:6px;background:var(--paper-2)}
+.seg span{display:inline-flex;align-items:center;min-height:38px;padding:0 12px;border-radius:4px;font-size:14px;font-weight:500;color:var(--ink-2)}
+.seg span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(14,14,16,.12)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 20px;margin-top:14px}
+h2.sec{margin:48px 0 0;font-size:24px;font-weight:500}
+</style>
+</helmet>
+<div class="k" style="width: 1440px; min-height: 4200px; padding: 56px 64px 72px">
+<p class="mono" style="margin: 0; color: var(--signal-ink)">Selected system · 15 components · each listed with its sources on the Traceability board</p>
+<h1 style="margin: 12px 0 0; font-size: 44px; font-weight: 400; letter-spacing: -0.025em">Components and every state</h1>
+<p style="margin: 12px 0 0; max-width: 1040px; font-size: 16px; line-height: 1.6; color: var(--ink-2)">Each component has its job, semantics, layout at both ends of the range, limits, states, input methods, motion, performance and use. The pages on 07 render these components; the behaviour checks (25 of 25 passing) exercise them by keyboard and pointer.</p>
+
+<h2 class="sec">Specifications</h2>
+<div style="margin-top: 8px">
+<sc-for list="{{specs}}" as="c" hint-placeholder-count="15">
+<div class="spec">
+<p class="nm" style="margin: 0">{{c.n}}<span>{{c.p}}</span></p>
+<p style="margin: 0"><b>Semantics · keyboard · SR</b>{{c.sem}}</p>
+<p style="margin: 0"><b>Layout · limits · touch</b>{{c.lay}}</p>
+<p style="margin: 0"><b>States · motion · perf</b>{{c.st}}</p>
+<p style="margin: 0"><b>Use · never</b>{{c.use}}</p>
+</div>
+</sc-for>
+</div>
+
+<h2 class="sec">Actions</h2>
+<div class="grid">
+<div class="st"><span class="lab">Primary · default</span><span class="btn bp">Start free</span></div>
+<div class="st"><span class="lab">Primary · hover / active</span><span class="btn bpH">Start free</span></div>
+<div class="st"><span class="lab">Primary · focus-visible</span><span class="btn bp f">Start free</span></div>
+<div class="st"><span class="lab">Primary · loading</span><span class="btn bp" aria-busy="true" style="min-width: 140px">Opening the app…</span></div>
+<div class="st"><span class="lab">Secondary</span><span class="btn bs">View the demo as a guest</span></div>
+<div class="st"><span class="lab">Secondary · focus</span><span class="btn bs f">Book a call</span></div>
+<div class="st"><span class="lab">Disabled (seat minus at 1)</span><span class="btn bd" aria-disabled="true" style="width: 48px; padding: 0">−</span></div>
+<div class="st"><span class="lab">Text link with consequence</span><span style="font-size: 14.5px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; line-height: 44px">or subscribe yearly · 2 000 € per seat</span></div>
+</div>
+
+<h2 class="sec">Fit meter: the red squares, now carrying data</h2>
+<div class="grid">
+<div class="st"><span class="lab">Public · no index</span><div class="box"><span class="meter" role="img" aria-label="No fit score: needs your capability index"><i></i><i></i><i></i><i></i><i></i></span><p class="mono" style="margin: 8px 0 0; font-size: 10px; color: var(--ink-2)">Needs your index</p></div></div>
+<div class="st"><span class="lab">Example index</span><div class="box"><span class="meter" role="img" aria-label="Fit 4 of 5, example index"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p style="margin: 8px 0 0"><span class="chip c-ill">4 of 5 · illustrative</span></p></div></div>
+<div class="st"><span class="lab">Loading</span><div class="box" aria-busy="true"><span class="meter" aria-hidden="true"><i class="sk"></i><i class="sk"></i><i class="sk"></i><i class="sk"></i><i class="sk"></i></span><p style="margin: 8px 0 0"><span class="sk" style="width: 70px"></span></p></div></div>
+<div class="st"><span class="lab">Score unavailable</span><div class="box" style="border-style: dashed"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><p style="margin: 8px 0 0; font-size: 12.5px; color: var(--ink-2)">Score not available for this notice: source gives no scope.</p></div></div>
+</div>
+<p style="margin: 10px 0 0; font-size: 13px; color: var(--ink-2)">Squares are 12 px; empty outline 3.6:1; filled red 3.8:1 on white. The accessible name always carries the number and whose index it is, so colour never stands alone.</p>
+
+<h2 class="sec">Rows: notice, decision, requirement</h2>
+<div class="grid">
+<div class="st"><span class="lab">Rest</span><div class="row"><b>Byte av transformatorstation Karlsborg</b><span class="meter"><i></i><i></i><i></i><i></i><i></i></span><span style="color: var(--ink-2); font-size: 13px">Fortifikationsverket · Mercell</span><span style="font-size: 13px"><b>23 Nov</b></span></div></div>
+<div class="st"><span class="lab">Hover</span><div class="row" style="background: var(--paper-2)"><b>Byte av transformatorstation Karlsborg</b><span class="meter"><i></i><i></i><i></i><i></i><i></i></span><span style="color: var(--ink-2); font-size: 13px">Fortifikationsverket · Mercell</span><span style="font-size: 13px"><b>23 Nov</b></span></div></div>
+<div class="st"><span class="lab">Focus-visible</span><div class="row" style="outline: 2px solid var(--ink); outline-offset: -2px"><b>Byte av transformatorstation Karlsborg</b><span class="meter"><i></i><i></i><i></i><i></i><i></i></span><span style="color: var(--ink-2); font-size: 13px">Fortifikationsverket · Mercell</span><span style="font-size: 13px"><b>23 Nov</b></span></div></div>
+<div class="st"><span class="lab">Selected / current / expanded</span><div class="row" style="background: var(--signal-wash); box-shadow: inset 3px 0 0 var(--signal)"><b>Entreprenad G/C broar över Linnèkanalen</b><span class="meter"><i></i><i></i><i></i><i></i><i></i></span><span style="color: var(--ink-2); font-size: 13px">Växjö kommun · Mercell</span><span style="font-size: 13px"><b>16 Nov</b> <span class="chip" style="background: var(--warn-bg); color: var(--warn); height: 18px; font-size: 9.5px">in 22 days</span></span></div></div>
+<div class="st"><span class="lab">Verdict · qualifies</span><div class="box" style="background: var(--signal-wash)"><span class="chip c-pass">Qualifies</span><p style="margin: 8px 0 0; font-size: 14px"><b>Fit 4 of 5.</b> Check the surrounding civil work before you develop the bid.</p></div></div>
+<div class="st"><span class="lab">Verdict · below threshold</span><div class="box"><span class="chip c-out">Below threshold</span><p style="margin: 8px 0 0; font-size: 14px; color: var(--ink-2)">Fit 1 of 5. Building services are not in your index. Kept, not deleted.</p></div></div>
+<div class="st"><span class="lab">Requirement · gap trace</span><div class="box" style="padding: 0"><div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); font-size: 11.5px"><span style="padding: 8px">Tender</span><span style="padding: 8px; border-left: 1px solid var(--rule)">Accepted</span><span style="padding: 8px; border-left: 1px solid var(--rule); background: var(--signal-wash); color: var(--signal-ink)">Missing</span><span style="padding: 8px; border-left: 1px solid var(--rule); color: #6f7075">Held</span></div></div></div>
+<div class="st"><span class="lab">Long title wraps, never truncates</span><div class="row"><b>Ramavtal Årsentreprenörer Karlsborg, El/tele-installationer</b><span class="meter"><i></i><i></i><i></i><i></i><i></i></span><span style="color: var(--ink-2); font-size: 13px">Fortifikationsverket, Eskilstuna · Mercell</span><span style="font-size: 13px"><b>17 Nov</b></span></div></div>
+</div>
+
+<h2 class="sec">Collections: loading, empty, error</h2>
+<div class="grid" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+<div class="st"><span class="lab">Loading · fixed-height skeleton</span><div class="box" aria-busy="true" style="display: grid; gap: 14px"><div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 8px 14px"><span class="sk" style="width: 80%"></span><span class="sk"></span><span class="sk" style="width: 45%"></span><span></span></div><div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 8px 14px"><span class="sk" style="width: 66%"></span><span class="sk"></span><span class="sk" style="width: 40%"></span><span></span></div><div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 8px 14px"><span class="sk" style="width: 74%"></span><span class="sk"></span><span class="sk" style="width: 52%"></span><span></span></div></div><span style="font-size: 12.5px; color: var(--ink-2)">Rows reserve their final height, so CLS stays at 0 when data lands.</span></div>
+<div class="st"><span class="lab">Empty · search</span><div class="box" style="text-align: center; padding: 28px 18px"><p style="margin: 0; font-weight: 600">No notices match</p><p style="margin: 6px 0 0; font-size: 14px; color: var(--ink-2)">Clear the search or widen the filters.</p><span class="btn bs" style="margin-top: 12px; min-height: 44px">Clear search</span></div><span style="font-size: 12.5px; color: var(--ink-2)">Tested: typing “zzzz” shows this; Clear restores all 7.</span></div>
+<div class="st"><span class="lab">Error</span><div class="box" role="alert" style="display: flex; gap: 12px; align-items: flex-start"><span class="chip c-gap">Error</span><div><p style="margin: 0; font-weight: 600">Notices could not load</p><p style="margin: 4px 0 0; font-size: 14px; color: var(--ink-2)">Nothing was lost. Try again, or open the original publication.</p><span class="btn bs" style="margin-top: 10px; min-height: 44px">Try again</span></div></div><span style="font-size: 12.5px; color: var(--ink-2)">role="alert"; retry keeps filters and scroll position.</span></div>
+</div>
+
+<h2 class="sec">Pricing controls</h2>
+<div class="grid">
+<div class="st"><span class="lab">Billing · monthly</span><span class="seg"><span class="on">Monthly</span><span>Yearly · −17%</span></span><p style="margin: 0; font-size: 28px; font-weight: 500">200 €</p></div>
+<div class="st"><span class="lab">Billing · yearly</span><span class="seg"><span>Monthly</span><span class="on">Yearly · −17%</span></span><p style="margin: 0; font-size: 28px; font-weight: 500">2 000 €</p></div>
+<div class="st"><span class="lab">Estimator · 4 seats yearly</span><div class="box"><p style="margin: 0; font-size: 28px; font-weight: 500">8 000 €</p><p style="margin: 4px 0 0; font-size: 13px; color: var(--ink-2)">a year · excl. VAT <span class="chip c-calc">Calculated</span></p></div></div>
+<div class="st"><span class="lab">Price not published</span><div class="box" style="border-style: dashed"><p style="margin: 0; font-size: 18px; font-weight: 500">Talk to us</p><p style="margin: 4px 0 0; font-size: 13px; color: var(--ink-2)">Set by agreement. We do not estimate it.</p></div></div>
+</div>
+<p style="margin: 10px 0 0; font-size: 13px; color: var(--ink-2)">Figures use tabular numerals and replace in place. No count-up, roll, blur or scramble. The estimator shares the billing state, so the two can never disagree.</p>
+
+<h2 class="sec">Provenance tags</h2>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px"><span class="chip c-live">Live data</span><span class="chip c-demo">Demo workspace</span><span class="chip c-ill">Illustrative</span><span class="chip c-calc">Calculated</span><span class="chip c-tbc">To confirm</span></div>
+<p style="margin: 10px 0 0; max-width: 900px; font-size: 13px; line-height: 1.55; color: var(--ink-2)">Placed on the panel header, or after the figure it qualifies. One tag per panel unless two kinds of data share it. “To confirm” is a design-time state: a page cannot ship while one is showing.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+renderVals() {
+const S = [
+['C1 Button and text link', 'One label per intent, stating the consequence.', '<a> to navigate, <button> to act. Tab, Enter; Space on buttons. Labels are verb + object.', '48 px (52 hero, 40–44 header). Full width under 768. Text links 44 px tall when standalone.', 'Default, hover, active, focus-visible, loading (keeps width, aria-busy), disabled (aria-disabled + native disabled). 150 ms colour only.', 'One filled primary per view. Never “Get started”, never white text on #ef4136 under 38 px.'],
+['C2 Header and mobile menu', 'Wayfinding plus the one persistent action.', '<header>, <nav aria-label="Main">, aria-current on the page. Menu: <button aria-expanded aria-controls>. Skip link first.', 'Sticky 64 px. Under 768: logo, outlined Start free, menu; nav opens as a list of 48 px rows.', 'Closed, open, focus. No slide animation; opens in place.', 'Outlined Start free in the header, never filled. No theme switch, no Registry or Portal nav.'],
+['C3 Provenance tag', 'Says where a figure came from.', 'Text in the tag; never colour alone. Read inline with its panel heading.', 'Mono 10.5 px caps; wraps to its own line under 375.', 'Live, Demo, Illustrative (hatched), Calculated, To confirm.', 'Required on every demo, example or calculated figure. Never on live copy.'],
+['C4 Fit meter', 'Fit against an index, in the brand’s squares.', 'role="img" with “Fit n of 5, whose index”; or “No fit score: needs your capability index”.', '5 × 12 px squares, 3 px gaps. Never resized below 10 px.', 'Empty (public), filled (example or app), loading, unavailable. No animated fill.', 'Never show filled squares to a public visitor without the Illustrative tag.'],
+['C5 Notice ledger row', 'A real notice in the hero, proving “procurement”.', 'List item; source link names its destination and new tab for screen readers.', '5 columns ≥ 1024; issuer hidden 768–1023; two lines on phones with date right.', 'Public / example view via C17. Overview truncates to one line only on the hero.', 'Only notices from the live feed. Caption the photo it overlaps with where the photo is.'],
+['C6 Decision row', 'Shows why a notice qualified or not.', '<button aria-expanded aria-controls> per row; verdict in the following region. One open at a time.', 'Notice, scope, evidence, closes, fit+verdict ≥ 1024; notice + fit + verdict below; detail carries the rest.', 'Rest, hover, focus, expanded, qualifies, below threshold. Reveal 160 ms opacity.', 'Use for the Sourcing step only. Never hide below-threshold notices.'],
+['C7 Notice list + detail', 'Scan and decide on the Notices page.', 'List of buttons with aria-current; ↑ ↓ Home End move focus and selection; detail is a polite live region.', 'Split 440 px + fluid ≥ 1024; inline detail under the row below. Titles wrap.', 'Rest, hover, focus, current, loading, empty, error. Detail swaps instantly.', 'Public: fit locked with a reason. Decide actions are the live ones only.'],
+['C8 Cited claim + note', 'A drafted claim traced to document and page.', '<button aria-pressed aria-describedby> inside the sentence; the note follows in source order.', 'Notes in a 260 px margin ≥ 1024; directly under the paragraph below.', 'Sourced (solid red underline), no source (dashed), held paragraph, selected, hover, focus. 180 ms.', 'Never cite a document Klarum does not hold. A gap is shown, not written around.'],
+['C9 Requirement list + trace', 'Requirement to evidence or gap.', 'Buttons with aria-pressed; detail with a 4-step ordered list; polite live region.', '460 px list + detail ≥ 1024; stacked below; trace stacks vertically under 768.', 'Met, Gap (chain stops in words), Unmapped, loading, empty, error. Accept and Dismiss are the product’s verbs.', 'Each row names its tender. Never mix tenders under one heading.'],
+['C10 Lifecycle panel', 'Bid activity as KPIs and stages.', '<dl> for KPIs; changes written as text (“9 d faster”).', 'Three columns; one under 768.', 'Default, loading, empty (“No outcomes recorded yet”).', 'Always tagged Demo workspace. No animated counters.'],
+['C11 Surface row', 'Ten surfaces, both sides.', 'Heading + <button aria-expanded>; one open; Timeline open by default.', 'Six columns ≥ 1024; chips move under the name below.', 'Collapsed, open, hover, focus. Preview images lazy-loaded.', 'Previews only from the live site’s product captures.'],
+['C12 FAQ accordion', 'Answers that stay in the page.', '<h3><button aria-expanded aria-controls>; first answer open.', 'Max 960 px column.', 'Collapsed, open, hover, focus. Instant open.', 'Answers are Klarum’s copy, unchanged.'],
+['C13 Plan card + billing switch', 'Choose a plan without misreading price.', '<article> per plan named by its heading; switch = two buttons with aria-pressed; price in a polite region.', 'Three columns ≥ 1024; one column below with Business first.', 'Monthly, yearly, price not published, pre-launch flag. Values replace in place.', 'Two filled buttons in a card is never allowed; every price has unit, period and VAT note.'],
+['C14 Seat estimator', 'What the team will pay.', 'Group with − and + buttons (aria-label) and an <output>; total announced politely.', 'Two columns ≥ 1024; stacked below. 1–50 seats.', 'Default 4 seats, min (− disabled), max (+ disabled). Calculated tag on the total.', 'Business only. Partner shows “by agreement”, never an estimate. No VAT maths.'],
+['C15 Comparison table', 'Every feature by plan.', 'role="table" grid (rows render inside the canvas); “Included” and “Not included” as words.', 'Four columns ≥ 768; plan tabs + one column under 768.', 'Tab selected, focus. No sticky header on phones.', 'Rows come from the live plan lists only.']
+];
+return { specs: S.map((s) => ({ n: s[0], p: s[1], sem: s[2], lay: s[3], st: s[4], use: s[5] })) };
+}
+}
+</script>
+</body>
+</html>

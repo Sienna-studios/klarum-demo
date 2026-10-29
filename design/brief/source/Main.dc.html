@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum brief: the problem</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#16171a}a:hover{color:#5b5f66}
+.lab{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;margin:0}
+.q{font-family:'DM Mono',ui-monospace,monospace;font-size:13px;color:#16171a;background:#e7e7e3;padding:1px 6px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px;line-height:1.45}
+.tbl th{text-align:left;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;padding:0 16px 12px 0;border-bottom:1.5px solid #16171a}
+.tbl td{padding:14px 16px 14px 0;border-bottom:1px solid #d6d7d9;vertical-align:top}
+.ph{color:#8a3b12;font-family:'DM Mono',ui-monospace,monospace;font-size:13px}
+</style>
+</helmet>
+<div style="width: 1600px; height: 1900px; box-sizing: border-box; padding: 72px 80px; background: #f2f2f0; color: #16171a; font-family: 'DM Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 56px">
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; border-bottom: 1.5px solid #16171a; padding-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p class="lab">Klarum website · design brief · 1 of 4</p>
+<h1 style="margin: 0; font-size: 64px; line-height: 1; letter-spacing: -.03em; font-weight: 600">What the site has to do.</h1>
+</div>
+<p style="margin: 0; max-width: 520px; font-size: 15px; line-height: 1.5; color: #4a4e55">Built from the HTML source of all 66 artboards in Klarum Design Selects. Quoted lines are copied from that source. Anything in <span class="ph">[brackets]</span> is not stated there and needs an owner.</p>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<div style="grid-column: 1 / -1"><p class="lab">Who it serves</p></div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<p class="lab" style="color: #16171a">Primary</p>
+<h2 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 600; letter-spacing: -.01em">Infrastructure bid teams</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a4e55">Both directions name them in the eyebrow: <span class="q">For infrastructure bid teams</span> (Print) and <span class="q">Procurement software for infrastructure bid teams</span> (Night). Sample notices are rail, bridges, tunnels, foundations, ground, water and roads.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<p class="lab" style="color: #16171a">Who pays</p>
+<h2 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 600; letter-spacing: -.01em">The firm, per seat</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a4e55">Free is one person per organisation, Business adds team seats, Partner is negotiated for firms. So the reader of Pricing is often a bid manager or director deciding for a team, not the person who found the site.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<p class="lab" style="color: #16171a">Later</p>
+<h2 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 600; letter-spacing: -.01em">Issuers</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a4e55">Night only: <span class="q">Portal · for issuers. In development</span>. It sits in the main nav today. Decide whether an unfinished product earns a top-level nav item <span class="ph">[decision]</span>.</p>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 16px">
+<p class="lab">One action per page</p>
+<table class="tbl">
+<thead><tr><th style="width: 12%">Page</th><th style="width: 24%">The visitor arrives wanting</th><th style="width: 24%">The one action</th><th style="width: 20%">Secondary</th><th>Gap in the source</th></tr></thead>
+<tbody>
+<tr><td><b>Home</b></td><td>To know what Klarum is and whether it is for their kind of work.</td><td><b>Start free</b>, in the hero and repeated in the closing band.</td><td>See pricing</td><td>None. Both directions repeat one primary button.</td></tr>
+<tr><td><b>Notices</b></td><td>Proof that the feed holds work they could win.</td><td><b>Shortlist a notice</b>, then Start free.</td><td>Search, type filter, fit 4 of 5 or better</td><td>Print's Notices page has no closing call to action; Night's does (<span class="q">See it on your own pipeline.</span>).</td></tr>
+<tr><td><b>Pricing</b></td><td>The cost, the limits and what Free really is.</td><td><b>Start 7-day trial</b> on Business (recommended plan).</td><td>Start free · Book a call (Partner)</td><td>What happens when the trial ends is a placeholder in the FAQ.</td></tr>
+<tr><td><b>Articles</b></td><td>Something useful to read before a bid.</td><td><b>Read the article</b>.</td><td>Filter Article or Guide</td><td>Print only; Night has no Articles page. No next step after reading <span class="ph">[define]</span>.</td></tr>
+<tr><td><b>Registry, Portal</b></td><td>Night nav items that jump to Home sections.</td><td>None of their own.</td><td>None</td><td>Nav differs: Print is Notices, Pricing, Articles. Night is Notices, Registry, Portal, Pricing. Pick one site map <span class="ph">[decision]</span>.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p class="lab">Success criteria</p>
+<table class="tbl">
+<thead><tr><th style="width: 58%">Measure</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Home visitors who click Start free</td><td class="ph">[X]%</td></tr>
+<tr><td>Notices visitors who shortlist at least one notice</td><td class="ph">[X]%</td></tr>
+<tr><td>Pricing visitors who start the Business trial</td><td class="ph">[X]%</td></tr>
+<tr><td>Partner calls booked per month</td><td class="ph">[X]</td></tr>
+<tr><td>Article readers who go on to Notices or Start free</td><td class="ph">[X]%</td></tr>
+<tr><td>Share of sign-ups that are infrastructure bid teams</td><td class="ph">[X]%</td></tr>
+</tbody>
+</table>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4a4e55">No targets exist in the source. The team sets them before launch so the chosen direction can be judged against them afterwards.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p class="lab">What the copy already says</p>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.5">
+<p style="margin: 0; padding-bottom: 14px; border-bottom: 1px solid #d6d7d9"><span class="lab" style="display: block; margin-bottom: 6px">Print headline</span>The Intelligent System of Record for Infrastructure Procurement.</p>
+<p style="margin: 0; padding-bottom: 14px; border-bottom: 1px solid #d6d7d9"><span class="lab" style="display: block; margin-bottom: 6px">Night headline</span>Source more of the work that fits.</p>
+<p style="margin: 0; padding-bottom: 14px; border-bottom: 1px solid #d6d7d9"><span class="lab" style="display: block; margin-bottom: 6px">Shared proof</span>Over thirty contracted sources, scored against what your team can actually deliver.</p>
+<p style="margin: 0; padding-bottom: 14px; border-bottom: 1px solid #d6d7d9"><span class="lab" style="display: block; margin-bottom: 6px">Shared pricing facts</span>Free: 0 €, one person per org, no expiry. Business: 200 € per seat per month, or 166 € billed yearly (−17%), excl. VAT. Partner: by agreement.</p>
+<p style="margin: 0"><span class="lab" style="display: block; margin-bottom: 6px">Office</span>Stockholm, Medborgarplatsen 25 · klarum.com</p>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 16px">
+<p class="lab">Content the team must supply</p>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; font-size: 14px; line-height: 1.45">
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[LOGO] × 5</span><br>Backers strip, Home</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[Buyer] [Value] [Region]</span><br>Every notice row</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[31] sources · [LIST FROM KLARUM]</span><br>Coverage count and names</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[Answer: trial end]</span><br>Pricing FAQ</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[Value] [Date] [X] days</span><br>Award panel, How it works</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">Win rate · Cycle time · Throughput</span><br>Lifecycle panel, Night Home</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[One-line summary] × 6</span><br>Article cards and standfirst</div>
+<div style="background: #ffffff; border: 1px solid #d6d7d9; padding: 18px"><span class="ph">[Company] [X] past projects</span><br>Capability panel, How it works</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

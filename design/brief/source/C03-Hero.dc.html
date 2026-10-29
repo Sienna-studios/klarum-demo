@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C03 Hero and proof strip</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.lab{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;margin:0}
+.spec h2{margin:0 0 6px;font-family:'DM Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66}
+.kv{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid #d6d7d9}
+.kv b{font-weight:500}
+.clip{overflow:hidden;position:relative;border:1px solid #c9cacd}
+.stage{transform-origin:0 0;position:absolute;left:0;top:0}
+.P{--bg:#fbfdf6;--ink:#1d2931;--mute:#55534e;--line:#e8e6dd;--rule:#1d2931;--red:#ef4136;--redt:#d42a1f;--btn:#1d2931;--btnt:#ffffff;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5}
+.P.dk{--bg:#141b21;--ink:#f3f2ec;--mute:#aeb6bc;--line:#2a343c;--rule:#aeb6bc;--redt:#ef4136;--btn:#ef4136;--btnt:#141b21}
+.N{--bg:#F6F6F3;--ink:#14202C;--body:#26323D;--sub:#3A4652;--mute:#4B5762;--line:#D9DDE0;--off:#C9CFD5;--pin:#14202C;--pinb:#F6F6F3;--redt:#C2261C;--card:rgba(255,255,255,.96);--scrim:246,246,243;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+.N.dk{--bg:#0D0D10;--ink:#FFFFFF;--body:#E4E7EA;--sub:#C9CED3;--mute:#A9B1BA;--line:#2A2E35;--off:#39424C;--pin:#FFE2D6;--pinb:#0D0D10;--redt:#FFB3AA;--card:rgba(21,22,27,.94);--scrim:13,13,16}
+.P a,.N a{color:inherit;text-decoration:none}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px;box-sizing:content-box}
+.wrap.ph0{padding:0 20px}
+/* Print hero */
+.stripe{background:#1d2931 url(/_blob/b155480cdfe23a9f3440d8bb4d4a7379) center 38%/cover no-repeat;position:relative}
+.herogrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding-top:40px;padding-bottom:44px}
+.herogrid h1{grid-column:1 / span 8}
+.heroside{grid-column:9 / span 4;display:flex;flex-direction:column;align-items:flex-start;padding:44px 0 0 24px;border-left:1px solid var(--rule)}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--redt);margin:0}
+.riso{text-shadow:3px 0 0 rgba(239,65,54,.55),-2px 0 0 rgba(29,41,49,.18)}
+.tagchip{padding:4px 8px;background:#1d2931;color:#fbfdf6;font-size:13px}
+.pbtn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;background:var(--btn);color:var(--btnt)!important;font:600 17px/1 'IBM Plex Sans',sans-serif;white-space:nowrap}
+.plnk{font-weight:500;text-decoration:underline!important;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
+.pproof{display:flex;align-items:center;gap:32px;flex-wrap:wrap;padding-top:36px;padding-bottom:36px}
+.pph{border:1.5px dashed var(--line);height:52px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute);letter-spacing:.08em}
+.pmono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+/* Night hero */
+.hero{position:relative;width:100%;aspect-ratio:16 / 9;min-height:640px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url(/_blob/267d99939be7bf5deeee8f94602e2264) center/cover no-repeat}
+.N.lt .hero::before{background-image:url(/_blob/229a32ceb26fab944286472318a6dddd)}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--scrim),.88) 0%,rgba(var(--scrim),.45) 42%,rgba(var(--scrim),0) 62%)}
+.hero .copy{position:absolute;left:64px;top:128px;width:620px;z-index:2}
+.nlab{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
+.npri{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:4px;background:#EF4136;color:#0D0D10!important;font:600 16px/1 Inter,sans-serif}
+.nlnk{font-weight:600;text-decoration:underline!important;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--pin);border:3px solid var(--pinb);transform:translate(-50%,-50%);z-index:1}
+.card{position:absolute;width:244px;padding:10px 12px;background:var(--card);border:1px solid var(--off);border-radius:4px;z-index:1;box-sizing:border-box}
+.N.lt .card{border:1.5px solid #14202C}
+.card b{display:block;font-size:14px;line-height:1.3;font-weight:600}
+.card i{display:flex;justify-content:space-between;align-items:center;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+.meter{display:inline-flex;gap:3px}
+.meter span{width:7px;height:7px;background:var(--off)}
+.meter span.on{background:#EF4136}
+.nph{border:1.5px dashed var(--off);border-radius:4px;height:56px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);letter-spacing:.05em}
+.nproof{display:flex;align-items:center;gap:32px;flex-wrap:wrap;padding-top:36px;padding-bottom:36px}
+/* phone */
+.pm .herogrid{padding-top:28px;padding-bottom:32px;display:block}
+.pm .heroside{border-left:0;border-top:1px solid var(--rule);padding:24px 0 0;margin-top:28px}
+.pm .nhero{aspect-ratio:auto;min-height:0;padding-bottom:260px}
+.pm .nhero .copy{position:relative;left:auto;top:auto;width:auto;padding:56px 20px 0}
+.pm .nhero .scrim{display:none}
+.pm .nhero::before{background-position:70% 100%}
+.prop{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px dashed currentColor;opacity:.8}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;line-height:1.4}
+.tbl th{text-align:left;font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;padding:0 12px 8px 0;border-bottom:1.5px solid #16171a}
+.tbl td{padding:8px 12px 8px 0;border-bottom:1px solid #d6d7d9;vertical-align:top}
+.tbl td:first-child{font-weight:500;white-space:nowrap}
+</style>
+</helmet>
+<div style="width: 1920px; height: 2020px; box-sizing: border-box; background: #f2f2f0; color: #16171a; font-family: 'DM Sans', system-ui, sans-serif; display: grid; grid-template-columns: 420px minmax(0, 1fr)">
+<aside class="spec" style="padding: 48px 40px; border-right: 1.5px solid #16171a; display: flex; flex-direction: column; gap: 26px; font-size: 14px; line-height: 1.5">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p class="lab">Component C03</p>
+<h1 style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -.02em; font-weight: 600">Hero and proof strip</h1>
+<p style="margin: 0; font-size: 16px; color: #4a4e55">First screen of Home. Says what Klarum is, offers Start free, links to Pricing, then a strip for logos of the people behind it.</p>
+</div>
+<div><h2>Print</h2>
+<div class="kv"><b>Frame</b><span>Full-bleed striped photo band (#1d2931 base, center 38%, cover). Padding top clamp(96, 16vw, 200), bottom clamp(72, 12vw, 150). A solid --bg panel sits inside it.</span></div>
+<div class="kv"><b>Grid</b><span>12 columns, gap 24, panel padding 40 top, 44 bottom. H1 spans 1 to 8, side column spans 9 to 12 with a 1px --rule on its left and padding 44 0 0 24.</span></div>
+<div class="kv"><b>Headline</b><span>Plex Sans 400. Line one 22 / 30. Line two clamp(40, 7vw, 96), line-height .96, tracking −.045em, riso filter, set as "Infrastructure / Procurement."</span></div>
+<div class="kv"><b>Side</b><span>Eyebrow (Plex Mono 12, .14em, --redt) · lead 17 / 26 · primary button + text link, gap 20.</span></div>
+<div class="kv"><b>Tag chips</b><span>Two chips pinned 22 from the band bottom: URL left, address right. #1d2931 on #fbfdf6, 13 px, padding 4 8.</span></div>
+</div>
+<div><h2>Night</h2>
+<div class="kv"><b>Frame</b><span>16:9, min-height 640, overflow hidden. Field image (dark or light) cover, plus a left-to-right scrim: rgb(--scrim) at .88, .45 (42%), 0 (62%).</span></div>
+<div class="kv"><b>Copy</b><span>Absolute, left 64, top 128, width 620. Mono label, then H1 Inter Tight 800 at 80 / .98 / −.04em, lead 19 / 1.5 max 480 in --body, buttons gap 20.</span></div>
+<div class="kv"><b>Map layer</b><span>Three pins (14, 3px ring) and notice cards 244 wide with fit meter. Positions are percentages of the frame. Cards open to the right of the pin, the third to the left.</span></div>
+</div>
+<div><h2>Proof strip</h2>
+<div class="kv"><b>Layout</b><span>Row under the hero, 1px top rule, padding 36 0. Mono caption "Built and backed by people from", then 5 logo slots in an auto-fit grid, min 130, gap 16.</span></div>
+<div class="kv"><b>Slot</b><span>Dashed 1.5px --line (--off in Night), 52 tall in Print, 56 tall and radius 4 in Night. Label [LOGO] until real marks are supplied.</span></div>
+</div>
+<div><h2>Phone (≤ 760)</h2>
+<div class="kv"><b>Print</b><span>Panel stacks, side column becomes a top-ruled block under the H1 with margin 28. Padding 28 / 32.</span></div>
+<div class="kv"><b>Night</b><span>Pins and cards are hidden, scrim hidden. Copy goes in flow with padding 56 20 0, H1 44 px. Frame grows padding-bottom clamp(260, 50vw, 420) so the field image shows below, anchored 70% 100%.</span></div>
+</div>
+<div><h2>States</h2>
+<div class="kv"><b>In source</b><span>Static. Buttons follow C02.</span></div>
+<div class="kv"><b>Loading, error</b><span>None. The hero has no data. Not needed.</span></div>
+<div class="kv"><b>Motion</b><span>The logo-hero boards (right, below) add a 10 s resolve loop with a reduced-motion fallback. Not in either site page.</span></div>
+</div>
+<div><h2>Decide</h2>
+<div class="kv"><b>Copy</b><span>Print and Night write different headlines. Pick one: "The Intelligent System of Record for Infrastructure Procurement." or "Source more of the work that fits."</span></div>
+<div class="kv"><b>Logos</b><span>[Five logos or a claim to replace the placeholders.]</span></div>
+</div>
+<div><h2>Source boards</h2>
+<p style="margin: 0; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.6; color: #4a4e55">SP-Home, SP-Home-Dark · SN-Home, SN-Home-Dark · variants: S1-Horizon, S2-Window, S3-Band, PD4-RisoCity, PD6-HatchMosaic, B1-Sheet, SM-Horizon, SM-Window, BM-Legend (and D- copies) · BL-Hero1, BL-Hero2, BL-Resolve, B1-SignalPrint, B2-NightField (and L- copies)</p>
+</div>
+</aside>
+
+<main style="padding: 48px; display: flex; flex-direction: column; gap: 28px; min-width: 0">
+
+<!-- DESKTOP PRINT -->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · light · desktop (shown at 48%)</p>
+<div class="clip" style="width: 100%; height: 330px">
+<div class="stage P" style="width: 1440px; transform: scale(.479)">
+<section class="stripe" style="padding: 200px 0 150px">
+<div style="background: var(--bg)"><div class="wrap herogrid">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-weight: 400"><span style="font-size: 22px; line-height: 30px">The Intelligent System of Record for</span><span class="riso" style="font-size: 96px; line-height: .96; letter-spacing: -.045em">Infrastructure<br>Procurement.</span></h1>
+<div class="heroside"><p class="eyebrow">For infrastructure bid teams</p><p style="margin: 14px 0 0; font-size: 17px; line-height: 26px">Klarum helps infrastructure bid teams build bid pipelines, from sourcing to award in one AI-powered workflow.</p><div style="margin-top: 22px; display: flex; gap: 20px; align-items: center"><a class="pbtn" href="#">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a><a class="plnk" href="#">See pricing</a></div></div>
+</div></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 22px; padding: 0 64px; display: flex; justify-content: space-between"><span class="tagchip">https://www.klarum.com</span><span class="tagchip">Stockholm, Medborgarplatsen 25</span></div>
+</section>
+<section style="border-top: 1px solid var(--line)"><div class="wrap pproof"><span class="pmono" style="flex: none">Built and backed by people from</span><div style="flex: 1 1 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px"><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div></div></div></section>
+</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · dark · desktop (shown at 48%)</p>
+<div class="clip" style="width: 100%; height: 330px">
+<div class="stage P dk" style="width: 1440px; transform: scale(.479)">
+<section class="stripe" style="padding: 200px 0 150px">
+<div style="background: var(--bg)"><div class="wrap herogrid">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-weight: 400"><span style="font-size: 22px; line-height: 30px">The Intelligent System of Record for</span><span class="riso" style="font-size: 96px; line-height: .96; letter-spacing: -.045em">Infrastructure<br>Procurement.</span></h1>
+<div class="heroside"><p class="eyebrow">For infrastructure bid teams</p><p style="margin: 14px 0 0; font-size: 17px; line-height: 26px">Klarum helps infrastructure bid teams build bid pipelines, from sourcing to award in one AI-powered workflow.</p><div style="margin-top: 22px; display: flex; gap: 20px; align-items: center"><a class="pbtn" href="#">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a><a class="plnk" href="#">See pricing</a></div></div>
+</div></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 22px; padding: 0 64px; display: flex; justify-content: space-between"><span class="tagchip">https://www.klarum.com</span><span class="tagchip">Stockholm, Medborgarplatsen 25</span></div>
+</section>
+<section style="border-top: 1px solid var(--line)"><div class="wrap pproof"><span class="pmono" style="flex: none">Built and backed by people from</span><div style="flex: 1 1 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px"><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div></div></div></section>
+</div></div></div>
+</div>
+
+<!-- DESKTOP NIGHT -->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · dark · desktop (shown at 48%)</p>
+<div class="clip" style="width: 100%; height: 470px">
+<div class="stage N dk" style="width: 1440px; transform: scale(.479)">
+<section class="hero">
+<div class="scrim"></div>
+<div class="copy"><p class="nlab">Procurement software for infrastructure bid teams</p><h1 style="margin: 16px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 80px; line-height: .98; letter-spacing: -.04em; font-weight: 800">Source more of the work that fits.</h1><p style="margin: 22px 0 0; font-size: 19px; line-height: 1.5; max-width: 480px; color: var(--body)">Over thirty contracted sources, scored against what your team can actually deliver.</p><div style="display: flex; gap: 20px; align-items: center; margin-top: 28px"><a href="#" class="npri">Start free</a><a href="#" class="nlnk">See pricing</a></div></div>
+<div class="pin" style="left: 38%; top: 69.8%"></div><div class="card" style="left: calc(38% + 16px); top: 69.8%; transform: translateY(-50%)"><b>Rail corridor signalling upgrade</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></i></div>
+<div class="pin" style="left: 53.7%; top: 49.9%"></div><div class="card" style="left: calc(53.7% + 16px); top: 49.9%; transform: translateY(-50%)"><b>Tunnel lining supply, metro extension</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span></i></div>
+<div class="pin" style="left: 67.7%; top: 33.9%"></div><div class="card" style="left: calc(67.7% - 258px); top: 33.9%; transform: translateY(-50%)"><b>Ground improvement, port access road</b><i><span>Prequalification</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></span></i></div>
+</section>
+<div class="wrap nproof"><span class="nlab" style="flex: none">Built and backed by people from</span><div style="flex: 1 1 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px"><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div></div></div>
+</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · light · desktop (shown at 48%)</p>
+<div class="clip" style="width: 100%; height: 470px">
+<div class="stage N lt" style="width: 1440px; transform: scale(.479)">
+<section class="hero">
+<div class="scrim"></div>
+<div class="copy"><p class="nlab">Procurement software for infrastructure bid teams</p><h1 style="margin: 16px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 80px; line-height: .98; letter-spacing: -.04em; font-weight: 800">Source more of the work that fits.</h1><p style="margin: 22px 0 0; font-size: 19px; line-height: 1.5; max-width: 480px; color: var(--body)">Over thirty contracted sources, scored against what your team can actually deliver.</p><div style="display: flex; gap: 20px; align-items: center; margin-top: 28px"><a href="#" class="npri">Start free</a><a href="#" class="nlnk">See pricing</a></div></div>
+<div class="pin" style="left: 38%; top: 69.8%"></div><div class="card" style="left: calc(38% + 16px); top: 69.8%; transform: translateY(-50%)"><b>Rail corridor signalling upgrade</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></i></div>
+<div class="pin" style="left: 53.7%; top: 49.9%"></div><div class="card" style="left: calc(53.7% + 16px); top: 49.9%; transform: translateY(-50%)"><b>Tunnel lining supply, metro extension</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span></i></div>
+<div class="pin" style="left: 67.7%; top: 33.9%"></div><div class="card" style="left: calc(67.7% - 258px); top: 33.9%; transform: translateY(-50%)"><b>Ground improvement, port access road</b><i><span>Prequalification</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></span></i></div>
+</section>
+<div class="wrap nproof"><span class="nlab" style="flex: none">Built and backed by people from</span><div style="flex: 1 1 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px"><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div></div></div>
+</div></div></div>
+</div>
+
+<!-- PHONE -->
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · light · phone</p>
+<div class="clip" style="width: 100%; height: 640px"><div class="stage P pm" style="width: 390px; transform: scale(.86)">
+<section class="stripe" style="padding: 96px 0 72px"><div style="background: var(--bg)"><div class="wrap ph0 herogrid">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-weight: 400"><span style="font-size: 22px; line-height: 30px">The Intelligent System of Record for</span><span class="riso" style="font-size: 40px; line-height: .96; letter-spacing: -.045em">Infrastructure<br>Procurement.</span></h1>
+<div class="heroside"><p class="eyebrow">For infrastructure bid teams</p><p style="margin: 14px 0 0; font-size: 17px; line-height: 26px">Klarum helps infrastructure bid teams build bid pipelines, from sourcing to award in one AI-powered workflow.</p><div style="margin-top: 22px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap"><a class="pbtn" href="#">Start free</a><a class="plnk" href="#">See pricing</a></div></div>
+</div></div></section>
+<section style="border-top: 1px solid var(--line)"><div class="wrap ph0 pproof" style="flex-direction: column; align-items: stretch; gap: 16px"><span class="pmono">Built and backed by people from</span><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px"><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div></div></div></section>
+</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · dark · phone</p>
+<div class="clip" style="width: 100%; height: 640px"><div class="stage P dk pm" style="width: 390px; transform: scale(.86)">
+<section class="stripe" style="padding: 96px 0 72px"><div style="background: var(--bg)"><div class="wrap ph0 herogrid">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-weight: 400"><span style="font-size: 22px; line-height: 30px">The Intelligent System of Record for</span><span class="riso" style="font-size: 40px; line-height: .96; letter-spacing: -.045em">Infrastructure<br>Procurement.</span></h1>
+<div class="heroside"><p class="eyebrow">For infrastructure bid teams</p><p style="margin: 14px 0 0; font-size: 17px; line-height: 26px">Klarum helps infrastructure bid teams build bid pipelines, from sourcing to award in one AI-powered workflow.</p><div style="margin-top: 22px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap"><a class="pbtn" href="#">Start free</a><a class="plnk" href="#">See pricing</a></div></div>
+</div></div></section>
+<section style="border-top: 1px solid var(--line)"><div class="wrap ph0 pproof" style="flex-direction: column; align-items: stretch; gap: 16px"><span class="pmono">Built and backed by people from</span><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px"><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div><div class="pph">[LOGO]</div></div></div></section>
+</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · dark · phone</p>
+<div class="clip" style="width: 100%; height: 640px"><div class="stage N dk pm" style="width: 390px; transform: scale(.86)">
+<section class="hero nhero"><div class="copy"><p class="nlab">Procurement software for infrastructure bid teams</p><h1 style="margin: 16px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 44px; line-height: .98; letter-spacing: -.04em; font-weight: 800">Source more of the work that fits.</h1><p style="margin: 22px 0 0; font-size: 19px; line-height: 1.5; color: var(--body)">Over thirty contracted sources, scored against what your team can actually deliver.</p><div style="display: flex; gap: 20px; align-items: center; margin-top: 28px; flex-wrap: wrap"><a href="#" class="npri">Start free</a><a href="#" class="nlnk">See pricing</a></div></div></section>
+<div class="wrap ph0 nproof" style="flex-direction: column; align-items: stretch; gap: 16px"><span class="nlab">Built and backed by people from</span><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px"><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div></div></div>
+</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · light · phone</p>
+<div class="clip" style="width: 100%; height: 640px"><div class="stage N lt pm" style="width: 390px; transform: scale(.86)">
+<section class="hero nhero"><div class="copy"><p class="nlab">Procurement software for infrastructure bid teams</p><h1 style="margin: 16px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 44px; line-height: .98; letter-spacing: -.04em; font-weight: 800">Source more of the work that fits.</h1><p style="margin: 22px 0 0; font-size: 19px; line-height: 1.5; color: var(--body)">Over thirty contracted sources, scored against what your team can actually deliver.</p><div style="display: flex; gap: 20px; align-items: center; margin-top: 28px; flex-wrap: wrap"><a href="#" class="npri">Start free</a><a href="#" class="nlnk">See pricing</a></div></div></section>
+<div class="wrap ph0 nproof" style="flex-direction: column; align-items: stretch; gap: 16px"><span class="nlab">Built and backed by people from</span><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px"><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div><div class="nph">[LOGO]</div></div></div>
+</div></div></div>
+</div>
+
+<!-- VARIANTS -->
+<div>
+<p class="lab" style="margin-bottom: 10px">Hero variants already explored · what to take from each</p>
+<table class="tbl">
+<thead><tr><th>Board</th><th>Direction</th><th>What it is</th><th>Take or drop</th></tr></thead>
+<tbody>
+<tr><td>S1-Horizon</td><td>Print</td><td>Stripe band, headline as the horizon line.</td><td>[Decide] Phone version SM-Horizon.</td></tr>
+<tr><td>S2-Window</td><td>Print</td><td>Stripe band, the stripes live inside the type.</td><td>[Decide] Phone version SM-Window.</td></tr>
+<tr><td>S3-Band</td><td>Print</td><td>Stripe band, everything on one paper strip.</td><td>[Decide] Closest to the SP-Home panel shown above.</td></tr>
+<tr><td>PD4-RisoCity</td><td>Print</td><td>The Prague photo reprinted in red line-screen.</td><td>[Decide] Art option.</td></tr>
+<tr><td>PD6-HatchMosaic</td><td>Print</td><td>Today's squares, in print language.</td><td>[Decide] Art option. Hatch also appears in C05.</td></tr>
+<tr><td>B1-Sheet, BM-Legend</td><td>Print</td><td>Blueprint, full sheet; blueprint legend on phone.</td><td>[Decide] Alternative to the band.</td></tr>
+<tr><td>B1-SignalPrint</td><td>Night</td><td>Signal print, light.</td><td>[Decide] Print-style field in the Night direction.</td></tr>
+<tr><td>B2-NightField</td><td>Night</td><td>Night field, dark. Same field the site hero uses.</td><td>Shipped in SN-Home.</td></tr>
+<tr><td>BL-Hero1, BL-Hero2</td><td>Night</td><td>The mass; signal in the shape (logo as hero).</td><td>[Decide] Alternative to the map hero.</td></tr>
+<tr><td>BL-Resolve</td><td>Night</td><td>Resolve, noise to mark. 10 s loop, reduced-motion fallback.</td><td>[Decide] Only with a logo hero.</td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":2020}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

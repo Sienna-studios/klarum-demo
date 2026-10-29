@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C02 Buttons and links</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.lab{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;margin:0}
+.spec h2{margin:0 0 6px;font-family:'DM Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66}
+.kv{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid #d6d7d9}
+.kv b{font-weight:500}
+.P{--bg:#fbfdf6;--ink:#1d2931;--mute:#55534e;--line:#e8e6dd;--red:#ef4136;--redt:#d42a1f;--btn:#1d2931;--btnt:#ffffff;--btnh:#d42a1f;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5}
+.P.dk{--bg:#141b21;--ink:#f3f2ec;--mute:#aeb6bc;--line:#2a343c;--redt:#ef4136;--btn:#ef4136;--btnt:#141b21;--btnh:#f3f2ec}
+.N{--bg:#F6F6F3;--ink:#14202C;--sub:#3A4652;--mute:#4B5762;--line:#D9DDE0;--redt:#C2261C;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+.N.dk{--bg:#0D0D10;--ink:#FFFFFF;--sub:#C9CED3;--mute:#A9B1BA;--line:#2A2E35;--redt:#FFB3AA}
+.P a,.N a{color:inherit;text-decoration:none}
+.cell{padding:28px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px 20px;align-items:center;border:1px solid #c9cacd}
+.rl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pb{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;background:var(--btn);color:var(--btnt)!important;font:600 17px/1 'IBM Plex Sans',sans-serif;border:0;white-space:nowrap}
+.pb.h{background:var(--btnh)}
+.P.dk .pb.h{color:#141b21!important}
+.pg{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;background:transparent;color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--ink);font:600 17px/1 'IBM Plex Sans',sans-serif;white-space:nowrap}
+.pg.h{background:var(--ink);color:var(--bg)!important}
+.psm{padding:9px 16px;background:var(--btn);color:var(--btnt)!important;font-size:13px;font-weight:500}
+.plk{font-weight:500;text-decoration:underline!important;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
+.plk.h{color:var(--redt)}
+.nb{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:4px;font:600 16px/1 Inter,sans-serif;white-space:nowrap}
+.npri{background:#EF4136;color:#0D0D10!important}
+.npri.h{filter:brightness(1.08)}
+.nsec{box-shadow:inset 0 0 0 1.5px var(--ink);background:transparent;color:var(--ink)!important}
+.nsec.h{background:var(--ink);color:var(--bg)!important}
+.nlk{font-weight:600;text-decoration:underline!important;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.nlk.h{color:var(--redt)}
+.fo{outline:2px solid #ef4136;outline-offset:2px}
+.prop{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px dashed currentColor;opacity:.8}
+</style>
+</helmet>
+<div style="width: 1920px; height: 1100px; box-sizing: border-box; background: #f2f2f0; color: #16171a; font-family: 'DM Sans', system-ui, sans-serif; display: grid; grid-template-columns: 420px minmax(0, 1fr)">
+<aside class="spec" style="padding: 48px 40px; border-right: 1.5px solid #16171a; display: flex; flex-direction: column; gap: 26px; font-size: 14px; line-height: 1.5">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p class="lab">Component C02</p>
+<h1 style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -.02em; font-weight: 600">Buttons and links</h1>
+<p style="margin: 0; font-size: 16px; color: #4a4e55">One primary action per view, one quieter alternative, and an inline link.</p>
+</div>
+<div><h2>Print</h2>
+<div class="kv"><b>Primary</b><span>52 tall · padding 0 24 · gap 10 · IBM Plex Sans 600 17 · square · arrow icon 18 · fill --btn (navy in light, red in dark)</span></div>
+<div class="kv"><b>Hover</b><span>fill --btnh (#d42a1f light, #f3f2ec dark) · .15s</span></div>
+<div class="kv"><b>Ghost</b><span>transparent · inset 1.5px --ink · hover fills --ink, text --bg</span></div>
+<div class="kv"><b>Small</b><span>header only · padding 9 16 · 13 / 500</span></div>
+<div class="kv"><b>Link</b><span>500 · underline, offset 4 · 44 tall · hover --redt</span></div>
+</div>
+<div><h2>Night</h2>
+<div class="kv"><b>Primary</b><span>48 tall · padding 0 24 · radius 4 · Inter 600 16 · #EF4136 with #0D0D10 text in both modes</span></div>
+<div class="kv"><b>Hover</b><span>filter brightness(1.08) · .15s</span></div>
+<div class="kv"><b>Secondary</b><span>transparent · inset 1.5px --ink · radius 4 · hover fills --ink, text --bg</span></div>
+<div class="kv"><b>Link</b><span>600 · underline, offset 4 · 44 tall · hover --redt</span></div>
+</div>
+<div><h2>States</h2>
+<div class="kv"><b>In source</b><span>default, hover</span></div>
+<div class="kv"><b>Proposed</b><span>focus: 2px outline #ef4136, offset 2. Print already uses this on the five-flows buttons (SP-Home, P3-Wiring); extend it to every button and link. Night defines no focus style.</span></div>
+</div>
+<div><h2>Usage</h2>
+<div class="kv"><b>Primary</b><span>Start free, Start 7-day trial. Once per view.</span></div>
+<div class="kv"><b>Secondary</b><span>See pricing, Book a call.</span></div>
+<div class="kv"><b>Large</b><span>Print closing band: 60 tall, padding 0 30, 18 px.</span></div>
+</div>
+<div><h2>Source boards</h2>
+<p style="margin: 0; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.6; color: #4a4e55">SP-Home, SP-Pricing (and -Dark) · B1-Sheet, BM-Legend · SN-Home, SN-Pricing (and -Dark) · BL-Hero1, BL-Hero2, B1-SignalPrint</p>
+</div>
+</aside>
+
+<main style="padding: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 24px; align-content: start; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · light</p>
+<div class="P cell">
+<span class="rl">Primary</span><div class="row"><a href="#" class="pb">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a><a href="#" class="pb h">Hover <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a></div>
+<span class="rl">Ghost</span><div class="row"><a href="#" class="pg">Book a call</a><a href="#" class="pg h">Hover</a></div>
+<span class="rl">Small · link</span><div class="row"><a href="#" class="psm">Start free</a><a href="#" class="plk">See pricing</a><a href="#" class="plk h">Hover</a></div>
+<span class="rl">Focus</span><div class="row"><a href="#" class="pb fo">Start free</a><span class="prop">Proposed</span></div>
+</div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Print · dark</p>
+<div class="P dk cell">
+<span class="rl">Primary</span><div class="row"><a href="#" class="pb">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a><a href="#" class="pb h">Hover <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a></div>
+<span class="rl">Ghost</span><div class="row"><a href="#" class="pg">Book a call</a><a href="#" class="pg h">Hover</a></div>
+<span class="rl">Small · link</span><div class="row"><a href="#" class="psm">Start free</a><a href="#" class="plk">See pricing</a><a href="#" class="plk h">Hover</a></div>
+<span class="rl">Focus</span><div class="row"><a href="#" class="pb fo">Start free</a><span class="prop">Proposed</span></div>
+</div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · light</p>
+<div class="N cell">
+<span class="rl">Primary</span><div class="row"><a href="#" class="nb npri">Start free</a><a href="#" class="nb npri h">Hover</a></div>
+<span class="rl">Secondary</span><div class="row"><a href="#" class="nb nsec">See pricing</a><a href="#" class="nb nsec h">Hover</a></div>
+<span class="rl">Header · link</span><div class="row"><a href="#" class="nb nsec" style="min-height: 44px; padding: 0 20px; font-size: 15px">Start free</a><a href="#" class="nlk">Watch it work</a><a href="#" class="nlk h">Hover</a></div>
+<span class="rl">Focus</span><div class="row"><a href="#" class="nb npri fo">Start free</a><span class="prop">Proposed</span></div>
+</div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lab">Night · dark</p>
+<div class="N dk cell">
+<span class="rl">Primary</span><div class="row"><a href="#" class="nb npri">Start free</a><a href="#" class="nb npri h">Hover</a></div>
+<span class="rl">Secondary</span><div class="row"><a href="#" class="nb nsec">See pricing</a><a href="#" class="nb nsec h">Hover</a></div>
+<span class="rl">Header · link</span><div class="row"><a href="#" class="nb nsec" style="min-height: 44px; padding: 0 20px; font-size: 15px">Start free</a><a href="#" class="nlk">Watch it work</a><a href="#" class="nlk h">Hover</a></div>
+<span class="rl">Focus</span><div class="row"><a href="#" class="nb npri fo">Start free</a><span class="prop">Proposed</span></div>
+</div></div>
+<div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; margin-top: 8px"><p class="lab">Large, closing band only · Print light and dark</p>
+<div style="display: flex; gap: 24px">
+<div class="P" style="padding: 24px; border: 1px solid #c9cacd; flex: 1"><a href="#" class="pb" style="min-height: 60px; padding: 0 30px; font-size: 18px">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a></div>
+<div class="P dk" style="padding: 24px; border: 1px solid #c9cacd; flex: 1"><a href="#" class="pb" style="min-height: 60px; padding: 0 30px; font-size: 18px">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a></div>
+</div></div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1100}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum · Pricing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{--bg:#0D0D10;--surf:#15161B;--ink:#FFFFFF;--body:#E4E7EA;--sub:#C9CED3;--mute:#A9B1BA;--line:#2A2E35;--off:#39424C;--dot:#2E343C;--pin:#FFE2D6;--pinb:#0D0D10;--redt:#FFB3AA;--card:rgba(21,22,27,.94);--scrim:13,13,16;--tile:rgba(239,65,54,.18);background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+.k.light{--bg:#F6F6F3;--surf:#FFFFFF;--ink:#14202C;--body:#26323D;--sub:#3A4652;--mute:#4B5762;--line:#D9DDE0;--off:#C9CFD5;--dot:#D3D8DC;--pin:#14202C;--pinb:#F6F6F3;--redt:#C2261C;--card:rgba(255,255,255,.96);--scrim:246,246,243;--tile:rgba(239,65,54,.12)}
+.k a{color:inherit;text-decoration:none}
+.k *{box-sizing:border-box}
+.disp{font-family:"Inter Tight",Inter,sans-serif}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.lab{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:4px;font:600 16px/1 Inter,sans-serif;border:0;cursor:pointer;white-space:nowrap;transition:filter .15s,background .15s}
+.pri{background:#EF4136;color:#0D0D10!important}
+.pri:hover{filter:brightness(1.08)}
+.sec{box-shadow:inset 0 0 0 1.5px var(--ink);background:transparent;color:var(--ink)!important}
+.sec:hover{background:var(--ink);color:var(--bg)!important}
+.lnk{font-weight:600;text-decoration:underline!important;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.lnk:hover{color:var(--redt)}
+.surf{background:var(--surf);border:1px solid var(--line);border-radius:6px}
+.hdr{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 64px}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px}
+.brand svg{color:#EF4136}
+.brand b{font-family:"Inter Tight",Inter,sans-serif;font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.nav{display:flex;gap:32px;font-size:15px;font-weight:500}
+.nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--sub)}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 #EF4136}
+.hr{display:flex;align-items:center;gap:12px}
+.tog{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);font:500 13px Inter,sans-serif;cursor:pointer}
+.menu{display:none;width:44px;height:44px;place-items:center;padding:0;border:0;background:transparent;color:var(--ink)}
+.h2{font-family:"Inter Tight",Inter,sans-serif;font-size:clamp(36px,4vw,52px);line-height:1.02;letter-spacing:-.035em;font-weight:700;margin:14px 0 0}
+.body{font-size:18px;line-height:1.55;color:var(--body);margin:18px 0 0;max-width:520px}
+.sect{position:relative;padding:112px 0;border-top:1px solid var(--line);overflow:hidden}
+.dotfield{background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:14px 14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
+.meter{display:inline-flex;gap:3px;vertical-align:middle}
+.meter span{width:7px;height:7px;background:var(--off)}
+.meter span.on{background:#EF4136}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:12px 16px;border-top:1px solid var(--line)}
+.nrow b{font-size:14px;font-weight:600;line-height:1.3}
+.nrow i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--pin);border:3px solid var(--pinb);transform:translate(-50%,-50%)}
+.pulse{position:absolute;width:14px;height:14px;border-radius:50%;border:2px solid var(--pin);animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{transform:translate(-50%,-50%) scale(1);opacity:.6}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+.card{position:absolute;width:244px;padding:10px 12px;background:var(--card);border:1px solid var(--off);border-radius:4px}
+.card b{display:block;font-size:14px;line-height:1.3;font-weight:600}
+.card i{display:flex;justify-content:space-between;align-items:center;font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+.cap{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--line);font-size:15px}
+.bar{height:6px;background:var(--line);border-radius:2px;position:relative}
+.bar span{position:absolute;left:0;top:0;bottom:0;background:#EF4136;border-radius:2px}
+.mark{background:#EF4136;-webkit-mask:url(/_blob/446b32431b35683b5741d08a6c27b42b) center/contain no-repeat;mask:url(/_blob/446b32431b35683b5741d08a6c27b42b) center/contain no-repeat}
+.r::before{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat}
+.k.light .r.inv::before{filter:invert(1) hue-rotate(180deg) saturate(1.5)}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--scrim),.88) 0%,rgba(var(--scrim),.45) 42%,rgba(var(--scrim),0) 62%)}
+.foot{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.fgrid{position:relative;z-index:2;padding-top:72px;padding-bottom:300px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.flinks{display:grid;gap:12px;margin-top:16px;font-size:15px;color:var(--body)}
+.flinks a:hover{color:var(--redt)}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:4px;background:transparent;font:500 14px Inter,sans-serif;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:#EF4136;background:var(--tile)}
+.field{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 14px;border:1px solid var(--off);border-radius:4px;background:var(--surf)}
+.field input{flex:1;min-width:0;border:0;background:transparent;font:inherit;color:var(--ink);outline:none}
+.field input::placeholder{color:var(--mute)}
+@media (max-width:960px){.grid3,.grid2{grid-template-columns:1fr}.grid2{gap:40px}.fgrid{grid-template-columns:1fr 1fr}}
+.mnav{display:none}
+@media (max-width:760px){.mnav{position:relative;z-index:6;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:8px 20px 24px;border-bottom:1px solid var(--line);background:var(--bg);font-size:18px;font-weight:500}.mnav a{display:flex;align-items:center;min-height:48px}.mnav a[aria-current="page"]{color:var(--redt)}.mnav .tog{margin:8px 0}.flinks{gap:0}.flinks a{display:flex;align-items:center;min-height:44px}.wrap{padding:0 20px}.hdr{padding:0 8px 0 20px}.nav,.hide-m{display:none!important}.menu{display:grid}.sect{padding:72px 0}.fgrid{grid-template-columns:1fr;padding-bottom:200px}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none!important}}
+
+.cta::before{background:url(/_blob/bec8a51223818b528af97335f5af392f) 70% 75%/cover no-repeat}
+
+.plan{display:flex;flex-direction:column;align-items:flex-start;padding:32px;min-height:460px}
+.plan.rec{border:1.5px solid #EF4136;box-shadow:0 0 0 4px var(--tile)}
+.plan ul{margin:28px 0 32px;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;font-size:15px;color:var(--body)}
+.plan li{display:flex;gap:12px;align-items:center}
+.plan li::before{content:"";width:8px;height:8px;background:#EF4136;flex:none}
+.plan .btn{margin-top:auto}
+.cmp{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.cmp th,.cmp td{padding:14px 18px;border-top:1px solid var(--line);text-align:left}
+.cmp thead th{border-top:0}
+.cmp td:not(:first-child),.cmp th:not(:first-child){text-align:center;width:18%}
+.yes{display:inline-block;width:10px;height:10px;background:#EF4136}
+.no{display:inline-block;width:10px;height:2px;background:var(--off);vertical-align:middle}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;font-size:18px;font-weight:600;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:500 20px "JetBrains Mono",monospace;color:#EF4136}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 20px;color:var(--sub);max-width:680px}
+@media (max-width:760px){.plan{min-height:0;padding:28px 24px}}
+
+.plan{display:flex;flex-direction:column;align-items:stretch;padding:32px}
+.plan.rec{border:1.5px solid #EF4136;box-shadow:0 0 0 4px var(--tile)}
+.plan .pname{margin:0;font-size:32px;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+.pnrow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.plan .pdesc{margin:8px 0 0;font-size:15px;color:var(--sub)}
+.plan .pprice{margin:24px 0 0;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.plan .punit{margin-top:8px;font-size:11px}
+.plan .pteam{margin:4px 0 0;font-size:14px;color:var(--sub)}
+.plan .pcta{margin-top:24px;width:100%}
+.plan .plab{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:11px}
+.plan ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.4;color:var(--body)}
+.plan li{display:flex;gap:12px;align-items:flex-start}
+.plan li::before{content:"";width:8px;height:8px;margin-top:6px;background:#EF4136;flex:none}
+.plan ul.out li,.plan li.soonli{color:var(--mute)}
+.plan ul.out li::before,.plan li.soonli::before{height:2px;margin-top:9px;background:var(--off)}
+.plan .soon{margin-left:6px;padding:2px 6px;border:1px solid var(--off);border-radius:3px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.ftag{white-space:nowrap;padding:3px 8px;border-radius:3px;background:var(--ink);color:var(--bg);font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.billtog{display:inline-flex;border:1px solid var(--line);border-radius:6px;background:var(--surf);padding:3px}
+.billtog button{min-height:40px;padding:0 16px;border:0;border-radius:4px;background:transparent;font:600 14px Inter,sans-serif;color:var(--mute);cursor:pointer}
+.billtog button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.billtog .save{margin-left:4px;font-family:"JetBrains Mono",monospace;font-size:11px;color:#EF4136}
+.pfoot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:32px;font-size:14px;color:var(--sub)}
+
+</style>
+</helmet>
+<div class="k {{mode}}">
+<header class="hdr">
+<a class="brand" href="SN-Home{{sfx}}.dc.html" aria-label="Klarum home"><svg viewBox="0 0 700 518" width="32.4" height="24" aria-hidden="true" style="display: block; flex: none"><path d="M18 14 L100 18 L182 190 L186 14 L330 14 L668 252 L670 268 L668 500 L320 500 L205 312 L198 500 L108 500 L18 262 Z" fill="currentColor"></path></svg><b>Klarum</b></a>
+<nav class="nav" aria-label="Main"><a href="SN-Notices{{sfx}}.dc.html">Notices</a><a href="SN-Home{{sfx}}.dc.html#registry">Registry</a><a href="SN-Home{{sfx}}.dc.html#issuers">Portal</a><a href="SN-Pricing{{sfx}}.dc.html" aria-current="page">Pricing</a></nav>
+<div class="hr"><button type="button" class="tog hide-m" onClick="{{flip}}" aria-label="{{flipAria}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{flipLabel}}</button><a class="btn sec hide-m" href="#" style="min-height: 44px; padding: 0 20px; font-size: 15px">Start free</a><button type="button" class="menu" aria-label="Menu" aria-expanded="{{menuOpen}}" aria-controls="mnav" onClick="{{toggleMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button></div>
+</header>
+<sc-if value="{{menuShow}}" hint-placeholder-val="{{false}}"><nav id="mnav" class="mnav" aria-label="Mobile"><a href="SN-Notices{{sfx}}.dc.html">Notices</a><a href="SN-Home{{sfx}}.dc.html#registry">Registry</a><a href="SN-Home{{sfx}}.dc.html#issuers">Portal</a><a href="SN-Pricing{{sfx}}.dc.html" aria-current="page">Pricing</a><button type="button" class="tog" onClick="{{flip}}" aria-label="{{flipAria}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{flipLabel}} mode</button><a class="btn pri" href="#">Start free</a></nav></sc-if>
+<main>
+<section class="dotfield" aria-labelledby="pt" style="position: relative; overflow: hidden; padding: 72px 0 88px; border-bottom: 1px solid var(--line)">
+<div class="mark" aria-hidden="true" style="position: absolute; right: -120px; top: -40px; width: 760px; height: 562px; opacity: .14"></div>
+<div class="wrap" style="position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap"><div><p class="lab">Pricing</p><h1 id="pt" class="disp" style="margin: 14px 0 0; font-size: clamp(44px, 5.6vw, 72px); line-height: 1; letter-spacing: -.04em; font-weight: 800">Pricing</h1><p class="body" style="max-width: 560px">The free tier is the floor of the plan ladder, not a trial that expires. Add seats when the team needs drafting and shared workspaces.</p></div>
+<div class="billtog" role="group" aria-label="Billing period"><button type="button" aria-pressed="{{mOn}}" onClick="{{toMonthly}}">Monthly</button><button type="button" aria-pressed="{{yOn}}" onClick="{{toYearly}}">Yearly <span class="save">−17%</span></button></div></div>
+</section>
+<section aria-label="Plans" style="padding: 72px 0 112px">
+<div class="wrap"><div class="grid3" style="align-items: start">
+<section class="surf plan"><h3 class="disp pname">Free</h3><p class="pdesc">One person per org. Just the basics.</p>
+<p class="disp pprice">0 €</p><p class="lab punit">Free tier · no expiry</p>
+<a class="btn sec pcta" href="#">Start free</a></section>
+<section class="surf plan rec"><div class="pnrow"><h3 class="disp pname">Business</h3><span class="ftag">For teams</span></div><p class="pdesc">Unmetered matching, drafting and team seats.</p>
+<p class="disp pprice">{{bizPrice}}</p><p class="lab punit">{{bizUnit}}</p><p class="pteam">{{bizTeam}}</p>
+<a class="btn pri pcta" href="#">Start 7-day trial</a><a class="lnk" href="#" style="align-self: center; font-size: 14px">or subscribe now</a></section>
+<section class="surf plan"><h3 class="disp pname">Partner</h3><p class="pdesc">Negotiated terms for firms that need them.</p>
+<p class="disp pprice">Talk to us</p><p class="lab punit">Invoiced · set by agreement</p>
+<a class="btn sec pcta" href="#">Book a call</a></section>
+</div>
+<div class="pfoot"><span>All prices exclude VAT. Seat changes are prorated by Stripe.</span><span>Need a connector or market? <a class="lnk" href="#" style="min-height: 0">See integrations</a></span></div>
+</div>
+</section>
+<section class="sect" aria-labelledby="cmp">
+<div class="wrap"><p class="lab">Compare</p><h2 id="cmp" class="h2" style="margin-bottom: 40px">What each plan includes.</h2>
+<div class="surf" style="overflow-x: auto"><table class="cmp"><thead><tr><th scope="col" class="lab">Feature</th><th scope="col" class="lab">Free</th><th scope="col" class="lab">Business</th><th scope="col" class="lab">Partner</th></tr></thead><tbody>
+<tr><th scope="row" style="font-weight: 400">Tender matching</th><td><span style="font-size: 13px">Capped per month</span></td><td><span style="font-size: 13px">Unmetered</span></td><td><span style="font-size: 13px">Unmetered</span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Explanations and enrichment</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span style="font-size: 13px">Unmetered</span></td><td><span style="font-size: 13px">Unmetered</span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Data-source connectors (SharePoint, Google Drive)</th><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Exports (CSV, PDF)</th><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Workspace audit log</th><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Document generation (proposals, bid drafts)</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">The agent and analytics</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Team seats you add or remove any time, prorated</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Org settings and invitations</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Share a workspace with guests</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Org-wide audit log and data export</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Bespoke integrations</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Dedicated support</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Negotiated seat price, term and payment days</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Invoiced subscription tied to an agreement reference</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Seat count and billing interval set by agreement</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">Optional development fee</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="yes" role="img" aria-label="Included"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">SSO / SCIM</th><td><span class="no" role="img" aria-label="Not included"></span></td><td><span class="no" role="img" aria-label="Not included"></span></td><td><span style="font-size: 13px">Planned</span></td></tr>
+</tbody></table></div></div>
+</section>
+<section class="sect faq" aria-labelledby="faq">
+<div class="wrap grid2" style="align-items: start"><div><p class="lab">Questions</p><h2 id="faq" class="h2">Before you start.</h2></div>
+<div>
+<details open="open"><summary>Is the free tier a trial?</summary><p>No. The free tier is the floor of the plan ladder and does not expire. It covers one person per organisation with capped matches each month.</p></details>
+<details><summary>How does the Business trial work?</summary><p>Start a 7-day trial of Business, or subscribe straight away. [Answer: what happens when the trial ends]</p></details>
+<details><summary>How are seats billed?</summary><p>Business is 200 € per seat per month, excluding VAT. Add or remove seats any time; changes are prorated by Stripe. A team of 4 is 800 € a month.</p></details>
+<details><summary>What does Partner change?</summary><p>Seat price, term, payment days, seat count and billing interval are set by agreement, invoiced against an agreement reference. An optional development fee covers bespoke integrations.</p></details>
+<details><summary>Which sources are covered?</summary><p>Over thirty contracted sources, from public-sector portals to development-bank procurement. Need a connector or market we do not cover yet? [See integrations]</p></details>
+</div></div>
+</section>
+<section class="r inv cta" aria-labelledby="cta" style="position: relative; overflow: hidden; border-top: 1px solid var(--line)">
+<div class="scrim" style="background: linear-gradient(90deg, rgba(var(--scrim), .92) 0%, rgba(var(--scrim), .55) 45%, rgba(var(--scrim), .1) 75%)"></div>
+<div class="wrap" style="position: relative; padding-top: 120px; padding-bottom: 120px">
+<h2 id="cta" class="h2" style="font-size: clamp(40px, 5vw, 64px); max-width: 760px">See it on your own pipeline.</h2>
+<div style="display: flex; gap: 16px; align-items: center; margin-top: 32px; flex-wrap: wrap"><a href="#" class="btn pri">Start free</a><a href="SN-Pricing{{sfx}}.dc.html" class="btn sec">See pricing</a><a href="#" class="lnk">View whole demo as a guest</a></div>
+</div>
+</section>
+</main>
+<footer class="foot">
+<div class="wrap fgrid">
+<div><span class="brand" style="color: var(--ink)"><span style="color: #EF4136"><svg viewBox="0 0 700 518" width="37.8" height="28" aria-hidden="true" style="display: block; flex: none"><path d="M18 14 L100 18 L182 190 L186 14 L330 14 L668 252 L670 268 L668 500 L320 500 L205 312 L198 500 L108 500 L18 262 Z" fill="currentColor"></path></svg></span><b style="font-size: 28px">Klarum</b></span><p style="max-width: 300px; margin: 20px 0 0; font-size: 14px; line-height: 1.5; color: var(--sub)">Procurement software for infrastructure bid teams. Stockholm, Medborgarplatsen 25.</p></div>
+<nav aria-label="Product"><p class="lab">Product</p><div class="flinks"><a href="SN-Notices{{sfx}}.dc.html">Notices</a><a href="SN-Home{{sfx}}.dc.html#registry">Registry</a><a href="SN-Home{{sfx}}.dc.html#issuers">Portal</a><a href="SN-Pricing{{sfx}}.dc.html">Pricing</a></div></nav>
+<nav aria-label="Company"><p class="lab">Company</p><div class="flinks"><a href="#">About</a><a href="#">Careers</a><a href="#">Ask us directly</a></div></nav>
+<nav aria-label="Legal"><p class="lab">Legal</p><div class="flinks"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div></nav>
+</div>
+<div aria-hidden="true" class="mark" style="background: var(--surf); position: absolute; left: 50%; transform: translateX(-50%); bottom: -260px; width: min(1180px, 120%); height: 872px; z-index: 1"></div>
+<p class="lab wrap" style="position: absolute; left: 0; right: 0; bottom: 24px; z-index: 3; font-size: 11px">© 2026 Klarum</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mode":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+theme() {
+const mode = (this.state && this.state.mode) || this.props.mode || 'light';
+const dark = mode === 'dark';
+return {
+mode, sfx: dark ? '-Dark' : '', ink: dark ? '#f3f2ec' : '#1d2931',
+flip: () => this.setState({ mode: dark ? 'light' : 'dark' }),
+flipLabel: dark ? 'Light' : 'Dark', flipAria: dark ? 'Switch to light mode' : 'Switch to dark mode',
+menuShow: !!(this.state && this.state.menu), menuOpen: this.state && this.state.menu ? 'true' : 'false',
+toggleMenu: () => this.setState({ menu: !(this.state && this.state.menu) })
+};
+}
+
+bill() {
+const yearly = (this.state || {}).bill === 'yearly';
+return {
+bizPrice: yearly ? '166 €' : '200 €', bizUnit: yearly ? 'Per seat / month · billed yearly · excl. VAT' : 'Per seat / month · excl. VAT',
+bizTeam: yearly ? 'A team of 4 is 664 € / month, billed yearly.' : 'A team of 4 is 800 € / month.',
+mOn: yearly ? 'false' : 'true', yOn: yearly ? 'true' : 'false',
+toMonthly: () => this.setState({ bill: 'monthly' }), toYearly: () => this.setState({ bill: 'yearly' })
+};
+}
+
+renderVals() { return { ...this.theme(), ...this.bill() }; }
+
+}
+</script>
+</body>
+</html>

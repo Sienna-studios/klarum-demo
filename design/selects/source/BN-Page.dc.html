@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B Night: full homepage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:#0D0D10;color:#fff}
+a{color:inherit;text-decoration:none}
+.disp{font-family:"Inter Tight",Inter,sans-serif}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.lab{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#A9B1BA}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:4px;font-weight:600;font-size:16px;box-sizing:border-box}
+.pri{background:#EF4136;color:#0D0D10}
+.sec{border:1.5px solid #fff;color:#fff}
+.lnk{font-weight:600;text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.surf{background:#15161B;border:1px solid #2A2E35;border-radius:6px}
+.meter{display:inline-flex;gap:3px;vertical-align:middle}
+.meter span{width:7px;height:7px;background:#39424C}
+.meter span.on{background:#EF4136}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:12px 16px;border-top:1px solid #2A2E35}
+.nrow b{font-size:14px;font-weight:600;line-height:1.3}
+.nrow i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#A9B1BA}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;background:#FFE2D6;border:3px solid #0D0D10;transform:translate(-50%,-50%);box-sizing:border-box}
+.card{position:absolute;box-sizing:border-box;width:244px;padding:10px 12px;background:rgba(21,22,27,.94);border:1px solid #39424C;border-radius:4px}
+.card b{display:block;font-size:14px;line-height:1.3;font-weight:600}
+.card i{display:flex;justify-content:space-between;align-items:center;font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#A9B1BA;margin-top:6px}
+@keyframes ping{0%{transform:translate(-50%,-50%) scale(1);opacity:.6}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none!important}}
+.pulse{position:absolute;width:14px;height:14px;border-radius:50%;border:2px solid #FFE2D6;animation:ping 2.6s ease-out infinite}
+
+
+.hero{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0D0D10 url(/_blob/c4cb9137bc6416b0914def2b56442cd0) center/cover no-repeat}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px;box-sizing:border-box}
+.sect{padding:112px 0;border-top:1px solid #2A2E35}
+.h2{font-family:"Inter Tight",Inter,sans-serif;font-size:52px;line-height:1.02;letter-spacing:-0.035em;font-weight:700;margin:14px 0 0}
+.body{font-size:18px;line-height:1.55;color:#E4E7EA;margin:18px 0 0;max-width:520px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:24px;margin-top:56px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:64px;align-items:center}
+.ph{border:1.5px dashed #39424C;border-radius:4px;height:56px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:12px;color:#A9B1BA;letter-spacing:.05em}
+.line{height:8px;border-radius:2px;background:#2A2E35}
+.cite{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;padding:4px 8px;border:1px solid #EF4136;border-radius:3px;color:#FFB3AA}
+.stage-row{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:12px;padding:8px 0}
+.sq{display:flex;gap:4px;flex-wrap:wrap}
+.sq span{width:9px;height:9px;background:#EF4136}
+.sq span.d{background:#39424C}
+.cap{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid #2A2E35;font-size:15px}
+.bar{height:6px;background:#2A2E35;border-radius:2px;position:relative}
+.bar span{position:absolute;left:0;top:0;bottom:0;background:#EF4136;border-radius:2px}
+.dotfield{background-color:#0D0D10;background-image:radial-gradient(#2E343C 1.2px,transparent 1.3px);background-size:14px 14px}
+.ctaband{position:relative;overflow:hidden;background:#0D0D10 url(/_blob/bec8a51223818b528af97335f5af392f) 70% 75%/cover no-repeat}
+
+</style>
+</helmet>
+<div style="width:100%;background:#0D0D10">
+<section class="hero">
+<header style="position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 64px">
+<a href="#" style="font-size:24px;font-weight:700;letter-spacing:-0.02em">Klarum</a>
+<nav style="display:flex;gap:32px;font-size:15px;font-weight:500"><a href="#">Notices</a><a href="#">Registry</a><a href="#">Portal</a><a href="#">Pricing</a></nav>
+<a href="#" class="btn sec" style="min-height:44px;padding:0 20px;font-size:15px">Start free</a>
+</header>
+<main style="position:absolute;left:64px;top:128px;width:620px;z-index:2">
+<div class="lab">Procurement software for infrastructure bid teams</div>
+<h1 class="disp" style="margin:16px 0 0;font-size:80px;line-height:.98;letter-spacing:-0.04em;font-weight:700">Source more of the work that fits.</h1>
+<p style="margin:22px 0 0;font-size:19px;line-height:1.5;max-width:480px;color:#E4E7EA">Over thirty contracted sources, scored against what your team can actually deliver.</p>
+<div style="display:flex;gap:20px;align-items:center;margin-top:28px"><a href="#" class="btn pri">Start free</a><a href="#" class="lnk">See pricing</a></div>
+</main>
+<div class="pin" style="left:38.0%;top:69.8%"></div><div class="card" style="left:calc(38.0% + 16px);top:69.8%;transform:translateY(-50%)"><b>Rail corridor signalling upgrade</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></i></div><div class="pin" style="left:53.7%;top:49.9%"></div><div class="card" style="left:calc(53.7% + 16px);top:49.9%;transform:translateY(-50%)"><b>Tunnel lining supply, metro extension</b><i><span>Tender notice</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></span></i></div><div class="pin" style="left:67.7%;top:33.9%"></div><div class="card" style="left:calc(67.7% - 258px);top:33.9%;transform:translateY(-50%)"><b>Ground improvement, port access road</b><i><span>Prequalification</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span></span></i></div><div class="pin" style="left:83.8%;top:24.2%"></div><div class="card" style="left:calc(83.8% - 258px);top:24.2%;transform:translateY(-50%)"><b>Bridge bearing replacement framework</b><i><span>Framework</span><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></i></div>
+<div class="mono" style="position:absolute;left:64px;bottom:28px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#A9B1BA">Each red mark is a notice that fits your capability index. Illustrative.</div>
+</section>
+
+<section style="padding:40px 0;border-top:1px solid #2A2E35">
+<div class="wrap" style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+<span class="lab" style="flex:none">Built and backed by people from</span>
+<div style="flex:1 1 600px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px"><div class="ph">[LOGO]</div><div class="ph">[LOGO]</div><div class="ph">[LOGO]</div><div class="ph">[LOGO]</div><div class="ph">[LOGO]</div></div>
+</div>
+</section>
+
+<section class="sect dotfield">
+<div class="wrap">
+<div class="lab">Why Klarum</div>
+<p class="disp" style="margin:20px 0 0;font-size:64px;line-height:1.04;letter-spacing:-0.04em;font-weight:700;max-width:1100px">A chatbot can write the bid. <span style="color:#A9B1BA">Finding the right one to write is the hard part.</span></p>
+</div>
+</section>
+
+<section class="sect">
+<div class="wrap">
+<div class="lab">One workflow, sourcing to award</div>
+<h2 class="h2">From notice to award, in one place.</h2>
+<div class="grid3">
+<article class="surf" style="overflow:hidden">
+<div style="padding:28px 28px 20px"><div class="mono" style="color:#EF4136;font-size:13px;font-weight:600">01 Sourcing</div><h3 style="margin:10px 0 0;font-size:22px;line-height:1.25;font-weight:600">Every notice worth your time, in one feed.</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:#C9CED3">Over thirty contracted sources, scored against your capability index.</p></div>
+<div style="background:#0D0D10;border-top:1px solid #2A2E35"><div class="nrow"><b>Rail corridor signalling upgrade</b><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span><i>Tender notice</i><i>Closes [date]</i></div><div class="nrow"><b>Tunnel lining supply, metro extension</b><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></span><i>Tender notice</i><i>Closes [date]</i></div><div class="nrow"><b>Bridge bearing replacement framework</b><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span><i>Framework</i><i>Closes [date]</i></div></div>
+</article>
+<article class="surf" style="overflow:hidden">
+<div style="padding:28px 28px 20px"><div class="mono" style="color:#EF4136;font-size:13px;font-weight:600">02 Drafting</div><h3 style="margin:10px 0 0;font-size:22px;line-height:1.25;font-weight:600">Submissions drafted from your own references.</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:#C9CED3">Each claim is cited to its source page.</p></div>
+<div style="background:#0D0D10;border-top:1px solid #2A2E35;padding:20px;display:flex;flex-direction:column;gap:10px">
+<div class="lab">Section 4.2, Method statement</div>
+<div class="line" style="width:92%"></div><div class="line" style="width:86%"></div>
+<div style="font-size:14px;line-height:1.5;color:#fff;border-left:2px solid #EF4136;padding-left:10px">Comparable bored pile works delivered on a live river crossing.</div>
+<div><span class="cite">Ref. [Project name], p. 12</span></div>
+<div class="line" style="width:78%"></div><div class="line" style="width:64%"></div>
+</div>
+</article>
+<article class="surf" style="overflow:hidden">
+<div style="padding:28px 28px 20px"><div class="mono" style="color:#EF4136;font-size:13px;font-weight:600">03 Lifecycle</div><h3 style="margin:10px 0 0;font-size:22px;line-height:1.25;font-weight:600">The bid does not end at submission.</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:#C9CED3">Win rate, cycle time and throughput, tracked per workspace.</p></div>
+<div style="background:#0D0D10;border-top:1px solid #2A2E35;padding:16px 20px">
+<div class="stage-row"><span class="lab">Sourced</span><div class="sq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="stage-row"><span class="lab">Drafting</span><div class="sq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="stage-row"><span class="lab">Submitted</span><div class="sq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="stage-row"><span class="lab">Awarded</span><div class="sq"><span></span><span></span><span></span><span></span></div></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px;border-top:1px solid #2A2E35;padding-top:12px">
+<div><div class="lab">Win rate</div><div class="disp" style="font-size:22px;font-weight:700;margin-top:4px">[ ]</div></div><div><div class="lab">Cycle time</div><div class="disp" style="font-size:22px;font-weight:700;margin-top:4px">[ ]</div></div><div><div class="lab">Throughput</div><div class="disp" style="font-size:22px;font-weight:700;margin-top:4px">[ ]</div></div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="sect">
+<div class="wrap grid2">
+<div>
+<div class="lab">Capability index</div>
+<h2 class="h2">Scored against what your team can deliver.</h2>
+<p class="body">Klarum scores every incoming notice against your team&#39;s capability index before it reaches your feed, so bid managers start from fit instead of search.</p>
+<div style="margin-top:28px"><a href="#" class="lnk">See it on your own pipeline</a></div>
+</div>
+<div class="surf" style="overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:16px 18px"><span class="lab" style="color:#fff">Your capability index</span><span class="lab">Illustrative</span></div>
+<div class="cap"><span>Bridges and structures</span><div class="bar"><span style="width:90%"></span></div></div>
+<div class="cap"><span>Piling and foundations</span><div class="bar"><span style="width:80%"></span></div></div>
+<div class="cap"><span>Rail systems</span><div class="bar"><span style="width:55%"></span></div></div>
+<div class="cap"><span>Tunnelling</span><div class="bar"><span style="width:35%"></span></div></div>
+<div style="margin:6px 18px 18px;padding:14px 16px;border:1px solid #EF4136;border-radius:4px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center">
+<span class="lab" style="color:#FFB3AA">Incoming notice</span><span class="lab" style="color:#FFB3AA">Fit</span>
+<b style="font-size:15px">Bored pile foundations, river crossing</b><span class="meter"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sect dotfield">
+<div class="wrap grid2">
+<div>
+<div class="lab">Coverage</div>
+<h2 class="h2">Over thirty contracted sources.</h2>
+<p class="body">From public-sector portals to development-bank procurement, read continuously and merged into one feed.</p>
+</div>
+<div class="surf" style="padding:28px;background:#0D0D10">
+<div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px"><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div><div style="aspect-ratio:1;border:1px solid #EF4136;background:rgba(239,65,54,.18);border-radius:3px"></div></div>
+<div class="lab" style="margin-top:16px">Each tile is a contracted source. Source names: [LIST FROM KLARUM]</div>
+</div>
+</div>
+</section>
+
+<section style="border-top:1px solid #2A2E35;padding:40px 0">
+<div class="wrap" style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="lab" style="color:#fff">For issuers</span><span class="mono" style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid #FFE2D6;color:#FFE2D6;padding:4px 8px;border-radius:3px">In development</span><span style="font-size:16px;color:#E4E7EA">Issuer-side tools are on the way.</span></div>
+<a href="#" class="lnk">Ask us directly</a>
+</div>
+</section>
+
+<section class="ctaband" style="border-top:1px solid #2A2E35">
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,16,.9) 0%,rgba(13,13,16,.55) 45%,rgba(13,13,16,.1) 75%)"></div>
+<div class="wrap" style="position:relative;padding-top:120px;padding-bottom:120px">
+<h2 class="h2" style="font-size:64px;max-width:760px">See it on your own pipeline.</h2>
+<div style="display:flex;gap:16px;align-items:center;margin-top:32px;flex-wrap:wrap"><a href="#" class="btn pri">Start free</a><a href="#" class="btn sec">See pricing</a><a href="#" class="lnk">View whole demo as a guest</a></div>
+</div>
+</section>
+
+<footer style="border-top:1px solid #2A2E35;padding:56px 0 40px">
+<div class="wrap" style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
+<div><div style="font-size:24px;font-weight:700;letter-spacing:-0.02em">Klarum</div><div style="margin-top:10px;font-size:14px;color:#A9B1BA">Stockholm, Medborgarplatsen 25</div></div>
+<nav style="display:flex;gap:28px;font-size:15px;flex-wrap:wrap" aria-label="Footer"><a href="#">Notices</a><a href="#">Registry</a><a href="#">Portal</a><a href="#">Pricing</a><a href="#">Ask us directly</a></nav>
+</div>
+<div class="wrap lab" style="margin-top:40px">© 2026 Klarum</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4700}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

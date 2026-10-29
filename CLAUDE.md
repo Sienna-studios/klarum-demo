@@ -6,6 +6,8 @@ A reference rebuild of the klarum.com homepage (Next.js App Router, TypeScript s
 
 `SPEC.md` (what to build), `tokens.css` (design tokens), `claims.md` (what the page may say), `notices.json` (real notice data), `BASELINE.md` (live-site numbers). Do not open the claude.ai design canvases and do not re-research Klarum; everything needed was extracted into these files.
 
+For visual design work, use `design/` (start with `design/README.md`): the exported design canvases, as source HTML plus rendered WebPs. Compare your screenshots against `design/brief/renders/Home-Draft-*.webp` and the component cards, and borrow personality ideas from `design/selects/` and `design/selects-ii/`. The Brief wins conflicts. Copy and facts still come only from `claims.md` and `notices.json`.
+
 ## Rules
 
 - Budget, mobile, cold, before load: <=410 KB, <=25 requests, zero requests to app.klarum.com, api.klarum.com or posthog.

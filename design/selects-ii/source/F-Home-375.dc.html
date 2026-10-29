@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum home, selected system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{box-sizing:border-box;--paper:#fbfaf6;--paper-2:#f4f2eb;--paper-3:#ece9df;--card:#fff;--ink:#0e0e10;--ink-2:#45464a;--ink-3:#6f7075;--rule:rgba(14,14,16,.12);--rule-2:rgba(14,14,16,.5);--signal:#ef4136;--signal-ink:#c4301f;--signal-wash:#fbeae8;--pos:#1c703f;--pos-bg:#eaf3eb;--info:#0f4d92;--info-bg:#e8eef8;--warn:#7a4f00;--warn-bg:#faf1de;--t-state:150ms;--t-reveal:160ms;--t-trace:180ms;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.k *{box-sizing:border-box}
+.k a{color:inherit;text-decoration:none}
+.k :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.eyebrow{color:var(--signal-ink)}
+.h2{margin:0;font-size:48px;font-weight:400;line-height:1.05;letter-spacing:-.025em}
+.h3{margin:0;font-size:28px;font-weight:500;line-height:1.2;letter-spacing:-.015em}
+.lead{margin:0;font-size:18px;line-height:1.6;color:var(--ink-2)}
+.body{margin:0;font-size:16px;line-height:1.65;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border:0;border-radius:4px;font:600 16px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background-color var(--t-state),color var(--t-state)}
+.btn-lg{min-height:52px;padding:0 24px;font-size:17px}
+.k .k .btn-p{background:var(--signal);color:var(--ink)}.k .btn-p:hover{background:var(--ink);color:var(--paper)}
+.k .k .btn-s{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}.k .btn-s:hover{background:var(--ink);color:var(--paper)}
+.btn-q{background:transparent;color:var(--ink-2)}.btn-q:hover{color:var(--ink);background:var(--paper-2)}
+.tlink{font-weight:500;text-decoration:underline !important;text-underline-offset:4px;text-decoration-thickness:1px}
+.tlink:hover{text-decoration-thickness:2px}
+.slab{background:var(--signal);color:#fff;padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.tag{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.t-live{background:var(--pos-bg);color:var(--pos)}.t-demo{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--paper)}.t-ill{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2);background:repeating-linear-gradient(135deg,transparent 0 4px,rgba(14,14,16,.05) 4px 5px)}.t-calc{background:var(--info-bg);color:var(--info)}
+.chip{display:inline-flex;align-items:center;justify-content:center;height:24px;padding:0 8px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.c-met,.c-live{color:var(--pos);background:var(--pos-bg)}.c-gap{color:var(--signal-ink);background:var(--signal-wash)}.c-unm{color:var(--ink-2);background:var(--paper-3)}.c-dev{color:var(--info);background:var(--info-bg)}.c-dif{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2)}.c-pass{background:var(--ink);color:var(--paper)}.c-out{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule-2)}.c-match{color:var(--pos);background:var(--pos-bg)}.c-partial{color:var(--warn);background:var(--warn-bg)}.c-none{color:var(--ink-2);background:var(--paper-3)}
+.meter{display:inline-flex;gap:3px;align-items:center}
+.meter i{display:block;width:11px;height:11px;box-shadow:inset 0 0 0 1.5px var(--rule-2)}
+.meter i.on{background:var(--signal);box-shadow:none}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.seg{display:inline-flex;padding:3px;border:1px solid var(--rule);border-radius:6px;background:var(--paper-2)}
+.seg button{min-height:40px;padding:0 14px;border:0;border-radius:4px;background:transparent;font:500 14px/1.2 'IBM Plex Sans',sans-serif;color:var(--ink-2);cursor:pointer;transition:background-color var(--t-state),color var(--t-state)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(14,14,16,.12)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip:focus{position:fixed;left:12px;top:10px;z-index:30;width:auto;height:auto;clip:auto;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:4px;background:var(--ink);color:var(--paper);font-weight:600}
+/* header */
+.hdr{position:sticky;top:0;z-index:10;background:rgba(251,250,246,.97);border-bottom:1px solid var(--rule)}
+.hdr-in{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav{display:flex;gap:4px}
+.nav a{display:inline-flex;align-items:center;height:44px;padding:0 12px;font-size:14px;color:var(--ink-2);border-radius:4px}
+.nav a:hover{color:var(--ink);background:var(--paper-2)}
+.hright{display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:14px}
+.signin{display:inline-flex;align-items:center;height:44px;padding:0 10px;color:var(--ink-2)}
+.menu{display:none;width:44px;height:44px;place-items:center;border:0;background:transparent;color:var(--ink);border-radius:4px;cursor:pointer}
+.mnav{display:none}
+/* hero ledger */
+.lr{display:grid;grid-template-columns:150px minmax(0,1fr) 220px 96px 120px;gap:20px;align-items:center;padding:12px 20px;border-top:1px solid var(--rule)}
+.lr .ttl{display:block;font-size:15px;font-weight:600;line-height:1.3}
+.lr .ov{display:block;margin-top:2px;font-size:13px;line-height:1.4;color:var(--ink-2)}
+.ext{display:inline-flex;align-items:center;gap:4px;min-height:44px;font-size:14px;font-weight:500;text-decoration:underline !important;text-underline-offset:3px}
+/* sections */
+.sect{padding:112px 0;border-top:1px solid var(--rule)}
+.step{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px;align-items:start}
+.stepnav a{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;border-radius:3px;box-shadow:inset 0 0 0 1px var(--rule-2);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+/* decision rows */
+.sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--rule)}
+.sum div{padding:12px 16px;border-left:1px solid var(--rule)}
+.sum div:first-child{border-left:0}
+.dh,.dr{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr) 88px 132px;gap:14px;align-items:center}
+.dh{padding:8px 16px;border-bottom:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.dr{width:100%;padding:12px 16px;border:0;border-top:1px solid var(--rule);background:transparent;text-align:left;font:inherit;font-size:13.5px;line-height:1.4;color:var(--ink-2);cursor:pointer;transition:background-color var(--t-state)}
+.dr:hover{background:var(--paper-2)}
+.dr[aria-expanded="true"]{background:var(--signal-wash);box-shadow:inset 3px 0 0 var(--signal)}
+.dr .nt{display:block;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.dr.below .nt{font-weight:500}
+.verdict{padding:14px 16px 16px 19px;border-top:1px dashed var(--rule);background:var(--signal-wash);font-size:15px;line-height:1.55;transition:opacity var(--t-reveal) ease-out}
+/* document */
+.doc{font-family:'IBM Plex Serif',Georgia,serif;font-size:17px;line-height:1.8;color:var(--ink)}
+.cl{display:inline;padding:0 1px;border:0;background:transparent;font:inherit;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;cursor:pointer;transition:background-color var(--t-trace)}
+.cl.met{text-decoration-color:var(--signal)}
+.cl.nos{text-decoration-color:var(--ink-2);text-decoration-style:dashed}
+.cl:hover,.cl[aria-pressed="true"]{background:var(--signal-wash)}
+.note{padding:12px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--card);font-size:13.5px;line-height:1.45;transition:box-shadow var(--t-trace)}
+.note.on{box-shadow:0 0 0 2px var(--ink)}
+.hold{margin:20px 0 0;padding:14px 16px;border:1.5px dashed var(--signal);border-radius:4px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.5;color:var(--signal-ink)}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.kpi{padding:14px 16px;border-left:1px solid var(--rule)}
+.kpi:first-child{border-left:0}
+.stage{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center;padding:10px 16px;border-top:1px solid var(--rule)}
+.bar{display:flex;gap:8px;flex-wrap:wrap}
+.bar span{display:inline-flex;align-items:center;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:3px;background:var(--card);font-size:13px}
+/* requirements */
+.rq{display:grid;grid-template-columns:minmax(0,1fr) 100px;gap:12px;align-items:center;width:100%;padding:13px 16px;border:0;border-top:1px solid var(--rule);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:background-color var(--t-state)}
+.rq:first-child{border-top:0}
+.rq:hover{background:var(--paper-2)}
+.rq[aria-pressed="true"]{background:var(--signal-wash);box-shadow:inset 3px 0 0 var(--signal)}
+.rq .t{display:block;font-size:14.5px;font-weight:500;line-height:1.35}
+.rq .m{display:block;margin-top:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.03em;color:var(--ink-2)}
+.chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;border:1px solid var(--rule);border-radius:4px}
+.chain li{padding:10px 12px;border-left:1px solid var(--rule);font-size:13px;line-height:1.4}
+.chain li:first-child{border-left:0}
+.chain .l{display:block;margin-bottom:3px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.chain li.stop{background:var(--signal-wash);color:var(--signal-ink)}
+.chain li.void{color:var(--ink-3)}
+/* surfaces */
+.srow{display:grid;grid-template-columns:64px minmax(0,1.1fr) minmax(0,1.6fr) 120px 180px 28px;gap:16px;align-items:center;width:100%;min-height:56px;padding:10px 0;border:0;border-top:1px solid var(--rule);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.srow:hover .sname{text-decoration:underline;text-underline-offset:4px}
+.srow[aria-expanded="true"]{border-top-color:var(--ink)}
+.smob{display:none;gap:6px;flex-wrap:wrap;margin-top:6px}
+.plus{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--rule);border-radius:50%;font-family:'IBM Plex Mono',monospace;font-size:14px}
+.acc{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%;min-height:64px;padding:16px 0;border:0;border-top:1px solid var(--rule);background:transparent;text-align:left;font:500 18px/1.4 'IBM Plex Sans',sans-serif;color:var(--ink);cursor:pointer;transition:color var(--t-state)}
+.acc:hover{color:var(--signal-ink)}
+.foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.k *{transition:none !important;animation:none !important}}
+@media (max-width:1023px){
+.wrap{padding:0 32px}
+.hero-g,.step,.sor,.docg{grid-template-columns:1fr !important}
+.lr{grid-template-columns:120px minmax(0,1fr) 96px 110px}.lr .iss{display:none}
+.dh{display:none}.dr{grid-template-columns:minmax(0,1fr) auto}.dr .dc-scope,.dr .dc-ev,.dr .dc-close{display:none}.dr .dc-verdict{grid-column:1 / -1}
+.srow{grid-template-columns:52px minmax(0,1fr) 120px 28px}.srow .sdesc,.srow .siss{display:none !important}.smob{display:flex !important}
+}
+@media (max-width:767px){
+.wrap{padding:0 20px}
+.nav,.signin,.lang{display:none !important}.hdr-in{grid-template-columns:1fr auto}.menu{display:grid}
+.mnav{display:block;border-top:1px solid var(--rule);background:var(--paper)}
+.hright .btn{min-height:44px;padding:0 14px;font-size:15px}
+.sect{padding:72px 0}.h2{font-size:34px}.h3{font-size:24px}
+.h1a{font-size:25px !important}.h1b{font-size:38px !important}
+.ctas{flex-direction:column;align-items:stretch !important}.ctas .btn{width:100%}
+.band{height:120px !important}.ledger{margin:-40px 12px 0 !important}
+.lr{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.lr .src{display:none}.lr .fitc{order:3}.lr .cls{order:2;text-align:right}.lr .ntc{order:1;grid-column:1 / -1}
+.lhead{display:none !important}
+.sum{grid-template-columns:1fr 1fr 1fr}.sum div{padding:10px}
+.sum p{font-size:20px !important}.sum p.mono{font-size:9.5px !important;letter-spacing:.04em}
+.kpis{grid-template-columns:1fr}.kpi{border-left:0;border-top:1px solid var(--rule)}.kpi:first-child{border-top:0}
+.chain{grid-template-columns:1fr}.chain li{border-left:0;border-top:1px solid var(--rule)}.chain li:first-child{border-top:0}
+.srow{grid-template-columns:44px minmax(0,1fr) 28px}.srow .ssup{display:none !important}
+.sdg,.fgrid{grid-template-columns:1fr !important}
+.trust{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.doccard{padding:24px 20px !important}
+}
+</style>
+</helmet>
+<div class="k">
+<a href="#main" class="sr skip">Skip to content</a>
+<header class="hdr">
+<div class="wrap hdr-in">
+<a href="#top" aria-label="Klarum home" style="display: inline-flex; align-items: center; height: 44px"><img src="/_blob/c215e3d42ee04716e1063870295dac39" alt="Klarum" width="113" height="22" style="height: 22px; width: auto; display: block"></a>
+<nav class="nav" aria-label="Main"><a href="F-Notices.dc.html">Notices</a><a href="F-Pricing.dc.html">Pricing</a><a href="#">Articles</a></nav>
+<div class="hright">
+<span class="lang mono" style="font-size: 12px; letter-spacing: 0.04em; color: var(--ink-2); padding: 0 8px">EN</span>
+<a class="signin" href="#">Sign in</a>
+<a class="btn btn-s" href="#" style="min-height: 40px; padding: 0 16px; font-size: 15px">Start free</a>
+<button type="button" class="menu" aria-label="Menu" aria-expanded="{{menuAria}}" aria-controls="mnav" onClick="{{toggleMenu}}"><sc-if value="{{menuClosed}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></sc-if><sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 5l14 14M19 5L5 19"></path></svg></sc-if></button>
+</div>
+</div>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><nav id="mnav" class="mnav" aria-label="Main, mobile"><ul style="margin: 0; padding: 8px 20px 16px; list-style: none"><li><a href="F-Notices.dc.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; border-bottom: 1px solid var(--rule)">Notices</a></li><li><a href="F-Pricing.dc.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; border-bottom: 1px solid var(--rule)">Pricing</a></li><li><a href="#" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; border-bottom: 1px solid var(--rule)">Articles</a></li><li><a href="#" style="display: flex; align-items: center; min-height: 48px; font-size: 17px">Sign in</a></li></ul></nav></sc-if>
+</header>
+
+<main id="main">
+<span id="top"></span>
+<section aria-labelledby="h-hero">
+<div class="wrap hero-g" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 56px; align-items: end; padding-top: 56px; padding-bottom: 40px">
+<div>
+<p class="mono eyebrow" style="margin: 0">For infrastructure bid teams</p>
+<h1 id="h-hero" style="margin: 20px 0 0; font-weight: 400"><span class="h1a" style="display: block; font-size: 40px; font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance">The Intelligent System of Record for</span><span class="h1b" style="display: block; margin-top: 8px; font-size: 64px; font-weight: 700; line-height: 1.16; letter-spacing: -0.03em"><span class="slab">Infrastructure Procurement.</span></span></h1>
+</div>
+<div>
+<p class="lead" style="font-size: 19px">Klarum helps infrastructure bid teams build bid pipelines, from sourcing to award in one AI-powered workflow.</p>
+<div class="ctas" style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap"><a class="btn btn-p btn-lg" href="#">Start free <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a><a class="btn btn-s btn-lg" href="#">View the demo as a guest</a></div>
+<p style="margin: 14px 0 0; font-size: 15px; color: var(--ink-2)">Free tier with no expiry. No sales call.</p>
+</div>
+</div>
+<figure style="margin: 0; position: relative">
+<img class="band" src="/_blob/358f0ca0789b7247f27b4ae2aba73189" srcset="/_blob/8453ce5fac5b83609cd8dde7eceff517 960w, /_blob/358f0ca0789b7247f27b4ae2aba73189 1920w" sizes="100vw" alt="" width="1920" height="384" fetchpriority="high" style="display: block; width: 100%; height: 176px; object-fit: cover; object-position: 50% 50%">
+<figcaption class="mono" style="position: absolute; right: 16px; top: 12px; padding: 6px 10px; background: var(--paper); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-2)">Prague · still from the klarum.com hero film</figcaption>
+</figure>
+<div class="wrap" style="padding-bottom: 64px">
+<section class="ledger panel" aria-labelledby="h-ledger" style="position: relative; margin-top: -64px; box-shadow: 0 1px 2px rgba(14,14,16,.06), 0 8px 24px rgba(14,14,16,.06)">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; padding: 14px 20px">
+<div style="flex: 1 1 320px"><h2 id="h-ledger" class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2)">Published 24 Oct 2026 · klarum.com/notices · public feed</h2><p style="margin: 4px 0 0; font-size: 14px; color: var(--ink-2)" aria-live="polite">{{viewNote}}</p></div>
+<div class="seg" role="group" aria-label="Fit view"><button type="button" aria-pressed="{{pubP}}" onClick="{{setPub}}">Public view</button><button type="button" aria-pressed="{{exP}}" onClick="{{setEx}}">With an example index</button></div>
+</div>
+<div class="lr lhead mono" aria-hidden="true" style="padding-top: 8px; padding-bottom: 8px; font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-2)"><span>Fit</span><span>Notice</span><span class="iss">Issuer</span><span class="src">Source</span><span>Closes</span></div>
+<ul style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ledger}}" as="r" hint-placeholder-count="4">
+<li class="lr">
+<span class="fitc" style="display: flex; flex-direction: column; gap: 4px"><span class="meter" role="img" aria-label="{{r.label}}"><i class="{{r.c1}}"></i><i class="{{r.c2}}"></i><i class="{{r.c3}}"></i><i class="{{r.c4}}"></i><i class="{{r.c5}}"></i></span><span class="mono" style="font-size: 10px; letter-spacing: 0.04em; color: var(--ink-2)">{{r.fitText}}</span></span>
+<span class="ntc"><span class="ttl">{{r.t}}</span><span class="ov">{{r.o}}</span></span>
+<span class="iss" style="font-size: 14px; color: var(--ink-2)">{{r.i}}</span>
+<a class="ext src" href="#">Mercell<span class="sr"> (original publication, opens in a new tab)</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+<span class="cls mono" style="font-size: 12px; letter-spacing: 0.02em">{{r.d}}</span>
+</li>
+</sc-for>
+</ul>
+<a href="F-Notices.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-top: 1px solid var(--rule); font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px">Browse all notices</a>
+</section>
+</div>
+</section>
+
+<section aria-label="Backers" style="border-top: 1px solid var(--rule); background: var(--paper-2); padding: 28px 0">
+<div class="wrap" style="display: flex; align-items: center; gap: 16px 40px; flex-wrap: wrap">
+<p class="mono" style="margin: 0; flex: none; font-size: 11px; color: var(--ink-2)">Built and backed by people from</p>
+<ul class="trust" style="flex: 1 1 640px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px 24px; font-size: 15px; font-weight: 600; color: var(--ink-2)"><li>KTH</li><li>AI Sweden</li><li>AWS</li><li>Google Maps</li><li>Stockholm School of Economics</li><li>Svea Solar</li></ul>
+</div>
+</section>
+
+<section class="sect" aria-labelledby="h-process">
+<div class="wrap">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+<div><p class="mono eyebrow" style="margin: 0">Sourcing to award</p><h2 id="h-process" class="h2" style="margin-top: 14px">Your Klarum process</h2></div>
+<nav class="stepnav" aria-label="Steps" style="display: flex; gap: 8px; flex-wrap: wrap"><a href="#step-1">01 Sourcing</a><a href="#step-2">02 Drafting</a><a href="#step-3">03 Lifecycle</a></nav>
+</div>
+
+<article id="step-1" class="step" style="margin-top: 64px">
+<div>
+<p class="mono" style="margin: 0; color: var(--ink-2)"><span style="color: var(--signal-ink)">01</span> · Sourcing</p>
+<h3 class="h3" style="margin-top: 14px">Every notice worth your time</h3>
+<p class="body" style="margin-top: 14px">Klarum ingests notices from contracted public sources: national procurement portals, TED, and the development banks. Each is scored against the capability index built from your own documents.</p>
+<p class="body" style="margin-top: 14px; font-size: 15px">Open a row to see the verdict. Nothing below the threshold is deleted; it keeps its reasons.</p>
+</div>
+<div class="panel">
+<div class="panel-h"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Six notices from the public feed · example index</span><span class="tag t-ill">Index, marks and scores illustrative</span></div>
+<div class="sum"><div><p class="mono" style="margin: 0; font-size: 10px; color: var(--ink-2)">Read</p><p style="margin: 2px 0 0; font-size: 24px; font-weight: 500">6</p></div><div><p class="mono" style="margin: 0; font-size: 10px; color: var(--ink-2)">In your feed</p><p style="margin: 2px 0 0; font-size: 24px; font-weight: 500">3</p></div><div><p class="mono" style="margin: 0; font-size: 10px; color: var(--ink-2)">Kept below 3 of 5</p><p style="margin: 2px 0 0; font-size: 24px; font-weight: 500">3</p></div></div>
+<div class="dh" aria-hidden="true"><span>Notice</span><span>Scope vs index</span><span>Evidence</span><span>Closes</span><span>Fit · verdict</span></div>
+<ul style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{decisions}}" as="r" hint-placeholder-count="6">
+<li>
+<button type="button" class="{{r.cls}}" aria-expanded="{{r.open}}" aria-controls="{{r.id}}" onClick="{{r.toggle}}">
+<span><span class="nt">{{r.t}}</span><span style="display: block; margin-top: 2px">{{r.i}}</span></span>
+<span class="dc-scope"><span class="chip {{r.sc}}" style="height: 20px; font-size: 10px">{{r.sl}}</span></span>
+<span class="dc-ev"><span class="chip {{r.ec}}" style="height: 20px; font-size: 10px">{{r.el}}</span></span>
+<span class="dc-close" style="color: var(--ink)">{{r.d}}</span>
+<span class="dc-verdict" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap"><span class="meter" role="img" aria-label="{{r.fitL}}"><i class="{{r.c1}}"></i><i class="{{r.c2}}"></i><i class="{{r.c3}}"></i><i class="{{r.c4}}"></i><i class="{{r.c5}}"></i></span><span class="chip {{r.vc}}" style="height: 20px; font-size: 10px">{{r.vl}}</span></span>
+</button>
+<sc-if value="{{r.isOpen}}" hint-placeholder-val="{{false}}"><div id="{{r.id}}" class="verdict"><p style="margin: 0"><b>{{r.line}}</b></p><p style="margin: 6px 0 0; font-size: 14px; color: var(--ink-2)">Scope: {{r.sn}} · Evidence: {{r.en}} · Closes {{r.d}} · source record 8 of 13 fields.</p></div></sc-if>
+</li>
+</sc-for>
+</ul>
+</div>
+</article>
+
+<article id="step-2" class="step" style="margin-top: 96px">
+<div>
+<p class="mono" style="margin: 0; color: var(--ink-2)"><span style="color: var(--signal-ink)">02</span> · Drafting</p>
+<h3 class="h3" style="margin-top: 14px">Submissions drafted from your own references</h3>
+<p class="body" style="margin-top: 14px">Klarum fills the requirements matrix from past projects, cites the source page behind every claim, and hands back an EOI your legal team can sign.</p>
+<p class="body" style="margin-top: 14px; font-size: 15px">Select an underlined claim to bring its source forward.</p>
+</div>
+<div class="docg" style="display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 16px; align-items: start">
+<article class="panel doccard" aria-labelledby="h-eoi" style="padding: 36px 40px 40px; border-radius: 2px; box-shadow: 0 1px 2px rgba(14,14,16,.05), 0 10px 30px rgba(14,14,16,.05)">
+<p style="margin: 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap"><span class="mono" style="font-size: 11px; color: var(--ink-2)">EOI · N2 Motorway.docx · draft</span><span class="tag t-demo">Demo workspace</span></p>
+<h4 id="h-eoi" class="doc" style="margin: 16px 0 0; font-size: 21px; font-weight: 400">3. Relevant experience</h4>
+<p class="doc" style="margin: 12px 0 0">The firm has delivered supervision mandates on comparable rural corridors, including <button type="button" class="cl met" aria-pressed="{{cl1}}" aria-describedby="note-1" onClick="{{pickCl1}}">28 km of rural road in Kenya</button> under a World Bank facility, with <button type="button" class="cl nos" aria-pressed="{{cl2}}" aria-describedby="note-2" onClick="{{pickCl2}}">lot values within the range set out in this notice</button>.</p>
+<p style="margin: 18px 0 0; font-size: 13px; color: var(--ink-2)">Solid red underline: sourced. Dashed: no source yet; export waits until it is resolved. <span class="tag t-ill">Second status illustrative</span></p>
+</article>
+<aside aria-label="Sources for this section" style="display: grid; gap: 10px">
+<div id="note-1" class="{{n1}}"><p style="margin: 0"><span class="chip c-met" style="height: 20px; font-size: 10px">Source</span></p><p style="margin: 8px 0 0; font-weight: 600">Kenya Roads completion report, p.47</p><p style="margin: 2px 0 0; color: var(--ink-2)">Knowledge · Kenya-Roads-References.docx</p><p style="margin: 8px 0 0; color: var(--ink-2)"><b style="color: var(--ink)">Jonas S.</b> Can we cite the source for the 28 km claim? <b style="color: var(--ink)">Klara</b> Added: Kenya Roads completion report, p.47.</p></div>
+<div id="note-2" class="{{n2}}" style="border-style: dashed"><p style="margin: 0"><span class="chip c-unm" style="height: 20px; font-size: 10px">No source</span></p><p style="margin: 8px 0 0; color: var(--ink-2)">No document in Knowledge supports this claim. Flagged for review before export.</p></div>
+</aside>
+</div>
+</article>
+
+<article id="step-3" class="step" style="margin-top: 96px">
+<div>
+<p class="mono" style="margin: 0; color: var(--ink-2)"><span style="color: var(--signal-ink)">03</span> · Lifecycle</p>
+<h3 class="h3" style="margin-top: 14px">The bid doesn’t end at submission</h3>
+<p class="body" style="margin-top: 14px">Outcomes feed the KPIs, and the schedule shows what the team is carrying next. Win rate, cycle time and throughput are tracked per workspace, so each bid starts from what the last one proved.</p>
+</div>
+<div class="panel">
+<div class="panel-h"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Data Studio · per workspace</span><span class="tag t-demo">Demo workspace</span></div>
+<dl class="kpis" style="margin: 0">
+<div class="kpi"><dt class="mono" style="font-size: 11px; color: var(--ink-2)">Win rate</dt><dd style="margin: 6px 0 0; font-size: 32px; font-weight: 500; letter-spacing: -0.02em">41% <span style="font-size: 14px; color: var(--pos)">+6 pts</span></dd></div>
+<div class="kpi"><dt class="mono" style="font-size: 11px; color: var(--ink-2)">Cycle time</dt><dd style="margin: 6px 0 0; font-size: 32px; font-weight: 500; letter-spacing: -0.02em">18 d <span style="font-size: 14px; color: var(--pos)">9 d faster</span></dd></div>
+<div class="kpi"><dt class="mono" style="font-size: 11px; color: var(--ink-2)">Bids per quarter</dt><dd style="margin: 6px 0 0; font-size: 32px; font-weight: 500; letter-spacing: -0.02em">26 <span style="font-size: 14px; color: var(--pos)">+14</span></dd></div>
+</dl>
+<div class="stage"><span class="mono" style="font-size: 11px; color: var(--ink-2)">In progress</span><div class="bar"><span>Rail signalling</span><span>Wind farm</span></div></div>
+<div class="stage"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Review</span><div class="bar"><span>Hospital imaging</span></div></div>
+<div class="stage"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Submitted</span><div class="bar"><span>Bridge inspection</span></div></div>
+</div>
+</article>
+</div>
+</section>
+
+<section class="sect" aria-labelledby="h-sor" style="background: var(--paper-2)">
+<div class="wrap">
+<p class="mono eyebrow" style="margin: 0">Requirements and evidence</p>
+<h2 id="h-sor" class="h2" style="margin-top: 14px; max-width: 760px">How a tender becomes a system of record</h2>
+<p class="lead" style="margin-top: 18px; max-width: 680px">Tender spec, scanned annexes and Q&amp;A become a requirement schema and an evidence index. Every requirement is matched to evidence you hold or flagged as a gap before the bid team reviews it.</p>
+<div class="sor" style="display: grid; grid-template-columns: 460px minmax(0, 1fr); gap: 20px; margin-top: 44px; align-items: start">
+<div class="panel">
+<div class="panel-h"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Requirements · demo workspace</span><span class="tag t-ill">Statuses illustrative</span></div>
+<div role="group" aria-label="Requirements">
+<sc-for list="{{reqs}}" as="r" hint-placeholder-count="4"><button type="button" class="rq" aria-pressed="{{r.sel}}" aria-controls="req-detail" onClick="{{r.pick}}"><span><span class="t">{{r.t}}</span><span class="m">{{r.from}}</span></span><span class="chip {{r.cc}}">{{r.st}}</span></button></sc-for>
+</div>
+</div>
+<section id="req-detail" class="panel" aria-live="polite" aria-labelledby="req-t">
+<div class="panel-h"><span class="mono" style="font-size: 11px; color: var(--ink-2)">{{rd.from}}</span><span class="chip {{rd.cc}}">{{rd.st}}</span></div>
+<div style="padding: 22px 24px">
+<h3 id="req-t" style="margin: 0; font-size: 21px; font-weight: 600; line-height: 1.3">{{rd.t}}</h3>
+<blockquote style="margin: 14px 0 0; padding: 0 0 0 14px; border-left: 2px solid var(--rule); font-size: 15px; line-height: 1.6; color: var(--ink-2)">{{rd.quote}}</blockquote>
+<p class="mono" style="margin: 22px 0 8px; font-size: 10.5px; color: var(--ink-2)">Trace</p>
+<ol class="chain">
+<sc-for list="{{rd.chain}}" as="c" hint-placeholder-count="4"><li class="{{c.cls}}"><span class="l">{{c.l}}</span>{{c.v}}</li></sc-for>
+</ol>
+<p style="margin: 16px 0 0; font-size: 15px; line-height: 1.55"><b>{{rd.st}}:</b> <span style="color: var(--ink-2)">{{rd.next}}</span></p>
+<div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap"><button type="button" class="btn" style="background: var(--ink); color: var(--paper)">Accept</button><button type="button" class="btn btn-s">Dismiss</button></div>
+</div>
+</section>
+</div>
+</div>
+</section>
+
+<section class="sect" aria-labelledby="h-surf">
+<div class="wrap">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+<div><p class="mono eyebrow" style="margin: 0">The product</p><h2 id="h-surf" class="h2" style="margin-top: 14px">Ten surfaces, both sides of the table</h2></div>
+<p style="margin: 0; max-width: 420px; font-size: 15px; color: var(--ink-2)">Supplier tools are live today. Issuer tools are in development; four surfaces differ between the two sides.</p>
+</div>
+<div class="srow" aria-hidden="true" style="cursor: default; margin-top: 40px; min-height: 40px"><span class="mono" style="font-size: 11px; color: var(--ink-2)">Ref</span><span class="mono" style="font-size: 11px; color: var(--ink-2)">Surface</span><span class="mono sdesc" style="font-size: 11px; color: var(--ink-2)">What it does</span><span class="mono ssup" style="font-size: 11px; color: var(--ink-2)">Suppliers</span><span class="mono siss" style="font-size: 11px; color: var(--ink-2)">Issuers</span><span></span></div>
+<div style="border-bottom: 1px solid var(--rule)">
+<sc-for list="{{surfaces}}" as="s" hint-placeholder-count="10">
+<h3 style="margin: 0; font-size: inherit; font-weight: inherit"><button type="button" class="srow" aria-expanded="{{s.open}}" aria-controls="{{s.id}}" onClick="{{s.toggle}}">
+<span class="mono" style="font-size: 12px; color: var(--ink-2)">{{s.ref}}</span>
+<span><span class="sname" style="font-size: 16px; font-weight: 600">{{s.name}}</span><span class="smob"><span class="chip c-live">Suppliers · Live</span><span class="chip c-dev">Issuers · In development</span><sc-if value="{{s.differs}}" hint-placeholder-val="{{false}}"><span class="chip c-dif">Differs</span></sc-if></span></span>
+<span class="sdesc" style="font-size: 15px; color: var(--ink-2)">{{s.desc}}</span>
+<span class="ssup"><span class="chip c-live">Live</span></span>
+<span class="siss" style="display: flex; gap: 6px; flex-wrap: wrap"><span class="chip c-dev">In development</span><sc-if value="{{s.differs}}" hint-placeholder-val="{{false}}"><span class="chip c-dif">Differs</span></sc-if></span>
+<span class="plus" aria-hidden="true">{{s.sign}}</span>
+</button></h3>
+<sc-if value="{{s.isOpen}}" hint-placeholder-val="{{false}}">
+<div id="{{s.id}}" class="sor" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px; padding: 24px 0 40px">
+<div><p style="margin: 0; font-size: 20px; font-weight: 500">{{s.headline}}</p><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.65; color: var(--ink-2)">{{s.body}}</p><ul style="margin: 16px 0 0; padding-left: 18px; font-size: 15px; line-height: 1.8"><sc-for list="{{s.points}}" as="p" hint-placeholder-count="3"><li>{{p}}</li></sc-for></ul><a class="tlink" href="#" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 15px">View the whole demo as a guest</a></div>
+<figure style="margin: 0"><sc-if value="{{s.hasShot}}" hint-placeholder-val="{{true}}"><img src="/_blob/c24976f05f7461c59f184ef207fff068" alt="Timeline in the Klarum app, demo workspace Nordic Data Advisory, with two item proposals awaiting accept or dismiss" width="740" height="450" loading="lazy" style="display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px"></sc-if><sc-if value="{{s.noShot}}" hint-placeholder-val="{{false}}"><div style="display: grid; place-items: center; aspect-ratio: 740 / 450; border: 1.5px dashed var(--rule-2); border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-2); text-align: center; padding: 16px">Use the live site’s embedded preview of {{s.name}}</div></sc-if><figcaption class="mono" style="margin-top: 10px; font-size: 11px; color: var(--ink-2)">{{s.ref}} · {{s.cat}} · demo workspace</figcaption></figure>
+</div>
+</sc-if>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="sect" aria-labelledby="h-sdg" style="background: var(--paper-2)">
+<div class="wrap">
+<h2 id="h-sdg" class="h2" style="font-size: 36px">Sustainable Development Goals</h2>
+<div class="sdg" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; margin-top: 36px">
+<sc-for list="{{sdgs}}" as="g" hint-placeholder-count="4">
+<article style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 24px 0; border-top: 1px solid var(--rule)"><span class="mono" aria-hidden="true" style="display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--ink); font-size: 16px; letter-spacing: 0">{{g.n}}</span><div><h3 style="margin: 0; font-size: 17px; font-weight: 600"><span class="sr">Goal {{g.n}}: </span>{{g.title}}</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: var(--ink-2)">{{g.a}}</p><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: var(--ink-2)">{{g.b}}</p></div></article>
+</sc-for>
+</div>
+<p style="margin: 20px 0 0; font-size: 13px; color: var(--ink-2)">Klarum is an independent company. It is not affiliated with, endorsed by, or acting on behalf of the United Nations.</p>
+</div>
+</section>
+
+<section class="sect" id="faq" aria-labelledby="h-faq">
+<div class="wrap" style="max-width: 960px">
+<p class="mono eyebrow" style="margin: 0">FAQ</p>
+<h2 id="h-faq" class="h2" style="margin-top: 14px">Frequently asked questions</h2>
+<div style="margin-top: 40px; border-bottom: 1px solid var(--rule)">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="4">
+<h3 style="margin: 0"><button type="button" class="acc" aria-expanded="{{f.open}}" aria-controls="{{f.id}}" onClick="{{f.toggle}}">{{f.q}}<span class="plus" aria-hidden="true">{{f.sign}}</span></button></h3>
+<sc-if value="{{f.isOpen}}" hint-placeholder-val="{{false}}"><p id="{{f.id}}" style="margin: 0; padding: 0 56px 24px 0; font-size: 16px; line-height: 1.65; color: var(--ink-2)">{{f.a}}</p></sc-if>
+</sc-for>
+</div>
+<p style="margin: 24px 0 0; font-size: 15px; color: var(--ink-2)">Still curious? Ask us directly at <a class="tlink" href="mailto:um@klarum.com" style="color: var(--ink)">um@klarum.com</a>.</p>
+</div>
+</section>
+
+<section aria-labelledby="h-cta" style="border-top: 1px solid var(--rule); padding: 96px 0">
+<div class="wrap" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap">
+<div style="max-width: 680px"><h2 id="h-cta" class="h2" style="font-size: 56px; line-height: 1.15"><span class="slab">See it on your own pipeline.</span></h2><p class="lead" style="margin-top: 22px">Start free, connect your markets, and draft your first EOI the same day. No procurement process required.</p></div>
+<div class="ctas" style="display: flex; gap: 12px; align-items: center"><a class="btn btn-p btn-lg" href="#">Start free</a><a class="btn btn-s btn-lg" href="F-Pricing.dc.html">See pricing</a></div>
+</div>
+</section>
+</main>
+
+<footer class="foot" style="border-top: 1px solid var(--rule); background: var(--paper-2); padding: 64px 0 32px">
+<div class="wrap">
+<div class="fgrid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 40px">
+<div><img src="/_blob/c215e3d42ee04716e1063870295dac39" alt="Klarum" width="113" height="22" loading="lazy" style="height: 22px; width: auto; display: block"><p style="margin: 16px 0 0; max-width: 280px; font-size: 14px; line-height: 1.6; color: var(--ink-2)">The system of record for AI-native bid management. Built in Stockholm.</p></div>
+<nav aria-label="Product"><p class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2)">Product</p><ul style="margin: 10px 0 0; padding: 0; list-style: none; font-size: 14px"><li><a href="F-Notices.dc.html" style="display: inline-flex; align-items: center; min-height: 32px">Notices</a></li><li><a href="F-Pricing.dc.html" style="display: inline-flex; align-items: center; min-height: 32px">Pricing</a></li><li><a href="#" style="display: inline-flex; align-items: center; min-height: 32px">Integrations</a></li><li><a href="#" style="display: inline-flex; align-items: center; min-height: 32px">Webhooks</a></li><li><a href="#" style="display: inline-flex; align-items: center; min-height: 32px">Changelog</a></li></ul></nav>
+<nav aria-label="Company"><p class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2)">Company</p><ul style="margin: 10px 0 0; padding: 0; list-style: none; font-size: 14px"><li><a href="#" style="display: inline-flex; align-items: center; min-height: 32px">About</a></li><li><a href="#" style="display: inline-flex; align-items: center; min-height: 32px">Articles</a></li></ul></nav>
+<div><p class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2)">Contact</p><p style="margin: 14px 0 0; font-size: 14px; line-height: 1.8"><a href="mailto:um@klarum.com">um@klarum.com</a><br>Medborgarplatsen 25<br>118 72 Stockholm<br><a href="#">LinkedIn</a> · <a href="#">GitHub</a></p></div>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule)">
+<p class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2); letter-spacing: 0.06em">© 2026 Klarum Technologies AB · Org. num. 559536-7979 · Changelog v0.9.29</p>
+<p class="mono" style="margin: 0; font-size: 11px; color: var(--ink-2); letter-spacing: 0.06em"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Security</a> · <a href="#">Trust center</a></p>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7000}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const ex = !!s.ex, menu = !!s.menu, openD = s.openD ?? 0, cl = s.cl ?? 1, req = s.req ?? 0, openS = s.openS ?? 0, openF = s.openF ?? 0;
+const sq = (f) => ({ c1: f >= 1 ? 'on' : '', c2: f >= 2 ? 'on' : '', c3: f >= 3 ? 'on' : '', c4: f >= 4 ? 'on' : '', c5: f >= 5 ? 'on' : '' });
+// Hero ledger: klarum.com/notices, published 24 Oct 2026. Fit exists only in the example view and is illustrative.
+const L = [
+['Entreprenad G/C broar över Linnèkanalen', 'Replacement of two existing foot and cycle bridges over Linnékanalen, delivery and installation.', 'Växjö kommun', '16 Nov 2026', 5],
+['Byte av transformatorstation Karlsborg', 'Replacement of the existing transformer station with new, including all surrounding work.', 'Fortifikationsverket', '23 Nov 2026', 4],
+['Ramavtal Årsentreprenörer Karlsborg, El/tele-installationer', 'Overview on the source: “See attached documents.”', 'Fortifikationsverket', '17 Nov 2026', 3],
+['Sänglinnen, täcke och kuddar', 'Framework agreement for bed linens, blankets and pillows for the Civil Defence Authority.', 'Myndigheten för civilt försvar', '23 Nov 2026', 0]
+];
+const ledger = L.map(([t, o, i, d, f]) => { const v = ex ? f : 0; return { t, o, i, d, ...sq(v), label: ex ? 'Fit ' + f + ' of 5, example index' : 'No fit score: needs your capability index', fitText: ex ? f + ' of 5 · illustrative' : 'Needs your index' }; });
+// Sourcing decisions: same six notices as the lens iterations. Marks and verdicts illustrative.
+const D = [
+['Entreprenad G/C broar över Linnèkanalen', 'Växjö kommun', '16 Nov', 5, ['match', 'Match', 'foot and cycle bridges → Bridges and structures'], ['match', 'Match', 'example footbridge reference'], 'Fit 5 of 5. Reaches your feed first: bridge scope, a matching reference, and 22 days to prepare.'],
+['Byte av transformatorstation Karlsborg', 'Fortifikationsverket', '23 Nov', 4, ['match', 'Match', 'transformer station → Power and grid'], ['partial', 'Partial', 'surrounding civil work has no reference'], 'Fit 4 of 5. Reaches your feed. Check the surrounding civil work before you develop the bid.'],
+['Ramavtal Årsentreprenörer Karlsborg, El/tele-installationer', 'Fortifikationsverket', '17 Nov', 3, ['partial', 'Partial', 'title only → Electrical installation'], ['partial', 'Partial', 'example electrical frameworks'], 'Fit 3 of 5. Reaches your feed on the title alone; the source gives no scope, so read the attached documents first.'],
+['Uppgradering travers panna A1', 'Karlskoga Kraftvärmeverk AB', '25 Nov', 2, ['partial', 'Partial', 'electrical part only'], ['none', 'None', 'no crane or PLC references'], 'Fit 2 of 5. Below threshold: most of the scope is mechanical. Kept in All notices with this reason.'],
+['Byte Ventilationsaggregat och kylsystem, Vallhamn', 'Tjörns Hamnar AB', '23 Nov', 1, ['none', 'None', 'building services'], ['none', 'None', 'no building-services references'], 'Fit 1 of 5. Below threshold: building services are not in your index.'],
+['Sänglinnen, täcke och kuddar', 'Myndigheten för civilt försvar', '23 Nov', 0, ['none', 'None', 'textile supply'], ['none', 'None', 'none'], 'Fit 0 of 5. Below threshold: no part of the scope matches.']
+];
+const decisions = D.map((n, i) => ({ t: n[0], i: n[1], d: n[2], ...sq(n[3]), fitL: 'Fit ' + n[3] + ' of 5, illustrative',
+  sc: 'c-' + n[4][0], sl: n[4][1], sn: n[4][2], ec: 'c-' + n[5][0], el: n[5][1], en: n[5][2], line: n[6],
+  vc: n[3] >= 3 ? 'c-pass' : 'c-out', vl: n[3] >= 3 ? 'Qualifies' : 'Below threshold', cls: n[3] >= 3 ? 'dr' : 'dr below',
+  id: 'dec-' + i, open: i === openD ? 'true' : 'false', isOpen: i === openD, toggle: () => this.setState({ openD: openD === i ? -1 : i }) }));
+// Requirements: demo workspace rows; each names its tender. Row 4 and statuses illustrative.
+const R = [
+['ISO 27001 certificate, current and in the supplier’s name', 'From tender · Rwanda Revenue Authority', 'Gap', 'c-gap', 'The tender requires a valid ISO 27001 certificate at submission. Attach the latest certificate and the scope statement.', [['Tender', 'Rwanda Revenue Authority', ''], ['Requirement', 'Accepted', ''], ['Evidence', 'Missing: no certificate in Knowledge', 'stop'], ['Draft', 'Held until decided', 'void']], 'decide before writing: certify, partner, or skip.'],
+['Reference case: national e-procurement rollout', 'From template · Macedonia e-platform consortium', 'Met', 'c-met', 'Drafted from your bid template - one reference of comparable scope delivered in the last three years.', [['Template', 'Your bid template', ''], ['Requirement', 'Accepted', ''], ['Evidence', 'One comparable reference, last three years', ''], ['Draft', 'Drafted from the template', '']], 'the reference is drafted from your bid template.'],
+['Relevant experience on comparable rural corridors', 'From tender · N2 Motorway, section 3', 'Met', 'c-met', 'The firm has delivered supervision mandates on comparable rural corridors, including 28 km of rural road in Kenya…', [['Tender', 'N2 Motorway, section 3', ''], ['Requirement', 'Accepted', ''], ['Evidence', 'Kenya Roads completion report, p.47', ''], ['Draft', 'EOI § 3, cited', '']], 'the claim carries its source page into the EOI.'],
+['Requirement in a scanned annex', 'From annexes · scanned · illustrative row', 'Unmapped', 'c-unm', 'Text not yet extracted from the scanned annex.', [['Annex', 'Scanned', ''], ['Requirement', 'Not yet extracted', 'stop'], ['Evidence', '—', 'void'], ['Draft', '—', 'void']], 'flagged for the bid team instead of guessed.']
+];
+const reqs = R.map((r, i) => ({ t: r[0], from: r[1], st: r[2], cc: r[3], sel: i === req ? 'true' : 'false', pick: () => this.setState({ req: i }) }));
+const rr = R[req];
+const rd = { t: rr[0], from: rr[1], st: rr[2], cc: rr[3], quote: rr[4], next: rr[6], chain: rr[5].map((c, k) => ({ l: (k + 1) + ' · ' + c[0], v: c[1], cls: c[2] })) };
+const S = [
+['A.01', 'Timeline', 'Work in time, across every bid', false, 'Home', 'What’s on fire, and one place to track it all', 'A firm-wide command centre that triages what needs attention today, plus a cross-workspace Timeline, over a panel of proposals awaiting accept or dismiss.', ['See in one glance which bids need you today', 'Track all work across every bid in one timeline', 'Never lose a tender obligation to a buried requirement', 'Review AI-suggested work before it becomes a task']],
+['A.02', 'Notices', 'Every matched notice, ranked against your capability', true, 'Workspace', 'Every matched notice, ranked', 'Notices from contracted public sources, scored against your capability index.', ['Fit scores are calibrated and explained', 'Every notice keeps a link to the original publication']],
+['A.03', 'Workspaces', 'One space per bid, shared across the team', false, 'Workspace', 'One space per live bid', 'Every bid gets one shared workspace.', ['Share a workspace with guests (Business plan)']],
+['A.04', 'Registry', 'Track competition: who else bids, and who wins', true, 'Workspace', 'Who awards, and how often', 'A notice resolves to the issuing authority behind it, not just a reference number.', ['See who else bids, and who wins']],
+['A.05', 'Portal', 'Read the market and submit into it', true, 'Network', 'Buyer-facing submissions', 'Read the market and submit into it.', ['Issuer side in development']],
+['A.06', 'Data Studio', 'Win rate, cycle time and throughput per workspace', false, 'Intelligence', 'Win rates and pipeline', 'Outcomes feed the KPIs per workspace.', ['Win rate, cycle time and throughput']],
+['A.07', 'Klara', 'Ask across everything you hold', false, 'Intelligence', 'Ask across everything you hold', 'Ask questions across notices, workspaces and Knowledge.', ['Answers point to the documents they come from']],
+['A.08', 'Automations', 'Sweep, score and rescore on a schedule', false, 'Intelligence', 'Trigger the routine steps', 'Sweep, score and rescore on a schedule.', ['Suggestions stage as proposals you accept or dismiss']],
+['A.09', 'Templates', 'Your own document structure, defined once', true, 'Intelligence', 'Requirement matrices you reuse', 'Your own document structure, defined once.', ['Reuse requirement matrices across bids']],
+['A.10', 'Knowledge', 'Your references, specifications and prior awards', false, 'Network', 'The capability index', 'Your references, specifications and prior awards, indexed.', ['The capability index every notice is scored against']]
+];
+const surfaces = S.map((x, i) => ({ ref: x[0], name: x[1], desc: x[2], differs: x[3], cat: x[4], headline: x[5], body: x[6], points: x[7], id: 'surf-' + i,
+  hasShot: i === 0, noShot: i !== 0, open: i === openS ? 'true' : 'false', isOpen: i === openS, sign: i === openS ? '−' : '+', toggle: () => this.setState({ openS: openS === i ? -1 : i }) }));
+const sdgs = [
+{ n: '8', title: 'Decent work and economic growth', a: 'A free tier is the floor of the plan ladder, not a trial that expires, so a two-person consultancy can work the same public pipeline as a national contractor.', b: 'Fit scores are calibrated and explained, so the reason a tender ranks where it does is visible rather than a black box.' },
+{ n: '9', title: 'Industry, innovation and infrastructure', a: 'Infrastructure-project screening is what the platform is built for, not a vertical bolted onto a general sales tool.', b: 'Aid-funded opportunities from development banks are ingested alongside national portals and TED, in one canonical feed.' },
+{ n: '11', title: 'Sustainable cities and communities', a: 'Public buyers are a first-class primitive: a notice resolves to the issuing authority behind it, not just a reference number.', b: 'Every source normalises into one canonical row, so notices from different national portals are comparable instead of siloed by country.' },
+{ n: '12', title: 'Responsible consumption and production', a: 'Bids are ranked on a weighted evaluation framework rather than a flat average, with environmental assessment a named role alongside technical, engineering, commercial and legal.', b: 'Every claim in a generated submission carries a citation back to the document it came from, so a sustainability commitment can be checked rather than taken on trust.' }
+];
+const F = [
+['Where does the tender data come from?', 'Klarum ingests notices from contracted public sources: national procurement portals, TED, and the development banks. Every notice keeps a link back to the original publication.'],
+['How does scoring work?', 'Notices are scored against the capability index built from your own documents: past projects, references, and specifications. The score is a fit estimate, and every factor behind it is inspectable.'],
+['What does drafting produce?', 'A requirements matrix filled from your own record, with the source page cited behind every claim, exported as a document your legal team can review and sign.'],
+['Can I try it without a procurement process?', 'Yes. Start free, connect the markets you care about, and draft your first EOI the same day. No sales call required.']
+];
+const faqs = F.map((f, i) => ({ q: f[0], a: f[1], id: 'faq-' + i, open: i === openF ? 'true' : 'false', isOpen: i === openF, sign: i === openF ? '−' : '+', toggle: () => this.setState({ openF: openF === i ? -1 : i }) }));
+return {
+  menuOpen: menu, menuAria: menu ? 'true' : 'false', menuClosed: !menu, toggleMenu: () => this.setState({ menu: !menu }),
+  ledger, pubP: ex ? 'false' : 'true', exP: ex ? 'true' : 'false', setPub: () => this.setState({ ex: false }), setEx: () => this.setState({ ex: true }),
+  viewNote: ex ? 'Scored against an example index for a bridge and electrical contractor. After you start free, your own index replaces it.' : 'Public visitors see notices without a score. A fit score needs the capability index your account builds.',
+  decisions, cl1: cl === 1 ? 'true' : 'false', cl2: cl === 2 ? 'true' : 'false', pickCl1: () => this.setState({ cl: cl === 1 ? 0 : 1 }), pickCl2: () => this.setState({ cl: cl === 2 ? 0 : 2 }), n1: cl === 1 ? 'note on' : 'note', n2: cl === 2 ? 'note on' : 'note',
+  reqs, rd, surfaces, sdgs, faqs };
+}
+}
+</script>
+</body>
+</html>

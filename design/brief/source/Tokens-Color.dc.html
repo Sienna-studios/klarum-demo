@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum brief: color tokens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.lab{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b5f66;margin:0}
+.row{display:grid;grid-template-columns:150px minmax(0,1fr) 300px 300px;gap:20px;align-items:center;min-height:46px;border-top:1px solid #d6d7d9;font-size:14px}
+.hd{border-top:0;border-bottom:1.5px solid #16171a;min-height:32px;align-items:end;padding-bottom:8px}
+.tk{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.cell{display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:13px}
+.chip{width:44px;height:28px;flex:none;border:1px solid rgba(0,0,0,.14)}
+.use{color:#5b5f66;font-size:12px}
+.off{display:grid;grid-template-columns:110px 120px minmax(0,1fr) 120px;gap:14px;align-items:center;min-height:44px;border-top:1px solid #d6d7d9;font-size:14px}
+</style>
+</helmet>
+<div style="width: 1600px; height: 2600px; box-sizing: border-box; padding: 72px 80px; background: #f2f2f0; color: #16171a; font-family: 'DM Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 52px">
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; border-bottom: 1.5px solid #16171a; padding-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p class="lab">Klarum website · design brief · 3 of 4 · tokens</p>
+<h1 style="margin: 0; font-size: 64px; line-height: 1; letter-spacing: -.03em; font-weight: 600">Color.</h1>
+</div>
+<p style="margin: 0; max-width: 600px; font-size: 15px; line-height: 1.5; color: #4a4e55">Semantic tokens are the CSS variables the draft site pages already define. Usage counts every time a hex appears across that direction's boards. One color is shared: Klarum red <b>#ef4136</b>, used 2,873 times in all 66 boards.</p>
+</header>
+
+<section style="display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px">
+<h2 style="margin: 0; font-size: 32px; letter-spacing: -.02em; font-weight: 600">Print</h2>
+<p class="lab">Defined in SP-Home, SP-Notices, SP-Pricing, SP-Articles and their -Dark copies (selector .k and .k.dark)</p>
+</div>
+<div class="row hd"><span class="lab">Token</span><span class="lab">Role</span><span class="lab">Light · uses, boards</span><span class="lab">Dark · uses, boards</span></div>
+<sc-for list="{{print}}" as="t" hint-placeholder-count="17"><div class="row"><span class="tk">--{{t.n}}</span><span>{{t.r}}</span><span class="cell"><i class="chip" style="background: {{t.l}}"></i><span>{{t.l}}<br><span class="use">{{t.lu}}</span></span></span><span class="cell"><i class="chip" style="background: {{t.d}}"></i><span>{{t.d}}<br><span class="use">{{t.du}}</span></span></span></div></sc-for>
+</section>
+
+<section style="display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px">
+<h2 style="margin: 0; font-size: 32px; letter-spacing: -.02em; font-weight: 600">Night</h2>
+<p class="lab">Defined in SN-Home, SN-Notices, SN-Pricing and their -Dark copies (selector .k for dark, .k.light for light)</p>
+</div>
+<div class="row hd"><span class="lab">Token</span><span class="lab">Role</span><span class="lab">Light · uses, boards</span><span class="lab">Dark · uses, boards</span></div>
+<sc-for list="{{night}}" as="t" hint-placeholder-count="16"><div class="row"><span class="tk">--{{t.n}}</span><span>{{t.r}}</span><span class="cell"><i class="chip" style="background: {{t.l}}"></i><span>{{t.l}}<br><span class="use">{{t.lu}}</span></span></span><span class="cell"><i class="chip" style="background: {{t.d}}"></i><span>{{t.d}}<br><span class="use">{{t.du}}</span></span></span></div></sc-for>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column">
+<p class="lab" style="margin-bottom: 14px">Print · raw values outside the tokens, and where they go</p>
+<div class="off" style="border-top: 0; border-bottom: 1.5px solid #16171a; min-height: 30px"><span class="lab">Value</span><span class="lab">Uses · boards</span><span class="lab">Where</span><span class="lab">Collapse to</span></div>
+<sc-for list="{{poff}}" as="o" hint-placeholder-count="7"><div class="off"><span class="cell"><i class="chip" style="width: 28px; background: {{o.v}}"></i>{{o.v}}</span><span class="use" style="font-size: 13px">{{o.u}}</span><span>{{o.w}}</span><span class="tk" style="font-size: 13px">{{o.to}}</span></div></sc-for>
+</div>
+<div style="display: flex; flex-direction: column">
+<p class="lab" style="margin-bottom: 14px">Night · raw values outside the tokens, and where they go</p>
+<div class="off" style="border-top: 0; border-bottom: 1.5px solid #16171a; min-height: 30px"><span class="lab">Value</span><span class="lab">Uses · boards</span><span class="lab">Where</span><span class="lab">Collapse to</span></div>
+<sc-for list="{{noff}}" as="o" hint-placeholder-count="5"><div class="off"><span class="cell"><i class="chip" style="width: 28px; background: {{o.v}}"></i>{{o.v}}</span><span class="use" style="font-size: 13px">{{o.u}}</span><span>{{o.w}}</span><span class="tk" style="font-size: 13px">{{o.to}}</span></div></sc-for>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":2600}}'>
+class Component extends DCLogic {
+renderVals() {
+const row = ([n, r, l, lu, d, du]) => ({ n, r, l, lu, d, du });
+const print = [
+['bg', 'Page ground', '#fbfdf6', '70 · 25', '#141b21', '181 · 26'],
+['ink', 'Text, strong rules, light primary button', '#1d2931', '172 · 28', '#f3f2ec', '142 · 31'],
+['mute', 'Secondary text, nav links', '#55534e', '50 · 23', '#aeb6bc', '69 · 22'],
+['line', 'Hairlines, chip and plan borders', '#e8e6dd', '29 · 23', '#2a343c', '40 · 25'],
+['rule', 'Strong rules, search field border', '#1d2931', 'same as ink', '#aeb6bc', 'same as mute'],
+['card', 'Plan cards, panels', '#ffffff', '63 · 24', '#1b242b', '25 · 10'],
+['soft', 'Tinted panels', '#f3f2ec', '142 · 31', '#1b242b', 'same as card'],
+['red', 'Brand red: fills, fit squares, outlines', '#ef4136', '403 · 40', '#ef4136', 'shared'],
+['redt', 'Red text: eyebrows, step numbers, tags', '#d42a1f', '61 · 24', '#ef4136', 'same as red'],
+['btn', 'Primary button fill', '#1d2931', 'same as ink', '#ef4136', 'same as red'],
+['btnt', 'Primary button text', '#ffffff', 'same as card', '#141b21', 'same as bg'],
+['btnh', 'Primary button hover fill', '#d42a1f', 'same as redt', '#f3f2ec', 'same as ink'],
+['foot', 'Footer ground, dark in both modes', '#141b21', 'same as dark bg', '#0d1216', '9 · 9'],
+['fink', 'Footer text', '#f3f2ec', 'shared', '#f3f2ec', 'shared'],
+['fmute', 'Footer secondary text, title-block keys', '#aeb6bc', 'shared', '#aeb6bc', 'shared'],
+['fline', 'Footer rules, title-block cells', '#2a343c', 'shared', '#2a343c', 'shared'],
+['tint', 'Pressed chip, shortlist panel', 'rgba(239,65,54,.08)', 'token only', 'rgba(239,65,54,.14)', 'token only']
+].map(row);
+const night = [
+['bg', 'Page ground', '#F6F6F3', '60 · 16', '#0D0D10', '83 · 24'],
+['surf', 'Panels, plan cards, feed box', '#FFFFFF', 'shared with dark ink', '#15161B', '18 · 13'],
+['ink', 'Headings, strong text', '#14202C', '64 · 16', '#FFFFFF', '58 · 23'],
+['body', 'Body copy', '#26323D', '23 · 15', '#E4E7EA', '24 · 16'],
+['sub', 'Nav links, descriptions', '#3A4652', '16 · 11', '#C9CED3', '16 · 11'],
+['mute', 'Mono labels, meta lines', '#4B5762', '37 · 14', '#A9B1BA', '37 · 14'],
+['line', 'Hairlines, chip borders', '#D9DDE0', '49 · 13', '#2A2E35', '49 · 13'],
+['off', 'Empty fit pips, card borders, field border', '#C9CFD5', '14 · 12', '#39424C', '1,554 · 16'],
+['dot', 'Dot-field dots', '#D3D8DC', '6 · 6', '#2E343C', '11 · 11'],
+['pin', 'Map pins, shortlisted marker', '#14202C', 'same as ink', '#FFE2D6', '20 · 14'],
+['pinb', 'Pin border', '#F6F6F3', 'same as bg', '#0D0D10', 'same as bg'],
+['redt', 'Red text on the ground', '#C2261C', '11 · 9', '#FFB3AA', '11 · 9'],
+['card', 'Floating notice cards', 'rgba(255,255,255,.96)', 'token only', 'rgba(21,22,27,.94)', 'token only'],
+['scrim', 'Hero and CTA image scrim (rgb triplet)', 'rgb(246,246,243)', 'token only', 'rgb(13,13,16)', 'token only'],
+['tile', 'Pressed chip, shortlisted row', 'rgba(239,65,54,.12)', 'token only', 'rgba(239,65,54,.18)', 'token only'],
+['red · new', 'Brand red, hard-coded today', '#EF4136', '2,470 · 26', '#EF4136', 'shared']
+].map(row);
+const off = ([v, u, w, to]) => ({ v, u, w, to });
+return {
+print, night,
+poff: [
+['#d9dcd6', '19 · 18', 'Footer link color', 'new --flink'],
+['#39434b', '17 · 4', 'Dark borders in How it works', '--fline'],
+['#3a454d', '3 · 3', 'Dark borders in five flows', '--fline'],
+['#d4d6d0', '16 · 3', 'Local --line2 in How it works', '--line'],
+['#b9bfc2', '11 · 3', 'Captions in P3 section boards', '--fmute'],
+['#8b8e88', '5 · 3', 'Local --grey in How it works', '--mute'],
+['#7d868c', '5 · 3', 'Dark captions in How it works', '--mute'],
+['#cfd3cf', '4 · 4', 'Table rules in pricing and flows', '--line']
+].map(off),
+noff: [
+['#EF4136', '2,470 · 26', 'Every red fill, written inline', 'new --red'],
+['#5a6672', '9,819 · 3', 'Generated dots in dark motion boards', '--off'],
+['#a3adb7', '9,819 · 3', 'Generated dots in light motion boards', '--mute'],
+['#b4bec8', '1,544 · 10', 'Everything-else marks in light heroes', '--off'],
+['#f3f2ec', '6 · 6', 'Left over from Print in Night site pages', 'remove'],
+['#1d2931', '6 · 6', 'Left over from Print in Night site pages', 'remove']
+].map(off)
+};
+}
+}
+</script>
+</body>
+</html>

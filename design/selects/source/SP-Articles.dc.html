@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klarum · Articles</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.k{--bg:#fbfdf6;--ink:#1d2931;--mute:#55534e;--line:#e8e6dd;--rule:#1d2931;--card:#ffffff;--soft:#f3f2ec;--red:#ef4136;--redt:#d42a1f;--btn:#1d2931;--btnt:#ffffff;--btnh:#d42a1f;--foot:#141b21;--fink:#f3f2ec;--fmute:#aeb6bc;--fline:#2a343c;--tint:rgba(239,65,54,.08);background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+.k.dark{--bg:#141b21;--ink:#f3f2ec;--mute:#aeb6bc;--line:#2a343c;--rule:#aeb6bc;--card:#1b242b;--soft:#1b242b;--redt:#ef4136;--btn:#ef4136;--btnt:#141b21;--btnh:#f3f2ec;--foot:#0d1216;--tint:rgba(239,65,54,.14)}
+.k a{color:inherit;text-decoration:none}
+.k *{box-sizing:border-box}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--redt);margin:0}
+.muted{color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;background:var(--btn);color:var(--btnt)!important;font:600 17px/1 'IBM Plex Sans',sans-serif;border:0;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+.btn:hover{background:var(--btnh)}
+.k.dark .btn:hover{color:#141b21!important}
+.btn.ghost{background:transparent;color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)!important}
+.lnk{font-weight:500;text-decoration:underline!important;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
+.lnk:hover{color:var(--redt)}
+.hdr{position:relative;z-index:5;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 64px;border-bottom:1px solid var(--line);background:var(--bg)}
+.nav{display:flex;gap:32px;font-size:13.5px}
+.nav a{color:var(--mute);display:inline-flex;align-items:center;min-height:44px}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]{font-weight:500;box-shadow:inset 0 -2px 0 var(--red)}
+.hright{display:flex;justify-content:flex-end;align-items:center;gap:18px;font-size:13px}
+.hright .sm{padding:9px 16px;background:var(--btn);color:var(--btnt)!important;font-weight:500}
+.hright .sm:hover{background:var(--btnh)}
+.k.dark .hright .sm:hover{color:#141b21!important}
+.menu{display:none;width:44px;height:44px;place-items:center;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.logo{height:24px;width:auto;display:block}
+.k.dark .logo,.inv{filter:invert(1) brightness(.96)}
+.h1{margin:0;font-size:clamp(52px,7.2vw,104px);font-weight:400;line-height:.96;letter-spacing:-.05em}
+.h2{margin:0;font-size:clamp(36px,4.4vw,60px);font-weight:400;line-height:1.02;letter-spacing:-.045em}
+.h3{margin:0;font-size:24px;font-weight:500;line-height:30px;letter-spacing:-.01em}
+.riso{filter:url(#riso)}
+.lead{margin:0;font-size:18px;line-height:28px}
+.sect{padding:112px 0;border-top:1px solid var(--line)}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:48px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.stripe{background:#1d2931 url(/_blob/ee4e59dc5b6bb2377cca9d7040f5c508) center 38%/cover no-repeat}
+.stripe2{background:#1d2931 url(/_blob/ee4e59dc5b6bb2377cca9d7040f5c508) center 82%/cover no-repeat;transform:scaleX(-1)}
+.fit{display:inline-flex;gap:4px}
+.fit i{display:block;width:12px;height:12px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.fit i.on{background:var(--red);box-shadow:none}
+.fit i.sh{background:repeating-linear-gradient(-45deg,var(--red) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1.5px var(--red)}
+.hatch{display:block;width:14px;height:14px;flex:none;background:repeating-linear-gradient(-45deg,var(--red) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1.5px var(--red)}
+.rev{position:relative;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 8px;border:1px solid var(--red);background:transparent;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--redt);cursor:default;white-space:nowrap}
+.rev .pop{position:absolute;right:-1px;top:32px;z-index:4;width:280px;padding:12px 14px;background:var(--ink);color:var(--bg);text-align:left;letter-spacing:.04em;line-height:20px;text-transform:none;font-size:12px;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .16s,transform .16s}
+.rev:hover .pop,.rev:focus .pop{opacity:1;transform:none}
+.plan{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:32px;border:1px solid var(--line);background:var(--card);min-height:470px}
+.plan.rec{outline:2.5px solid var(--red);outline-offset:10px}
+.plan .tag{position:absolute;left:-12px;top:-38px;margin:0;padding:4px 8px;background:var(--red);color:#141b21;font:500 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em}
+.plan ul{margin:28px 0 32px;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;font-size:16px}
+.plan li{display:flex;align-items:center;gap:12px}
+.plan .btn{margin-top:auto}
+.art{border-top:1px solid var(--rule);padding-top:18px}
+.art .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.foot{background:var(--foot);color:var(--fink);border-top:1px solid var(--fline)}
+.foot a{color:#d9dcd6}.foot a:hover{color:#ffffff}
+.fgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:64px 0 40px}
+.tb{border-collapse:collapse;width:100%}
+.tb td{border:1px solid var(--fline);padding:8px 12px;vertical-align:top}
+.tb .tk{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fmute)}
+.tb .tv{display:block;margin-top:4px;font-size:14px}
+.fbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 28px;border-top:1px solid var(--fline);font-size:13px;color:var(--fmute)}
+.field{display:flex;align-items:center;gap:10px;min-height:52px;padding:0 16px;border:1.5px solid var(--rule);background:var(--card)}
+.field input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;color:var(--ink);outline:none}
+.field input::placeholder{color:var(--mute)}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);background:transparent;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--red);background:var(--tint);color:var(--ink)}
+@media (max-width:960px){
+.grid3{grid-template-columns:1fr}
+.plan.rec{outline-offset:6px}
+.fgrid>*{grid-column:1 / -1!important;margin-bottom:28px}
+}
+.mnav{display:none}
+.cta-band{margin:0 32px}
+@media (max-width:760px){
+.mnav{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 20px 24px;border-bottom:1px solid var(--line);background:var(--bg);font-size:18px}
+.mnav a{display:flex;align-items:center;min-height:48px}
+.mnav a[aria-current="page"]{color:var(--redt)}
+.mnav .chip{margin:8px 0}
+.mnav .btn{margin-top:8px}
+.cta-band{margin:0 20px}
+.rev .pop{right:auto;left:-1px;width:min(280px,80vw)}
+.plan{padding:28px 24px;min-height:0}
+.fbar{flex-direction:column}
+.foot nav{gap:0!important}.foot nav a,.fbar a{display:flex;align-items:center;min-height:44px}
+.wrap{padding:0 20px}
+.hdr{grid-template-columns:1fr auto;padding:0 8px 0 20px}
+.nav,.hide-m{display:none!important}
+.menu{display:grid}
+.sect{padding:72px 0}
+}
+@media (prefers-reduced-motion:reduce){.k *{transition:none!important;animation:none!important}}
+
+.feat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;padding:64px 0 96px}
+.lsimg{position:relative;aspect-ratio:4 / 3;overflow:hidden;isolation:isolate;background:var(--bg)}
+.lsimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.65) brightness(.98)}
+.lsimg .ink{position:absolute;inset:0;background:#ef4136;mix-blend-mode:screen}
+.lsimg .hl{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(251,253,246,0) 0 3px,rgba(251,253,246,.7) 3px 5px)}
+.k.dark .lsimg img{filter:grayscale(1) contrast(1.45) brightness(1.05)}
+.k.dark .lsimg .ink{mix-blend-mode:multiply}
+.k.dark .lsimg .hl{background:repeating-linear-gradient(0deg,rgba(20,27,33,0) 0 3px,rgba(20,27,33,.6) 3px 5px)}
+.agrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 24px;padding-bottom:112px}
+@media (max-width:960px){.feat{grid-template-columns:1fr}.agrid{grid-template-columns:1fr}}
+
+</style>
+</helmet>
+<div class="k {{mode}}">
+<svg aria-hidden="true" width="0" height="0" style="position: absolute"><filter id="riso" x="-2%" y="-12%" width="104%" height="124%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" result="warp"></feTurbulence><feDisplacementMap in="SourceAlpha" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="rough"></feDisplacementMap><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="1" seed="9" result="grain"></feTurbulence><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 5.74" result="speck"></feColorMatrix><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="12" result="blot"></feTurbulence><feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 14 -8.06" result="patch"></feColorMatrix><feFlood flood-color="{{ink}}" result="inkFill"></feFlood><feComposite in="inkFill" in2="rough" operator="in" result="inkShape"></feComposite><feComposite in="inkShape" in2="speck" operator="in" result="inkLayer"></feComposite><feOffset in="rough" dx="1.5" dy="1" result="shifted"></feOffset><feFlood flood-color="#ef4136" result="redFill"></feFlood><feComposite in="redFill" in2="shifted" operator="in" result="redShape"></feComposite><feComposite in="redShape" in2="patch" operator="in" result="redPatch"></feComposite><feComposite in="redPatch" in2="speck" operator="in" result="redLayer"></feComposite><feMerge><feMergeNode in="inkLayer"></feMergeNode><feMergeNode in="redLayer"></feMergeNode></feMerge></filter></svg>
+<header class="hdr">
+<a href="SP-Home{{sfx}}.dc.html" aria-label="Klarum home" style="display: inline-flex; align-items: center; min-height: 44px"><img class="logo" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum"></a>
+<nav class="nav" aria-label="Main"><a href="SP-Notices{{sfx}}.dc.html">Notices</a><a href="SP-Pricing{{sfx}}.dc.html">Pricing</a><a href="SP-Articles{{sfx}}.dc.html" aria-current="page">Articles</a></nav>
+<div class="hright"><button type="button" class="chip hide-m" onClick="{{flip}}" aria-label="{{flipAria}}" style="min-height: 36px; padding: 0 10px; font-size: 12px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{flipLabel}}</button><span class="mono hide-m" style="letter-spacing: 0">EN</span><a class="hide-m" href="#">sign in</a><a class="sm hide-m" href="#">Start free</a><button type="button" class="menu" aria-label="Menu" aria-expanded="{{menuOpen}}" aria-controls="mnav" onClick="{{toggleMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button></div>
+</header>
+<sc-if value="{{menuShow}}" hint-placeholder-val="{{false}}"><nav id="mnav" class="mnav" aria-label="Mobile"><a href="SP-Notices{{sfx}}.dc.html">Notices</a><a href="SP-Pricing{{sfx}}.dc.html">Pricing</a><a href="SP-Articles{{sfx}}.dc.html" aria-current="page">Articles</a><a href="#">sign in</a><button type="button" class="chip" onClick="{{flip}}" aria-label="{{flipAria}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{flipLabel}} mode</button><a class="btn" href="#">Start free</a></nav></sc-if>
+<main>
+<section aria-label="Articles" style="padding: 56px 0 0">
+<div class="wrap" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+<h1 class="h1 riso">Articles.</h1>
+<p class="muted" style="margin: 0 0 12px; font-size: 18px; max-width: 420px">Sourcing, bidding and what buyers want, written by the Klarum team.</p>
+</div>
+</section>
+<div class="wrap">
+<article class="feat" aria-labelledby="ft">
+<div class="lsimg"><img src="/_blob/ba2d1e6a3a1a7d21cebd94b0fe531ced" alt="[Describe the article image]"><div class="ink" aria-hidden="true"></div><div class="hl" aria-hidden="true"></div></div>
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px"><span class="eyebrow">Featured · Article</span><button type="button" class="rev" aria-label="Revision C, updated 14 Oct. History: A 2 Sep published, B 20 Sep new data, C 14 Oct corrected figure">Rev C · [14 Oct]<span class="pop" aria-hidden="true">A [2 Sep] published · B [20 Sep] new data · C [14 Oct] corrected figure</span></button></div>
+<h2 id="ft" class="riso" style="margin: 20px 0 0; font-size: clamp(40px, 4.6vw, 64px); font-weight: 400; line-height: 1; letter-spacing: -.045em">Why sourcing, not writing, decides most bids</h2>
+<p class="lead muted" style="margin-top: 20px">[Two-line standfirst for the argument]</p>
+<a class="lnk" href="#" style="margin-top: 16px">Read the article</a>
+</div>
+</article>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; padding: 0 0 40px; border-top: 1px solid var(--rule); padding-top: 24px"><sc-for list="{{cats}}" as="c" hint-placeholder-count="3"><button type="button" class="chip" aria-pressed="{{c.on}}" onClick="{{c.go}}">{{c.name}}</button></sc-for></div>
+<div class="agrid">
+<sc-for list="{{items}}" as="c" hint-placeholder-count="6"><article class="art"><div class="top"><span class="mono muted" style="font-size: 11px">{{c.kind}}</span><button type="button" class="rev" aria-label="{{c.aria}}">Rev {{c.rev}} · {{c.date}}<span class="pop" aria-hidden="true">{{c.hist}}</span></button></div><h3 class="h3" style="margin-top: 16px">{{c.t}}</h3><p class="muted" style="margin: 10px 0 0">{{c.d}}</p><a class="lnk" href="#" style="margin-top: 6px; font-size: 14px">Read</a></article></sc-for>
+</div>
+</div>
+</main>
+<footer class="foot">
+<div class="wrap">
+<div class="fgrid">
+<div style="grid-column: 1 / span 4"><img class="inv" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum" style="height: 28px; width: auto; display: block"><p style="margin: 18px 0 0; font-size: 15px; line-height: 23px; color: var(--fmute); max-width: 320px">The Intelligent System of Record for Infrastructure Procurement.</p></div>
+<nav aria-label="Product" style="grid-column: 5 / span 2; display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span class="eyebrow" style="color: #ef4136">Product</span><a href="SP-Notices{{sfx}}.dc.html">Notices</a><a href="SP-Pricing{{sfx}}.dc.html">Pricing</a><a href="#">sign in</a></nav>
+<nav aria-label="Read" style="grid-column: 7 / span 2; display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span class="eyebrow" style="color: #ef4136">Read</span><a href="SP-Articles{{sfx}}.dc.html">Articles</a><a href="#">Privacy</a><a href="#">Terms</a></nav>
+<table class="tb" aria-label="Sheet information" style="grid-column: 9 / span 4; align-self: start">
+<tr><td colspan="2" rowspan="2" style="vertical-align: middle"><img class="inv" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum" style="height: 22px; width: auto; display: block"></td><td><span class="tk">Sheet</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">A-104</span></td><td><span class="tk">Rev</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace; color: #ef4136">C</span></td></tr>
+<tr><td><span class="tk">Title</span><span class="tv">Articles.</span></td><td><span class="tk">Scale</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">1:1</span></td></tr>
+<tr><td colspan="2"><span class="tk">Office</span><span class="tv">Stockholm, Medborgarplatsen 25</span></td><td><span class="tk">Web</span><span class="tv">klarum.com</span></td><td><span class="tk">Year</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">2026</span></td></tr>
+</table>
+</div>
+<div class="fbar"><a href="#" style="text-decoration: underline">https://www.klarum.com</a><span>Stockholm, Medborgarplatsen 25</span></div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mode":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+theme() {
+const mode = (this.state && this.state.mode) || this.props.mode || 'light';
+const dark = mode === 'dark';
+return {
+mode, sfx: dark ? '-Dark' : '', ink: dark ? '#f3f2ec' : '#1d2931',
+flip: () => this.setState({ mode: dark ? 'light' : 'dark' }),
+flipLabel: dark ? 'Light' : 'Dark', flipAria: dark ? 'Switch to light mode' : 'Switch to dark mode',
+menuShow: !!(this.state && this.state.menu), menuOpen: this.state && this.state.menu ? 'true' : 'false',
+toggleMenu: () => this.setState({ menu: !(this.state && this.state.menu) })
+};
+}
+
+renderVals() {
+const t = this.theme();
+const cat = (this.state || {}).cat ?? 'All';
+const A = [
+['Guide', 'Reading a tender in twenty minutes', '[One-line summary of the guide]', 'B', '[8 Oct]', 'A [1 Sep] published · B [8 Oct] added checklist'],
+['Article', 'What infrastructure buyers changed in 2026', '[One-line summary of the article]', 'A', '[21 Oct]', 'A [21 Oct] published'],
+['Guide', '[Guide title]', '[One-line summary]', 'A', '[Date]', 'A [Date] published'],
+['Article', '[Article title]', '[One-line summary]', 'B', '[Date]', 'A [Date] published · B [Date] update'],
+['Article', '[Article title]', '[One-line summary]', 'A', '[Date]', 'A [Date] published'],
+['Guide', '[Guide title]', '[One-line summary]', 'A', '[Date]', 'A [Date] published']
+];
+return {
+...t,
+cats: ['All', 'Article', 'Guide'].map((name) => ({ name, on: name === cat ? 'true' : 'false', go: () => this.setState({ cat: name }) })),
+items: A.filter((a) => cat === 'All' || a[0] === cat).map(([kind, tt, d, rev, date, hist]) => ({ kind, t: tt, d, rev, date, hist, aria: 'Revision ' + rev + ', updated ' + date + '. History: ' + hist }))
+};
+}
+
+}
+</script>
+</body>
+</html>
