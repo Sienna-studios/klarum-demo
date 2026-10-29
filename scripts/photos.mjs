@@ -38,7 +38,7 @@ function grade(buf, grade) {
       }
     } else {
       const g = clamp(((L - 0.5) * 1.65 + 0.5) * 0.98);
-      const m = 0.9 * Math.pow(1 - g, 1.3); // red ink coverage, heaviest in the shadows
+      const m = 0.6 * Math.pow(1 - g, 1.8); // red ink coverage, heaviest in the shadows (kept lighter than dark's: a full-bleed red slab swamps a light page)
       for (let c = 0; c < 3; c++) {
         const base = mix(T.lightInk[c], T.lightBg[c], g) / 255;
         out[i + c] = Math.round(255 * (1 - (1 - base) * (1 - (m * T.red[c]) / 255))); // screen
@@ -61,19 +61,21 @@ async function render(src, c, w, g) {
 
 const enc = async (img, fmt, q) => (fmt === "avif" ? img.clone().avif({ quality: q, effort: 4 }) : img.clone().webp({ quality: q, effort: 6 })).toBuffer();
 
+const GRADES = (process.env.GRADES || "dark,light").split(","); // GRADES=light re-bakes one grade and keeps the other's files
 const outDir = join(ROOT, "public/photos");
 mkdirSync(outDir, { recursive: true });
-for (const f of readdirSync(outDir)) rmSync(join(outDir, f)); // drops the old ungraded derivatives, including the three dropped photos
+for (const f of readdirSync(outDir)) if (GRADES.some((g) => f.includes(`-${g}-`)) || !/^(plate|cta)-/.test(f)) rmSync(join(outDir, f)); // also drops the old ungraded derivatives, including the three dropped photos
 
-const manifest = {};
+const manifestFile = join(ROOT, "lib/photos.json");
+const manifest = GRADES.length < 2 ? JSON.parse(readFileSync(manifestFile, "utf8")) : {};
 for (const slot of Object.keys(SLOTS)) {
   const src = readFileSync(join(ROOT, "photos", `${SLOTS[slot].photo}.jpg`));
-  manifest[slot] = { crops: {}, kb: {} };
+  manifest[slot] ||= { crops: {}, kb: {} };
   for (const bp of ["mobile", "desktop"]) {
     const c = crop(slot, bp);
     const widths = WIDTHS[bp].filter((w) => w <= c.w);
     manifest[slot].crops[bp] = { widths, aspect: +c.aspect.toFixed(4), crop: { x: c.x, y: c.y, w: c.w, h: c.h }, focal: [c.fx, c.fy], id: c.id };
-    for (const g of ["dark", "light"]) {
+    for (const g of GRADES) {
       const probe = await render(src, c, Math.min(SEARCH_W[bp], c.w), g);
       for (const fmt of ["avif", "webp"]) {
         let lo = 20, hi = 85, q = lo;
@@ -91,4 +93,4 @@ for (const slot of Object.keys(SLOTS)) {
   }
   console.log(slot, JSON.stringify(manifest[slot].kb));
 }
-writeFileSync(join(ROOT, "lib/photos.json"), JSON.stringify(manifest, null, 1) + "\n");
+writeFileSync(manifestFile, JSON.stringify(manifest, null, 1) + "\n");
