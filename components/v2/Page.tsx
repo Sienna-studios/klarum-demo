@@ -53,14 +53,12 @@ export function Page({ hero }: { hero: HeroId }) {
           </div>
         </section>
 
-        {hero !== "b" && (
-          <section className="m-section m-tint">
-            <div className="m-wrap m-narrow">
-              <h2>Go or no-go, then a draft cited to your own record.</h2>
-              <CitedClaim />
-            </div>
-          </section>
-        )}
+        <section className="m-section m-tint">
+          <div className="m-wrap m-narrow">
+            <h2>Go or no-go, then a draft cited to your own record.</h2>
+            <CitedClaim />
+          </div>
+        </section>
 
         <section className="m-section" id="notices">
           <div className="m-wrap">

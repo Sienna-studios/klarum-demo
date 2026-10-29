@@ -10,7 +10,7 @@ export function Switcher({ current }: { current: HeroId }) {
           <span className="sr">: {HERO_NOTES[id]}</span>
         </a>
       ))}
-      <a href="/" className="m-switch-dark">Dark version →</a>
+      <a href="/" className="m-switch-dark">Dark<span className="sr"> version</span> →</a>
     </nav>
   );
 }

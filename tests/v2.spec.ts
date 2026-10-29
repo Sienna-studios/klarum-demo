@@ -4,9 +4,11 @@ import AxeBuilder from "@axe-core/playwright";
 // Light, minimalist version at /v2/<hero>. Dark version stays at /.
 const HEROES = {
   a: /Turn your own project files into an expression of interest/,
-  b: /Every claim in your EOI, linked to the page that proves it\./,
   c: /Open tenders that fit your similar assignments, in one feed\./,
-  d: /Search live tender notices, draft from your own references, track every bid\./,
+  e: /Source more of the work that fits\./,
+  f: /The right work, resolved from the noise\./,
+  g: /The whole market, filtered by what you can deliver\./,
+  h: /One of these is yours\./,
 } as const;
 const FORBIDDEN = /app\.klarum\.com|api\.klarum\.com|posthog/i;
 
@@ -21,6 +23,7 @@ for (const [id, h1] of Object.entries(HEROES)) {
       const [r, g, b] = bg.match(/\d+/g)!.map(Number);
       expect(Math.min(r, g, b), "page ground must be light").toBeGreaterThan(235);
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+      expect(await page.locator("video, iframe, img").count(), "no images, video or iframes").toBe(0);
     });
 
     test("axe: no serious or critical issues", async ({ page }) => {
@@ -67,10 +70,10 @@ for (const [id, h1] of Object.entries(HEROES)) {
   });
 }
 
-test("v2: switcher links all four heroes and the dark version", async ({ page }) => {
+test("v2: switcher links every hero and the dark version", async ({ page }) => {
   await page.goto("/v2/a");
   const nav = page.getByRole("navigation", { name: "Hero variants" });
-  for (const l of ["A", "B", "C", "D"]) await expect(nav.getByRole("link", { name: new RegExp(`^Hero ${l}`) })).toBeVisible();
+  for (const l of ["A", "C", "E", "F", "G", "H"]) await expect(nav.getByRole("link", { name: new RegExp(`^Hero ${l}`) })).toBeVisible();
   await expect(nav.getByRole("link", { name: /Dark version/ })).toHaveAttribute("href", "/");
 });
 
