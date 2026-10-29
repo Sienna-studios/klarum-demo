@@ -1,0 +1,127 @@
+/* Klarum Night tokens.
+   Source: "Klarum Design Brief" canvas, boards Tokens-Color / Tokens-Type / Tokens-Space
+   and Home-Draft (selector .k = dark, .k.light = light), extracted 29 Oct 2026.
+   Dark is the default. Light follows the OS, and [data-theme] overrides either way. */
+
+:root {
+  /* Brand */
+  --red: #ef4136;           /* Klarum red, fills only. Never small text on light. */
+
+  /* Dark (default) */
+  --bg: #0d0d10;            /* page ground; matches live klarum.com theme-color */
+  --surf: #15161b;          /* panels, plan cards, feed box */
+  --ink: #ffffff;           /* headings, strong text */
+  --body: #e4e7ea;          /* body copy */
+  --sub: #c9ced3;           /* nav links, descriptions */
+  --mute: #a9b1ba;          /* mono labels, meta lines */
+  --line: #2a2e35;          /* hairlines, chip borders */
+  --off: #39424c;           /* empty fit pips, card and field borders */
+  --dot: #2e343c;           /* dot-field dots */
+  --pin: #ffe2d6;           /* map pins, shortlisted marker */
+  --pinb: #0d0d10;          /* pin border */
+  --redt: #ffb3aa;          /* red text on the ground */
+  --card: rgba(21, 22, 27, 0.94);   /* floating notice cards */
+  --scrim: 13, 13, 16;      /* rgb triplet for hero / CTA scrims */
+  --tile: rgba(239, 65, 54, 0.18);  /* pressed chip, shortlisted row */
+  --btn-ink: #0d0d10;       /* text on --red buttons, both modes */
+
+  /* Type */
+  --font-display: "Inter Tight", Inter, system-ui, sans-serif;  /* 700, 800 */
+  --font-body: Inter, system-ui, sans-serif;                     /* 400 to 700 */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;        /* 500, 600 */
+
+  --fs-11: 0.6875rem;  /* mono meta on cards and rows, .05em, caps */
+  --fs-12: 0.75rem;    /* labels (.lab), .08em, caps, 500 */
+  --fs-14: 0.875rem;   /* small text, chips, compact notice titles */
+  --fs-15: 0.9375rem;  /* nav, plan lists, footer links */
+  --fs-16: 1rem;       /* base, buttons (600) */
+  --fs-18: 1.125rem;   /* lead and body paragraphs, lh 1.55 */
+  --fs-24: 1.5rem;     /* wordmark, h3 */
+  --fs-28: 1.75rem;    /* footer wordmark, gap heading, phone h1/h2 */
+  --fs-48: 3rem;       /* plan price, 800, -.04em */
+  --fs-h2: clamp(2.25rem, 4vw, 3.25rem);   /* 36 to 52, 700, -.04em, lh 1.02 */
+  --fs-h1: clamp(1.75rem, 4.2vw, 3.25rem); /* draft uses 52 desktop, 28 phone; 800, -.04em, lh .98 */
+
+  --ls-label: 0.08em;
+  --ls-meta: 0.05em;
+  --ls-display: -0.04em;
+  --ls-wordmark: -0.02em;
+
+  --lh-body: 1.5;
+  --lh-lead: 1.55;
+  --lh-title: 1.3;
+  --lh-h2: 1.02;
+  --lh-h1: 0.98;
+
+  /* Space: nine steps, same in both directions */
+  --s-4: 4px;  --s-8: 8px;  --s-12: 12px; --s-16: 16px; --s-24: 24px;
+  --s-32: 32px; --s-48: 48px; --s-64: 64px; --s-112: 112px;
+
+  /* Radius */
+  --r-bar: 2px;      /* bars */
+  --r-ctl: 4px;      /* controls, buttons, chips, cite chips */
+  --r-surf: 6px;     /* surfaces, cards */
+
+  /* Layout */
+  --container: 1312px;
+  --gutter: 64px;          /* 16px at <=760 */
+  --header-h: 72px;
+  --section-y: 112px;      /* 64px at <=760 */
+  --btn-h: 48px;
+  --touch: 44px;           /* minimum target, chips and shortlist included */
+  --stroke: 1px;
+  --stroke-strong: 1.5px;
+
+  /* Motion: opacity and transform only, .15s; none under reduced motion */
+  --t-fast: 0.15s;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f6f6f3;
+    --surf: #ffffff;
+    --ink: #14202c;
+    --body: #26323d;
+    --sub: #3a4652;
+    --mute: #4b5762;
+    --line: #d9dde0;
+    --off: #c9cfd5;
+    --dot: #d3d8dc;
+    --pin: #14202c;
+    --pinb: #f6f6f3;
+    --redt: #c2261c;
+    --card: rgba(255, 255, 255, 0.96);
+    --scrim: 246, 246, 243;
+    --tile: rgba(239, 65, 54, 0.12);
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f6f3;
+  --surf: #ffffff;
+  --ink: #14202c;
+  --body: #26323d;
+  --sub: #3a4652;
+  --mute: #4b5762;
+  --line: #d9dde0;
+  --off: #c9cfd5;
+  --dot: #d3d8dc;
+  --pin: #14202c;
+  --pinb: #f6f6f3;
+  --redt: #c2261c;
+  --card: rgba(255, 255, 255, 0.96);
+  --scrim: 246, 246, 243;
+  --tile: rgba(239, 65, 54, 0.12);
+  color-scheme: light;
+}
+
+@media (max-width: 760px) {
+  :root { --gutter: 16px; --section-y: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-fast: 0s; }
+}

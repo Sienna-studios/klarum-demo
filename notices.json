@@ -1,0 +1,69 @@
+{
+  "_note": "Three real public notices, taken from the 23 Oct 2026 research (project doc claude/klarum-rethink-directions.md). Deadlines and open status were NOT re-checked on 29 Oct: verify each source before the demo is shown to anyone. Fit scores are sample values and must be labelled 'Sample fit' on the page. Revision is Rev A (published) because no change history was observed.",
+  "notices": [
+    {
+      "id": "ted-535663-2026",
+      "title": "Supervision of repair and rehabilitation of highways",
+      "type": "Tender notice",
+      "category": "Roads · Supervision",
+      "buyer": "Public authority, North Macedonia",
+      "country": "North Macedonia",
+      "cpv": "71521000 Construction-site supervision services",
+      "procedure": "Open procedure, Directive 2014/24/EU",
+      "duration": "48 months",
+      "closes": null,
+      "closes_label": "See notice",
+      "fit_sample": 4,
+      "revision": { "rev": "A", "history": ["A · published on TED"] },
+      "source_name": "TED 535663-2026",
+      "source_url": "https://ted.europa.eu/en/notice/535663-2026/pdf"
+    },
+    {
+      "id": "wb-p167382-vanuatu",
+      "title": "Design and construction supervision, about 60 km of road",
+      "type": "Request for expressions of interest",
+      "category": "Roads · Design and supervision",
+      "buyer": "Public Works Department, Vanuatu (World Bank financed)",
+      "country": "Vanuatu",
+      "project": "Vanuatu Climate Resilient Transport Project (P167382)",
+      "selection": "QCBS",
+      "shortlisting_criteria": [
+        "At least 10 years as a road consultancy",
+        "At least 3 similar assignments in the last 10 years, with detailed description of the services",
+        "Permanent qualified staff",
+        "Experience in developing countries or small islands"
+      ],
+      "closes": null,
+      "closes_label": "See notice",
+      "fit_sample": 5,
+      "revision": { "rev": "A", "history": ["A · REOI published"] },
+      "source_name": "REOI, Vanuatu Climate Resilient Transport Project",
+      "source_url": "https://pwd.gov.vu/images/Vanuatu_Climate_Resilient_Transport_Project_ID_P167382.pdf"
+    },
+    {
+      "id": "wb-ibrd9290-srilanka",
+      "title": "Supervision consultancy for rural road civil works",
+      "type": "Request for expressions of interest",
+      "category": "Roads · Supervision",
+      "buyer": "Road Development Authority, Sri Lanka (World Bank financed)",
+      "country": "Sri Lanka",
+      "project": "Inclusive Connectivity and Development Project (IBRD 9290)",
+      "selection": "QCBS",
+      "closes": null,
+      "closes_label": "See notice",
+      "fit_sample": 3,
+      "revision": { "rev": "A", "history": ["A · REOI published"] },
+      "source_name": "DevelopmentAid listing 1051915",
+      "source_url": "https://www.developmentaid.org/amp/tenders/view/1051915/inclusive-connectivity-and-development-project-supervision-consultancy-for-civil-works-of-3300-km-in"
+    }
+  ],
+  "cited_claim": {
+    "_note": "Requirement is real (Vanuatu REOI). The evidence sentence and reference document are SAMPLE content, labelled as such on the page, until a customer allows a real one.",
+    "requirement": "At least 3 similar assignments in the last 10 years, with detailed description of the services",
+    "requirement_source": "wb-p167382-vanuatu",
+    "draft_sentence": "The firm has supervised three comparable rural road rehabilitations since 2017, including 28 km in Kenya under a World Bank facility.",
+    "citation_label": "Sample reference · Kenya Roads completion report, p. 47",
+    "excerpt": "Supervision of rehabilitation works, 28.0 km rural road section, completed and handed over. [Sample excerpt]",
+    "is_sample": true
+  }
+}
