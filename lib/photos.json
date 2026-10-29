@@ -43,18 +43,18 @@
    "dark-mobile-960.avif": 106.6,
    "dark-mobile-640.webp": 59,
    "dark-mobile-960.webp": 108.2,
-   "light-mobile-640.avif": 60.5,
-   "light-mobile-960.avif": 106.2,
-   "light-mobile-640.webp": 40.6,
-   "light-mobile-960.webp": 78.9,
+   "light-mobile-640.avif": 59.4,
+   "light-mobile-960.avif": 105.6,
+   "light-mobile-640.webp": 48,
+   "light-mobile-960.webp": 89.9,
    "dark-desktop-1440.avif": 218.5,
    "dark-desktop-1920.avif": 340.8,
    "dark-desktop-1440.webp": 180.9,
    "dark-desktop-1920.webp": 281.5,
-   "light-desktop-1440.avif": 215.3,
-   "light-desktop-1920.avif": 332.7,
-   "light-desktop-1440.webp": 139.3,
-   "light-desktop-1920.webp": 227.1
+   "light-desktop-1440.avif": 215.4,
+   "light-desktop-1920.avif": 334.8,
+   "light-desktop-1440.webp": 158,
+   "light-desktop-1920.webp": 254.8
   }
  },
  "cta": {
@@ -101,18 +101,18 @@
    "dark-mobile-960.avif": 106.3,
    "dark-mobile-640.webp": 59.6,
    "dark-mobile-960.webp": 115.2,
-   "light-mobile-640.avif": 57.6,
-   "light-mobile-960.avif": 108,
-   "light-mobile-640.webp": 56.3,
-   "light-mobile-960.webp": 114.7,
+   "light-mobile-640.avif": 56.2,
+   "light-mobile-960.avif": 104.1,
+   "light-mobile-640.webp": 57.1,
+   "light-mobile-960.webp": 114.8,
    "dark-desktop-1440.avif": 212.3,
    "dark-desktop-1920.avif": 328.1,
    "dark-desktop-1440.webp": 215.5,
    "dark-desktop-1920.webp": 343,
-   "light-desktop-1440.avif": 219.6,
-   "light-desktop-1920.avif": 338.1,
-   "light-desktop-1440.webp": 175.9,
-   "light-desktop-1920.webp": 282.9
+   "light-desktop-1440.avif": 216.1,
+   "light-desktop-1920.avif": 333.7,
+   "light-desktop-1440.webp": 197,
+   "light-desktop-1920.webp": 313.5
   }
  }
 }
