@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-// Light, minimalist version at /v2/<hero>. Dark version stays at /.
+// Archived light, minimalist version at /archive/<hero>. The carried-forward Night version is at /.
 const HEROES = {
   c: /Open tenders that fit your similar assignments, in one feed\./,
   e: /Source more of the work that fits\./,
@@ -11,9 +11,9 @@ const HEROES = {
 const FORBIDDEN = /app\.klarum\.com|api\.klarum\.com|posthog/i;
 
 for (const [id, h1] of Object.entries(HEROES)) {
-  test.describe(`v2 hero ${id}`, () => {
+  test.describe(`archive hero ${id}`, () => {
     test("renders: h1, one primary action, light ground", async ({ page }) => {
-      await page.goto(`/v2/${id}`);
+      await page.goto(`/archive/${id}`);
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(h1);
       const trial = page.getByRole("link", { name: "Start the Business trial" }).first();
       await expect(trial).toHaveAttribute("href", "https://app.klarum.com");
@@ -25,7 +25,7 @@ for (const [id, h1] of Object.entries(HEROES)) {
     });
 
     test("axe: no serious or critical issues", async ({ page }) => {
-      await page.goto(`/v2/${id}`);
+      await page.goto(`/archive/${id}`);
       await page.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
       const { violations } = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
@@ -48,10 +48,10 @@ for (const [id, h1] of Object.entries(HEROES)) {
       cdp.on("Network.requestWillBeSent", (e) => { if (!loaded) { n++; urls.push(e.request.url); } });
       cdp.on("Network.loadingFinished", (e) => { if (!loaded) bytes += e.encodedDataLength; });
       page.once("load", () => { loaded = true; });
-      await page.goto(`/v2/${id}`, { waitUntil: "load" });
+      await page.goto(`/archive/${id}`, { waitUntil: "load" });
       await page.waitForTimeout(2000);
       await context.close();
-      console.log(`v2/${id} ${info.project.name}: ${(bytes / 1024).toFixed(1)} KB, ${n} requests`);
+      console.log(`archive/${id} ${info.project.name}: ${(bytes / 1024).toFixed(1)} KB, ${n} requests`);
       expect(urls.filter((u) => FORBIDDEN.test(u))).toEqual([]);
       expect(n).toBeLessThanOrEqual(25);
       expect(bytes).toBeLessThanOrEqual(410 * 1024);
@@ -59,9 +59,9 @@ for (const [id, h1] of Object.entries(HEROES)) {
 
     test("screenshots", async ({ page }, info) => {
       test.skip(info.project.name === "reduced-motion");
-      await page.goto(`/v2/${id}`);
+      await page.goto(`/archive/${id}`);
       await page.evaluate(() => document.fonts.ready);
-      const dir = `screenshots/v2/${info.project.name}`;
+      const dir = `screenshots/archive/${info.project.name}`;
       await page.screenshot({ path: `${dir}/hero-${id}.png` });
       if (id === "c") await page.screenshot({ path: `${dir}/page.png`, fullPage: true });
     });
@@ -69,14 +69,14 @@ for (const [id, h1] of Object.entries(HEROES)) {
 }
 
 test("v2: switcher links every hero and the dark version", async ({ page }) => {
-  await page.goto("/v2/c");
+  await page.goto("/archive/c");
   const nav = page.getByRole("navigation", { name: "Hero variants" });
   for (const l of ["C", "E", "F", "G"]) await expect(nav.getByRole("link", { name: new RegExp(`^Hero ${l}`) })).toBeVisible();
   await expect(nav.getByRole("link", { name: /Dark version/ })).toHaveAttribute("href", "/");
 });
 
 test("v2: shortlist, cited claim and pricing toggle still work", async ({ page }) => {
-  await page.goto("/v2/c");
+  await page.goto("/archive/c");
   const btn = page.locator("#notices").getByRole("button", { name: /Shortlist/ }).first();
   await btn.click();
   await expect(btn).toHaveAttribute("aria-pressed", "true");
@@ -87,7 +87,7 @@ test("v2: shortlist, cited claim and pricing toggle still work", async ({ page }
 });
 
 test("v2: claims.md 'confirm' rows stay out", async ({ page }) => {
-  await page.goto("/v2/c");
+  await page.goto("/archive/c");
   const t = await page.locator("body").innerText();
   expect(t).not.toMatch(/thirty|same day|legal team can sign|ISO ?27001|SOC ?2/i);
 });
