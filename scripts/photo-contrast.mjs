@@ -86,5 +86,6 @@ main(async (base) => {
     }
     writeFileSync(join(outDir(key, "contrast"), "photo-contrast.json"), JSON.stringify({ page: cfg.path, min: MIN, results }, null, 1));
   }
+  await browser.close();
   if (failed) process.exitCode = 1;
 });
