@@ -1,8 +1,10 @@
 # Design reference
 
-Exported on 29 Oct 2026 from Andres's claude.ai design canvases, so cloud sessions can use them without canvas access. `source/` holds each artboard's original HTML (`.dc.html`); `renders/` holds a WebP of it, rendered with the real fonts.
+Exported on 29 Oct 2026 from Andres's claude.ai design canvases, so cloud sessions can use them without canvas access. `source/` holds each artboard's original HTML (`.dc.html`), relinked to the images in `assets/`; `renders/` holds a WebP of each, rendered with the real fonts and images.
 
-Render caveats: photos, the hero field images and CSS-mask K shapes are missing (they were canvas uploads). Interactive boards show their markup without live values, so `{{…}}` slots are blank. For exact values, read the source HTML. The renders are for layout, hierarchy and feel.
+Render caveat: interactive boards show their markup without live values, so `{{…}}` slots are blank and animations are frozen. For exact values, read the source HTML.
+
+`assets/` holds the canvases' uploaded images (hero fields, stripe photo, K mask, logo), recompressed to WebP. They are design references. Any image the site actually ships must fit the budget in `/CLAUDE.md`.
 
 ## Priority, highest first
 
@@ -16,6 +18,10 @@ Render caveats: photos, the hero field images and CSS-mask K shapes are missing 
    - `SN-*`: Night pages (Home, Notices, Pricing). `SP-*`: Print pages (Home, Notices, Pricing, Articles).
    - `P1-Footer`: title-block footer (already adapted). `P3-Hero`: section-cut hero. `P3-Overprint`: riso misregistration on headlines and buttons.
    - `BL-Page`, `BN-Page`: alternative full pages. `R-Process`: How it works, Print.
+   - Hero studies: `BL-Hero1` (K mark as the mass), `BL-Hero2` (signal resolved from noise), `B1-SignalPrint` and `B2-NightField` (pinned notice field, light and dark), `BN2-Lens` (capability lens over the market), `BX1-OneOfThese` ("One of these is yours"), `BL-Resolve` (noise-to-mark loop, frozen).
+   - Print backgrounds and treatments: `S1-Horizon`, `S2-Window` (photo-inked headline), `S3-Band`, `SM-Horizon`, `SM-Window` (phone), `PD4-RisoCity`, `PD6-HatchMosaic`, `B1-Sheet`.
+   - Systems and details: `BM-Legend` (map legend), `P3-Wiring`, `FX-Pricing`, `FX-Footer`.
+   - Not exported: the `-Dark`, `L-` and `D-` copies (same designs in the other mode) and the four 500 KB+ motion boards (`M1-Stream`, `M3-Lens`).
 3. **`selects-ii/` = earlier, more product-led exploration** (paper and ink, IBM Plex).
    - `E2-Trace`: requirement → evidence → draft trace with Met / Gap / Unmapped states. This is the strongest proof idea for the cited-claim story.
    - `L3-Evidence`: a notice with underlined phrases that explain the fit score.

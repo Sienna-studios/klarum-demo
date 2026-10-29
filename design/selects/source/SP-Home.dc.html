@@ -46,8 +46,8 @@ body{margin:0}
 .sect{padding:112px 0;border-top:1px solid var(--line)}
 .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:48px}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.stripe{background:#1d2931 url(/_blob/ee4e59dc5b6bb2377cca9d7040f5c508) center 38%/cover no-repeat}
-.stripe2{background:#1d2931 url(/_blob/ee4e59dc5b6bb2377cca9d7040f5c508) center 82%/cover no-repeat;transform:scaleX(-1)}
+.stripe{background:#1d2931 url(../../assets/ee4e59dc5b6bb2377cca9d7040f5c508.webp) center 38%/cover no-repeat}
+.stripe2{background:#1d2931 url(../../assets/ee4e59dc5b6bb2377cca9d7040f5c508.webp) center 82%/cover no-repeat;transform:scaleX(-1)}
 .fit{display:inline-flex;gap:4px}
 .fit i{display:block;width:12px;height:12px;box-shadow:inset 0 0 0 1.5px var(--line)}
 .fit i.on{background:var(--red);box-shadow:none}
@@ -150,7 +150,7 @@ body{margin:0}
 .cityw img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.65) brightness(.98)}
 .cityw .ink{position:absolute;inset:0;background:#ef4136;mix-blend-mode:screen}
 .cityw .hl{position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(251,253,246,0) 0 3px,rgba(251,253,246,.62) 3px 5px)}
-.cityw .gr{position:absolute;inset:0;background-image:url(/_blob/0bf16cb3281633a48c97154a691bba61);background-size:256px 256px;mix-blend-mode:multiply;opacity:.45}
+.cityw .gr{position:absolute;inset:0;background-image:url(../../assets/0bf16cb3281633a48c97154a691bba61.webp);background-size:256px 256px;mix-blend-mode:multiply;opacity:.45}
 .k.dark .cityw img{filter:grayscale(1) contrast(1.45) brightness(1.05)}
 .k.dark .cityw .ink{mix-blend-mode:multiply}
 .k.dark .cityw .hl{background:repeating-linear-gradient(-45deg,rgba(20,27,33,0) 0 3px,rgba(20,27,33,.55) 3px 5px)}
@@ -183,7 +183,7 @@ body{margin:0}
 .rps{transition:opacity .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
 .rpt{transition:background .2s,box-shadow .2s}
 .rpf{transition:opacity .25s}
-.rpstr{background-image:url(/_blob/ee4e59dc5b6bb2377cca9d7040f5c508);background-size:1440px auto;background-position:0 -620px}
+.rpstr{background-image:url(../../assets/ee4e59dc5b6bb2377cca9d7040f5c508.webp);background-size:1440px auto;background-position:0 -620px}
 .rpc{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;background:#141b21;color:#f3f2ec!important;font-size:17px;font-weight:600}
 .rpc:hover{background:#1d2931}
 .frame{position:relative;width:1440px;height:810px;margin:0 auto;overflow:hidden}
@@ -236,7 +236,7 @@ body{margin:0}
 <div class="k {{mode}}">
 <svg aria-hidden="true" width="0" height="0" style="position: absolute"><filter id="riso" x="-2%" y="-12%" width="104%" height="124%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" result="warp"></feTurbulence><feDisplacementMap in="SourceAlpha" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="rough"></feDisplacementMap><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="1" seed="9" result="grain"></feTurbulence><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 5.74" result="speck"></feColorMatrix><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="12" result="blot"></feTurbulence><feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 14 -8.06" result="patch"></feColorMatrix><feFlood flood-color="{{ink}}" result="inkFill"></feFlood><feComposite in="inkFill" in2="rough" operator="in" result="inkShape"></feComposite><feComposite in="inkShape" in2="speck" operator="in" result="inkLayer"></feComposite><feOffset in="rough" dx="1.5" dy="1" result="shifted"></feOffset><feFlood flood-color="#ef4136" result="redFill"></feFlood><feComposite in="redFill" in2="shifted" operator="in" result="redShape"></feComposite><feComposite in="redShape" in2="patch" operator="in" result="redPatch"></feComposite><feComposite in="redPatch" in2="speck" operator="in" result="redLayer"></feComposite><feMerge><feMergeNode in="inkLayer"></feMergeNode><feMergeNode in="redLayer"></feMergeNode></feMerge></filter></svg>
 <header class="hdr">
-<a href="SP-Home{{sfx}}.dc.html" aria-label="Klarum home" style="display: inline-flex; align-items: center; min-height: 44px"><img class="logo" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum"></a>
+<a href="SP-Home{{sfx}}.dc.html" aria-label="Klarum home" style="display: inline-flex; align-items: center; min-height: 44px"><img class="logo" src="../../assets/f7bec00e914435d1ef69a6793858ef3c.svg" alt="Klarum"></a>
 <nav class="nav" aria-label="Main"><a href="SP-Notices{{sfx}}.dc.html">Notices</a><a href="SP-Pricing{{sfx}}.dc.html">Pricing</a><a href="SP-Articles{{sfx}}.dc.html">Articles</a></nav>
 <div class="hright"><button type="button" class="chip hide-m" onClick="{{flip}}" aria-label="{{flipAria}}" style="min-height: 36px; padding: 0 10px; font-size: 12px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{flipLabel}}</button><span class="mono hide-m" style="letter-spacing: 0">EN</span><a class="hide-m" href="#">sign in</a><a class="sm hide-m" href="#">Start free</a><button type="button" class="menu" aria-label="Menu" aria-expanded="{{menuOpen}}" aria-controls="mnav" onClick="{{toggleMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button></div>
 </header>
@@ -502,7 +502,7 @@ body{margin:0}
 
 <section aria-labelledby="cov" style="padding: 32px 0">
 <div class="cityw">
-<img src="/_blob/ba2d1e6a3a1a7d21cebd94b0fe531ced" alt="">
+<img src="../../assets/ba2d1e6a3a1a7d21cebd94b0fe531ced.webp" alt="">
 <div class="ink" aria-hidden="true"></div><div class="hl" aria-hidden="true"></div><div class="gr" aria-hidden="true"></div>
 <div class="citycard">
 <p class="eyebrow">Coverage</p>
@@ -564,11 +564,11 @@ body{margin:0}
 <footer class="foot">
 <div class="wrap">
 <div class="fgrid">
-<div style="grid-column: 1 / span 4"><img class="inv" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum" style="height: 28px; width: auto; display: block"><p style="margin: 18px 0 0; font-size: 15px; line-height: 23px; color: var(--fmute); max-width: 320px">The Intelligent System of Record for Infrastructure Procurement.</p></div>
+<div style="grid-column: 1 / span 4"><img class="inv" src="../../assets/f7bec00e914435d1ef69a6793858ef3c.svg" alt="Klarum" style="height: 28px; width: auto; display: block"><p style="margin: 18px 0 0; font-size: 15px; line-height: 23px; color: var(--fmute); max-width: 320px">The Intelligent System of Record for Infrastructure Procurement.</p></div>
 <nav aria-label="Product" style="grid-column: 5 / span 2; display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span class="eyebrow" style="color: #ef4136">Product</span><a href="SP-Notices{{sfx}}.dc.html">Notices</a><a href="SP-Pricing{{sfx}}.dc.html">Pricing</a><a href="#">sign in</a></nav>
 <nav aria-label="Read" style="grid-column: 7 / span 2; display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span class="eyebrow" style="color: #ef4136">Read</span><a href="SP-Articles{{sfx}}.dc.html">Articles</a><a href="#">Privacy</a><a href="#">Terms</a></nav>
 <table class="tb" aria-label="Sheet information" style="grid-column: 9 / span 4; align-self: start">
-<tr><td colspan="2" rowspan="2" style="vertical-align: middle"><img class="inv" src="/_blob/f7bec00e914435d1ef69a6793858ef3c" alt="Klarum" style="height: 22px; width: auto; display: block"></td><td><span class="tk">Sheet</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">A-101</span></td><td><span class="tk">Rev</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace; color: #ef4136">D</span></td></tr>
+<tr><td colspan="2" rowspan="2" style="vertical-align: middle"><img class="inv" src="../../assets/f7bec00e914435d1ef69a6793858ef3c.svg" alt="Klarum" style="height: 22px; width: auto; display: block"></td><td><span class="tk">Sheet</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">A-101</span></td><td><span class="tk">Rev</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace; color: #ef4136">D</span></td></tr>
 <tr><td><span class="tk">Title</span><span class="tv">Home.</span></td><td><span class="tk">Scale</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">1:1</span></td></tr>
 <tr><td colspan="2"><span class="tk">Office</span><span class="tv">Stockholm, Medborgarplatsen 25</span></td><td><span class="tk">Web</span><span class="tv">klarum.com</span></td><td><span class="tk">Year</span><span class="tv" style="font-family: 'IBM Plex Mono', monospace">2026</span></td></tr>
 </table>
