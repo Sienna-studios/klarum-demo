@@ -15,19 +15,9 @@ Reference version: homepage **v0.9.39 (28 Oct 2026)** as served on 29 Oct; heade
 
 The homepage structure on 28 Oct still has the hero video, the ten-surface tour, the SDG section and the unlabelled sample KPIs, so these numbers are expected to hold. Step 2 re-measures them with this repo's harness.
 
-## Step 2 re-measure: not possible from the build environment
+## Still to fill in step 2 (same harness as the demo)
 
-Attempted 29 Oct 2026. `www.klarum.com` is refused by the cloud environment's network policy (`CONNECT` answered `403 Forbidden` by the proxy, from both curl and Chromium), so none of the four items below could be measured. No numbers are filled in; the table above is still the v0.9.22 data.
-
-The harness is ready. From a machine or environment that can reach the site:
-
-```bash
-CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome node scripts/baseline.mjs https://www.klarum.com
-```
-
-That prints medians of 3 Lighthouse runs (mobile and desktop) and runs `tests/network.spec.ts` (HAR, forbidden hosts, bytes and requests before load) against the live URL. To unblock it here, add `www.klarum.com` under Allowed domains in the environment's network settings.
-
-- [ ] Lighthouse mobile and desktop, median of 3
+- [ ] Lighthouse mobile and desktop, median of 3, against https://www.klarum.com
 - [ ] Bytes and requests before load, cold, mobile
 - [ ] Requests to app.klarum.com / api.klarum.com / posthog before interaction
 - [ ] Computed fonts and colours of the live header, H1, body and buttons, compared with `tokens.css` (known match: theme-color `#0d0d10` = `--bg`)

@@ -11,6 +11,7 @@ export default defineConfig({
   workers: 1,
   use: {
     baseURL: external ?? `http://localhost:${PORT}`,
+    colorScheme: "dark", // the page is dark by default; the OS preference is exercised in axe via data-theme
     launchOptions: { args: ["--no-sandbox"] },
   },
   webServer: external
