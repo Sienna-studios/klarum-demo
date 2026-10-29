@@ -1,7 +1,7 @@
 import { notices, type Notice } from "@/lib/data";
 import { Pips } from "@/components/Pips";
 
-/* Static, deterministic "notice field" art. Pure SVG, no raster, no motion except the pulse ring. */
+/* Static, deterministic "notice field" art. Pure SVG, no raster, no motion. */
 
 function rng(seed: number) {
   return () => {
@@ -50,7 +50,6 @@ function Dots({ dots, r = 3, rHit = 5.5 }: { dots: Dot[]; r?: number; rHit?: num
 const K_DOTS = scatter(1500, 700, 518, 7, (x, y) => inPoly(x, y, K_POLY), (_x, _y, i) => i % 97 === 5);
 const LENS = { cx: 330, cy: 260, r: 150 };
 const FIELD_DOTS = scatter(430, 640, 520, 11, () => true, (x, y, i) => i % 5 === 0 && (x - LENS.cx) ** 2 + (y - LENS.cy) ** 2 < (LENS.r - 14) ** 2);
-const ONE_DOTS = scatter(430, 640, 520, 23, (x, y) => (x - 470) ** 2 + (y - 270) ** 2 > 22 ** 2, () => false);
 
 function Card({ n, left, top, hit }: { n: Notice; left: string; top: string; hit?: boolean }) {
   return (
@@ -66,7 +65,7 @@ function Card({ n, left, top, hit }: { n: Notice; left: string; top: string; hit
 
 const [ted, vanuatu, srilanka] = notices;
 
-export type FieldKind = "mass" | "signal" | "lens" | "one";
+export type FieldKind = "mass" | "signal" | "lens";
 
 export function Field({ kind }: { kind: FieldKind }) {
   const kShape = kind === "mass" || kind === "signal";
@@ -88,20 +87,12 @@ export function Field({ kind }: { kind: FieldKind }) {
             <circle cx={LENS.cx} cy={LENS.cy} r={LENS.r} fill="none" stroke="#14202c" strokeWidth="1.5" />
           </>
         )}
-        {kind === "one" && (
-          <>
-            <Dots dots={ONE_DOTS} />
-            <circle cx="470" cy="270" r="7" fill="#14202c" />
-            <circle className="m-pulse" cx="470" cy="270" r="14" fill="none" stroke="#14202c" strokeWidth="2" />
-          </>
-        )}
       </svg>
       {kind === "mass" && (<><Card n={ted} left="2%" top="6%" /><Card n={vanuatu} left="42%" top="38%" hit /><Card n={srilanka} left="8%" top="68%" /></>)}
       {kind === "signal" && <Card n={vanuatu} left="40%" top="68%" hit />}
       {kind === "lens" && (<><Card n={vanuatu} left="30%" top="26%" hit /><Card n={ted} left="38%" top="58%" hit /></>)}
-      {kind === "one" && <Card n={vanuatu} left="56%" top="52%" hit />}
       <figcaption className="m-fcap">
-        {{ mass: "The mark is the mass. Notices are pulled out of it.", signal: "Grey is the feed. Red is what fits.", lens: "Inside the circle: what fits your similar assignments.", one: "Every dot is a notice." }[kind]} Illustrative; fit scores are sample values.
+        {{ mass: "The mark is the mass. Notices are pulled out of it.", signal: "Grey is the feed. Red is what fits.", lens: "Inside the circle: what fits your similar assignments." }[kind]} Illustrative; fit scores are sample values.
       </figcaption>
     </figure>
   );

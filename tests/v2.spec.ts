@@ -3,12 +3,10 @@ import AxeBuilder from "@axe-core/playwright";
 
 // Light, minimalist version at /v2/<hero>. Dark version stays at /.
 const HEROES = {
-  a: /Turn your own project files into an expression of interest/,
   c: /Open tenders that fit your similar assignments, in one feed\./,
   e: /Source more of the work that fits\./,
   f: /The right work, resolved from the noise\./,
   g: /The whole market, filtered by what you can deliver\./,
-  h: /One of these is yours\./,
 } as const;
 const FORBIDDEN = /app\.klarum\.com|api\.klarum\.com|posthog/i;
 
@@ -65,20 +63,20 @@ for (const [id, h1] of Object.entries(HEROES)) {
       await page.evaluate(() => document.fonts.ready);
       const dir = `screenshots/v2/${info.project.name}`;
       await page.screenshot({ path: `${dir}/hero-${id}.png` });
-      if (id === "a") await page.screenshot({ path: `${dir}/page.png`, fullPage: true });
+      if (id === "c") await page.screenshot({ path: `${dir}/page.png`, fullPage: true });
     });
   });
 }
 
 test("v2: switcher links every hero and the dark version", async ({ page }) => {
-  await page.goto("/v2/a");
+  await page.goto("/v2/c");
   const nav = page.getByRole("navigation", { name: "Hero variants" });
-  for (const l of ["A", "C", "E", "F", "G", "H"]) await expect(nav.getByRole("link", { name: new RegExp(`^Hero ${l}`) })).toBeVisible();
+  for (const l of ["C", "E", "F", "G"]) await expect(nav.getByRole("link", { name: new RegExp(`^Hero ${l}`) })).toBeVisible();
   await expect(nav.getByRole("link", { name: /Dark version/ })).toHaveAttribute("href", "/");
 });
 
 test("v2: shortlist, cited claim and pricing toggle still work", async ({ page }) => {
-  await page.goto("/v2/a");
+  await page.goto("/v2/c");
   const btn = page.locator("#notices").getByRole("button", { name: /Shortlist/ }).first();
   await btn.click();
   await expect(btn).toHaveAttribute("aria-pressed", "true");
@@ -89,7 +87,7 @@ test("v2: shortlist, cited claim and pricing toggle still work", async ({ page }
 });
 
 test("v2: claims.md 'confirm' rows stay out", async ({ page }) => {
-  await page.goto("/v2/a");
+  await page.goto("/v2/c");
   const t = await page.locator("body").innerText();
   expect(t).not.toMatch(/thirty|same day|legal team can sign|ISO ?27001|SOC ?2/i);
 });
