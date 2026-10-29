@@ -43,7 +43,12 @@ function NoticeRow({ n }: { n: Notice }) {
         <span className="nrow-meta">Sample fit</span>
       </div>
       <div className="rev-wrap">
-        <button type="button" className="rev" aria-describedby={pop}>
+        <button
+          type="button"
+          className="rev"
+          aria-describedby={pop}
+          onKeyDown={(e) => e.key === "Escape" && e.currentTarget.blur()}
+        >
           Rev {n.revision.rev}
         </button>
         <div id={pop} role="tooltip" className="rev-pop">

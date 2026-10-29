@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { URLS } from "@/lib/data";
 import { KMark } from "./KMark";
 
@@ -16,8 +16,14 @@ function toggleTheme() {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", esc);
+    return () => document.removeEventListener("keydown", esc);
+  }, [open]);
   return (
-    <header className="head">
+    <header id="top" className="head">
       <div className="wrap head-in">
         <a href="#top" className="logo" aria-label="Klarum home">
           <KMark className="logo-k" />
@@ -39,7 +45,7 @@ export function Header() {
             className="icon-btn menu-btn"
             aria-label="Menu"
             aria-expanded={open}
-            aria-controls="mobile-menu"
+            aria-controls={open ? "mobile-menu" : undefined}
             onClick={() => setOpen((v) => !v)}
           >
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">

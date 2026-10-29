@@ -180,7 +180,7 @@
 
   /* pricing */
   .seg { display: inline-flex; margin: 32px 0; border: 1px solid var(--line); border-radius: var(--r-ctl); padding: 4px; gap: 4px; flex-wrap: wrap; }
-  .seg button { min-height: 40px; padding: 0 16px; border-radius: 2px; font: 600 var(--fs-14) / 1 var(--font-body); color: var(--sub); cursor: pointer; }
+  .seg button { min-height: var(--touch); padding: 0 16px; border-radius: 2px; font: 600 var(--fs-14) / 1 var(--font-body); color: var(--sub); cursor: pointer; }
   .seg button[aria-pressed="true"] { background: var(--tile); color: var(--ink); box-shadow: inset 0 0 0 1px var(--red); }
   .plan { padding: 32px 24px; display: flex; flex-direction: column; gap: 12px; }
   .plan.rec { box-shadow: 0 0 0 2px var(--red); }
@@ -213,7 +213,7 @@
   .foot-in { position: relative; display: grid; gap: 64px; }
   .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
   .foot-small { font-size: var(--fs-14); color: var(--sub); margin-top: 8px; }
-  .foot-small a { text-decoration: underline; text-underline-offset: 3px; display: inline-flex; min-height: 32px; align-items: center; }
+  .foot-small a { text-decoration: underline; text-underline-offset: 3px; display: inline-flex; min-height: var(--touch); align-items: center; }
   .foot-links { list-style: none; padding: 0; display: grid; align-content: start; }
   .foot-links a { display: inline-flex; align-items: center; min-height: var(--touch); font-size: var(--fs-15); color: var(--sub); text-decoration: none; }
   .foot-links a:hover { color: var(--redt); text-decoration: underline; text-underline-offset: 4px; }
