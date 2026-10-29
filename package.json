@@ -1,0 +1,29 @@
+{
+  "name": "klarum-demo",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "lhci": "lhci autorun --config=lighthouserc.json",
+    "baseline": "node scripts/baseline.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@lhci/cli": "0.15.1",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.9"
+  }
+}
