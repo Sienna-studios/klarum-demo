@@ -1,119 +1,118 @@
 {
- "hero-background-poster": {
-  "width": 2560,
-  "height": 1440,
-  "widths": [
-   640,
-   960,
-   1440,
-   1920
-  ],
-  "quality": {
-   "avif": 48,
-   "webp": 75
+ "plate": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1.3333,
+    "crop": {
+     "x": 300,
+     "y": 700,
+     "w": 960,
+     "h": 720
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "C"
+   },
+   "desktop": {
+    "widths": [
+     1440,
+     1920
+    ],
+    "aspect": 2.4,
+    "crop": {
+     "x": 0,
+     "y": 300,
+     "w": 2560,
+     "h": 1067
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "A"
+   }
   },
   "kb": {
-   "640.avif": 27.8,
-   "640.webp": 35.7,
-   "960.avif": 57.4,
-   "960.webp": 74.4,
-   "1440.avif": 106.7,
-   "1440.webp": 145.3,
-   "1920.avif": 160,
-   "1920.webp": 227.1
+   "dark-mobile-640.avif": 60.4,
+   "dark-mobile-960.avif": 106.6,
+   "dark-mobile-640.webp": 59,
+   "dark-mobile-960.webp": 108.2,
+   "light-mobile-640.avif": 60.5,
+   "light-mobile-960.avif": 106.2,
+   "light-mobile-640.webp": 40.6,
+   "light-mobile-960.webp": 78.9,
+   "dark-desktop-1440.avif": 218.5,
+   "dark-desktop-1920.avif": 340.8,
+   "dark-desktop-1440.webp": 180.9,
+   "dark-desktop-1920.webp": 281.5,
+   "light-desktop-1440.avif": 215.3,
+   "light-desktop-1920.avif": 332.7,
+   "light-desktop-1440.webp": 139.3,
+   "light-desktop-1920.webp": 227.1
   }
  },
- "aerial-fields": {
-  "width": 2000,
-  "height": 2000,
-  "widths": [
-   640,
-   960,
-   1440,
-   1920
-  ],
-  "quality": {
-   "avif": 43,
-   "webp": 60
+ "cta": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1,
+    "crop": {
+     "x": 1000,
+     "y": 700,
+     "w": 1000,
+     "h": 1000
+    },
+    "focal": [
+     1300,
+     1200
+    ],
+    "id": "B"
+   },
+   "desktop": {
+    "widths": [
+     1440,
+     1920
+    ],
+    "aspect": 3,
+    "crop": {
+     "x": 0,
+     "y": 700,
+     "w": 2000,
+     "h": 667
+    },
+    "focal": [
+     900,
+     1100
+    ],
+    "id": "B"
+   }
   },
   "kb": {
-   "640.avif": 46.8,
-   "640.webp": 55.8,
-   "960.avif": 100.1,
-   "960.webp": 123.4,
-   "1440.avif": 192.6,
-   "1440.webp": 253.5,
-   "1920.avif": 281.1,
-   "1920.webp": 397.3
-  }
- },
- "case-b": {
-  "width": 1600,
-  "height": 1056,
-  "widths": [
-   640,
-   960,
-   1440
-  ],
-  "quality": {
-   "avif": 76,
-   "webp": 80
-  },
-  "kb": {
-   "640.avif": 51.3,
-   "640.webp": 35.7,
-   "960.avif": 99.6,
-   "960.webp": 67.7,
-   "1440.avif": 178.1,
-   "1440.webp": 126.4
-  }
- },
- "hangar": {
-  "width": 2000,
-  "height": 1333,
-  "widths": [
-   640,
-   960,
-   1440,
-   1920
-  ],
-  "quality": {
-   "avif": 80,
-   "webp": 80
-  },
-  "kb": {
-   "640.avif": 35.4,
-   "640.webp": 20.1,
-   "960.avif": 76.7,
-   "960.webp": 43.9,
-   "1440.avif": 150,
-   "1440.webp": 90.2,
-   "1920.avif": 226.2,
-   "1920.webp": 146.4
-  }
- },
- "glass-facade": {
-  "width": 2000,
-  "height": 1320,
-  "widths": [
-   640,
-   960,
-   1440,
-   1920
-  ],
-  "quality": {
-   "avif": 70,
-   "webp": 80
-  },
-  "kb": {
-   "640.avif": 53.7,
-   "640.webp": 44.4,
-   "960.avif": 95.1,
-   "960.webp": 77,
-   "1440.avif": 175.4,
-   "1440.webp": 140.5,
-   "1920.avif": 261.4,
-   "1920.webp": 218.3
+   "dark-mobile-640.avif": 57.5,
+   "dark-mobile-960.avif": 106.3,
+   "dark-mobile-640.webp": 59.6,
+   "dark-mobile-960.webp": 115.2,
+   "light-mobile-640.avif": 57.6,
+   "light-mobile-960.avif": 108,
+   "light-mobile-640.webp": 56.3,
+   "light-mobile-960.webp": 114.7,
+   "dark-desktop-1440.avif": 212.3,
+   "dark-desktop-1920.avif": 328.1,
+   "dark-desktop-1440.webp": 215.5,
+   "dark-desktop-1920.webp": 343,
+   "light-desktop-1440.avif": 219.6,
+   "light-desktop-1920.avif": 338.1,
+   "light-desktop-1440.webp": 175.9,
+   "light-desktop-1920.webp": 282.9
   }
  }
 }

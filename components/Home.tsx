@@ -3,9 +3,9 @@ import { CitedClaim } from "@/components/CitedClaim";
 import { CompactNotice, NoticeList } from "@/components/NoticeFeed";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { HeroPhoto } from "@/components/HeroPhoto";
 import { KMark } from "@/components/KMark";
 import { LazyPhoto } from "@/components/LazyPhoto";
+import { Plate } from "@/components/Plate";
 import { Pricing } from "@/components/Pricing";
 
 const BACKERS = ["KTH", "AI Sweden", "AWS", "Google Maps", "Apple", "Svea Solar", "Lyceum Technology"];
@@ -32,13 +32,19 @@ const FAQ = [
 ];
 
 export function Home({ photos = true }: { photos?: boolean }) {
+  const noticesBlock = (
+    <div id="notices" className="notices-block">
+      <p className="lab">Open notices</p>
+      <p className="fine">Fit scores are sample values. Each title links to the original publication.</p>
+      <NoticeList items={notices} />
+    </div>
+  );
   return (
     <>
       <a href="#main" className="skip">Skip to content</a>
       <Header />
       <main id="main">
-        <section id="hero" className={photos ? "hero dots has-photo" : "hero dots"}>
-          {photos && <HeroPhoto />}
+        <section id="hero" className="hero dots">
           <div className="wrap hero-in">
             <div className="hero-copy">
               <p className="lab">For infrastructure bid teams</p>
@@ -76,7 +82,7 @@ export function Home({ photos = true }: { photos?: boolean }) {
             <h2>From notice to award, in one place.</h2>
             <div className="grid3 cards">
               <article className="surface card">
-                <div className={photos ? "card-top has-photo" : "card-top"}>{photos && <LazyPhoto name="aerial-fields" sizes="(max-width: 960px) 100vw, 420px" className="ph-card" />}<KMark className="card-k" /><span className="chiplab">01</span></div>
+                <div className="card-top"><KMark className="card-k" /><span className="chiplab">01</span></div>
                 <p className="lab">Sourcing</p>
                 <h3>Every notice worth your time, in one feed.</h3>
                 <ul className="surface mini">
@@ -84,13 +90,13 @@ export function Home({ photos = true }: { photos?: boolean }) {
                 </ul>
               </article>
               <article className="surface card">
-                <div className={photos ? "card-top has-photo" : "card-top"}>{photos && <LazyPhoto name="case-b" sizes="(max-width: 960px) 100vw, 420px" className="ph-card" />}<KMark className="card-k" /><span className="chiplab">02</span></div>
+                <div className="card-top"><KMark className="card-k" /><span className="chiplab">02</span></div>
                 <p className="lab">Decision and drafting</p>
                 <h3>Go or no-go, then a draft cited to your own record.</h3>
                 <CitedClaim />
               </article>
               <article className="surface card">
-                <div className={photos ? "card-top has-photo" : "card-top"}>{photos && <LazyPhoto name="hangar" sizes="(max-width: 960px) 100vw, 420px" className="ph-card" />}<KMark className="card-k" /><span className="chiplab">03</span></div>
+                <div className="card-top"><KMark className="card-k" /><span className="chiplab">03</span></div>
                 <p className="lab">Lifecycle</p>
                 <h3>The bid does not end at submission.</h3>
                 <ol className="stages" aria-label="Bid stages">
@@ -105,13 +111,17 @@ export function Home({ photos = true }: { photos?: boolean }) {
               </article>
             </div>
 
-            <div id="notices" className="notices-block">
-              <p className="lab">Open notices</p>
-              <p className="fine">Fit scores are sample values. Each title links to the original publication.</p>
-              <NoticeList items={notices} />
-            </div>
+            {!photos && noticesBlock}
           </div>
         </section>
+        {photos && (
+          <>
+            <Plate />
+            <section className="section notices-band">
+              <div className="wrap">{noticesBlock}</div>
+            </section>
+          </>
+        )}
 
         <section className="section dots" id="sources">
           <div className="wrap">
@@ -164,7 +174,7 @@ export function Home({ photos = true }: { photos?: boolean }) {
         </section>
 
         <section className={photos ? "section dots cta has-photo" : "section dots cta"}>
-          {photos && <LazyPhoto name="glass-facade" sizes="100vw" className="ph-cta" />}
+          {photos && <LazyPhoto slot="cta" sizes="100vw" className="ph-cta" />}
           <div className="wrap">
             <h2>See it on your own pipeline.</h2>
             <div className="actions">
