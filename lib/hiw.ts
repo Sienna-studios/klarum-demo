@@ -4,22 +4,22 @@
 export type WallTile = { title: string; src: string; look: "" | "inv" | "dash"; keep?: boolean; x: number; y: number; r: number };
 
 /** 14 of the 28 notices in the snapshot of klarum.com/notices, 30 Oct 2026, titles verbatim, plus the three notices in notices.json (claims.md #26).
- *  look = how the source formats it when it arrives. keep = the three that fit in step 2.
+ *  look is kept at "" for every tile: styling by portal would imply a meaning no source supports. keep = the three that fit in step 2.
  *  x, y = position as a fraction of the free space in the pile; r = tilt in degrees. Scattered on purpose: a pile, not a table. */
 export const WALL: WallTile[] = [
-  { title: "NY100136 Heliotropen etapp 2, totalentreprenad - förhandlat förfarande", src: "Mercell · Sweden", look: "inv", x: 0, y: 0, r: -3 },
-  { title: "Removal, Repair, Reinstallation of Winco LP Standby Generator, Sixs Rivers NF", src: "SAM.gov · USA", look: "dash", x: 0.45, y: 0.02, r: 2 },
+  { title: "NY100136 Heliotropen etapp 2, totalentreprenad - förhandlat förfarande", src: "Mercell · Sweden", look: "", x: 0, y: 0, r: -3 },
+  { title: "Removal, Repair, Reinstallation of Winco LP Standby Generator, Sixs Rivers NF", src: "SAM.gov · USA", look: "", x: 0.45, y: 0.02, r: 2 },
   { title: "Labour hire", src: "AusTender · Australia", look: "", x: 0.97, y: 0, r: -1.5 },
   { title: "Test Analyst", src: "AusTender · Australia", look: "", x: 0.1, y: 0.2, r: 2.5 },
-  { title: "Design and construction supervision, about 60 km of road", src: "PDF · Public Works Dept, Vanuatu", look: "inv", keep: true, x: 0.55, y: 0.22, r: -2 },
-  { title: "Material - Schaktmassor", src: "Mercell · Sweden", look: "inv", x: 1, y: 0.19, r: 3 },
+  { title: "Design and construction supervision, about 60 km of road", src: "PDF · Public Works Dept, Vanuatu", look: "", keep: true, x: 0.55, y: 0.22, r: -2 },
+  { title: "Material - Schaktmassor", src: "Mercell · Sweden", look: "", x: 1, y: 0.19, r: 3 },
   { title: "Templafy", src: "AusTender · Australia", look: "", x: 0, y: 0.42, r: -2 },
   { title: "Occupational Rehabilitation and Assessment Services", src: "AusTender · Australia", look: "", x: 0.36, y: 0.44, r: 1.5 },
   { title: "Supervision of repair and rehabilitation of highways", src: "TED · North Macedonia", look: "", keep: true, x: 0.82, y: 0.42, r: -3 },
   { title: "Office Fitout", src: "AusTender · Australia", look: "", x: 0.14, y: 0.64, r: 3 },
-  { title: "Supervision consultancy for rural road civil works", src: "DevelopmentAid · Sri Lanka", look: "dash", keep: true, x: 0.6, y: 0.66, r: -1.5 },
+  { title: "Supervision consultancy for rural road civil works", src: "DevelopmentAid · Sri Lanka", look: "", keep: true, x: 0.6, y: 0.66, r: -1.5 },
   { title: "Extradition", src: "AusTender · Australia", look: "", x: 1, y: 0.62, r: 2 },
-  { title: "Co-Sourced Internal Audit Service", src: "Contracts Finder · UK", look: "inv", x: 0.04, y: 0.9, r: -2 },
+  { title: "Co-Sourced Internal Audit Service", src: "Contracts Finder · UK", look: "", x: 0.04, y: 0.9, r: -2 },
   { title: "Gartner Subscription", src: "AusTender · Australia", look: "", x: 0.5, y: 1, r: 2.5 },
 ];
 
