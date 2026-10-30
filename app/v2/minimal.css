@@ -61,11 +61,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .mh-tr { left: calc(var(--pl) + var(--pw) - 8 * var(--tsz)); }
 .mh-tiles i { display: block; }
 .mh-tiles i.s { background: var(--red); }
-.mh-tiles i.h, .mh-sw.h { background: repeating-linear-gradient(-45deg, var(--red) 0 2px, transparent 2px 5px); box-shadow: inset 0 0 0 1.5px var(--red); }
-.mh-sw.s { background: var(--red); }
-.mh-sw { display: inline-block; width: var(--s-12); height: var(--s-12); margin-right: var(--s-8); vertical-align: -1px; }
-.mh-legend-box { position: absolute; top: 0; left: var(--pl); height: var(--band); display: flex; align-items: flex-end; padding-bottom: var(--s-8); }
-.mh-legend { padding: var(--s-8) var(--s-12); background: var(--surf); font: 500 var(--fs-11) / 1.4 var(--font-mono); letter-spacing: var(--ls-meta); text-transform: uppercase; color: var(--body); }
+.mh-tiles i.h { background: repeating-linear-gradient(-45deg, var(--red) 0 2px, transparent 2px 5px); box-shadow: inset 0 0 0 1.5px var(--red); }
 .mh-flow { position: relative; z-index: 3; }
 .mh-band { height: var(--band); }
 .mh-foot { height: var(--tsz); }
@@ -84,8 +80,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
   .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
   .mh-tr, .mh-tiles i:not([data-m]) { display: none; }
   .mh-tl { top: calc(-1 * var(--tsz)); }
-  .mh-legend-box { top: auto; bottom: 0; left: 0; height: auto; padding: 0 0 var(--s-16) var(--s-16); }
-  .mh-band, .mh-foot { display: none; }
+    .mh-band, .mh-foot { display: none; }
   .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
   .mh-cols { grid-template-columns: 1fr; gap: var(--s-24); }
   .mh-copy h1 { font-size: var(--fs-h1); }

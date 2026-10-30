@@ -17,7 +17,7 @@ const Tiles = ({ cluster, tiles }: { cluster: "left" | "right"; tiles: readonly 
 /**
  * Light hero C. The photograph runs full-bleed behind the whole hero, bridge and tram in the band above one off-white panel
  * snapped to a 40 px grid; the panel holds the copy on the left and the notice card on the right, as the old hero C did.
- * Red tiles sit in the band only (solid = fits, hatched = shortlisted). Copy is unchanged from the previous hero C.
+ * Red tiles sit in the band only (solid = fits, hatched = shortlisted, as in the notice card). Copy is unchanged from the previous hero C.
  */
 export function HeroMosaic({ photos = true }: { photos?: boolean }) {
   const fb = photoFallback("hero", "color");
@@ -37,12 +37,6 @@ export function HeroMosaic({ photos = true }: { photos?: boolean }) {
         )}
         <Tiles cluster="left" tiles={TILES.left} />
         <Tiles cluster="right" tiles={TILES.right} />
-        <div className="mh-legend-box">
-          <p className="mh-legend">
-            <span className="mh-sw s" />Fits your index<span className="mh-dot"> · </span>
-            <span className="mh-sw h" />Shortlisted<span className="mh-dot"> · </span>Illustrative
-          </p>
-        </div>
       </div>
       <div className="mh-flow">
         <div className="mh-band" />

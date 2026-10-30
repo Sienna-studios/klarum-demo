@@ -26,7 +26,7 @@ test("v2 hero: all of C's content, one primary action, light ground", async ({ p
   await expect(page.getByRole("navigation", { name: "Hero variants" })).toHaveCount(0);
 });
 
-test("v2 hero: tiles are decorative, two thirds hatched, only in the photo band, with the legend", async ({ page }, info) => {
+test("v2 hero: tiles are decorative, two thirds hatched, only in the photo band", async ({ page }, info) => {
   test.skip(info.project.name !== "desktop-1280");
   await page.goto("/v2");
   await expect(page.locator(".mh-bg")).toHaveAttribute("aria-hidden", "true");
@@ -36,7 +36,7 @@ test("v2 hero: tiles are decorative, two thirds hatched, only in the photo band,
   expect(hatched + solid).toBeLessThan(70);
   expect(hatched / (hatched + solid)).toBeGreaterThan(0.6);
   expect(hatched / (hatched + solid)).toBeLessThan(0.72);
-  await expect(page.locator(".mh-legend")).toHaveText(/Fits your index · Shortlisted · Illustrative/);
+  await expect(page.locator(".mh-legend")).toHaveCount(0);
   // every tile sits inside the band: below the empty row under the header, above the panel
   const hero = await page.locator(".mh").boundingBox();
   const panel = await page.locator(".mh-panel").boundingBox();
