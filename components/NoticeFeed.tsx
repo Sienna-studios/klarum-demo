@@ -77,11 +77,11 @@ export function NoticeRow({ n: base, i = -1, state = {} }: { n: Notice; i?: numb
         type="button"
         className="shortlist"
         aria-pressed={on}
-        aria-label={`Shortlist: ${n.title}`}
+        aria-label={`${on ? "Shortlisted" : "Shortlist"}: ${n.title}`}
         onClick={() => setOn((v) => !v)}
         data-state={ds("shortlist")}
       >
-        Shortlist
+        {on ? "Shortlisted" : "Shortlist"}
       </button>
       <div id={hist} className="rev-hist" role="group" aria-label={`Revision history, ${n.title}`} hidden={!open}>
         <p className="rev-hist-h">Rev · Note</p>

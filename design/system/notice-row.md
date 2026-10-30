@@ -35,7 +35,7 @@ Grid: title, fit, revision tag, shortlist button; second line: meta ("Type · Ca
 | Hover | Title underlines (2px `--sub`); the tag fills `--tile`; shortlist outline goes `--ink`. |
 | Focus-visible | 2px `--red` outline, 2px offset, on whichever of title, tag, button has focus. |
 | Active / open | Revision tag `aria-expanded="true"`, filled `--tile`, block visible. Escape closes it and keeps focus on the tag. Only one block open per row. |
-| Shortlisted | Button `aria-pressed="true"`: filled `--ink`, text `--bg`. Row takes `--tile`. Fit squares switch to the hatch: -45deg, 2px `--red`, 3px gap, outlined 1.5px `--red`. The title gets a 2px red underline. |
+| Shortlisted | Button `aria-pressed="true"`, text "Shortlisted": filled `--ink`, text `--bg`. Row takes `--tile`. Fit squares switch to the hatch: -45deg, 2px `--red`, 3px gap, outlined 1.5px `--red`. The title gets a 2px red underline. |
 | 120-character title | Title wraps to as many lines as it needs; the fit and buttons stay top-aligned to the first line; no truncation. |
 | Missing buyer and deadline | Meta shows only the type and category. No `Closes ·`, no dangling dot. |
 | Compact, revised (Rev B or later) | Static tag after the title line. |
@@ -50,7 +50,7 @@ Grid: title, fit, revision tag, shortlist button; second line: meta ("Type · Ca
 
 - Title link, tag button and shortlist button are separate tab stops, in reading order.
 - Tag name: "Rev A: show revision history" (an `aria-label` that starts with the visible "Rev A", so the visible label is in the name). `aria-expanded`, `aria-controls` the block's id.
-- Shortlist name: "Shortlist: <title>", with `aria-pressed`. Visible text stays "Shortlist" in both states, so the name always contains it. State is also in the hatch, tint and underline, not colour alone.
+- Shortlist name: ""Shortlist: <title>" or "Shortlisted: <title>", with `aria-pressed`. The visible text is "Shortlist" or "Shortlisted" and the name starts with it, so the visible label is always in the name. State is also in the hatch, tint and underline, not colour alone.
 - Fit has an accessible label; the squares are not read one by one.
 - 4.5:1 for every 11px label in both themes; 44px targets (the 26px tag keeps a 44px hit area).
 

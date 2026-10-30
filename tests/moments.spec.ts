@@ -30,7 +30,7 @@ for (const path of ["/", "/v2"]) {
       await page.goto(path);
       const row = page.locator("#notices .nrow.full").first();
       const tag = row.getByRole("button", { name: /^Rev A/ });
-      const btn = row.getByRole("button", { name: /^Shortlist: Supervision of repair/ });
+      const btn = row.getByRole("button", { name: /^Shortlist(ed)?: Supervision of repair/ });
       await tag.focus();
       await page.keyboard.press("Tab");
       await expect(btn).toBeFocused();

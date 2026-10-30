@@ -12,7 +12,7 @@ Closed:
 
 1. **Label** (`.lab`): "Draft EOI · sample".
 2. **Draft sentence** (`blockquote.quote`): the claim, with a 1.5px `--red` rule on its left (the citation rule).
-3. **Chip** (the `<summary>`): mono 11px caps, 1px `--red` border, `--redt` text, 4px radius. Reads `Met · Kenya Roads report, p. 47 · Sample`. The visible hit area is 44px tall; the chip itself is 26px, centred in it.
+3. **Chip** (the `<summary>`): mono 11px caps, 1px `--red` border, `--redt` text, 4px radius. Reads `Met · Kenya Roads report, p. 47 · Sample`. A trailing "+" (a "–" when open) says it opens. The visible hit area is 44px tall; the chip itself is 26px, centred in it.
 
 Open (the `<details>` panel, `.trace`, an ordered list of three nodes joined by arrows):
 

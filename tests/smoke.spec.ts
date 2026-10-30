@@ -159,3 +159,12 @@ test("no horizontal overflow", async ({ page }) => {
   const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(over).toBeLessThanOrEqual(0);
 });
+
+test("footer K shape stays inside the footer (it once rode up over the closing CTA)", async ({ page }) => {
+  const foot = (await page.locator("footer.foot").boundingBox())!;
+  const k = (await page.locator("svg.foot-k").boundingBox())!;
+  expect(k.y).toBeGreaterThanOrEqual(foot.y - 1);
+  expect(k.y + k.height).toBeLessThanOrEqual(foot.y + foot.height + 1);
+  expect(k.x).toBeGreaterThanOrEqual(foot.x - 1);
+  expect(k.x + k.width).toBeLessThanOrEqual(foot.x + foot.width + 1);
+});

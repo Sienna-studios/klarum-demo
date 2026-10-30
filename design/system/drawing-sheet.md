@@ -15,7 +15,7 @@ A caption is a **title block**: a bordered grid of cells. Each cell is a key (mo
 | Mark cell (the word "Klarum", two rows tall) | yes | no |
 | Cells | Sheet, Rev, Title, Scale, Office, Web, Year | Plate, Subject, Status |
 | Revision cell | `Rev C`, value in `--redt` | none |
-| Width | max 640px | max 560px, one row |
+| Width | max 640px | max 640px, one row |
 
 The same `<SheetCaption>` renders both: a `<dl>` of cells. Keys are `<dt>`, values `<dd>`.
 
