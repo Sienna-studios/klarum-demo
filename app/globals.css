@@ -181,7 +181,7 @@
   .quote { font-size: var(--fs-14); line-height: 1.5; border-left: 1.5px solid var(--red); padding-left: var(--s-8); color: var(--ink); }
   .cite > summary { display: inline-flex; align-items: center; min-height: var(--touch); cursor: pointer; list-style: none; border-radius: var(--r-ctl); }
   .cite > summary::-webkit-details-marker { display: none; }
-  .chip { font: 500 var(--fs-11) / 1.4 var(--font-mono); letter-spacing: var(--ls-meta); padding: var(--s-4) var(--s-8); border: 1px solid var(--red); border-radius: var(--r-ctl); color: var(--redt); }
+  .chip { font: 500 var(--fs-11) / 1.4 var(--font-mono); letter-spacing: normal; /* unspaced so the chip stays on one line in a card at 390 */ padding: var(--s-4) var(--s-8); border: 1px solid var(--red); border-radius: var(--r-ctl); color: var(--redt); }
   .cite > summary:is(:hover, [data-state="hover"]) .chip, .cite[open] .chip { background: var(--tile); }
   .chip::after { content: "+" / ""; margin-left: var(--s-8); } /* says the chip opens */
   .cite[open] .chip::after { content: "–" / ""; }
