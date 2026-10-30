@@ -1,11 +1,7 @@
 // Shared copy for the light version. Every sentence maps to a row in claims.md.
 export const BACKERS = ["KTH", "AI Sweden", "AWS", "Google Maps", "Apple", "Svea Solar", "Lyceum Technology"];
 
-export const STEPS = [
-  ["01", "Sourcing", "Every notice worth your time, in one feed.", "Sources include national procurement portals, TED and the development banks. Every notice links back to the original publication."],
-  ["02", "Decision and drafting", "Go or no-go, then a draft cited to your own record.", "Klarum drafts submissions from your own references and cites the source page behind every claim."],
-  ["03", "Lifecycle", "The bid does not end at submission.", "Track every bid."],
-] as const;
+export const STAGES = ["Sourced", "Drafting", "Submitted", "Awarded"];
 
 export const DOCS = [
   ["Database", "Hosted in Frankfurt."],

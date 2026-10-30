@@ -122,3 +122,4 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m .foot .wrap { max-width: calc(1120px + 2 * var(--gutter)); } /* footer on the same left edge as the light page's content (was x 64, content x 80) */
 /* below-the-fold sections skip layout and paint until they near the viewport, so the first frame (the h1, mobile LCP) paints before the scripts evaluate */
 .m main > section:not(.mh) { content-visibility: auto; contain-intrinsic-size: auto 800px; }
+.m-cards { margin-top: 48px; align-items: stretch; } /* equal-height cards */

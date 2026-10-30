@@ -1,8 +1,9 @@
-import { URLS } from "@/lib/data";
-import { BACKERS, DOCS, FAQ } from "@/lib/content";
+import { notices, URLS } from "@/lib/data";
+import { BACKERS, DOCS, FAQ, STAGES } from "@/lib/content";
 import { CitedClaim } from "@/components/CitedClaim";
 import { Footer } from "@/components/Footer";
 import { KMark } from "@/components/KMark";
+import { CompactNotice } from "@/components/NoticeFeed";
 import { Pricing } from "@/components/Pricing";
 import { HeaderCta } from "./HeaderCta";
 import { HeroMosaic } from "./HeroMosaic";
@@ -39,9 +40,35 @@ export function Page({ photos = true }: { photos?: boolean }) {
         </section>
 
         <section className="m-section m-tint">
-          <div className="m-wrap m-narrow">
-            <h2>Go or no-go, then a draft cited to your own record.</h2>
-            <CitedClaim />
+          <div className="m-wrap">
+            <h2>From notice to award, in one place.</h2>
+            <div className="grid3 cards m-cards">
+              <article className="surface card">
+                <p className="lab">01 · Sourcing</p>
+                <h3>Every notice worth your time, in one feed.</h3>
+                <ul className="surface mini">
+                  <CompactNotice n={notices[0]} i={0} />
+                </ul>
+              </article>
+              <article className="surface card">
+                <p className="lab">02 · Decision and drafting</p>
+                <h3>Go or no-go, then a draft cited to your own record.</h3>
+                <CitedClaim />
+              </article>
+              <article className="surface card">
+                <p className="lab">03 · Lifecycle</p>
+                <h3>The bid does not end at submission.</h3>
+                <ol className="stages" aria-label="Bid stages">
+                  {STAGES.map((st) => <li key={st}>{st}</li>)}
+                </ol>
+                <dl className="kpis">
+                  {["Win rate", "Cycle time", "Bids per quarter"].map((k) => (
+                    <div key={k}><dt className="lab">{k}</dt><dd>–</dd></div>
+                  ))}
+                </dl>
+                <p className="fine">Sample layout. No data shown.</p>
+              </article>
+            </div>
           </div>
         </section>
 
