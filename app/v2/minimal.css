@@ -123,3 +123,4 @@ html:has(.m) body { background: #fff; color: var(--body); }
 }
 
 .m .foot { background: #fff; }
+.m .foot .wrap { max-width: calc(1120px + 2 * var(--gutter)); } /* footer on the same left edge as the light page's content (was x 64, content x 80) */
