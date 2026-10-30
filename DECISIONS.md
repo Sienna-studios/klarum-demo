@@ -70,3 +70,14 @@ Baked with `sharp` in `scripts/photos.mjs` (`npm run photos`), one set for both 
 - **CTA band** (rail): replaces glass-facade. A scrim only behind the text, fading out to the right.
 - **Workflow cards:** no photos; they keep the K crop. (`/v2` has no card tops.)
 - All photos load through an IntersectionObserver, alt="".
+
+## Photos: grade revision, and merge (30 Oct 2026)
+
+Changes after the first review of the graded set. Merged into `claude/tender-babbage-km4d1v` once every check was green.
+
+- **Dark grade:** red limited to the top highlights, about 0.7x the previous coverage (0.92 g^3.1, was 0.92 g^2), so the red fit squares and the CTA stay the most saturated red on the page.
+- **Light grade:** red only in the darkest areas, about a third of the previous coverage (strength A: 0.24 (1-g)^3, was 0.6 (1-g)^1.8). Two strengths were baked and compared on the squint view (`npm run photos:strength`, results in `screenshots/review/photos-strength/`). The test: the plate's largest local luminance contrast must be below the contrast of the primary "Start the Business trial" button against its surround. Both passed by a wide margin (plate 36 and 37, button 106). A was kept: it is the one at a third of the coverage that was asked for, it is the quieter of the two, and the bridge structure is clearer than before (edge energy 30 to 37). Peak red saturation in the plate fell from 0.57 to 0.13, against 0.77 for the button.
+- **Light scanlines:** 3 px clear, 1 px at 35% (was 2 px at 60%). They follow the grade (`data-grade` on the photo), so the dark pass is unchanged.
+- **`/v2` hero switcher:** hidden unless `?dev=1`.
+- **Judge** (fresh Opus, plate current vs revised, unlabelled): the revision won on both pages. Dark: slightly lighter red keeps the girders, tram and cars clearer and competes less with the CTA. Light: the revision's near-neutral plate keeps the arches, tram and cars crisp on desktop and phone, where the previous one was a full-width red band, the biggest red mass on the page.
+- **Checks, photos on** (`screenshots/review/rev-on/`): mobile LCP 1710 ms (dark) and 2027 ms (light), budget passes, 226 and 228 KB before load, axe clean, text over the photos at least 4.66:1. **Photos off** (`rev-off/`): LCP 1740 ms and 2435 ms, same weights. Lighthouse in this container varies by several hundred ms between runs, so a single run near 2.5 s is not a verdict.
