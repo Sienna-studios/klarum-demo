@@ -112,7 +112,65 @@
    "light-desktop-1440.avif": 218.1,
    "light-desktop-1920.avif": 339.5,
    "light-desktop-1440.webp": 208.9,
-   "light-desktop-1920.webp": 327.9
+   "light-desktop-1920.webp": 327.9,
+   "color-mobile-640.avif": 60.9,
+   "color-mobile-960.avif": 107.7,
+   "color-mobile-640.webp": 59.4,
+   "color-mobile-960.webp": 115,
+   "color-desktop-1440.avif": 219.3,
+   "color-desktop-1920.avif": 333.3,
+   "color-desktop-1440.webp": 224,
+   "color-desktop-1920.webp": 350.8
+  }
+ },
+ "hero": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1.3333,
+    "crop": {
+     "x": 300,
+     "y": 700,
+     "w": 960,
+     "h": 720
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "C"
+   },
+   "desktop": {
+    "widths": [
+     1440,
+     1920
+    ],
+    "aspect": 1.7778,
+    "crop": {
+     "x": 0,
+     "y": 0,
+     "w": 2560,
+     "h": 1440
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "A"
+   }
+  },
+  "kb": {
+   "color-mobile-640.avif": 48.4,
+   "color-mobile-960.avif": 81.7,
+   "color-mobile-640.webp": 46.9,
+   "color-mobile-960.webp": 83.2,
+   "color-desktop-1440.avif": 214.2,
+   "color-desktop-1920.avif": 323.1,
+   "color-desktop-1440.webp": 221.4,
+   "color-desktop-1920.webp": 351.7
   }
  }
 }

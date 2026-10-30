@@ -5,13 +5,10 @@ import { Footer } from "@/components/Footer";
 import { KMark } from "@/components/KMark";
 import { NoticeList } from "@/components/NoticeFeed";
 import { Pricing } from "@/components/Pricing";
-import { Hero, type HeroId } from "./Hero";
+import { HeroMosaic } from "./HeroMosaic";
 import { LazyPhoto } from "@/components/LazyPhoto";
-import { Plate } from "@/components/Plate";
-import { DevOnly } from "@/components/DevOnly";
-import { Switcher } from "./Switcher";
 
-export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }) {
+export function Page({ photos = true }: { photos?: boolean }) {
   return (
     <div className="m">
       <a href="#main" className="m-skip">Skip to content</a>
@@ -30,7 +27,7 @@ export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }
       </header>
 
       <main id="main">
-        <Hero id={hero} />
+        <HeroMosaic photos={photos} />
 
         <section className="m-proof">
           <div className="m-wrap">
@@ -62,8 +59,6 @@ export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }
             <CitedClaim />
           </div>
         </section>
-
-        {photos && <Plate grade="light" />}
 
         <section className="m-section" id="notices">
           <div className="m-wrap">
@@ -108,7 +103,7 @@ export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }
         </section>
 
         <section className={photos ? "m-section m-cta has-photo" : "m-section m-cta"}>
-          {photos && <LazyPhoto slot="cta" grade="light" sizes="100vw" className="ph-cta" />}
+          {photos && <LazyPhoto slot="cta" grade="color" sizes="100vw" className="ph-cta" />}
           <div className="m-wrap">
             <h2>See it on your own pipeline.</h2>
             <div className="m-actions">
@@ -119,7 +114,6 @@ export function Page({ hero, photos = true }: { hero: HeroId; photos?: boolean }
         </section>
       </main>
       <Footer />
-      <DevOnly><Switcher current={hero} /></DevOnly>
     </div>
   );
 }

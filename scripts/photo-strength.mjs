@@ -15,7 +15,7 @@ import { ROOT, launch, main, newPage, outDir, scrollThrough, settle } from "./li
 const WIDTHS = { mobile: [640, 960], desktop: [1440, 1920] };
 const VARIANTS = (process.env.VARIANTS || "lightV1,lightA,lightB").split(",");
 const TARGETS = [
-  { key: "light-page", path: "/v2/c", theme: "native", button: ".m-hero a.m-btn" },
+  { key: "light-page", path: "/v2", theme: "native", button: ".m-hero a.m-btn" },
   { key: "dark-page-in-light", path: "/", theme: "light", button: "#hero a.btn-pri" },
 ];
 

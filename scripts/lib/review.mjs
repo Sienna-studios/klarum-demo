@@ -23,7 +23,7 @@ export const PAGES = {
     primaryTheme: "dark",
   },
   light: {
-    path: "/v2/c" + Q,
+    path: "/v2" + Q,
     target: "design/brief/renders/Home-Draft-Light.webp",
     // /v2 has no theme switch. "native" = no stored theme, OS dark (how the earlier screenshots were taken):
     // minimal.css re-points the tokens. "os-light" = OS light: the tokens.css light block outranks minimal.css.

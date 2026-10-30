@@ -1,7 +1,7 @@
 import manifest from "./photos.json";
 
 export type PhotoSlot = keyof typeof manifest; // "plate" (bridges) | "cta" (rail)
-export type Grade = "dark" | "light";
+export type Grade = "dark" | "light" | "color"; // dark and light are the riso grades; color is the light page, full colour
 
 const MOBILE_MAX = 760; // px; matches the site's phone breakpoint
 

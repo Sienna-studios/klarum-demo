@@ -17,11 +17,13 @@ import { GRADES as G, gradeBuffer } from "./photo-grade.mjs";
 import { ROOT } from "./lib/review.mjs";
 
 const WIDTHS = { mobile: [640, 960], desktop: [1440, 1920] };
-const CAP_KB = { mobile: 110, desktop: 220 }; // quality search target on the largest file that bp serves most (960 / 1440); the hard cap is 120 KB on mobile
+const CAP_KB = { mobile: 110, desktop: 220 };
+const SLOT_GRADES = { plate: ["dark", "light"], cta: ["dark", "light", "color"], hero: ["color"] };
+const HERO_MOBILE_CAP_KB = 82; // the light hero photo is the LCP: at most 90 KB on mobile (the webp gets a 5% allowance) // quality search target on the largest file that bp serves most (960 / 1440); the hard cap is 120 KB on mobile
 const SEARCH_W = { mobile: 960, desktop: 1440 };
 
 // grade parameters live in scripts/photo-grade.mjs (LIGHT=lightA|lightB picks the light strength)
-const PARAMS = { dark: G.dark, light: G[process.env.LIGHT || "lightA"] };
+const PARAMS = { dark: G.dark, light: G[process.env.LIGHT || "lightA"], color: G.color };
 
 const crop = (slot, bp) => {
   const c = CANDIDATES[slot][bp].find((x) => x.id === CHOSEN[slot][bp]);
@@ -36,27 +38,28 @@ async function render(src, c, w, g) {
 
 const enc = async (img, fmt, q) => (fmt === "avif" ? img.clone().avif({ quality: q, effort: 4 }) : img.clone().webp({ quality: q, effort: 6 })).toBuffer();
 
-const GRADES = (process.env.GRADES || "dark,light").split(","); // GRADES=light re-bakes one grade and keeps the other's files
+const GRADES = (process.env.GRADES || "dark,light,color").split(","); // GRADES=light re-bakes one grade and keeps the other's files
 const outDir = join(ROOT, "public/photos");
 mkdirSync(outDir, { recursive: true });
 for (const f of readdirSync(outDir)) if (GRADES.some((g) => f.includes(`-${g}-`)) || !/^(plate|cta)-/.test(f)) rmSync(join(outDir, f)); // also drops the old ungraded derivatives, including the three dropped photos
 
 const manifestFile = join(ROOT, "lib/photos.json");
-const manifest = GRADES.length < 2 ? JSON.parse(readFileSync(manifestFile, "utf8")) : {};
+const manifest = GRADES.length < 3 ? JSON.parse(readFileSync(manifestFile, "utf8")) : {};
 for (const slot of Object.keys(SLOTS)) {
+  if (!SLOT_GRADES[slot].some((g) => GRADES.includes(g))) continue;
   const src = readFileSync(join(ROOT, "photos", `${SLOTS[slot].photo}.jpg`));
   manifest[slot] ||= { crops: {}, kb: {} };
   for (const bp of ["mobile", "desktop"]) {
     const c = crop(slot, bp);
     const widths = WIDTHS[bp].filter((w) => w <= c.w);
     manifest[slot].crops[bp] = { widths, aspect: +c.aspect.toFixed(4), crop: { x: c.x, y: c.y, w: c.w, h: c.h }, focal: [c.fx, c.fy], id: c.id };
-    for (const g of GRADES) {
+    for (const g of GRADES.filter((x) => SLOT_GRADES[slot].includes(x))) {
       const probe = await render(src, c, Math.min(SEARCH_W[bp], c.w), g);
       for (const fmt of ["avif", "webp"]) {
         let lo = 20, hi = 85, q = lo;
         while (lo <= hi) {
           const mid = (lo + hi) >> 1;
-          if ((await enc(probe, fmt, mid)).length / 1024 <= CAP_KB[bp] * (fmt === "webp" ? 1.05 : 1)) { q = mid; lo = mid + 1; } else hi = mid - 1;
+          if ((await enc(probe, fmt, mid)).length / 1024 <= (slot === "hero" && bp === "mobile" ? HERO_MOBILE_CAP_KB : CAP_KB[bp]) * (fmt === "webp" ? 1.05 : 1)) { q = mid; lo = mid + 1; } else hi = mid - 1;
         }
         for (const w of widths) {
           const buf = await enc(await render(src, c, w, g), fmt, q);

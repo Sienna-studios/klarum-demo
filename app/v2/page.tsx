@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { Page } from "@/components/v2/Page";
 
-export default function V2Index() {
-  redirect("/v2/c");
+export default function V2() {
+  return <Page />;
 }

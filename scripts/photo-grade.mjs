@@ -13,9 +13,11 @@ export const GRADES = {
   dark: { grade: "dark", k: 0.92, p: 3.1 }, // 0.70x the mean red coverage of v1
   lightA: { grade: "light", k: 0.24, p: 3 }, // 0.33x
   lightB: { grade: "light", k: 0.14, p: 4 }, // 0.17x
+  color: { grade: "color" },
 };
 
 export function gradeBuffer(buf, { grade, k, p }) {
+  if (grade === "color") return buf; // the light page: photographs in full colour, no riso grade
   const out = Buffer.alloc(buf.length);
   for (let i = 0; i < buf.length; i += 3) {
     const L = (0.2126 * buf[i] + 0.7152 * buf[i + 1] + 0.0722 * buf[i + 2]) / 255;
