@@ -74,11 +74,12 @@ test("v2: the old hero routes redirect to /v2 and keep the query", async ({ page
   }
 });
 
-test("v2: the hero photo is the only image above the fold, preloaded at high priority", async ({ page }) => {
+test("v2: the hero photo is the only image above the fold on desktop, below the panel on a phone (so the h1 is the LCP)", async ({ page }, info) => {
   await page.goto("/v2");
   const above = await page.locator("img").evaluateAll((els) =>
     els.filter((e) => e.getBoundingClientRect().top < window.innerHeight).map((e) => (e.closest("[data-photo]") as HTMLElement | null)?.dataset.photo ?? "other"));
-  expect(above).toEqual(["hero"]);
+  const phone = info.project.name === "mobile-390";
+  expect(above).toEqual(phone ? [] : ["hero"]);
   await expect(page.locator("img[fetchpriority=high]")).toHaveCount(1);
   expect(await page.locator('link[rel=preload][as=image][fetchpriority=high]').count()).toBeGreaterThan(0);
   await page.goto("/v2?photos=0");

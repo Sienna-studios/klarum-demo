@@ -13,14 +13,16 @@
    "red": {
     "total": 101,
     "byMeaning": {
-     "other": 18,
+     "other": 66,
      "primary action": 4,
-     "fit": 72,
+     "fit": 24,
      "citation": 3,
      "revision": 4
     },
     "other": {
      "a.m-skip": 1,
+     "i.h": 32,
+     "i.s": 16,
      "button": 1,
      "li": 10,
      "article.surface.plan": 1,
@@ -53,14 +55,16 @@
    "red": {
     "total": 101,
     "byMeaning": {
-     "other": 18,
+     "other": 66,
      "primary action": 4,
-     "fit": 72,
+     "fit": 24,
      "citation": 3,
      "revision": 4
     },
     "other": {
      "a.m-skip": 1,
+     "i.h": 32,
+     "i.s": 16,
      "button": 1,
      "li": 10,
      "article.surface.plan": 1,

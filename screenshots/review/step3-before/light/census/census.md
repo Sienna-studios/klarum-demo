@@ -6,13 +6,13 @@ Red or red-text elements: **101**
 
 | Meaning | Elements |
 |---|---|
-| fit | 72 |
+| fit | 24 |
 | revision | 4 |
 | citation | 3 |
 | primary action | 4 |
-| other | 18 |
+| other | 66 |
 
-Off-meaning red (should be 0): a.m-skip x1, button x1, li x10, article.surface.plan x1, summary x5
+Off-meaning red (should be 0): a.m-skip x1, i.h x32, i.s x16, button x1, li x10, article.surface.plan x1, summary x5
 
 Decorative elements: **6** (aria-hidden SVG 4, other aria-hidden 1, gradient background shapes 0, pseudo-element shapes 1)
 
@@ -26,13 +26,13 @@ Red or red-text elements: **101**
 
 | Meaning | Elements |
 |---|---|
-| fit | 72 |
+| fit | 24 |
 | revision | 4 |
 | citation | 3 |
 | primary action | 4 |
-| other | 18 |
+| other | 66 |
 
-Off-meaning red (should be 0): a.m-skip x1, button x1, li x10, article.surface.plan x1, summary x5
+Off-meaning red (should be 0): a.m-skip x1, i.h x32, i.s x16, button x1, li x10, article.surface.plan x1, summary x5
 
 Decorative elements: **6** (aria-hidden SVG 4, other aria-hidden 1, gradient background shapes 0, pseudo-element shapes 1)
 

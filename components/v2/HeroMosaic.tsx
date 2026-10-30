@@ -3,7 +3,9 @@ import { photoFallback, photoSources } from "@/lib/photos";
 import { CompactNotice } from "@/components/NoticeFeed";
 
 const sources = photoSources("hero", "color");
-const preloads = sources.filter((s) => s.type === "image/avif");
+// Mobile gets the 640 px crop only (49 KB AVIF instead of 84 KB at 960): the LCP budget on a throttled phone is the hero photo's bytes.
+const lean = (s: { media?: string; srcSet: string }) => (s.media ? s.srcSet.split(", ")[0] : s.srcSet);
+const preloads = sources.filter((s) => s.type === "image/avif" && !s.media); // desktop only: on a phone the strip sits below the panel
 
 /**
  * Light hero C. The photograph runs full-bleed behind the whole hero, bridge and tram in the band above one off-white panel
@@ -18,11 +20,11 @@ export function HeroMosaic({ photos = true }: { photos?: boolean }) {
         {photos && (
           <>
             {preloads.map((s) => (
-              <link key={s.media ?? "desktop"} rel="preload" as="image" type={s.type} media={s.media ?? "(min-width: 761px)"} imageSrcSet={s.srcSet} imageSizes={s.media ? "100vw" : "2090px"} fetchPriority="high" />
+              <link key={s.media ?? "desktop"} rel="preload" as="image" type={s.type} media={s.media ?? "(min-width: 761px)"} imageSrcSet={lean(s)} imageSizes={s.media ? "100vw" : "2090px"} fetchPriority="high" />
             ))}
             <picture className="mh-photo" data-photo="hero">
-              {sources.map((s) => <source key={s.type + (s.media ?? "")} media={s.media} type={s.type} srcSet={s.srcSet} sizes={s.media ? "100vw" : "2090px"} />)}
-              <img src={fb.src} width={fb.width} height={fb.height} alt="" fetchPriority="high" decoding="async" />
+              {sources.map((s) => <source key={s.type + (s.media ?? "")} media={s.media} type={s.type} srcSet={lean(s)} sizes={s.media ? "100vw" : "2090px"} />)}
+              <img src={fb.src} width={fb.width} height={fb.height} alt="" fetchPriority="high" decoding="sync" />
             </picture>
           </>
         )}

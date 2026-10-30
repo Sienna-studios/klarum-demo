@@ -70,7 +70,9 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-feed .nrow { border-color: var(--line); }
 .mh-feed { border: 1px solid var(--off); border-radius: 0; background: var(--bg); }
 @media (max-width: 960px) {
-  .mh { --band: 0px; }
+  .mh { --band: 0px; display: flex; flex-direction: column; }
+  .mh-flow { order: 1; }
+  .mh-bg { order: 2; } /* phone and tablet: copy and the primary action first, the photo strip after the panel (it was the LCP element and pushed the CTA down) */
   .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
       .mh-band, .mh-foot { display: none; }
   .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
