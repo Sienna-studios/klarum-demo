@@ -221,3 +221,13 @@ Reverted: the light hero lead set in ink. The verify judge saw the first screens
 Interaction specs and the Lighthouse budget pass on both pages.
 
 **Light LCP is bimodal in this container.** With identical code, the light h1 LCP comes out at about 2.12 s or about 2.75 s, and the extra time is all render delay. While checking round 2, three of six runs on the final code landed in the slow mode. Reverting each light-visible round-2 commit gave 2.12 s every time, and so did two later runs of the unchanged final code, so no round-2 change is the cause. The round-1 attribution of 2.76 s to the 16 px phone padding is therefore uncertain (two runs with it slow, two without it fast). It stays reverted anyway, because the cautious reading costs nothing. A fix for the slow mode (the h1 waits on hydration or font swap) belongs to a later step. Dark red fell from 47 to 39 because card 01 lost two rows of fit squares.
+
+## Step 5: final check (30 Oct 2026, branch `claude/epic-lovelace-d6b5tv`)
+
+**Final branch:** `claude/epic-lovelace-d6b5tv`, because Step 4 has kept changes. It contains every commit from `claude/tender-babbage-km4d1v`, `photos`, `claude/practical-thompson-rmdwin` and `light-mosaic`. `main` has one commit that is not here, a design mock (`badd178`); the PR merges it. `personality-components` and `claude/brave-clarke-a2llhl` were not in scope and are not contained.
+
+**One threshold fix.** The first final run measured light mobile LCP at 2735 ms (budget fail). This was the slow mode of the bimodal LCP recorded in Step 4. The observed paint was at about 115 ms in both modes. Lighthouse's simulation then charges the React chunk's evaluation task to the LCP whenever that task finishes just before the first paint, so a few milliseconds of timing decide the outcome.
+
+Fix: `content-visibility: auto` on the light page's below-the-fold sections (`app/v2/minimal.css`). The first frame now skips their layout, so the first paint lands well before the scripts run. No visual change: stress, axe and contrast are unchanged. Result: 15 of 15 runs between 2116 and 2145 ms. `decoding="async"` on the hero image was tried first and did not help (one of four runs still slow), so it was reverted.
+
+Results in `screenshots/review/final/`, the 5-second test kit in `screenshots/5-second-test/`, the summary in `REPORT.md`.
