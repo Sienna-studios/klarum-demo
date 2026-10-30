@@ -11,12 +11,12 @@
    1440,
    5461
   ],
-  "fullMismatchPct": 24.7,
-  "firstScreenMismatchPct": 51.5,
+  "fullMismatchPct": 24.8,
+  "firstScreenMismatchPct": 51.9,
   "bands": [
    {
     "y": 0,
-    "mismatchPct": 67.1
+    "mismatchPct": 68.1
    },
    {
     "y": 400,
@@ -90,11 +90,11 @@
    5461
   ],
   "fullMismatchPct": 25.7,
-  "firstScreenMismatchPct": 51.7,
+  "firstScreenMismatchPct": 52.2,
   "bands": [
    {
     "y": 0,
-    "mismatchPct": 67.3
+    "mismatchPct": 68.2
    },
    {
     "y": 400,

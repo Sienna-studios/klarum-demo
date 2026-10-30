@@ -6,10 +6,10 @@
  "median": {
   "performance": 97,
   "lcpMs": 2408,
-  "tbtMs": 79,
+  "tbtMs": 77,
   "cls": 0,
   "fcpMs": 908,
-  "transferKB": 311.7,
+  "transferKB": 311.3,
   "requests": 13
  },
  "budgetAssertions": {

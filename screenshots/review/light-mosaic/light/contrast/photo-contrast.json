@@ -5,7 +5,7 @@
   {
    "theme": "native",
    "view": "1440",
-   "textBoxes": 37,
+   "textBoxes": 32,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
@@ -17,7 +17,7 @@
   {
    "theme": "native",
    "view": "1024",
-   "textBoxes": 40,
+   "textBoxes": 35,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
@@ -29,7 +29,7 @@
   {
    "theme": "native",
    "view": "390",
-   "textBoxes": 43,
+   "textBoxes": 38,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
@@ -41,7 +41,7 @@
   {
    "theme": "os-light",
    "view": "1440",
-   "textBoxes": 37,
+   "textBoxes": 32,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
@@ -53,7 +53,7 @@
   {
    "theme": "os-light",
    "view": "1024",
-   "textBoxes": 40,
+   "textBoxes": 35,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
@@ -65,7 +65,7 @@
   {
    "theme": "os-light",
    "view": "390",
-   "textBoxes": 43,
+   "textBoxes": 38,
    "worst": {
     "ratio": 5.06,
     "sel": "section.m-hero a.m-btn",
