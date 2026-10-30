@@ -14,9 +14,9 @@ Red or red-text elements: **47**
 
 Off-meaning red (should be 0): none
 
-Decorative elements: **6** (aria-hidden SVG 6, other aria-hidden 0, gradient background shapes 0, pseudo-element shapes 0)
+Decorative elements: **5** (aria-hidden SVG 5, other aria-hidden 0, gradient background shapes 0, pseudo-element shapes 0)
 
-- ariaHiddenSvg: svg.logo-k x1, svg x2, svg.foot-k x1, svg.wm-k x1, svg.tb-k x1
+- ariaHiddenSvg: svg.logo-k x1, svg x2, svg.foot-k x1, svg.wm-k x1
 
 ## light
 
@@ -32,6 +32,6 @@ Red or red-text elements: **47**
 
 Off-meaning red (should be 0): none
 
-Decorative elements: **6** (aria-hidden SVG 6, other aria-hidden 0, gradient background shapes 0, pseudo-element shapes 0)
+Decorative elements: **5** (aria-hidden SVG 5, other aria-hidden 0, gradient background shapes 0, pseudo-element shapes 0)
 
-- ariaHiddenSvg: svg.logo-k x1, svg x2, svg.foot-k x1, svg.wm-k x1, svg.tb-k x1
+- ariaHiddenSvg: svg.logo-k x1, svg x2, svg.foot-k x1, svg.wm-k x1

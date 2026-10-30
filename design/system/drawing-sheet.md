@@ -12,7 +12,7 @@ A caption is a **title block**: a bordered grid of cells. Each cell is a key (mo
 
 | Part | Footer | Plate |
 |---|---|---|
-| Mark cell (K, two rows tall) | yes | no |
+| Mark cell (the word "Klarum", two rows tall) | yes | no |
 | Cells | Sheet, Rev, Title, Scale, Office, Web, Year | Plate, Subject, Status |
 | Revision cell | `Rev C`, value in `--redt` | none |
 | Width | max 640px | max 560px, one row |
@@ -34,12 +34,12 @@ The same `<SheetCaption>` renders both: a `<dl>` of cells. Keys are `<dt>`, valu
 
 ## Tokens
 
-`--off`, `--mute`, `--ink`, `--redt`, `--bg`; `--fs-11`, `--fs-14`; `--s-8`, `--s-12`; `--r-bar` is not used (square corners, like paper). `--surf` for the footer K watermark. No new tokens; the `color-mix(--bg 85%)` fill the old caption used is gone (it was an off-token colour).
+`--off`, `--mute`, `--ink`, `--redt`, `--bg`; `--fs-11`, `--fs-14`; `--s-8`, `--s-12`; `--r-bar` is not used (square corners, like paper). `--surf` for the footer K watermark; `--fs-24` and `--ls-wordmark` for the mark cell. No new tokens; the `color-mix(--bg 85%)` fill the old caption used is gone (it was an off-token colour).
 
 ## Accessibility
 
 - Real `<dl>`, so a screen reader reads "Plate: 1; Subject: River crossings; Status: Sample image".
-- The K is `aria-hidden`; the visible name "Klarum" is in the page header and the footer wordmark.
+- The mark cell holds the word "Klarum" (not the K shape), so the title block adds no decoration.
 - 11px keys are 4.5:1 on their ground in both themes (`--mute`).
 - The giant footer K watermark is `aria-hidden` and sits inside the footer box (no clipped overflow).
 

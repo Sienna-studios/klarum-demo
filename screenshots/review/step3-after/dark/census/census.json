@@ -21,8 +21,8 @@
     "other": {}
    },
    "deco": {
-    "total": 6,
-    "ariaHiddenSvg": 6,
+    "total": 5,
+    "ariaHiddenSvg": 5,
     "ariaHiddenOther": 0,
     "backgroundShapes": 0,
     "pseudoShapes": 0,
@@ -31,8 +31,7 @@
       "svg.logo-k": 1,
       "svg": 2,
       "svg.foot-k": 1,
-      "svg.wm-k": 1,
-      "svg.tb-k": 1
+      "svg.wm-k": 1
      }
     }
    }
@@ -49,8 +48,8 @@
     "other": {}
    },
    "deco": {
-    "total": 6,
-    "ariaHiddenSvg": 6,
+    "total": 5,
+    "ariaHiddenSvg": 5,
     "ariaHiddenOther": 0,
     "backgroundShapes": 0,
     "pseudoShapes": 0,
@@ -59,8 +58,7 @@
       "svg.logo-k": 1,
       "svg": 2,
       "svg.foot-k": 1,
-      "svg.wm-k": 1,
-      "svg.tb-k": 1
+      "svg.wm-k": 1
      }
     }
    }

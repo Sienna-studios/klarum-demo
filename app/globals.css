@@ -240,7 +240,7 @@
   .sheet .rev-c { color: var(--redt); }
   .sheet-mark .sheet-k { grid-row: span 2; display: grid; place-items: center; }
   .sheet-plate { grid-template-columns: auto minmax(0, 1fr) auto; max-width: 560px; }
-  .tb-k { height: 56px; width: auto; color: var(--ink); }
+  .sheet-wm { font: 700 var(--fs-24) / 1 var(--font-display); letter-spacing: var(--ls-wordmark); color: var(--ink); }
   @media (max-width: 760px) { .sheet { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sheet-mark .sheet-k { grid-column: 1 / -1; grid-row: auto; } .sheet-c { grid-column: auto !important; } .sheet-plate { grid-template-columns: 1fr; } }
   .plate-cap { padding-block: var(--s-16) 0; }
 

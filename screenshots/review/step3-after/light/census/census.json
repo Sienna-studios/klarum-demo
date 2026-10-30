@@ -21,8 +21,8 @@
     "other": {}
    },
    "deco": {
-    "total": 6,
-    "ariaHiddenSvg": 4,
+    "total": 5,
+    "ariaHiddenSvg": 3,
     "ariaHiddenOther": 1,
     "backgroundShapes": 0,
     "pseudoShapes": 1,
@@ -30,8 +30,7 @@
      "ariaHiddenSvg": {
       "svg.m-logo-k": 1,
       "svg.foot-k": 1,
-      "svg.wm-k": 1,
-      "svg.tb-k": 1
+      "svg.wm-k": 1
      },
      "pseudoShapes": {
       "a.m-btn.m-btn-sm": 1
@@ -54,8 +53,8 @@
     "other": {}
    },
    "deco": {
-    "total": 6,
-    "ariaHiddenSvg": 4,
+    "total": 5,
+    "ariaHiddenSvg": 3,
     "ariaHiddenOther": 1,
     "backgroundShapes": 0,
     "pseudoShapes": 1,
@@ -63,8 +62,7 @@
      "ariaHiddenSvg": {
       "svg.m-logo-k": 1,
       "svg.foot-k": 1,
-      "svg.wm-k": 1,
-      "svg.tb-k": 1
+      "svg.wm-k": 1
      },
      "pseudoShapes": {
       "a.m-btn.m-btn-sm": 1

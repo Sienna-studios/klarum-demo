@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { KMark } from "./KMark";
 
 export type SheetCell = { k: string; v: ReactNode; mono?: boolean; rev?: boolean; span?: number };
 
@@ -12,7 +11,8 @@ export function SheetCaption({ cells, mark = false, label, className = "" }: { c
     <dl className={`sheet ${mark ? "sheet-mark " : ""}${className}`} aria-label={label}>
       {mark && (
         <div className="sheet-k">
-          <KMark className="tb-k" />
+          <dt className="sr">Company</dt>
+          <dd className="sheet-wm">Klarum</dd>
         </div>
       )}
       {cells.map((c) => (
