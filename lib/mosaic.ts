@@ -29,8 +29,9 @@ export function mosaicCells(): Cell[] {
     const rows = band === "top" ? TOP_ROWS : BOT_ROWS;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < COLS; c++) {
-        if (band === "top" && r === 3 && c >= 9 && c <= 23) continue; // far bridges (x 430 to 1130, y from 150)
+        if (band === "top" && r === 3 && c <= 23) continue; // old-town roofs (x < 700) and the far bridges (x 430 to 1130), both from y 150
         if (band === "bot" && r === 2 && c <= 19) continue; // near bridge piers (x < 960, y up to 690)
+        if (band === "bot" && r === 1 && c >= 8 && c <= 19) continue; // pier bases: the stage gets shorter at narrower widths
         if (band === "bot" && r <= 1 && c <= 7) continue; // the legend sits here
         const cx = c * 48 + 24, cy = (band === "top" ? r : 100 + r) * 48 + 24;
         const ends = (Math.abs(cx - 720) / 720) * 0.12; // a little denser toward the left and right ends

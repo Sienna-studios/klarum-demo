@@ -1,6 +1,6 @@
 import { notices, URLS } from "@/lib/data";
 import { mosaicCells } from "@/lib/mosaic";
-import { photoFallback, photoSize, photoSources } from "@/lib/photos";
+import { photoFallback, photoSources } from "@/lib/photos";
 import { CompactNotice } from "@/components/NoticeFeed";
 
 const cells = mosaicCells();
@@ -14,18 +14,17 @@ const preloads = sources.filter((s) => s.type === "image/avif");
  */
 export function HeroMosaic({ photos = true }: { photos?: boolean }) {
   const fb = photoFallback("hero", "color");
-  const { width, height } = photoSize("hero");
   return (
     <section className={photos ? "m-hero m-hero-c mh has-photo" : "m-hero m-hero-c mh"}>
       <div className="mh-bg" aria-hidden="true">
         {photos && (
           <>
             {preloads.map((s) => (
-              <link key={s.media} rel="preload" as="image" type={s.type} media={s.media} imageSrcSet={s.srcSet} imageSizes="100vw" fetchPriority="high" />
+              <link key={s.media ?? "desktop"} rel="preload" as="image" type={s.type} media={s.media ?? "(min-width: 761px)"} imageSrcSet={s.srcSet} imageSizes="100vw" fetchPriority="high" />
             ))}
             <picture className="mh-photo" data-photo="hero">
               {sources.map((s) => <source key={s.type + (s.media ?? "")} media={s.media} type={s.type} srcSet={s.srcSet} sizes="100vw" />)}
-              <img src={fb.src} width={width} height={height} alt="" fetchPriority="high" decoding="async" />
+              <img src={fb.src} width={fb.width} height={fb.height} alt="" fetchPriority="high" decoding="async" />
             </picture>
           </>
         )}

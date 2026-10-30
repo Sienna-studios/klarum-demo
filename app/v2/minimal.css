@@ -72,7 +72,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 @media (max-width: 960px) {
   .mh { min-height: 0; }
   .mh-bg { position: relative; height: auto; aspect-ratio: 21 / 9; }
-  .mh-top i[data-r="2"], .mh-top i[data-r="3"], .mh-bot i[data-r="2"] { display: none; }
+  .mh-top i[data-r="2"], .mh-top i[data-r="3"], .mh-bot i[data-r="1"], .mh-bot i[data-r="2"] { display: none; }
   .mh-front { gap: var(--s-24); justify-items: stretch; padding-block: var(--s-24) var(--s-48); }
   .mh-panel, .mh-feed { width: 100%; }
   .mh-feed { margin-top: 0; }

@@ -13,7 +13,7 @@ test("v2 hero: all of C's content, one primary action, light ground", async ({ p
   const trial = page.getByRole("link", { name: "Start the Business trial" }).first();
   await expect(trial).toHaveAttribute("href", "https://app.klarum.com");
   await expect(page.getByRole("link", { name: "See pricing" }).first()).toBeVisible();
-  await expect(page.getByText("7-day trial, one per organisation, no payment method.")).toBeVisible();
+  await expect(page.locator(".mh-panel").getByText("7-day trial, one per organisation, no payment method.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Or review one upcoming tender with us" })).toBeVisible();
   const feed = page.locator(".mh-feed");
   await expect(feed.getByText("Open notices · Sample fit")).toBeVisible();
@@ -67,7 +67,8 @@ test("v2 axe: no serious or critical issues", async ({ page }) => {
   ).toEqual([]);
 });
 
-test("v2: no forbidden requests; <=410 KB and <=25 requests before load", async ({ browser }, info) => {
+// The byte budget is a mobile, cold-load measurement (CLAUDE.md); requests and forbidden hosts are checked on every project.
+test("v2: no forbidden requests; <=410 KB (mobile) and <=25 requests before load", async ({ browser }, info) => {
   const context = await browser.newContext({ ...info.project.use });
   const page = await context.newPage();
   const cdp = await context.newCDPSession(page);
@@ -84,7 +85,7 @@ test("v2: no forbidden requests; <=410 KB and <=25 requests before load", async 
   console.log(`v2 ${info.project.name}: ${(bytes / 1024).toFixed(1)} KB, ${n} requests`);
   expect(urls.filter((u) => FORBIDDEN.test(u))).toEqual([]);
   expect(n).toBeLessThanOrEqual(25);
-  expect(bytes).toBeLessThanOrEqual(410 * 1024);
+  if (info.project.name === "mobile-390") expect(bytes).toBeLessThanOrEqual(410 * 1024);
 });
 
 test("v2: screenshots", async ({ page }, info) => {
