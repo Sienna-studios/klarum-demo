@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./minimal.css";
+import "./hiw.css";
 
 export const metadata: Metadata = {
   title: "Klarum homepage rebuild (demo, light)",

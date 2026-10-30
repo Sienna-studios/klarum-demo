@@ -12,6 +12,7 @@ export type Notice = {
   revision: { rev: string; history: string[] };
   source_name: string;
   source_url: string;
+  shortlisting_criteria?: string[];
 };
 
 export const notices = raw.notices as Notice[];
