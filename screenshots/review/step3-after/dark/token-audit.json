@@ -1,0 +1,20 @@
+{
+ "page": "/",
+ "themes": [
+  "dark",
+  "light"
+ ],
+ "viewports": [
+  1440,
+  390
+ ],
+ "summary": {
+  "distinctValues": 0,
+  "distinctOffenders": 0,
+  "uses": 0,
+  "byKind": {},
+  "top": [],
+  "byComponent": {}
+ },
+ "items": []
+}

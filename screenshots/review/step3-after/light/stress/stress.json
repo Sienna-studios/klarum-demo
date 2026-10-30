@@ -1,0 +1,133 @@
+{
+ "page": "/v2?stress=1",
+ "results": [
+  {
+   "config": "native-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  }
+ ]
+}
