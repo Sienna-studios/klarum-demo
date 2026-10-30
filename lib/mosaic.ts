@@ -1,45 +1,28 @@
-// Mosaic cells for the light hero, after PD6-HatchMosaic: red squares on a fixed 48 px grid, dense at the
-// top and bottom edges of the photo and thinning inward, with the near bridge, the tram and the far bridges kept clear.
-// Deterministic (hash noise), so the markup is stable between builds. Zones are in 48 px grid units, drawn on the
-// 1440 x 810 design and kept conservative: the photo scales with the viewport, the cells do not.
-// Solid = fits, hatched = shortlisted: the same two states as the fit squares and the shortlist hatch in the feed.
-export type Cell = { band: "top" | "bot"; r: number; c: number; kind: "s" | "h" };
+// Mosaic tiles for the light hero, after PD6-HatchMosaic: red squares on a fixed 40 px grid, only in the photo band above
+// the panel, clear of the steel bridge, the tram and the traffic. Row 0 (under the header) stays empty.
+// Two clusters, both on the same 40 px grid as the panel: `left` is anchored to the hero's left edge, `right` to the
+// panel's right edge (the panel is snapped to the grid, so both line up at any width). Row numbers are 0 to 5 (the band is
+// six rows), columns count from each cluster's own origin.
+// Solid = fits, hatched = shortlisted, the same two states as the fit squares and the shortlist hatch in the notice card.
+// Two thirds hatched, one third solid. `abovecard` tiles are hatched and touch the panel's top edge, just above the card.
+export type Tile = { r: number; c: number; kind: "s" | "h"; m?: boolean; card?: boolean };
 
-const COLS = 40; // 1920 px; the stage clips what does not fit
-const TOP_ROWS = 4;
-const BOT_ROWS = 3;
-const HATCH_SHARE = 0.4;
+const h = (r: number, c: number, extra: Partial<Tile> = {}): Tile => ({ r, c, kind: "h", ...extra });
+const s = (r: number, c: number, extra: Partial<Tile> = {}): Tile => ({ r, c, kind: "s", ...extra });
 
-const hash = (i: number, j: number, s: number) => {
-  let h = (Math.imul(i, 374761393) + Math.imul(j, 668265263) + s) | 0;
-  h = Math.imul(h ^ (h >>> 13), 1274126177);
-  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
-};
-const sm = (t: number) => t * t * (3 - 2 * t);
-const noise = (x: number, y: number, sc: number, s: number) => {
-  const u = x / sc, v = y / sc, i = Math.floor(u), j = Math.floor(v), fu = sm(u - i), fv = sm(v - j);
-  return (hash(i, j, s) * (1 - fu) + hash(i + 1, j, s) * fu) * (1 - fv) + (hash(i, j + 1, s) * (1 - fu) + hash(i + 1, j + 1, s) * fu) * fv;
-};
-// keep a cell when its score beats the threshold for its depth from the edge: dense at the edge, sparse inward
-const THRESHOLD = [0.3, 0.44, 0.58, 0.7];
-
-export function mosaicCells(): Cell[] {
-  const cells: Cell[] = [];
-  for (const band of ["top", "bot"] as const) {
-    const rows = band === "top" ? TOP_ROWS : BOT_ROWS;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < COLS; c++) {
-        if (band === "top" && r === 3 && c <= 23) continue; // old-town roofs (x < 700) and the far bridges (x 430 to 1130), both from y 150
-        if (band === "bot" && r === 2 && c <= 19) continue; // near bridge piers (x < 960, y up to 690)
-        if (band === "bot" && r === 1 && c >= 8 && c <= 19) continue; // pier bases: the stage gets shorter at narrower widths
-        if (band === "bot" && r <= 1 && c <= 7) continue; // the legend sits here
-        const cx = c * 48 + 24, cy = (band === "top" ? r : 100 + r) * 48 + 24;
-        const ends = (Math.abs(cx - 720) / 720) * 0.12; // a little denser toward the left and right ends
-        const v = noise(cx, cy, 140, band === "top" ? 7 : 19) * 0.7 + hash(c, r, band === "top" ? 3 : 5) * 0.3 + ends;
-        if (v < THRESHOLD[r]) continue;
-        cells.push({ band, r, c, kind: hash(c, r, 11) < HATCH_SHARE ? "h" : "s" });
-      }
-    }
-  }
-  return cells;
-}
+export const TILES = {
+  // anchored to the hero's left edge. Row 1 runs above the tram's roofline; rows 1 and 2 at the far left clear the tram.
+  left: [
+    h(1, 0, { m: true }), s(1, 1, { m: true }), h(1, 2, { m: true }), s(1, 3), h(1, 4), h(1, 6), h(1, 9, { m: true }), s(1, 12),
+    h(2, 0), h(2, 1), s(2, 2),
+  ],
+  // anchored to the panel's right edge (origin 320 px left of it); the outer top-right corner is columns 8 and up
+  right: [
+    h(1, 0), s(1, 1), h(1, 2), s(1, 3), h(1, 4), h(1, 5), h(1, 6), s(1, 7), h(1, 8), h(1, 9), h(1, 10), s(1, 11), h(1, 12), h(1, 13),
+    h(2, 6), s(2, 7), h(2, 8), s(2, 9), h(2, 10), h(2, 11), s(2, 12), h(2, 13),
+    h(3, 7), h(3, 8), s(3, 9), h(3, 10), s(3, 11), h(3, 12), s(3, 13),
+    h(4, 9), s(4, 10), s(4, 11), h(4, 12), h(4, 13),
+    // just above the notice card, touching the panel's top edge
+    h(5, 2, { card: true }), h(5, 3, { card: true }), h(5, 4, { card: true }),
+  ],
+} as const;

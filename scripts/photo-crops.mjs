@@ -4,14 +4,14 @@
 export const SLOTS = {
   plate: { photo: "hero-background-poster", desktop: 12 / 5, mobile: 4 / 3 }, // bridges
   cta: { photo: "aerial-fields", desktop: 3, mobile: 1 }, // rail
-  hero: { photo: "hero-background-poster", desktop: 16 / 9, mobile: 4 / 3 }, // bridges, full colour: the light page hero (PD6)
+  hero: { photo: "hero-background-poster", desktop: 2000 / 710, mobile: 4 / 3 }, // bridges, full colour: the light page hero (PD6)
 };
 
 const r = (x, y, w, h, fx, fy) => ({ x, y, w, h, fx, fy });
 
 export const CANDIDATES = {
   hero: {
-    desktop: [{ id: "A", note: "whole frame: PD6 uses the full photo; the panel sits right, bridges and tram stay left", ...r(0, 0, 2560, 1440, 900, 880) }],
+    desktop: [{ id: "A", note: "wide strip: tram, bridge deck and traffic near the top, river and foliage below; the panel covers the lower part", ...r(560, 730, 2000, 710, 900, 880) }],
     mobile: [{ id: "C", note: "tight on tram and bridge deck (same crop as the plate)", ...r(300, 700, 960, 720, 900, 880) }],
   },
   plate: {

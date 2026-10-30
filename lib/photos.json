@@ -145,15 +145,14 @@
    },
    "desktop": {
     "widths": [
-     1440,
      1920
     ],
-    "aspect": 1.7778,
+    "aspect": 2.8169,
     "crop": {
-     "x": 0,
-     "y": 0,
-     "w": 2560,
-     "h": 1440
+     "x": 560,
+     "y": 730,
+     "w": 2000,
+     "h": 710
     },
     "focal": [
      900,
@@ -167,10 +166,8 @@
    "color-mobile-960.avif": 81.7,
    "color-mobile-640.webp": 46.9,
    "color-mobile-960.webp": 83.2,
-   "color-desktop-1440.avif": 214.2,
-   "color-desktop-1920.avif": 323.1,
-   "color-desktop-1440.webp": 221.4,
-   "color-desktop-1920.webp": 351.7
+   "color-desktop-1920.avif": 167.1,
+   "color-desktop-1920.webp": 174.8
   }
  }
 }

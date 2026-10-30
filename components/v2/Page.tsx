@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { KMark } from "@/components/KMark";
 import { NoticeList } from "@/components/NoticeFeed";
 import { Pricing } from "@/components/Pricing";
+import { HeaderCta } from "./HeaderCta";
 import { HeroMosaic } from "./HeroMosaic";
 import { LazyPhoto } from "@/components/LazyPhoto";
 
@@ -22,7 +23,7 @@ export function Page({ photos = true }: { photos?: boolean }) {
             <a href="#notices">Notices</a>
             <a href="#pricing">Pricing</a>
           </nav>
-          <a href={URLS.trial} className="m-btn m-btn-sm">Start the Business trial</a>
+          <HeaderCta href={URLS.trial} />
         </div>
       </header>
 

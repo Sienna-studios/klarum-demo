@@ -26,12 +26,62 @@ test("v2 hero: all of C's content, one primary action, light ground", async ({ p
   await expect(page.getByRole("navigation", { name: "Hero variants" })).toHaveCount(0);
 });
 
-test("v2 hero: the mosaic is decorative and carries the legend", async ({ page }) => {
+test("v2 hero: tiles are decorative, two thirds hatched, only in the photo band, with the legend", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop-1280");
   await page.goto("/v2");
   await expect(page.locator(".mh-bg")).toHaveAttribute("aria-hidden", "true");
-  expect(await page.locator(".mh-band i.s").count()).toBeGreaterThan(10);
-  expect(await page.locator(".mh-band i.h").count()).toBeGreaterThan(5);
+  const hatched = await page.locator(".mh-tiles i.h").count();
+  const solid = await page.locator(".mh-tiles i.s").count();
+  expect(hatched + solid, "about half the old amount").toBeGreaterThan(35);
+  expect(hatched + solid).toBeLessThan(70);
+  expect(hatched / (hatched + solid)).toBeGreaterThan(0.6);
+  expect(hatched / (hatched + solid)).toBeLessThan(0.72);
   await expect(page.locator(".mh-legend")).toHaveText(/Fits your index · Shortlisted · Illustrative/);
+  // every tile sits inside the band: below the empty row under the header, above the panel
+  const hero = await page.locator(".mh").boundingBox();
+  const panel = await page.locator(".mh-panel").boundingBox();
+  for (const box of await page.locator(".mh-tiles i").evaluateAll((els) => els.map((e) => { const r = e.getBoundingClientRect(); return { top: r.top + scrollY, bottom: r.bottom + scrollY, left: r.left }; }))) {
+    expect(box.top, "row 0 stays empty").toBeGreaterThanOrEqual(hero!.y + 40 - 1);
+    expect(box.bottom, "tiles stay above the panel").toBeLessThanOrEqual(panel!.y + 1);
+  }
+  // 2 or 3 hatched tiles touch the panel's top edge above the notice card
+  const feed = await page.locator(".mh-feed").boundingBox();
+  const touching = await page.locator(".mh-tiles i.h").evaluateAll((els, py) => els.filter((e) => Math.abs(e.getBoundingClientRect().bottom + scrollY - py) < 2).map((e) => e.getBoundingClientRect().left), panel!.y);
+  const above = touching.filter((x) => x >= feed!.x - 40 && x <= feed!.x + feed!.width);
+  expect(above.length).toBeGreaterThanOrEqual(2);
+  expect(above.length).toBeLessThanOrEqual(3);
+});
+
+test("v2 hero: the panel is snapped to the 40 px grid and the first screen holds everything at 1280 x 800", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop-1280");
+  await page.goto("/v2");
+  const panel = (await page.locator(".mh-panel").boundingBox())!;
+  const hero = (await page.locator(".mh").boundingBox())!;
+  expect(panel.x % 40).toBe(0);
+  expect(panel.width % 40).toBe(0);
+  expect((panel.y - hero.y) % 40).toBe(0);
+  expect(panel.y - hero.y, "at least 240 px of photo above the panel").toBeGreaterThanOrEqual(240);
+  const vh = page.viewportSize()!.height;
+  for (const sel of [".mh-copy h1", ".mh-copy .m-lead", ".mh-copy .m-btn", ".mh-copy .m-fine", ".mh-copy .m-quiet", ".mh-feed .nrow:nth-child(3)"]) {
+    const b = (await page.locator(sel).boundingBox())!;
+    expect(b.y + b.height, `${sel} inside the first screen`).toBeLessThanOrEqual(vh);
+  }
+  // copy left, notice card right, top-aligned
+  const copy = (await page.locator(".mh-copy").boundingBox())!;
+  const feed = (await page.locator(".mh-feed").boundingBox())!;
+  expect(feed.x).toBeGreaterThan(copy.x + copy.width);
+  expect(Math.abs(feed.y - copy.y)).toBeLessThanOrEqual(2);
+});
+
+test("v2 header button: outlined while the hero is in view, solid red after", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop-1280");
+  await page.goto("/v2");
+  const btn = page.locator(".m-btn-hdr");
+  await expect(btn).toHaveAttribute("data-solid", "false");
+  await page.evaluate(() => window.scrollTo(0, document.querySelector(".mh")!.getBoundingClientRect().bottom + scrollY + 200));
+  await expect(btn).toHaveAttribute("data-solid", "true");
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(btn).toHaveAttribute("data-solid", "false");
 });
 
 test("v2: the old hero routes redirect to /v2 and keep the query", async ({ page }) => {
