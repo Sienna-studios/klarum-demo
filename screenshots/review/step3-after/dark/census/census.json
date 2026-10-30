@@ -1,0 +1,67 @@
+{
+ "page": "/",
+ "meanings": [
+  "fit",
+  "revision",
+  "citation",
+  "primary action",
+  "other"
+ ],
+ "primaryTheme": "dark",
+ "results": {
+  "dark": {
+   "red": {
+    "total": 47,
+    "byMeaning": {
+     "primary action": 3,
+     "fit": 36,
+     "citation": 4,
+     "revision": 4
+    },
+    "other": {}
+   },
+   "deco": {
+    "total": 5,
+    "ariaHiddenSvg": 5,
+    "ariaHiddenOther": 0,
+    "backgroundShapes": 0,
+    "pseudoShapes": 0,
+    "samples": {
+     "ariaHiddenSvg": {
+      "svg.logo-k": 1,
+      "svg": 2,
+      "svg.foot-k": 1,
+      "svg.wm-k": 1
+     }
+    }
+   }
+  },
+  "light": {
+   "red": {
+    "total": 47,
+    "byMeaning": {
+     "primary action": 3,
+     "fit": 36,
+     "citation": 4,
+     "revision": 4
+    },
+    "other": {}
+   },
+   "deco": {
+    "total": 5,
+    "ariaHiddenSvg": 5,
+    "ariaHiddenOther": 0,
+    "backgroundShapes": 0,
+    "pseudoShapes": 0,
+    "samples": {
+     "ariaHiddenSvg": {
+      "svg.logo-k": 1,
+      "svg": 2,
+      "svg.foot-k": 1,
+      "svg.wm-k": 1
+     }
+    }
+   }
+  }
+ }
+}

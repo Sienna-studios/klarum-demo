@@ -1,0 +1,23 @@
+{
+ "page": "/v2",
+ "runs": 3,
+ "formFactor": "mobile",
+ "throttling": "simulate",
+ "median": {
+  "performance": 98,
+  "lcpMs": 2118,
+  "tbtMs": 91,
+  "cls": 0,
+  "fcpMs": 912,
+  "transferKB": 277.9,
+  "requests": 13
+ },
+ "budgetAssertions": {
+  "passed": true,
+  "output": [
+   "Checking assertions against 1 URL(s), 3 total run(s)",
+   "",
+   "All results processed!"
+  ]
+ }
+}

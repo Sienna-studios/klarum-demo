@@ -1,0 +1,173 @@
+{
+ "plate": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1.3333,
+    "crop": {
+     "x": 300,
+     "y": 700,
+     "w": 960,
+     "h": 720
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "C"
+   },
+   "desktop": {
+    "widths": [
+     1440,
+     1920
+    ],
+    "aspect": 2.4,
+    "crop": {
+     "x": 0,
+     "y": 300,
+     "w": 2560,
+     "h": 1067
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "A"
+   }
+  },
+  "kb": {
+   "dark-mobile-640.avif": 60.4,
+   "dark-mobile-960.avif": 106.8,
+   "dark-mobile-640.webp": 62.4,
+   "dark-mobile-960.webp": 111.1,
+   "light-mobile-640.avif": 60.5,
+   "light-mobile-960.avif": 109,
+   "light-mobile-640.webp": 52.6,
+   "light-mobile-960.webp": 94.3,
+   "dark-desktop-1440.avif": 217.7,
+   "dark-desktop-1920.avif": 340.7,
+   "dark-desktop-1440.webp": 190.1,
+   "dark-desktop-1920.webp": 299.9,
+   "light-desktop-1440.avif": 215.4,
+   "light-desktop-1920.avif": 338.2,
+   "light-desktop-1440.webp": 173,
+   "light-desktop-1920.webp": 279
+  }
+ },
+ "cta": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1,
+    "crop": {
+     "x": 1000,
+     "y": 700,
+     "w": 1000,
+     "h": 1000
+    },
+    "focal": [
+     1300,
+     1200
+    ],
+    "id": "B"
+   },
+   "desktop": {
+    "widths": [
+     1440,
+     1920
+    ],
+    "aspect": 3,
+    "crop": {
+     "x": 0,
+     "y": 700,
+     "w": 2000,
+     "h": 667
+    },
+    "focal": [
+     900,
+     1100
+    ],
+    "id": "B"
+   }
+  },
+  "kb": {
+   "dark-mobile-640.avif": 58.1,
+   "dark-mobile-960.avif": 107.2,
+   "dark-mobile-640.webp": 58.8,
+   "dark-mobile-960.webp": 114.7,
+   "light-mobile-640.avif": 57.5,
+   "light-mobile-960.avif": 105.2,
+   "light-mobile-640.webp": 59.2,
+   "light-mobile-960.webp": 114.5,
+   "dark-desktop-1440.avif": 211.8,
+   "dark-desktop-1920.avif": 327.9,
+   "dark-desktop-1440.webp": 227.5,
+   "dark-desktop-1920.webp": 363.9,
+   "light-desktop-1440.avif": 218.1,
+   "light-desktop-1920.avif": 339.5,
+   "light-desktop-1440.webp": 208.9,
+   "light-desktop-1920.webp": 327.9,
+   "color-mobile-640.avif": 60.9,
+   "color-mobile-960.avif": 107.7,
+   "color-mobile-640.webp": 59.4,
+   "color-mobile-960.webp": 115,
+   "color-desktop-1440.avif": 219.3,
+   "color-desktop-1920.avif": 333.3,
+   "color-desktop-1440.webp": 224,
+   "color-desktop-1920.webp": 350.8
+  }
+ },
+ "hero": {
+  "crops": {
+   "mobile": {
+    "widths": [
+     640,
+     960
+    ],
+    "aspect": 1.3333,
+    "crop": {
+     "x": 300,
+     "y": 700,
+     "w": 960,
+     "h": 720
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "C"
+   },
+   "desktop": {
+    "widths": [
+     1920
+    ],
+    "aspect": 2.8169,
+    "crop": {
+     "x": 560,
+     "y": 730,
+     "w": 2000,
+     "h": 710
+    },
+    "focal": [
+     900,
+     880
+    ],
+    "id": "A"
+   }
+  },
+  "kb": {
+   "color-mobile-640.avif": 48.4,
+   "color-mobile-960.avif": 81.7,
+   "color-mobile-640.webp": 46.9,
+   "color-mobile-960.webp": 83.2,
+   "color-desktop-1920.avif": 167.1,
+   "color-desktop-1920.webp": 174.8
+  }
+ }
+}

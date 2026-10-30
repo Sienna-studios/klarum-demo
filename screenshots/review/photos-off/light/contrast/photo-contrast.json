@@ -1,0 +1,48 @@
+{
+ "page": "/v2/c?photos=0",
+ "min": 4.5,
+ "results": [
+  {
+   "theme": "native",
+   "view": "1440",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  },
+  {
+   "theme": "native",
+   "view": "1024",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  },
+  {
+   "theme": "native",
+   "view": "390",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  },
+  {
+   "theme": "os-light",
+   "view": "1440",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  },
+  {
+   "theme": "os-light",
+   "view": "1024",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  },
+  {
+   "theme": "os-light",
+   "view": "390",
+   "textBoxes": 0,
+   "worst": null,
+   "failing": []
+  }
+ ]
+}

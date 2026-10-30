@@ -1,0 +1,45 @@
+{
+  "name": "klarum-demo",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "lhci": "lhci autorun --config=lighthouserc.json",
+    "baseline": "node scripts/baseline.mjs",
+    "review": "node scripts/review.mjs",
+    "review:audit": "node scripts/token-audit.mjs",
+    "review:overlay": "node scripts/overlay.mjs",
+    "review:squint": "node scripts/squint.mjs",
+    "review:stress": "node scripts/stress.mjs",
+    "review:lighthouse": "node scripts/lighthouse.mjs",
+    "photos": "node scripts/photos.mjs",
+    "review:census": "node scripts/census.mjs",
+    "review:shots": "node scripts/shots.mjs",
+    "review:contrast": "node scripts/photo-contrast.mjs",
+    "photos:crops": "node scripts/crop-sheet.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@lhci/cli": "0.15.1",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "pixelmatch": "^7.1.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.9"
+  },
+  "overrides": {
+    "playwright-core": "1.63.0"
+  }
+}
