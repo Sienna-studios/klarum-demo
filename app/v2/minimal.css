@@ -110,5 +110,10 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-faq > p { padding-bottom: 24px; max-width: 62ch; }
 .m-narrow h2 { margin-bottom: 32px; }
 .m-cta h2 { max-width: 16ch; }
+/* phone: stack the two actions so all the text sits in the left part, where the scrim is solid */
+@media (max-width: 760px) {
+  .m-cta .m-actions { flex-direction: column; align-items: flex-start; gap: 0; }
+  .m-cta .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 70%, rgba(var(--scrim), 0) 100%); }
+}
 
 .m .foot { background: #fff; }

@@ -1,0 +1,161 @@
+{
+ "page": "/v2",
+ "theme": "native",
+ "target": "design/brief/renders/Home-Draft-Light.webp",
+ "native": {
+  "buildSize": [
+   1440,
+   6237
+  ],
+  "targetSize": [
+   1440,
+   5461
+  ],
+  "fullMismatchPct": 26.6,
+  "firstScreenMismatchPct": 65.4,
+  "bands": [
+   {
+    "y": 0,
+    "mismatchPct": 68.2
+   },
+   {
+    "y": 400,
+    "mismatchPct": 68.1
+   },
+   {
+    "y": 800,
+    "mismatchPct": 14.3
+   },
+   {
+    "y": 1200,
+    "mismatchPct": 8.3
+   },
+   {
+    "y": 1600,
+    "mismatchPct": 3.9
+   },
+   {
+    "y": 2000,
+    "mismatchPct": 7.1
+   },
+   {
+    "y": 2400,
+    "mismatchPct": 5
+   },
+   {
+    "y": 2800,
+    "mismatchPct": 3.9
+   },
+   {
+    "y": 3200,
+    "mismatchPct": 8
+   },
+   {
+    "y": 3600,
+    "mismatchPct": 5.4
+   },
+   {
+    "y": 4000,
+    "mismatchPct": 5.1
+   },
+   {
+    "y": 4400,
+    "mismatchPct": 4.2
+   },
+   {
+    "y": 4800,
+    "mismatchPct": 10.5
+   },
+   {
+    "y": 5200,
+    "mismatchPct": 51.1
+   },
+   {
+    "y": 5600,
+    "mismatchPct": 93.6
+   },
+   {
+    "y": 6000,
+    "mismatchPct": 99
+   }
+  ]
+ },
+ "os-light": {
+  "buildSize": [
+   1440,
+   6237
+  ],
+  "targetSize": [
+   1440,
+   5461
+  ],
+  "fullMismatchPct": 28,
+  "firstScreenMismatchPct": 65.6,
+  "bands": [
+   {
+    "y": 0,
+    "mismatchPct": 68.8
+   },
+   {
+    "y": 400,
+    "mismatchPct": 68.1
+   },
+   {
+    "y": 800,
+    "mismatchPct": 14.2
+   },
+   {
+    "y": 1200,
+    "mismatchPct": 8.3
+   },
+   {
+    "y": 1600,
+    "mismatchPct": 4.5
+   },
+   {
+    "y": 2000,
+    "mismatchPct": 22.1
+   },
+   {
+    "y": 2400,
+    "mismatchPct": 5
+   },
+   {
+    "y": 2800,
+    "mismatchPct": 4
+   },
+   {
+    "y": 3200,
+    "mismatchPct": 8.6
+   },
+   {
+    "y": 3600,
+    "mismatchPct": 5.9
+   },
+   {
+    "y": 4000,
+    "mismatchPct": 5.3
+   },
+   {
+    "y": 4400,
+    "mismatchPct": 4.6
+   },
+   {
+    "y": 4800,
+    "mismatchPct": 12.4
+   },
+   {
+    "y": 5200,
+    "mismatchPct": 51.7
+   },
+   {
+    "y": 5600,
+    "mismatchPct": 93.8
+   },
+   {
+    "y": 6000,
+    "mismatchPct": 99.2
+   }
+  ]
+ }
+}
