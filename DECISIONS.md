@@ -81,3 +81,20 @@ Changes after the first review of the graded set. Merged into `claude/tender-bab
 - **`/v2` hero switcher:** hidden unless `?dev=1`.
 - **Judge** (fresh Opus, plate current vs revised, unlabelled): the revision won on both pages. Dark: slightly lighter red keeps the girders, tram and cars clearer and competes less with the CTA. Light: the revision's near-neutral plate keeps the arches, tram and cars crisp on desktop and phone, where the previous one was a full-width red band, the biggest red mass on the page.
 - **Checks, photos on** (`screenshots/review/rev-on/`): mobile LCP 1710 ms (dark) and 2027 ms (light), budget passes, 226 and 228 KB before load, axe clean, text over the photos at least 4.66:1. **Photos off** (`rev-off/`): LCP 1740 ms and 2435 ms, same weights. Lighthouse in this container varies by several hundred ms between runs, so a single run near 2.5 s is not a verdict.
+
+## Light page: hero C rebuilt after PD6-HatchMosaic (30 Oct 2026, branch `light-mosaic`)
+
+**One hero.** The light page is hero C only. Heroes E, F and G, the field graphics and the hero switcher are deleted. `/v2` renders C directly; `/v2/c`, `/v2/e`, `/v2/f` and `/v2/g` redirect to `/v2` (307, query kept, so `?photos=0` and `?stress=1` survive).
+
+**Content is unchanged.** Eyebrow, H1, lead, "Start the Business trial", "See pricing", the trial note, "Or review one upcoming tender with us" and the "Open notices · Sample fit" feed card with its three notices and fit squares, all word for word.
+
+**Built in PD6's language** (`components/v2/HeroMosaic.tsx`, `lib/mosaic.ts`, `.mh-*` in `app/v2/minimal.css`):
+- **Photo:** `hero-background-poster` full-bleed in full colour, not the riso grade. Desktop is the whole frame, so the bridges, tram and traffic sit left of the panel. Mobile is the tight bridge-deck crop already chosen for the plate. AVIF and WebP in a `<picture>`, mobile files at 81.7 KB (AVIF) and 83.2 KB (WebP) at 960 px, preloaded with `fetchpriority="high"`; each preload carries its own media condition so a phone never fetches the desktop file.
+- **Mosaic:** red squares on PD6's 48 px grid (`--s-48`), solid `--red` or hatched with the shortlist hatch (the same gradient as a shortlisted fit square), dense along the top and bottom edges and thinning inward, in plain CSS grid cells with no image cost. They keep clear of the near bridge, its pier bases, the tram, the old-town roofs and the far bridges. They carry meaning: solid is "fits", hatched is "shortlisted", and a small mono legend in the bottom-left corner says so: "Fits your index · Shortlisted · Illustrative".
+- **Panel:** the off-white panel (`--surf`), square corners, holding all the copy. The feed card overlaps its lower edge, so the product preview is in the first screen at 1280. At 390 the order is photo strip, panel, feed card, and the primary button sits well inside the first screen.
+- **Tokens only:** font sizes `--fs-48` (H1, `--fs-h1` at 960 px and below), `--fs-18`, `--fs-12`, `--fs-11`; spacing `--s-*`; radius 0; no new values.
+- **`?photos=0`** on `/v2` now drops the photographs (hero and CTA) and keeps the mosaic on a flat ground. It is no longer a pixel-identical copy of the old page, because the old hero is gone.
+
+**Photography is split by page.** The bridges now lead the light hero, so the light page drops the bridges plate (the dark page keeps it). The light CTA band keeps the rail photo but in full colour, with a light scrim behind the text only. The light page is photographic throughout, the dark page riso throughout.
+
+**Budget note.** The 410 KB limit is a mobile, cold-load measurement (`CLAUDE.md`), and the v2 test now applies it to the mobile project only, like the dark page's. On a 1280 px desktop the hero photo (214 KB AVIF) takes the page to about 447 KB before load; mobile is well inside.
