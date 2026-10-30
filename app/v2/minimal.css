@@ -29,7 +29,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-quiet { font-weight: 500; color: var(--sub); }
 .m-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: 32px; }
 .m-actions .m-fine { flex-basis: 100%; }
-.m-skip { position: absolute; left: 8px; top: -80px; background: var(--red); color: var(--btn-ink); padding: 12px 16px; border-radius: 4px; font-weight: 600; z-index: 60; }
+.m-skip { position: absolute; left: 8px; top: -80px; background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 4px; font-weight: 600; z-index: 60; }
 .m-skip:focus { top: 8px; }
 
 .m-head { border-bottom: 1px solid var(--line); background: #fff; }
