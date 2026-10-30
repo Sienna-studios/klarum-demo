@@ -161,3 +161,63 @@ Before: 2738 to 2765 ms (budget fail), the hero photo was the LCP element and 65
 | Light `/v2` | 17 then 0 | 2 / 3 then 0 / 0 | 2738 then 2116 ms | 311.1 then 277.6 | 101 (66) then 36 (0) | 6 then 5 |
 
 Axe: clean in all 16 stress configs and the Playwright axe specs. Photo contrast worst 5.06:1. Budget passes on both. Lighthouse in this container moves by several hundred ms between runs (dark was 1719 to 2371 ms with identical code).
+
+## Step 4: judged polish rounds (30 Oct 2026, branch `claude/epic-lovelace-d6b5tv`, based on `claude/practical-thompson-rmdwin` at `303888d`)
+
+Polish only. Two rounds, each judged by fresh Opus subagents that saw screenshots only (no code), never the same judge twice. The judges saw the first screen and full page at 1280 and 390, the squint images and the Brief render as target; the verify judges saw before and after as unlabelled A/B with the order shuffled per page. Results: `screenshots/review/step4-round-1-before/`, `step4-round-1/`, `step4-round-2/`. `npm run review` now also writes full-page shots (`scripts/shots.mjs`, after scrolling so lazy photos load) and runs the keyboard interaction specs (`moments`, `smoke`). The light page is `/v2` on this branch (there is no `/v2/c`).
+
+**Harness note.** The first round-1 judgement saw the dark plate as an empty grey band: my new full-page capture had not scrolled, so the lazy photos never loaded. Fixed in `shots.mjs`, recaptured, and the same judge rescored before any fix was chosen.
+
+### Round 1
+Problems named (judge 1): dark: red duotone photos (major), stretched workflow cards with 600 px of dead space (major), chip wrapping "Sample +" onto its own line (moderate). Light: hero leads with sourcing and the header repeats the trial button (major), no photo caption and three left edges (major), the chip section centred off the grid plus the orphan "place." (moderate).
+
+Kept (verify judge preferred every one; no regression):
+- Chip in unspaced mono, one line in a 310 px card (shared, both pages).
+- Dark workflow cards top-aligned, no stretch.
+- Light hero panel: copy on the page's content edge (x 80 at 1280) instead of the removed tiles' 40 px grid.
+- Light chip and FAQ sections on the shared left edge; balanced h2.
+- Light header trial button is a quiet text link while the hero's red button is visible, and solid red after it.
+
+Reverted: the light hero panel's 16 px phone padding (the same commit, phone half only). It moved mobile LCP from 2.12 to 2.76 s, the h1 being the LCP element, and failed the budget. The panel keeps 24 px on phones.
+
+Not done: the light headline swap (copy change, out of scope). Red-free duotones (the riso red plates are a recorded decision, see "Photos"; Andres's call). New photo captions (would add drawing-sheet instances, not polish).
+
+### Round 2
+Problems named (the round 1 verify judge's remaining problems, from images only; no separate fresh pre-fix judge was run this round): dark: card 01 repeats all three notices and sets the row's height (major), red duotones (moderate), orphans and a misaligned metric dash (moderate). Light: the drafting job quiet in the hero (major), the quote too wide with an orphan (moderate), the footer at x 64 and the phone gutter (minor).
+
+Kept (verify judge preferred each; no regression):
+- Dark card 01 shows one notice row.
+- Balanced h2 on both pages (fixes "place." and "pipeline.").
+- Dark lifecycle card: the three metric dashes share a baseline.
+- Cited-claim quote capped at 62ch (shared).
+- Light footer on the content edge.
+
+Reverted: the light hero lead set in ink. The verify judge saw the first screens as identical, so it did not prefer the change.
+
+### Scores (dark / light; before step 4, after round 2)
+| Criterion | Dark before | Dark after | Light before | Light after |
+|---|---|---|---|---|
+| Page job | 4 | 4 | 2 | 3 |
+| Hierarchy | 3 | 4 | 3 | 3 |
+| Primary action | 4 | 4 | 3 | 4 |
+| Signature moments | 4 | 4 | 2 | 3 |
+| Typographic rhythm | 3 | 4 | 3 | 4 |
+| Spacing | 3 | 4 | 3 | 3 |
+| Mobile at 390 | 3 | 4 | 3 | 3 |
+| Restraint | 3 | 3 | 5 | 4 |
+
+"Before" is the round-1 judge's score on the corrected captures, and "after" is the round-2 verify judge's score. The judges differ, so read the light restraint 5 to 4 as calibration between judges: no red was added, and the census is unchanged at 36. The stop rule (every criterion at least 4, nothing above minor) was not met, and the two-round limit ended the step.
+
+### Left open (minor, or out of scope)
+- Dark: red duotones (a decision, not a bug). Sources card titles centred vertically and a tight subhead. Partner plan list spacing. Three-line notice titles at 390.
+- Light: headline leads with sourcing (copy). The citation section uses only the left half at 1280. The red tram in the hero photo. The phone hero at 24 px against a 16 px gutter (kept for LCP).
+
+### Numbers after step 4 (mobile LCP is the Lighthouse median of 3)
+| | Off-token | Stress | Axe | LCP | KB before load | Red (off-meaning) | Decorative | Photo contrast |
+|---|---|---|---|---|---|---|---|---|
+| Dark `/` | 0 | 0 | clean | 1723 ms | 227.1 | 39 (0), was 47 | 5 | 5.06:1 |
+| Light `/v2` | 0 | 0 | clean | 2117 ms | 277.6 | 36 (0) | 5 | 5.06:1 |
+
+Interaction specs and the Lighthouse budget pass on both pages.
+
+**Light LCP is bimodal in this container.** With identical code, the light h1 LCP comes out at about 2.12 s or about 2.75 s, and the extra time is all render delay. While checking round 2, three of six runs on the final code landed in the slow mode. Reverting each light-visible round-2 commit gave 2.12 s every time, and so did two later runs of the unchanged final code, so no round-2 change is the cause. The round-1 attribution of 2.76 s to the 16 px phone padding is therefore uncertain (two runs with it slow, two without it fast). It stays reverted anyway, because the cautious reading costs nothing. A fix for the slow mode (the h1 waits on hydration or font swap) belongs to a later step. Dark red fell from 47 to 39 because card 01 lost two rows of fit squares.

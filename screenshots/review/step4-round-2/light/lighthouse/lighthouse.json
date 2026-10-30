@@ -5,10 +5,10 @@
  "throttling": "simulate",
  "median": {
   "performance": 99,
-  "lcpMs": 2113,
-  "tbtMs": 69,
+  "lcpMs": 2117,
+  "tbtMs": 71,
   "cls": 0,
-  "fcpMs": 909,
+  "fcpMs": 912,
   "transferKB": 277.9,
   "requests": 13
  },

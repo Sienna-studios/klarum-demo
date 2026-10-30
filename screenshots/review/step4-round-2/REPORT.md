@@ -7,7 +7,7 @@
 - Stress: dark-320 o0/c0/v0, dark-390 o0/c0/v0, dark-zoom200 o0/c0/v0, dark-reduced-motion o0/c0/v0, light-320 o0/c0/v0, light-390 o0/c0/v0, light-zoom200 o0/c0/v0, light-reduced-motion o0/c0/v0 (o overflow, c clip, v overlap)
 - Axe (stress, serious+critical): 0 across 8 configs
 - Contrast over photos: worst 5.06:1 (min 4.5); failing text boxes: 0
-- Lighthouse mobile median of 3: perf 98, LCP 1848 ms, TBT 126 ms, CLS 0; budget pass
+- Lighthouse mobile median of 3: perf 98, LCP 1723 ms, TBT 134 ms, CLS 0; budget pass
 - Census (dark): red 39 (fit 28, revision 4, citation 4, primary action 3, other 0); decorative 5
 - Before load (mobile, cold): 227.1 KB, 10 requests; HAR + budget tests pass
 
@@ -18,6 +18,6 @@
 - Stress: native-320 o0/c0/v0, native-390 o0/c0/v0, native-zoom200 o0/c0/v0, native-reduced-motion o0/c0/v0, os-light-320 o0/c0/v0, os-light-390 o0/c0/v0, os-light-zoom200 o0/c0/v0, os-light-reduced-motion o0/c0/v0 (o overflow, c clip, v overlap)
 - Axe (stress, serious+critical): 0 across 8 configs
 - Contrast over photos: worst 5.06:1 (min 4.5); failing text boxes: 0
-- Lighthouse mobile median of 3: perf 99, LCP 2113 ms, TBT 69 ms, CLS 0; budget pass
+- Lighthouse mobile median of 3: perf 99, LCP 2117 ms, TBT 71 ms, CLS 0; budget pass
 - Census (native): red 36 (fit 24, revision 4, citation 4, primary action 4, other 0); decorative 5
 - Before load (mobile, cold): 277.6 KB, 12 requests; HAR + budget tests pass
