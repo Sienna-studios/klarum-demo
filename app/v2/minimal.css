@@ -51,8 +51,8 @@ html:has(.m) body { background: #fff; color: var(--body); }
 /* hero C after PD6-HatchMosaic: photograph full-bleed behind the whole hero, one off-white panel snapped to the 40 px grid
    (copy left, notice card right, as in the old hero C). The red tiles were removed in Step 3. */
 .mh { --tsz: 40px; --band: 240px; padding: 0; background: var(--surf);
-  --pw: round(down, min(1040px, 100% - 80px), 40px);            /* panel width, a multiple of the tile */
-  --pl: round(down, calc((100% - var(--pw)) / 2), 40px); }       /* panel left edge, a multiple of the tile */
+  --pl: calc(max(var(--gutter), (100% - 1120px) / 2) - var(--s-32)); /* panel edge: its copy starts on the page's content edge */
+  --pw: calc(100% - 2 * var(--pl)); }
 .mh-bg { position: absolute; inset: 0; background: var(--surf); }
 .mh-photo, .mh-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .mh-photo img { object-fit: cover; object-position: 0 0; }
@@ -75,7 +75,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
   .mh-bg { order: 2; } /* phone and tablet: copy and the primary action first, the photo strip after the panel (it was the LCP element and pushed the CTA down) */
   .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
       .mh-band, .mh-foot { display: none; }
-  .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
+  .mh-panel { left: 0; width: 100%; padding: var(--s-24) var(--gutter); }
   .mh-cols { grid-template-columns: 1fr; gap: var(--s-24); }
   .mh-copy h1 { font-size: var(--fs-h1); }
 }
