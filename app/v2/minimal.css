@@ -9,7 +9,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 
 .m { --pad: var(--section-y); font-family: var(--font-body); }
 .m-wrap { max-width: calc(1120px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
-.m-narrow { max-width: 880px; }
+.m-narrow > * { max-width: 880px; } /* narrow measure, same left edge as every other section */
 .m h1, .m h2, .m h3 { color: var(--ink); font-family: var(--font-body); font-weight: 650; letter-spacing: -0.035em; }
 .m h1 { font-size: clamp(2.125rem, 5.4vw, 4.25rem); line-height: 1.04; max-width: 17ch; margin-top: 24px; }
 .m h2 { font-size: var(--fs-48); line-height: 1.1; max-width: 22ch; }
@@ -42,7 +42,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 @media (max-width: 760px) { .m-nav { display: none; } .m-head-in { justify-content: space-between; } }
 
 .m-hero { padding-block: var(--pad); position: relative; overflow: hidden; }
-.m h1 { text-wrap: balance; }
+.m h1, .m h2 { text-wrap: balance; } /* no one-word last lines */
 .m-feed { background: var(--surf); border-radius: 6px; padding: 8px 0; }
 .m-feed > .m-lab { padding: 16px 16px 8px; }
 .m-feed ul { list-style: none; padding: 0; }
