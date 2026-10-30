@@ -131,6 +131,7 @@ test("v2: screenshots", async ({ page }, info) => {
 
 test("v2: cited claim and pricing toggle still work", async ({ page }) => {
   await page.goto("/v2");
+  await page.getByRole("tab").nth(3).click(); // the cited draft is step 4 of How it works
   await page.locator("details.cite > summary").click();
   await expect(page.locator("details.cite")).toHaveAttribute("open", "");
   await page.locator("#pricing").getByRole("button", { name: /Yearly/ }).click();
