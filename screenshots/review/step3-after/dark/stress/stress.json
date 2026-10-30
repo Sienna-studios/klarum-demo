@@ -1,0 +1,133 @@
+{
+ "page": "/?stress=1",
+ "results": [
+  {
+   "config": "dark-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "dark-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "light-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 0,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  }
+ ]
+}

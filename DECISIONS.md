@@ -101,3 +101,63 @@ Changes after the first review of the graded set. Merged into `claude/tender-bab
 **Checks** (`screenshots/review/light-mosaic/`, final run after the legend was removed, both pages): light `/v2` mobile LCP 2408 ms with the hero photo as the LCP element, budget passes, 311 KB and 12 requests before load (desktop is also under 410 KB), axe clean in all 8 stress configs, no overflow, text contrast at least 5.06:1, the v2 tests pass. Dark `/` unchanged: LCP 1725 ms, 227 KB, axe clean.
 
 **Judge** (fresh Opus, unlabelled, at 1280 and 390; first screens, squint images and full pages; `screenshots/review/light-mosaic/compare/`): ranked the first mosaic version (photo left, panel right) first, the old `/v2/c` second and this revision last. On 5-second clarity, hierarchy and primary action it chose the old page (clean, nothing competing, a filled red header button); on credibility and personality it chose a photographic version. It marked this revision down because its outlined header button leaves only one filled trial button and because the photograph and tiles crowd the top of the screen; it did credit it for credibility on the phone. The header button was kept as specified (outlined, then solid), the main reason the judge ranked this version last on primary action. **Merged into `claude/tender-babbage-km4d1v` on 30 Oct 2026 at Andres's request, after he reviewed it.**
+
+## Step 3: causes, three signature moments, a test page, a quieter page (30 Oct 2026, branch `claude/practical-thompson-rmdwin`)
+
+**Branch note.** `photos` was already an ancestor of `claude/tender-babbage-km4d1v`, so nothing was merged. Work started from that branch's head and is pushed to the session's designated branch `claude/practical-thompson-rmdwin` (not to `tender-babbage`). Results: `screenshots/review/step3-before/` and `step3-after/`; census in each page folder (`census/`), script `scripts/census.mjs` (`npm run review:census`, also part of `npm run review`).
+
+### Root causes fixed (the token audit now groups by source component file)
+
+| Cause, at its source | Fix | Both / dark / light |
+|---|---|---|
+| `app/v2/minimal.css` overrode `--line` with `#e3e6e8`, an off-token colour used by 61 borders | Removed; `--line` is the light token `#d9dde0` | light |
+| `NoticeFeed` row: 20 px padding and gap, 6 px fit gap, 2 px and 3 px gaps, 14 px button padding, 13 px button font | Mapped to `--s-24`, `--s-8`, `--s-4`, `--s-16`, `--fs-14` | both |
+| `Footer` and `Plate` captions: `color-mix(--bg 85%)` fills (off-token colour) | Replaced by one caption system with no fill (see moment 3) | both |
+| `globals.css`: 10 px logo and stage gaps, 18 px header button padding, 20 px plan-list indent and docs padding, 40 px hero gap | Mapped to `--s-8`, `--s-12`, `--s-16`, `--s-24`, `--s-32` | both |
+| `minimal.css`: fluid gutter `clamp(16px, 5vw, 48px)` gave 19.5 px at 390; 128 px and 40 px section padding; 17, 20, 22, 40 px type | `--gutter`, `--section-y`, `--s-48`, `--s-32`, `--fs-18`, `--fs-24`, `--fs-48` | light |
+| `card` workflow cards: `margin-top: auto` computed to 9.56 px | Fixed `--s-16` | dark |
+
+**No new token was added.** (`.theme-dark` / `.theme-light` selectors were added to `tokens.css` so `/lab/states` can show both themes at once; no value changed. The token audit's parser reads them.)
+
+Stress-mode causes, each fixed at its component:
+- **Clipped card tops** (`.card-top`, 4 per page): the K crop itself, removed with the crops (step 4).
+- **Clipped footer** (`footer.foot`, `overflow: hidden` around a K 260 px taller than the footer): the K is now sized to the footer box, and `overflow: hidden` is gone. The first version of this fix let the K ride up over the closing CTA band; Judge A caught it and `tests/smoke.spec.ts` now asserts the K stays inside the footer.
+- **Title and meta overlap** (4 px, `.nrow-title` with negative margins): the title is a plain 44 px target, no negative margins.
+- **Missing buyer or deadline** printed `Closes ·` with nothing after it: `metaLine` and `closesLine` drop the missing segment and its separator.
+
+The `/v2` hero switcher was already deleted in the light-mosaic work, so there was nothing left to hide behind `?dev=1`.
+
+### The three moments (specs first: `design/system/*.md`)
+
+1. **Cited-claim chip** (`cited-claim.md`). Job: Klarum's one promise, "every claim links to the page that proves it", checked in one click. Draft sentence with a red rule, a chip `Met · Kenya Roads report, p. 47 · Sample` (a `<summary>`, no JS), opening to a three-step chain: requirement (real, Vanuatu REOI, linked), evidence (sample, page 47), draft. After E2-Trace, Met state only. The chip carries a `+`/`–` so it reads as openable (Judge B's note).
+2. **Notice row system** (`notice-row.md`). Job: scan for fit, notice revisions, decide. Compact and full variants share one grammar. Fit squares; revision tag (a focusable button that opens an in-flow revision block, Escape closes); shortlist toggles the hatch on the fit squares, a row tint, and an ink-filled button reading "Shortlisted". Compact shows a tag only for notices past Rev A (all real data is Rev A, so the hero card carries none).
+3. **Drawing-sheet language** (`drawing-sheet.md`). Job: tell a bid reader the page is made for their paperwork, and label every plate "Sample image". One `SheetCaption` (a `<dl>` title block) renders both the footer and the plate caption; a missing value shows an en dash.
+
+`/lab/states` shows every state in both themes (dark left, light right); `?captions=0` hides every caption. Playwright baselines at 390 and 1280: `tests/lab.spec.ts` (+ `tests/lab.spec.ts-snapshots/`). Keyboard-only interaction tests: `tests/moments.spec.ts`, run on `/` and `/v2`.
+
+### Removed
+- K crops on the workflow cards (the K remains as logo, footer wordmark and the footer shape); the K cell in the title block (now the word "Klarum").
+- Dot fields (hero, sources, CTA), stage-list squares, the dashed-card decoration kept as a plain border.
+- The `/v2` red tile band and `lib/mosaic.ts`. **Andres approved the tile hero on 30 Oct; this step removes it** because the tiles were decoration, not part of the three moments. Reversible from commit `00b08c5`.
+- Red outside the four meanings: logo K and footer K now `--ink`; link hover, FAQ and plan marks, plan ring, billing toggle, skip link no longer red; the pressed shortlist button is `--ink`, not red (red fill is the primary action only).
+
+### Light page LCP
+Before: 2738 to 2765 ms (budget fail), the hero photo was the LCP element and 65% of it was render delay behind hydration. Image bytes, `decoding`, preload and a thinner strip each moved it by 100 ms or less. What worked: **on phones (<= 960 px) the photo strip now sits below the panel**, so the copy and the primary button come first and the h1 is the LCP element (2113 to 2127 ms). Desktop is unchanged; the mobile preload was dropped; mobile uses the 640 px crop (49 KB).
+
+### Verdicts (fresh Opus judges)
+- **Judge A** (before/after, unlabelled, first screens, squint and full pages): preferred the new dark page and the new light page. Scores, hierarchy / deliberate / primary action: dark old 7/6/8 (it carried the red card K crops) vs new 7/5/7 on a first build that had the K-over-CTA bug; light old 6/4/7 (red pixel tiles) vs new 8/6/8. After its finding the K bug was fixed and the header "See pricing" became a text link. **The squint test does not pass on any version**: the headline outweighs the signature elements, the fit squares barely survive the blur, and on the light desktop page the hero photo survives too. That is recorded as unmet, not reworded.
+- **Judge B** (only `/lab/states`, no captions; the first run was discarded because my capture was unstyled): explained the chip (a draft sentence backed by a source, opening to requirement, evidence, draft), the notice rows (a tender with fit, revision and a shortlist) and the sheet grids (drawing title block / figure caption) correctly. Revisions made: chip now says it opens; shortlisted button says "Shortlisted"; compact "REV C" no longer wraps; plate caption and title block share a width; the last title-block cell fills its row on a phone. Its remaining doubts: the grids read as brand flavour more than task meaning, and there is no "not met" state (Met only, by the brief).
+
+### Deviations from the Brief
+- **Both:** revision history opens on click or key, not on hover or focus (touch-safe, cannot be clipped). Shortlist button, 44 px, pressed state is ink, not red.
+- **Both:** logo K and footer K are ink, not red (red only for four meanings). Focus rings stay red as a state, not a meaning.
+- **Both:** the title block has no K cell; the notice-row compact variant shows no tag for Rev A.
+- **Dark:** none beyond the above. **Light:** hero tile band removed; on phones the photo strip is below the panel.
+
+### Numbers (before then after; mobile LCP is the Lighthouse median of 3)
+| | Off-token | Stress clip / overlap | LCP | KB before load | Red elements (off-meaning) | Decorative |
+|---|---|---|---|---|---|---|
+| Dark `/` | 12 then 0 | 4 / 3 then 0 / 0 | 2371 then 1809 ms | 226.5 then 227.1 | 64 (18) then 47 (0) | 16 then 5 |
+| Light `/v2` | 17 then 0 | 2 / 3 then 0 / 0 | 2738 then 2116 ms | 311.1 then 277.6 | 101 (66) then 36 (0) | 6 then 5 |
+
+Axe: clean in all 16 stress configs and the Playwright axe specs. Photo contrast worst 5.06:1. Budget passes on both. Lighthouse in this container moves by several hundred ms between runs (dark was 1719 to 2371 ms with identical code).
