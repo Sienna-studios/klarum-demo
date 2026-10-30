@@ -76,13 +76,13 @@ export function HowItWorks() {
           </div>
           <ul className="hiw-wall" aria-label="Notices as they arrive">
             {WALL.map((w, i) => (
-              <li key={i} className={["hiw-w", w.look, w.keep ? "keep" : ""].filter(Boolean).join(" ")} style={{ ["--i" as string]: i }}>
+              <li key={i} className={["hiw-w", w.look, w.keep ? "keep" : ""].filter(Boolean).join(" ")} style={{ ["--i" as string]: i, ["--x" as string]: w.x, ["--y" as string]: w.y, ["--r" as string]: `${w.r}deg`, ["--z" as string]: w.keep ? 20 : i }}>
                 <p className="nrow-meta">{w.src}</p>
                 <p className="nrow-title">{w.title}</p>
               </li>
             ))}
           </ul>
-          <p className="m-fine hiw-wall-more">Showing 15 of the 28.</p>
+          <p className="m-fine hiw-wall-more">Showing 14 of the 28.</p>
         </div>
 
         {/* 2 · fit to your record */}

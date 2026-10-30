@@ -41,17 +41,17 @@
 
 /* 1 · the wall of notices */
 .hiw-wall-h { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-4) var(--s-16); margin-bottom: var(--s-12); }
-.hiw-wall { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(var(--s-112) + var(--s-64))), 1fr)); gap: var(--s-8); }
-.hiw-w { position: relative; display: grid; gap: var(--s-4); align-content: start; padding: var(--s-8) var(--s-12); border-radius: var(--r-ctl); background: var(--bg); border: 1px solid var(--line); transition: opacity var(--m) var(--ease), transform var(--m) var(--ease); }
+.hiw-wall { --tw: 15rem; --th: 5.5rem; position: relative; list-style: none; padding: 0; height: 24rem; }
+.hiw-w { position: absolute; left: calc(var(--x) * (100% - var(--tw))); top: calc(var(--y) * (100% - var(--th))); width: var(--tw); z-index: var(--z); display: grid; gap: var(--s-4); align-content: start; padding: var(--s-8) var(--s-12); border-radius: var(--r-ctl); background: var(--bg); border: 1px solid var(--line); transform: rotate(var(--r)); box-shadow: 0 1px 0 var(--line); transition: opacity var(--m) var(--ease), transform var(--m) var(--ease); }
 .hiw-w .nrow-title { font-size: var(--fs-14); overflow-wrap: anywhere; }
 .hiw-w.inv { background: var(--ink); border-color: var(--ink); }
 .hiw-w.inv :is(.nrow-title, .nrow-meta) { color: var(--bg); }
 .hiw-w.dash { background: var(--surf); border: var(--stroke-strong) dashed var(--off); }
 .hiw-w.keep::after { content: ""; position: absolute; inset: -1px; border: var(--stroke-strong) solid var(--red); border-radius: var(--r-ctl); background: var(--tile); opacity: 0; transition: opacity var(--m) var(--ease); }
-.hiw-stage:not([data-beat="0"]) .hiw-w:not(.keep) { opacity: 0; transform: translateY(var(--s-8)) scale(var(--drop-scale)); transition-delay: calc(var(--i) * var(--t-fast) / 6); }
+.hiw-stage:not([data-beat="0"]) .hiw-w:not(.keep) { opacity: 0; transform: translateY(var(--s-8)) scale(var(--drop-scale)) rotate(var(--r)); transition-delay: calc(var(--i) * var(--t-fast) / 6); }
 .hiw-stage:not([data-beat="0"]) .hiw-w.keep::after { opacity: 1; transition-delay: var(--m); }
 .hiw-stage[data-beat="1"] .L0 { transition-delay: calc(var(--m) * 3); }
-.hiw-wall-more { display: none; margin-top: var(--s-12); }
+.hiw-wall-more { margin-top: var(--s-12); }
 
 /* 2 · fit to your record */
 .L1 { --d: calc(var(--m) * 3); }
@@ -101,8 +101,6 @@
   .hiw-sl, .hiw-steps .nrow-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .hiw-bar { grid-column: auto; }
   .hiw-beat-t { font-size: var(--fs-16); max-width: none; }
-  .hiw-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hiw-w:nth-child(n+15):not(.keep) { display: none; }
-  .hiw-wall-more { display: block; }
+  .hiw-wall { --tw: 10.5rem; height: 22rem; }
   .hiw-m, .hiw-aside, .hiw-claimcard, .hiw-ws { padding: var(--s-16); }
 }
