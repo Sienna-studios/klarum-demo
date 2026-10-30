@@ -75,7 +75,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
   .mh-bg { order: 2; } /* phone and tablet: copy and the primary action first, the photo strip after the panel (it was the LCP element and pushed the CTA down) */
   .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
       .mh-band, .mh-foot { display: none; }
-  .mh-panel { left: 0; width: 100%; padding: var(--s-24) var(--gutter); }
+  .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
   .mh-cols { grid-template-columns: 1fr; gap: var(--s-24); }
   .mh-copy h1 { font-size: var(--fs-h1); }
 }
