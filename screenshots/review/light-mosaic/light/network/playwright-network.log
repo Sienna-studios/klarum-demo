@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+  ✓  1 [mobile-390] › tests/network.spec.ts:8:5 › HAR: no request to app.klarum.com, api.klarum.com or posthog before interaction (3.7s)
+before load: 311.4 KB over 12 requests
+  ✓  2 [mobile-390] › tests/network.spec.ts:32:5 › budget: <=410 KB and <=25 requests before load (mobile, cold) (183ms)
+
+  2 passed (4.7s)

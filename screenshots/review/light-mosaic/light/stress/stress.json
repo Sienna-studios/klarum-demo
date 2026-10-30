@@ -1,0 +1,275 @@
+{
+ "page": "/v2?stress=1",
+ "results": [
+  {
+   "config": "native-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "320x1377",
+     "content": "400x1377"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "390x1240",
+     "content": "400x1240"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "native-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "1280x751",
+     "content": "1400x751"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-320",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "320x1377",
+     "content": "400x1377"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "320x1116",
+     "content": "352x1376"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-390",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "390x1240",
+     "content": "400x1240"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "390x1095",
+     "content": "429x1355"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-zoom200",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "640x1053",
+     "content": "704x1313"
+    }
+   ],
+   "overlap": [],
+   "counts": {
+    "overflow": 0,
+    "clip": 1,
+    "overlap": 0
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  },
+  {
+   "config": "os-light-reduced-motion",
+   "stressActive": true,
+   "overflow": [],
+   "clip": [
+    {
+     "selector": "main#main > section.m-hero.m-hero-c",
+     "text": "Fits your index · Shortlisted · Illustra",
+     "box": "1280x751",
+     "content": "1400x751"
+    },
+    {
+     "selector": "div.m > footer.foot",
+     "text": "Klarum© 2026 Klarum Technologies ABMedbo",
+     "box": "1280x513",
+     "content": "1280x773"
+    }
+   ],
+   "overlap": [
+    {
+     "a": "div.nrow-title-wrap > a#title-ted-535663-2026",
+     "aText": "Supervision of repair and rehabilitation",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Tender notice · Roads · Supervision · Pu",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-p167382-vanuatu",
+     "aText": "Design and construction supervision, abo",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    },
+    {
+     "a": "div.nrow-title-wrap > a#title-wb-ibrd9290-srilanka",
+     "aText": "Supervision consultancy for rural road c",
+     "b": "div.nrow-meta-wrap > p.nrow-meta",
+     "bText": "Request for expressions of interest · Ro",
+     "area": "685x4",
+     "fixed": false
+    }
+   ],
+   "counts": {
+    "overflow": 0,
+    "clip": 2,
+    "overlap": 3
+   },
+   "axe": {
+    "blocking": [],
+    "other": []
+   }
+  }
+ ]
+}
