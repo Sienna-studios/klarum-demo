@@ -62,7 +62,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .mh-panel { position: relative; left: var(--pl); width: var(--pw); padding: var(--s-24) var(--s-32); background: var(--surf); }
 .mh-cols { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: var(--s-64); align-items: start; }
 .mh-copy h1 { margin-top: var(--s-8); max-width: none; font-size: var(--fs-48); font-weight: 800; letter-spacing: var(--ls-display); line-height: var(--lh-h1); }
-.mh-copy .m-lead { margin-top: var(--s-16); max-width: none; font-size: var(--fs-18); color: var(--ink); } /* the drafting line, in ink so it is not lost under the headline */
+.mh-copy .m-lead { margin-top: var(--s-16); max-width: none; font-size: var(--fs-18); }
 .mh-copy .m-actions { margin-top: var(--s-16); gap: var(--s-8) var(--s-24); }
 .m-feed { background: var(--surf); border-radius: 6px; padding: 8px 0; }
 .m-feed > .m-lab { padding: 16px 16px 8px; }
