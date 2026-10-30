@@ -1,0 +1,101 @@
+{
+ "page": "/",
+ "meanings": [
+  "fit",
+  "revision",
+  "citation",
+  "primary action",
+  "other"
+ ],
+ "primaryTheme": "dark",
+ "results": {
+  "dark": {
+   "red": {
+    "total": 64,
+    "byMeaning": {
+     "other": 18,
+     "primary action": 3,
+     "fit": 36,
+     "citation": 3,
+     "revision": 4
+    },
+    "other": {
+     "a.skip": 1,
+     "button": 1,
+     "li": 10,
+     "article.surface.plan": 1,
+     "summary": 5
+    }
+   },
+   "deco": {
+    "total": 16,
+    "ariaHiddenSvg": 9,
+    "ariaHiddenOther": 4,
+    "backgroundShapes": 3,
+    "pseudoShapes": 0,
+    "samples": {
+     "ariaHiddenSvg": {
+      "svg.logo-k": 1,
+      "svg": 2,
+      "svg.card-k": 3,
+      "svg.foot-k": 1,
+      "svg.wm-k": 1,
+      "svg.tb-k": 1
+     },
+     "backgroundShapes": {
+      "section#hero": 1,
+      "section#sources": 1,
+      "section.section.dots": 1
+     },
+     "ariaHiddenOther": {
+      "span.sq": 4
+     }
+    }
+   }
+  },
+  "light": {
+   "red": {
+    "total": 64,
+    "byMeaning": {
+     "other": 18,
+     "primary action": 3,
+     "fit": 36,
+     "citation": 3,
+     "revision": 4
+    },
+    "other": {
+     "a.skip": 1,
+     "button": 1,
+     "li": 10,
+     "article.surface.plan": 1,
+     "summary": 5
+    }
+   },
+   "deco": {
+    "total": 16,
+    "ariaHiddenSvg": 9,
+    "ariaHiddenOther": 4,
+    "backgroundShapes": 3,
+    "pseudoShapes": 0,
+    "samples": {
+     "ariaHiddenSvg": {
+      "svg.logo-k": 1,
+      "svg": 2,
+      "svg.card-k": 3,
+      "svg.foot-k": 1,
+      "svg.wm-k": 1,
+      "svg.tb-k": 1
+     },
+     "backgroundShapes": {
+      "section#hero": 1,
+      "section#sources": 1,
+      "section.section.dots": 1
+     },
+     "ariaHiddenOther": {
+      "span.sq": 4
+     }
+    }
+   }
+  }
+ }
+}

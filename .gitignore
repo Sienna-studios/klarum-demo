@@ -1,0 +1,9 @@
+node_modules
+.next
+.vercel
+test-results
+playwright-report
+.lighthouseci
+out
+next-env.d.ts
+*.tsbuildinfo

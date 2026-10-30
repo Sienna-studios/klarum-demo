@@ -1,0 +1,74 @@
+[
+ {
+  "variant": "lightV1",
+  "target": "light-page",
+  "buttonContrast": 106.3,
+  "plateLocalContrastP95": 29,
+  "plateLumRange": 111,
+  "plateEdgeEnergy": 30.01,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.57,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ },
+ {
+  "variant": "lightV1",
+  "target": "dark-page-in-light",
+  "buttonContrast": 100.7,
+  "plateLocalContrastP95": 29,
+  "plateLumRange": 111,
+  "plateEdgeEnergy": 28.54,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.57,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ },
+ {
+  "variant": "lightA",
+  "target": "light-page",
+  "buttonContrast": 106.3,
+  "plateLocalContrastP95": 36,
+  "plateLumRange": 144,
+  "plateEdgeEnergy": 37.42,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.13,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ },
+ {
+  "variant": "lightA",
+  "target": "dark-page-in-light",
+  "buttonContrast": 100.7,
+  "plateLocalContrastP95": 35,
+  "plateLumRange": 145,
+  "plateEdgeEnergy": 35.86,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.14,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ },
+ {
+  "variant": "lightB",
+  "target": "light-page",
+  "buttonContrast": 106.3,
+  "plateLocalContrastP95": 37,
+  "plateLumRange": 154,
+  "plateEdgeEnergy": 39.32,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.13,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ },
+ {
+  "variant": "lightB",
+  "target": "dark-page-in-light",
+  "buttonContrast": 100.7,
+  "plateLocalContrastP95": 37,
+  "plateLumRange": 155,
+  "plateEdgeEnergy": 37.86,
+  "buttonSaturation": 0.77,
+  "plateSaturationP999": 0.13,
+  "quieterThanButton": true,
+  "lessSaturatedThanButton": true
+ }
+]

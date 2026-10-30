@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 [desktop-1280] › tests/a11y.spec.ts:7:7 › axe: no serious or critical issues (dark) (1.9s)
+  ✓  2 [desktop-1280] › tests/a11y.spec.ts:7:7 › axe: no serious or critical issues (light) (1.7s)
+  ✓  3 [desktop-1280] › tests/a11y.spec.ts:25:5 › axe: pressed shortlist, open popover and mobile menu (1.6s)
+
+  3 passed (6.1s)

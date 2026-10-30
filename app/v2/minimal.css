@@ -1,0 +1,128 @@
+/* Light, minimalist version. Re-points the shared tokens to a light palette for any page that contains .m,
+   so the shared components (notice rows, cited claim, pricing, footer) render light without touching v1. */
+html:has(.m) {
+  --bg: #ffffff; --surf: #f6f6f3; --ink: #14202c; --body: #26323d; --sub: #3a4652; --mute: #4b5762;
+  --line: #d9dde0; --off: #c9cfd5; --dot: #d3d8dc; --redt: #c2261c; --tile: rgba(239, 65, 54, 0.12);
+  --btn-ink: #0d0d10; --scrim: 255, 255, 255; color-scheme: light; background: #fff;
+}
+html:has(.m) body { background: #fff; color: var(--body); }
+
+.m { --pad: var(--section-y); font-family: var(--font-body); }
+.m-wrap { max-width: calc(1120px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.m-narrow > * { max-width: 880px; } /* narrow measure, same left edge as every other section */
+.m h1, .m h2, .m h3 { color: var(--ink); font-family: var(--font-body); font-weight: 650; letter-spacing: -0.035em; }
+.m h1 { font-size: clamp(2.125rem, 5.4vw, 4.25rem); line-height: 1.04; max-width: 17ch; margin-top: 24px; }
+.m h2 { font-size: var(--fs-48); line-height: 1.1; max-width: 22ch; }
+.m h3 { font-size: var(--fs-18); line-height: 1.3; letter-spacing: -0.02em; }
+.m-lab { font: 500 0.75rem / 1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+.m-lead { font-size: 1.1875rem; line-height: 1.55; max-width: 52ch; margin-top: 24px; color: var(--body); }
+.m-fine { font-size: 0.875rem; color: var(--mute); }
+.m-small { font-size: 0.875rem; }
+.m a:focus-visible, .m button:focus-visible, .m summary:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.m-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 4px; background: var(--red); color: var(--btn-ink); font: 600 1rem / 1 var(--font-body); text-decoration: none; }
+.m-btn:hover { filter: brightness(1.06); }
+.m-btn-sm { min-height: 44px; padding: 0 16px; font-size: 0.9375rem; }
+.m-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.m-link:hover { text-decoration-thickness: 2px; }
+.m-quiet { font-weight: 500; color: var(--sub); }
+.m-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: 32px; }
+.m-actions .m-fine { flex-basis: 100%; }
+.m-skip { position: absolute; left: 8px; top: -80px; background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 4px; font-weight: 600; z-index: 60; }
+.m-skip:focus { top: 8px; }
+
+.m-head { border-bottom: 1px solid var(--line); background: #fff; }
+.m-head-in { display: flex; align-items: center; gap: 32px; height: 72px; }
+.m-logo { display: inline-flex; align-items: center; gap: var(--s-8); min-height: 44px; text-decoration: none; font: 700 var(--fs-24) / 1 var(--font-body); letter-spacing: -0.02em; color: var(--ink); }
+.m-logo-k { height: 22px; width: auto; color: var(--ink); }
+.m-nav { flex: 1; display: flex; gap: 8px; }
+.m-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-size: 0.9375rem; font-weight: 500; color: var(--sub); text-decoration: none; }
+.m-nav a:hover { color: var(--ink); }
+@media (max-width: 760px) { .m-nav { display: none; } .m-head-in { justify-content: space-between; } }
+
+.m-hero { padding-block: var(--pad); position: relative; overflow: hidden; }
+.m h1, .m h2 { text-wrap: balance; } /* no one-word last lines */
+.m-feed { background: var(--surf); border-radius: 6px; padding: 8px 0; }
+.m-feed > .m-lab { padding: 16px 16px 8px; }
+.m-feed ul { list-style: none; padding: 0; }
+.m-feed .nrow { border-color: var(--line); }
+
+/* hero C after PD6-HatchMosaic: photograph full-bleed behind the whole hero, one off-white panel snapped to the 40 px grid
+   (copy left, notice card right, as in the old hero C). The red tiles were removed in Step 3. */
+.mh { --tsz: 40px; --band: 240px; padding: 0; background: var(--surf);
+  --pl: calc(max(var(--gutter), (100% - 1120px) / 2) - var(--s-32)); /* panel edge: its copy starts on the page's content edge */
+  --pw: calc(100% - 2 * var(--pl)); }
+.mh-bg { position: absolute; inset: 0; background: var(--surf); }
+.mh-photo, .mh-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.mh-photo img { object-fit: cover; object-position: 0 0; }
+.mh-flow { position: relative; z-index: 3; }
+.mh-band { height: var(--band); }
+.mh-foot { height: var(--tsz); }
+.mh-panel { position: relative; left: var(--pl); width: var(--pw); padding: var(--s-24) var(--s-32); background: var(--surf); }
+.mh-cols { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: var(--s-64); align-items: start; }
+.mh-copy h1 { margin-top: var(--s-8); max-width: none; font-size: var(--fs-48); font-weight: 800; letter-spacing: var(--ls-display); line-height: var(--lh-h1); }
+.mh-copy .m-lead { margin-top: var(--s-16); max-width: none; font-size: var(--fs-18); }
+.mh-copy .m-actions { margin-top: var(--s-16); gap: var(--s-8) var(--s-24); }
+.m-feed { background: var(--surf); border-radius: 6px; padding: 8px 0; }
+.m-feed > .m-lab { padding: 16px 16px 8px; }
+.m-feed ul { list-style: none; padding: 0; }
+.m-feed .nrow { border-color: var(--line); }
+.mh-feed { border: 1px solid var(--off); border-radius: 0; background: var(--bg); }
+@media (max-width: 960px) {
+  .mh { --band: 0px; display: flex; flex-direction: column; }
+  .mh-flow { order: 1; }
+  .mh-bg { order: 2; } /* phone and tablet: copy and the primary action first, the photo strip after the panel (it was the LCP element and pushed the CTA down) */
+  .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
+      .mh-band, .mh-foot { display: none; }
+  .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
+  .mh-cols { grid-template-columns: 1fr; gap: var(--s-24); }
+  .mh-copy h1 { font-size: var(--fs-h1); }
+}
+@media (max-width: 760px) { .mh-bg { aspect-ratio: 4 / 3; } }
+
+/* header trial button: a quiet text link while the hero (and its red button) is in view, solid red after (opacity fade only; --t-fast is 0 under reduced motion) */
+.m-head { position: sticky; top: 0; z-index: 50; }
+.m-btn-hdr { position: relative; isolation: isolate; background: transparent; }
+.m-btn-hdr::before { content: ""; position: absolute; inset: 0; z-index: -1; transition: opacity var(--t-fast); }
+.m-btn-hdr::before { background: var(--red); opacity: 0; }
+.m-btn-hdr[data-solid="false"] { text-decoration: underline; text-underline-offset: 4px; }
+.m-btn-hdr[data-solid="true"]::before { opacity: 1; }
+
+.m-proof { border-top: 1px solid var(--line); padding-block: var(--s-48); }
+.m-proof ul { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 12px; list-style: none; padding: 0; font: 600 var(--fs-18) / 1.3 var(--font-body); color: var(--sub); }
+.m-section { padding-block: var(--pad); border-top: 1px solid var(--line); }
+.m-tint { background: var(--surf); border-top: 0; }
+.m-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; list-style: none; padding: 0; }
+.m-steps li { display: grid; gap: 12px; align-content: start; border-top: 1px solid var(--ink); padding-top: 16px; }
+.m-steps p:last-child { color: var(--body); max-width: 36ch; }
+@media (max-width: 960px) { .m-steps { grid-template-columns: 1fr; gap: var(--s-32); margin-top: var(--s-32); } }
+@media (max-width: 760px) { .m h2 { font-size: var(--fs-28); } }
+.m-section .nlist { margin-top: 32px; }
+.m-section .surface, .m-hero .surface { background: #fff; }
+.m-tint .surface { background: #fff; }
+.m-section .nlist .nrow.sl { background: var(--tile); }
+.m-docs { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px; margin-top: 48px; list-style: none; padding: 0; }
+.m-docs li { display: grid; gap: 4px; align-content: start; }
+@media (max-width: 760px) { .m-docs { grid-template-columns: 1fr; } }
+.m .plan { background: var(--surf); border-color: transparent; }
+.m .plan.rec { background: #fff; }
+.m-faq { border-top: 1px solid var(--line); }
+.m-faq:last-of-type { border-bottom: 1px solid var(--line); }
+.m-faq > summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; list-style: none; font: 600 1.125rem / 1.3 var(--font-body); color: var(--ink); }
+.m-faq > summary::-webkit-details-marker { display: none; }
+.m-faq > summary::after { content: "+"; font: 500 var(--fs-24) / 1 var(--font-mono); color: var(--ink); }
+.m-faq[open] > summary::after { content: "–"; }
+.m-faq > p { padding-bottom: 24px; max-width: 62ch; }
+.m-narrow h2 { margin-bottom: 32px; }
+.m-cta h2 { max-width: 16ch; }
+/* phone: stack the two actions so all the text sits in the left part, where the scrim is solid */
+@media (max-width: 760px) {
+  .m-cta .m-actions { flex-direction: column; align-items: flex-start; gap: 0; }
+  .m-cta .ph-cta::after { background: linear-gradient(90deg, rgba(var(--scrim), 0.94) 0%, rgba(var(--scrim), 0.9) 70%, rgba(var(--scrim), 0) 100%); }
+}
+
+.m .foot { background: #fff; }
+.m .foot .wrap { max-width: calc(1120px + 2 * var(--gutter)); } /* footer on the same left edge as the light page's content (was x 64, content x 80) */
+/* below-the-fold sections skip layout and paint until they near the viewport, so the first frame (the h1, mobile LCP) paints before the scripts evaluate */
+.m main > section:not(.mh) { content-visibility: auto; contain-intrinsic-size: auto 800px; }
