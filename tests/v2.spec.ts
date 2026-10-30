@@ -129,11 +129,8 @@ test("v2: screenshots", async ({ page }, info) => {
   await page.screenshot({ path: `${dir}/page.png`, fullPage: true });
 });
 
-test("v2: shortlist, cited claim and pricing toggle still work", async ({ page }) => {
+test("v2: cited claim and pricing toggle still work", async ({ page }) => {
   await page.goto("/v2");
-  const btn = page.locator("#notices").getByRole("button", { name: /Shortlist/ }).first();
-  await btn.click();
-  await expect(btn).toHaveAttribute("aria-pressed", "true");
   await page.locator("details.cite > summary").click();
   await expect(page.locator("details.cite")).toHaveAttribute("open", "");
   await page.locator("#pricing").getByRole("button", { name: /Yearly/ }).click();

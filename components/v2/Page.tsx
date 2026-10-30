@@ -1,9 +1,8 @@
-import { notices, URLS } from "@/lib/data";
-import { BACKERS, DOCS, FAQ, STEPS } from "@/lib/content";
+import { URLS } from "@/lib/data";
+import { BACKERS, DOCS, FAQ } from "@/lib/content";
 import { CitedClaim } from "@/components/CitedClaim";
 import { Footer } from "@/components/Footer";
 import { KMark } from "@/components/KMark";
-import { NoticeList } from "@/components/NoticeFeed";
 import { Pricing } from "@/components/Pricing";
 import { HeaderCta } from "./HeaderCta";
 import { HeroMosaic } from "./HeroMosaic";
@@ -39,33 +38,10 @@ export function Page({ photos = true }: { photos?: boolean }) {
           </div>
         </section>
 
-        <section className="m-section">
-          <div className="m-wrap">
-            <h2>From notice to award, in one place.</h2>
-            <ol className="m-steps">
-              {STEPS.map(([n, label, title, text]) => (
-                <li key={n}>
-                  <p className="m-lab">{n} · {label}</p>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
         <section className="m-section m-tint">
           <div className="m-wrap m-narrow">
             <h2>Go or no-go, then a draft cited to your own record.</h2>
             <CitedClaim />
-          </div>
-        </section>
-
-        <section className="m-section" id="notices">
-          <div className="m-wrap">
-            <h2>Open notices</h2>
-            <p className="m-fine">Fit scores are sample values. Each title links to the original publication.</p>
-            <NoticeList items={notices} />
           </div>
         </section>
 

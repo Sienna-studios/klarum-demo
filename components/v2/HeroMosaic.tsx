@@ -44,7 +44,7 @@ export function HeroMosaic({ photos = true }: { photos?: boolean }) {
               </div>
               <a href={URLS.review} className="m-link m-quiet">Or review one upcoming tender with us</a>
             </div>
-            <div className="m-feed mh-feed">
+            <div className="m-feed mh-feed" id="notices">
               <p className="m-lab">Open notices · Sample fit</p>
               <ul>{notices.map((n, i) => <CompactNotice key={n.id} n={n} i={i} />)}</ul>
             </div>
