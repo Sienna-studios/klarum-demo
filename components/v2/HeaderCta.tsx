@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-/** The header trial button: outlined while the hero is in view, solid red once the hero has scrolled out (opacity fade only). */
+/** The header trial button: a quiet text link while the hero is in view, solid red once the hero has scrolled out (opacity fade only). */
 export function HeaderCta({ href }: { href: string }) {
   const [solid, setSolid] = useState(false);
   useEffect(() => {
