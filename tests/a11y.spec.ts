@@ -22,10 +22,10 @@ for (const theme of ["dark", "light"] as const) {
   });
 }
 
-test("axe: pressed shortlist, open popover and mobile menu", async ({ page }) => {
+test("axe: pressed shortlist, open revision history and mobile menu", async ({ page }) => {
   await page.goto(HOME);
-  await page.locator("#notices").getByRole("button", { name: /Shortlist/ }).first().click();
-  await page.locator("#notices").getByRole("button", { name: /^Rev A/ }).first().focus();
+  await page.locator("#notices").getByRole("button", { name: /^Shortlist/ }).first().click();
+  await page.locator("#notices").getByRole("button", { name: /^Rev A/ }).first().click();
   const { violations } = await new AxeBuilder({ page }).analyze();
   expect(violations.filter((v) => v.impact === "serious" || v.impact === "critical").map((v) => v.id)).toEqual([]);
 });

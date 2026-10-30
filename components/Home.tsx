@@ -3,7 +3,6 @@ import { CitedClaim } from "@/components/CitedClaim";
 import { CompactNotice, NoticeList } from "@/components/NoticeFeed";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { KMark } from "@/components/KMark";
 import { LazyPhoto } from "@/components/LazyPhoto";
 import { Plate } from "@/components/Plate";
 import { Pricing } from "@/components/Pricing";
@@ -44,7 +43,7 @@ export function Home({ photos = true }: { photos?: boolean }) {
       <a href="#main" className="skip">Skip to content</a>
       <Header />
       <main id="main">
-        <section id="hero" className="hero dots">
+        <section id="hero" className="hero">
           <div className="wrap hero-in">
             <div className="hero-copy">
               <p className="lab">For infrastructure bid teams</p>
@@ -82,25 +81,22 @@ export function Home({ photos = true }: { photos?: boolean }) {
             <h2>From notice to award, in one place.</h2>
             <div className="grid3 cards">
               <article className="surface card">
-                <div className="card-top"><KMark className="card-k" /><span className="chiplab">01</span></div>
-                <p className="lab">Sourcing</p>
+                <p className="lab">01 · Sourcing</p>
                 <h3>Every notice worth your time, in one feed.</h3>
                 <ul className="surface mini">
                   {notices.map((n, i) => <CompactNotice key={n.id} n={n} i={i} />)}
                 </ul>
               </article>
               <article className="surface card">
-                <div className="card-top"><KMark className="card-k" /><span className="chiplab">02</span></div>
-                <p className="lab">Decision and drafting</p>
+                <p className="lab">02 · Decision and drafting</p>
                 <h3>Go or no-go, then a draft cited to your own record.</h3>
                 <CitedClaim />
               </article>
               <article className="surface card">
-                <div className="card-top"><KMark className="card-k" /><span className="chiplab">03</span></div>
-                <p className="lab">Lifecycle</p>
+                <p className="lab">03 · Lifecycle</p>
                 <h3>The bid does not end at submission.</h3>
                 <ol className="stages" aria-label="Bid stages">
-                  {STAGES.map((s) => <li key={s}><span className="sq" aria-hidden="true" />{s}</li>)}
+                  {STAGES.map((s) => <li key={s}>{s}</li>)}
                 </ol>
                 <dl className="kpis">
                   {["Win rate", "Cycle time", "Bids per quarter"].map((k) => (
@@ -123,7 +119,7 @@ export function Home({ photos = true }: { photos?: boolean }) {
           </>
         )}
 
-        <section className="section dots" id="sources">
+        <section className="section" id="sources">
           <div className="wrap">
             <h2>Sources</h2>
             <p className="lead">Contracted public sources: national portals, TED and the development banks.</p>
@@ -173,7 +169,7 @@ export function Home({ photos = true }: { photos?: boolean }) {
           </div>
         </section>
 
-        <section className={photos ? "section dots cta has-photo" : "section dots cta"}>
+        <section className={photos ? "section cta has-photo" : "section cta"}>
           {photos && <LazyPhoto slot="cta" sizes="100vw" className="ph-cta" />}
           <div className="wrap">
             <h2>See it on your own pipeline.</h2>

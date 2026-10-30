@@ -1,0 +1,15 @@
+/* /lab/states: every state of the three signature moments, both themes at once. Not linked from the site; noindex. */
+.lab-page { background: var(--bg); color: var(--body); min-height: 100vh; }
+.lab-head { padding: var(--s-32) var(--gutter) 0; max-width: var(--container); margin-inline: auto; }
+.lab-head h1 { font-size: var(--fs-28); }
+.lab-themes { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+@media (max-width: 1000px) { .lab-themes { grid-template-columns: 1fr; } }
+.lab-theme { background: var(--bg); color: var(--body); padding: var(--s-32) var(--s-24) var(--s-64); display: grid; gap: var(--s-48); min-width: 0; font: 400 var(--fs-16) / var(--lh-body) var(--font-body); }
+.lab-theme h2 { font-size: var(--fs-24); letter-spacing: -0.02em; line-height: 1.2; }
+.lab-moment { display: grid; gap: var(--s-24); min-width: 0; }
+.lab-state { display: grid; gap: var(--s-8); min-width: 0; }
+.lab-card { background: var(--surf); border: 1px solid var(--line); border-radius: var(--r-surf); padding: var(--s-16); }
+.lab-rows { list-style: none; padding: 0; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r-surf); }
+.lab-reduce { --t-fast: 0s; }
+.lab-reduce *, .lab-reduce *::before, .lab-reduce *::after { animation: none !important; transition: none !important; }
+.nocap .lab-cap { display: none; }

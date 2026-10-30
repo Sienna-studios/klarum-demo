@@ -1,9 +1,35 @@
 // Token audit: walks the rendered DOM of each page and lists every computed font size, colour (text,
 // background, border), spacing value (margin, padding, gap) and radius that is not in tokens.css.
 // Output: token-audit.json + token-audit.md per page. Run: npm run review:audit
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PAGES, ROOT, launch, main, newPage, outDir, pageKeys, settle } from "./lib/review.mjs";
+
+/** class name -> source component files that use it (components/, app/), so a finding is fixed at its source. */
+function classIndex() {
+  const idx = new Map();
+  const walk = (dir) => {
+    for (const f of readdirSync(dir)) {
+      const full = join(dir, f);
+      if (statSync(full).isDirectory()) { if (!["node_modules", ".next"].includes(f)) walk(full); continue; }
+      if (!/\.tsx$/.test(f)) continue;
+      const src = readFileSync(full, "utf8");
+      for (const m of src.matchAll(/class(?:Name)?=(?:"([^"]*)"|\{`([^`]*)`\})|"([a-z][\w-]*(?: [a-z][\w-]*)*)"/g)) {
+        for (const c of (m[1] || m[2] || m[3] || "").split(/\s+/)) if (c && /^[a-z][\w-]*$/.test(c)) { const set = idx.get(c) || new Set(); set.add(full.replace(ROOT + "/", "")); idx.set(c, set); }
+      }
+    }
+  };
+  walk(join(ROOT, "components")); walk(join(ROOT, "app"));
+  return idx;
+}
+/** "ul.plan-list > li" -> the file of the first class that a component declares, own element first, then parent. */
+function fileFor(selector, idx) {
+  const parts = selector.split(" > ").reverse();
+  for (const part of parts) {
+    for (const c of part.split(".").slice(1)) { const f = idx.get(c.replace(/#.*/, "")); if (f) return [...f][0]; }
+  }
+  return "(no class: element rendered by a component without a class, see selector)";
+}
 
 /** Parse tokens.css into per-theme custom-property maps (light layers over dark). */
 function parseTokens() {
@@ -14,8 +40,8 @@ function parseTokens() {
     if (m) for (const d of m[1].matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)) o[d[1]] = d[2].trim();
     return o;
   };
-  const dark = grab(/:root\s*\{([^}]*)\}/);
-  const light = { ...dark, ...grab(/:root\[data-theme="light"\]\s*\{([^}]*)\}/) };
+  const dark = grab(/:root(?:,\s*\.theme-dark)?\s*\{([^}]*)\}/);
+  const light = { ...dark, ...grab(/:root\[data-theme="light"\](?:,\s*\.theme-light)?\s*\{([^}]*)\}/) };
   const small = grab(/@media \(max-width: 760px\)\s*\{\s*:root\s*\{([^}]*)\}/);
   return { dark, light, small };
 }
@@ -148,7 +174,12 @@ main(async (base) => {
       }
     }
     const items = [...merged.values()].sort((a, b) => b.count - a.count);
+    const idx = classIndex();
+    for (const it of items) it.component = fileFor(it.selector, idx);
     const summary = summarise(items);
+    const byComponent = {};
+    for (const it of items) { const c = (byComponent[it.component] ||= { values: new Set(), uses: 0, items: [] }); c.values.add(`${it.kind} ${it.value}`); c.uses += it.count; c.items.push(`${it.kind} ${it.value} @ ${it.selector}`); }
+    summary.byComponent = Object.fromEntries(Object.entries(byComponent).sort((a, b) => b[1].uses - a[1].uses).map(([k, v]) => [k, { distinctValues: v.values.size, uses: v.uses, items: v.items.slice(0, 12) }]));
     const dir = outDir(key);
     writeFileSync(join(dir, "token-audit.json"), JSON.stringify({ page: cfg.path, themes: cfg.themes, viewports: [1440, 390], summary, items }, null, 1));
     const md = [
@@ -158,6 +189,8 @@ main(async (base) => {
       "",
       "| Kind | Distinct values | Uses |", "|---|---|---|",
       ...Object.entries(summary.byKind).map(([k, v]) => `| ${k} | ${v.distinct} | ${v.uses} |`),
+      "", "## By source component", "",
+      ...Object.entries(summary.byComponent).map(([k, v]) => `- **${k}**: ${v.distinctValues} values, ${v.uses} uses. ${v.items.slice(0, 4).join("; ")}`),
       "", "## Top offenders", "",
       ...summary.top.map((v) => `- **${v.kind} ${v.value}** x${v.uses}: ${v.selectors.join(", ")}`),
       "",

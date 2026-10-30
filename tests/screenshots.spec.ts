@@ -10,8 +10,8 @@ test("screenshots: full page and personality components", async ({ page }, info)
 
   const p1 = page.locator("#notices [data-component='notice-list']");
   await p1.scrollIntoViewIfNeeded();
-  await p1.getByRole("button", { name: /Shortlist/ }).first().click();
-  await p1.getByRole("button", { name: /^Rev A/ }).first().focus();
+  await p1.getByRole("button", { name: /^Shortlist/ }).first().click();
+  await p1.getByRole("button", { name: /^Rev A/ }).first().click();
   await p1.screenshot({ path: `${dir}/p1-notice-row.png` });
 
   const p2 = page.locator("[data-component='cited-claim']");

@@ -1,4 +1,5 @@
 import { KMark } from "./KMark";
+import { SheetCaption } from "./SheetCaption";
 
 const W = "https://www.klarum.com";
 const cols = [
@@ -34,27 +35,19 @@ export function Footer() {
             </ul>
           ))}
         </div>
-        <table className="tb" aria-label="Sheet information">
-          <tbody>
-            <tr>
-              <td rowSpan={2} className="tb-mark">
-                <KMark className="tb-k" />
-                <span className="sr">Klarum</span>
-              </td>
-              <td><span className="k">Sheet</span><span className="v mono">A-101</span></td>
-              <td><span className="k">Rev</span><span className="v mono rev-c">C</span></td>
-              <td><span className="k">Title</span><span className="v">Home.</span></td>
-            </tr>
-            <tr>
-              <td><span className="k">Scale</span><span className="v mono">1:1</span></td>
-              <td colSpan={2}><span className="k">Office</span><span className="v">Stockholm, Medborgarplatsen 25</span></td>
-            </tr>
-            <tr>
-              <td colSpan={3}><span className="k">Web</span><span className="v mono">www.klarum.com</span></td>
-              <td><span className="k">Year</span><span className="v mono">2026</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <SheetCaption
+          label="Sheet information"
+          mark
+          cells={[
+            { k: "Sheet", v: "A-101", mono: true },
+            { k: "Rev", v: "C", mono: true, rev: true },
+            { k: "Title", v: "Home." },
+            { k: "Scale", v: "1:1", mono: true },
+            { k: "Office", v: "Stockholm, Medborgarplatsen 25", span: 2 },
+            { k: "Web", v: "www.klarum.com", mono: true, span: 3 },
+            { k: "Year", v: "2026", mono: true },
+          ]}
+        />
       </div>
     </footer>
   );

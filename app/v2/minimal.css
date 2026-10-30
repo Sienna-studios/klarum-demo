@@ -2,18 +2,18 @@
    so the shared components (notice rows, cited claim, pricing, footer) render light without touching v1. */
 html:has(.m) {
   --bg: #ffffff; --surf: #f6f6f3; --ink: #14202c; --body: #26323d; --sub: #3a4652; --mute: #4b5762;
-  --line: #e3e6e8; --off: #c9cfd5; --dot: #d3d8dc; --redt: #c2261c; --tile: rgba(239, 65, 54, 0.12);
+  --line: #d9dde0; --off: #c9cfd5; --dot: #d3d8dc; --redt: #c2261c; --tile: rgba(239, 65, 54, 0.12);
   --btn-ink: #0d0d10; --scrim: 255, 255, 255; color-scheme: light; background: #fff;
 }
 html:has(.m) body { background: #fff; color: var(--body); }
 
-.m { --pad: clamp(64px, 10vw, 128px); font-family: var(--font-body); }
-.m-wrap { max-width: 1120px; margin-inline: auto; padding-inline: clamp(16px, 5vw, 48px); }
+.m { --pad: var(--section-y); font-family: var(--font-body); }
+.m-wrap { max-width: calc(1120px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
 .m-narrow { max-width: 880px; }
 .m h1, .m h2, .m h3 { color: var(--ink); font-family: var(--font-body); font-weight: 650; letter-spacing: -0.035em; }
 .m h1 { font-size: clamp(2.125rem, 5.4vw, 4.25rem); line-height: 1.04; max-width: 17ch; margin-top: 24px; }
-.m h2 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1.1; max-width: 22ch; }
-.m h3 { font-size: 1.25rem; line-height: 1.3; letter-spacing: -0.02em; }
+.m h2 { font-size: var(--fs-48); line-height: 1.1; max-width: 22ch; }
+.m h3 { font-size: var(--fs-18); line-height: 1.3; letter-spacing: -0.02em; }
 .m-lab { font: 500 0.75rem / 1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
 .m-lead { font-size: 1.1875rem; line-height: 1.55; max-width: 52ch; margin-top: 24px; color: var(--body); }
 .m-fine { font-size: 0.875rem; color: var(--mute); }
@@ -25,7 +25,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-btn:hover { filter: brightness(1.06); }
 .m-btn-sm { min-height: 44px; padding: 0 16px; font-size: 0.9375rem; }
 .m-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.m-link:hover { color: var(--redt); }
+.m-link:hover { text-decoration-thickness: 2px; }
 .m-quiet { font-weight: 500; color: var(--sub); }
 .m-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: 32px; }
 .m-actions .m-fine { flex-basis: 100%; }
@@ -34,8 +34,8 @@ html:has(.m) body { background: #fff; color: var(--body); }
 
 .m-head { border-bottom: 1px solid var(--line); background: #fff; }
 .m-head-in { display: flex; align-items: center; gap: 32px; height: 72px; }
-.m-logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; font: 700 1.375rem / 1 var(--font-body); letter-spacing: -0.02em; color: var(--ink); }
-.m-logo-k { height: 22px; width: auto; color: var(--red); }
+.m-logo { display: inline-flex; align-items: center; gap: var(--s-8); min-height: 44px; text-decoration: none; font: 700 var(--fs-24) / 1 var(--font-body); letter-spacing: -0.02em; color: var(--ink); }
+.m-logo-k { height: 22px; width: auto; color: var(--ink); }
 .m-nav { flex: 1; display: flex; gap: 8px; }
 .m-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-size: 0.9375rem; font-weight: 500; color: var(--sub); text-decoration: none; }
 .m-nav a:hover { color: var(--ink); }
@@ -48,20 +48,14 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-feed ul { list-style: none; padding: 0; }
 .m-feed .nrow { border-color: var(--line); }
 
-/* hero C after PD6-HatchMosaic: photograph full-bleed behind the whole hero, one off-white panel snapped to the 40 px tile grid
-   (copy left, notice card right, as in the old hero C), red tiles only in the photo band above the panel */
+/* hero C after PD6-HatchMosaic: photograph full-bleed behind the whole hero, one off-white panel snapped to the 40 px grid
+   (copy left, notice card right, as in the old hero C). The red tiles were removed in Step 3. */
 .mh { --tsz: 40px; --band: 240px; padding: 0; background: var(--surf);
   --pw: round(down, min(1040px, 100% - 80px), 40px);            /* panel width, a multiple of the tile */
   --pl: round(down, calc((100% - var(--pw)) / 2), 40px); }       /* panel left edge, a multiple of the tile */
 .mh-bg { position: absolute; inset: 0; background: var(--surf); }
 .mh-photo, .mh-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .mh-photo img { object-fit: cover; object-position: 0 0; }
-.mh-tiles { position: absolute; top: 0; display: grid; grid-template-rows: repeat(6, var(--tsz)); grid-auto-columns: var(--tsz); }
-.mh-tl { left: 0; }
-.mh-tr { left: calc(var(--pl) + var(--pw) - 8 * var(--tsz)); }
-.mh-tiles i { display: block; }
-.mh-tiles i.s { background: var(--red); }
-.mh-tiles i.h { background: repeating-linear-gradient(-45deg, var(--red) 0 2px, transparent 2px 5px); box-shadow: inset 0 0 0 1.5px var(--red); }
 .mh-flow { position: relative; z-index: 3; }
 .mh-band { height: var(--band); }
 .mh-foot { height: var(--tsz); }
@@ -78,9 +72,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 @media (max-width: 960px) {
   .mh { --band: 0px; }
   .mh-bg { position: relative; inset: auto; aspect-ratio: 21 / 9; }
-  .mh-tr, .mh-tiles i:not([data-m]) { display: none; }
-  .mh-tl { top: calc(-1 * var(--tsz)); }
-    .mh-band, .mh-foot { display: none; }
+      .mh-band, .mh-foot { display: none; }
   .mh-panel { left: 0; width: 100%; padding: var(--s-24); }
   .mh-cols { grid-template-columns: 1fr; gap: var(--s-24); }
   .mh-copy h1 { font-size: var(--fs-h1); }
@@ -96,14 +88,15 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-btn-hdr[data-solid="true"]::before { opacity: 1; }
 .m-btn-hdr[data-solid="true"]::after { opacity: 0; }
 
-.m-proof { border-top: 1px solid var(--line); padding-block: 40px; }
-.m-proof ul { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 12px; list-style: none; padding: 0; font: 600 1.0625rem / 1.3 var(--font-body); color: var(--sub); }
+.m-proof { border-top: 1px solid var(--line); padding-block: var(--s-48); }
+.m-proof ul { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 12px; list-style: none; padding: 0; font: 600 var(--fs-18) / 1.3 var(--font-body); color: var(--sub); }
 .m-section { padding-block: var(--pad); border-top: 1px solid var(--line); }
 .m-tint { background: var(--surf); border-top: 0; }
 .m-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; list-style: none; padding: 0; }
 .m-steps li { display: grid; gap: 12px; align-content: start; border-top: 1px solid var(--ink); padding-top: 16px; }
 .m-steps p:last-child { color: var(--body); max-width: 36ch; }
-@media (max-width: 960px) { .m-steps { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; } }
+@media (max-width: 960px) { .m-steps { grid-template-columns: 1fr; gap: var(--s-32); margin-top: var(--s-32); } }
+@media (max-width: 760px) { .m h2 { font-size: var(--fs-28); } }
 .m-section .nlist { margin-top: 32px; }
 .m-section .surface, .m-hero .surface { background: #fff; }
 .m-tint .surface { background: #fff; }
@@ -117,7 +110,7 @@ html:has(.m) body { background: #fff; color: var(--body); }
 .m-faq:last-of-type { border-bottom: 1px solid var(--line); }
 .m-faq > summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; list-style: none; font: 600 1.125rem / 1.3 var(--font-body); color: var(--ink); }
 .m-faq > summary::-webkit-details-marker { display: none; }
-.m-faq > summary::after { content: "+"; font: 500 1.5rem / 1 var(--font-mono); color: var(--redt); }
+.m-faq > summary::after { content: "+"; font: 500 var(--fs-24) / 1 var(--font-mono); color: var(--ink); }
 .m-faq[open] > summary::after { content: "–"; }
 .m-faq > p { padding-bottom: 24px; max-width: 62ch; }
 .m-narrow h2 { margin-bottom: 32px; }

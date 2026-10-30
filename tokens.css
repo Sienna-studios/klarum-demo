@@ -1,9 +1,11 @@
 /* Klarum Night tokens.
    Source: "Klarum Design Brief" canvas, boards Tokens-Color / Tokens-Type / Tokens-Space
    and Home-Draft (selector .k = dark, .k.light = light), extracted 29 Oct 2026.
-   Dark is the default. Light follows the OS, and [data-theme] overrides either way. */
+   Dark is the default. Light follows the OS, and [data-theme] overrides either way.
+   .theme-dark and .theme-light scope a theme to one subtree (used by /lab/states to show both at once). */
 
-:root {
+:root,
+.theme-dark {
   /* Brand */
   --red: #ef4136;           /* Klarum red, fills only. Never small text on light. */
 
@@ -99,7 +101,8 @@
   }
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"],
+.theme-light {
   --bg: #f6f6f3;
   --surf: #ffffff;
   --ink: #14202c;

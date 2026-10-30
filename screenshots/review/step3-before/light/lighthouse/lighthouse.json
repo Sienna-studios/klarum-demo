@@ -1,0 +1,33 @@
+{
+ "page": "/v2",
+ "runs": 3,
+ "formFactor": "mobile",
+ "throttling": "simulate",
+ "median": {
+  "performance": 96,
+  "lcpMs": 2738,
+  "tbtMs": 64,
+  "cls": 0,
+  "fcpMs": 910,
+  "transferKB": 311.4,
+  "requests": 13
+ },
+ "budgetAssertions": {
+  "passed": false,
+  "output": [
+   "Checking assertions against 1 URL(s), 3 total run(s)",
+   "",
+   "1 result(s) for \u001b[1mhttp://localhost:3200/v2\u001b[0m :",
+   "",
+   "  \u001b[31m✘\u001b[0m  \u001b[1mlargest-contentful-paint\u001b[0m failure for \u001b[1mmaxNumericValue\u001b[0m assertion",
+   "       Largest Contentful Paint",
+   "       https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/",
+   "",
+   "        expected: <=\u001b[32m2500\u001b[0m",
+   "           found: \u001b[31m2738.3150499999997\u001b[0m",
+   "      \u001b[2mall values: 2738.3150499999997, 2733.39015, 2789.5555000000004\u001b[0m",
+   "",
+   "Assertion failed. Exiting with status code 1."
+  ]
+ }
+}

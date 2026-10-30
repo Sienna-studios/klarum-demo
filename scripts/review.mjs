@@ -10,7 +10,7 @@ import { PAGES, PORT, ROOT, ROUND, outDir, pageKeys, sh } from "./lib/review.mjs
 
 const base = `http://localhost:${PORT}`;
 const env = { ...process.env, BASE_URL: base };
-const tools = ["token-audit", "overlay", "squint", "stress", "photo-contrast", "lighthouse"];
+const tools = ["token-audit", "overlay", "squint", "stress", "census", "photo-contrast", "lighthouse"];
 
 try { await fetch(base); throw new Error(`port ${PORT} is already serving something; stop it or set REVIEW_PORT`); } catch (e) { if (/already serving/.test(e.message)) throw e; }
 sh("npm", ["run", "build"]);
@@ -54,7 +54,7 @@ const lines = [`# Review ${ROUND}`, ""];
 for (const key of pageKeys()) {
   const cfg = PAGES[key];
   const d = (f) => read(join(ROOT, "screenshots/review", ROUND, key, f));
-  const ct = d("contrast/photo-contrast.json"), audit = d("token-audit.json"), ov = d("overlay/overlay.json"), st = d("stress/stress.json"), lh = d("lighthouse/lighthouse.json"), net = d("network/network.json");
+  const ct = d("contrast/photo-contrast.json"), audit = d("token-audit.json"), ov = d("overlay/overlay.json"), st = d("stress/stress.json"), lh = d("lighthouse/lighthouse.json"), cn = d("census/census.json"), net = d("network/network.json");
   lines.push(`## ${key}: ${cfg.path}`, "");
   if (audit) lines.push(`- Off-token values: ${audit.summary.distinctValues} distinct (${audit.summary.uses} uses). Top: ${audit.summary.top.slice(0, 3).map((v) => `${v.kind} ${v.value} x${v.uses}`).join("; ")}`);
   if (ov) { const s = ov[cfg.primaryTheme]; lines.push(`- Overlay vs Brief: build ${s.buildSize.join("x")}, target ${s.targetSize.join("x")}; pixel mismatch ${s.firstScreenMismatchPct}% first screen, ${s.fullMismatchPct}% full page`); }
@@ -62,6 +62,7 @@ for (const key of pageKeys()) {
   if (st) lines.push(`- Axe (stress, serious+critical): ${st.results.reduce((n, r) => n + r.axe.blocking.length, 0)} across ${st.results.length} configs`);
   if (ct) lines.push(`- Contrast over photos: worst ${Math.min(...ct.results.filter((r) => r.worst).map((r) => r.worst.ratio))}:1 (min ${ct.min}); failing text boxes: ${ct.results.reduce((n, r) => n + r.failing.length, 0)}`);
   if (lh) lines.push(`- Lighthouse mobile median of ${lh.runs}: perf ${lh.median.performance}, LCP ${lh.median.lcpMs} ms, TBT ${lh.median.tbtMs} ms, CLS ${lh.median.cls}; budget ${lh.budgetAssertions.passed ? "pass" : "FAIL"}`);
+  if (cn) { const r = cn.results[cn.primaryTheme]; lines.push(`- Census (${cn.primaryTheme}): red ${r.red.total} (${cn.meanings.map((m) => `${m} ${r.red.byMeaning[m] || 0}`).join(", ")}); decorative ${r.deco.total}`); }
   if (net) lines.push(`- Before load (mobile, cold): ${net.kbBeforeLoad} KB, ${net.requestsBeforeLoad} requests; HAR + budget tests ${net.passed ? "pass" : "FAIL"}`);
   lines.push("");
 }

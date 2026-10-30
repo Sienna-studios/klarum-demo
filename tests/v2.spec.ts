@@ -26,30 +26,11 @@ test("v2 hero: all of C's content, one primary action, light ground", async ({ p
   await expect(page.getByRole("navigation", { name: "Hero variants" })).toHaveCount(0);
 });
 
-test("v2 hero: tiles are decorative, two thirds hatched, only in the photo band", async ({ page }, info) => {
+test("v2 hero: no tile band, the photo band is clear", async ({ page }, info) => {
   test.skip(info.project.name !== "desktop-1280");
   await page.goto("/v2");
+  await expect(page.locator(".mh-tiles")).toHaveCount(0);
   await expect(page.locator(".mh-bg")).toHaveAttribute("aria-hidden", "true");
-  const hatched = await page.locator(".mh-tiles i.h").count();
-  const solid = await page.locator(".mh-tiles i.s").count();
-  expect(hatched + solid, "about half the old amount").toBeGreaterThan(35);
-  expect(hatched + solid).toBeLessThan(70);
-  expect(hatched / (hatched + solid)).toBeGreaterThan(0.6);
-  expect(hatched / (hatched + solid)).toBeLessThan(0.72);
-  await expect(page.locator(".mh-legend")).toHaveCount(0);
-  // every tile sits inside the band: below the empty row under the header, above the panel
-  const hero = await page.locator(".mh").boundingBox();
-  const panel = await page.locator(".mh-panel").boundingBox();
-  for (const box of await page.locator(".mh-tiles i").evaluateAll((els) => els.map((e) => { const r = e.getBoundingClientRect(); return { top: r.top + scrollY, bottom: r.bottom + scrollY, left: r.left }; }))) {
-    expect(box.top, "row 0 stays empty").toBeGreaterThanOrEqual(hero!.y + 40 - 1);
-    expect(box.bottom, "tiles stay above the panel").toBeLessThanOrEqual(panel!.y + 1);
-  }
-  // 2 or 3 hatched tiles touch the panel's top edge above the notice card
-  const feed = await page.locator(".mh-feed").boundingBox();
-  const touching = await page.locator(".mh-tiles i.h").evaluateAll((els, py) => els.filter((e) => Math.abs(e.getBoundingClientRect().bottom + scrollY - py) < 2).map((e) => e.getBoundingClientRect().left), panel!.y);
-  const above = touching.filter((x) => x >= feed!.x - 40 && x <= feed!.x + feed!.width);
-  expect(above.length).toBeGreaterThanOrEqual(2);
-  expect(above.length).toBeLessThanOrEqual(3);
 });
 
 test("v2 hero: the panel is snapped to the 40 px grid and the first screen holds everything at 1280 x 800", async ({ page }, info) => {

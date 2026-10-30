@@ -1,23 +1,14 @@
 import { notices, URLS } from "@/lib/data";
-import { TILES, type Tile } from "@/lib/mosaic";
 import { photoFallback, photoSources } from "@/lib/photos";
 import { CompactNotice } from "@/components/NoticeFeed";
 
 const sources = photoSources("hero", "color");
 const preloads = sources.filter((s) => s.type === "image/avif");
 
-const Tiles = ({ cluster, tiles }: { cluster: "left" | "right"; tiles: readonly Tile[] }) => (
-  <div className={`mh-tiles mh-t${cluster === "left" ? "l" : "r"}`}>
-    {tiles.map((t) => (
-      <i key={`${t.r}-${t.c}`} className={t.kind === "h" ? "h" : "s"} data-m={t.m ? "" : undefined} style={{ gridArea: `${t.r + 1} / ${t.c + 1}` }} />
-    ))}
-  </div>
-);
-
 /**
  * Light hero C. The photograph runs full-bleed behind the whole hero, bridge and tram in the band above one off-white panel
  * snapped to a 40 px grid; the panel holds the copy on the left and the notice card on the right, as the old hero C did.
- * Red tiles sit in the band only (solid = fits, hatched = shortlisted, as in the notice card). Copy is unchanged from the previous hero C.
+ * The red tile band was removed in Step 3: tiles were decoration, and red is reserved for fit, revision, citation and the primary action. Copy is unchanged.
  */
 export function HeroMosaic({ photos = true }: { photos?: boolean }) {
   const fb = photoFallback("hero", "color");
@@ -35,8 +26,6 @@ export function HeroMosaic({ photos = true }: { photos?: boolean }) {
             </picture>
           </>
         )}
-        <Tiles cluster="left" tiles={TILES.left} />
-        <Tiles cluster="right" tiles={TILES.right} />
       </div>
       <div className="mh-flow">
         <div className="mh-band" />

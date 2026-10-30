@@ -1,29 +1,37 @@
 import { citedClaim as c, vanuatu } from "@/lib/data";
 
-/** P2: a sentence from a draft EOI, and a <details> chip that opens the source. No JS. */
-export function CitedClaim() {
+type Forced = { open?: boolean; state?: "hover" | "focus" };
+
+/** Cited-claim chip: draft sentence, and a <details> chip that opens the requirement → evidence → draft chain (Met). No JS. */
+export function CitedClaim({ open = false, state }: Forced) {
   return (
     <figure className="claim" data-component="cited-claim">
-      <p className="lab">Requirement · Vanuatu REOI</p>
-      <p className="claim-req">{c.requirement}</p>
       <p className="lab">Draft EOI · sample</p>
       <blockquote className="quote">{c.draft_sentence}</blockquote>
-      <details className="cite">
-        <summary>
-          <span className="chip">{c.citation_label}</span>
+      <details className="cite" open={open}>
+        <summary data-state={state}>
+          <span className="chip">Met · Kenya Roads report, p. 47 · Sample</span>
         </summary>
-        <div className="cite-panel surface">
-          <p className="lab">Source · sample document</p>
-          <p className="cite-doc">Kenya Roads completion report</p>
-          <p className="nrow-meta">Page 47</p>
-          <p className="cite-ex">{c.excerpt}</p>
-          <p className="nrow-meta">
-            Requirement source:{" "}
-            <a href={vanuatu.source_url} rel="noopener">
-              {vanuatu.source_name}
-            </a>
-          </p>
-        </div>
+        <ol className="trace surface">
+          <li>
+            <p className="lab">1 · Requirement · Vanuatu REOI</p>
+            <p className="trace-t">{c.requirement}</p>
+            <p className="nrow-meta">
+              Source:{" "}
+              <a href={vanuatu.source_url} rel="noopener">{vanuatu.source_name}</a>
+            </p>
+          </li>
+          <li className="trace-ev">
+            <p className="lab">2 · Evidence · Sample document</p>
+            <p className="trace-t">Kenya Roads completion report</p>
+            <p className="nrow-meta">Page 47</p>
+            <p className="trace-x">{c.excerpt}</p>
+          </li>
+          <li>
+            <p className="lab">3 · In the draft</p>
+            <p className="trace-t">{c.draft_sentence}</p>
+          </li>
+        </ol>
       </details>
     </figure>
   );

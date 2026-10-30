@@ -18,8 +18,13 @@ export const notices = raw.notices as Notice[];
 export const citedClaim = raw.cited_claim;
 export const vanuatu = notices.find((n) => n.id === citedClaim.requirement_source)!;
 
-export const metaLine = (n: Notice) => `${n.type} · ${n.category} · ${n.buyer}`;
-export const closesLine = (n: Notice) => `Closes · ${n.closes ?? n.closes_label}`;
+/** Meta lines drop a missing segment and its separator; they never show an empty slot. */
+export const metaLine = (n: Notice) => [n.type, n.category, n.buyer].filter(Boolean).join(" · ");
+export const closesLine = (n: Notice) => {
+  const when = n.closes ?? n.closes_label;
+  return when ? `Closes · ${when}` : "";
+};
+export const isRevised = (n: Notice) => n.revision.rev !== "A";
 
 export const URLS = {
   trial: "https://app.klarum.com",

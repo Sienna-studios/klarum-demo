@@ -40,48 +40,45 @@ test("sections render in order", async ({ page }) => {
   }
 });
 
-test("P1 notice row: shortlist toggles, fit exposed as text, rev tag described", async ({ page }) => {
+test("P1 notice row: shortlist toggles, fit exposed as text, rev tag opens its history", async ({ page }) => {
   const section = page.locator("#notices");
-  const rows = section.getByRole("listitem").filter({ has: page.getByRole("button", { name: /Shortlist/ }) });
+  const rows = section.getByRole("listitem").filter({ has: page.getByRole("button", { name: /^Shortlist/ }) });
   await expect(rows).toHaveCount(3);
-  await expect(section.getByLabel("Fit 4 of 5").first()).toBeVisible();
+  await expect(section.getByLabel("Fit 4 of 5, sample").first()).toBeVisible();
   await expect(section.getByText("Sample fit").first()).toBeVisible();
 
-  const btn = rows.first().getByRole("button", { name: /Shortlist/ });
+  const btn = rows.first().getByRole("button", { name: /^Shortlist/ });
   await expect(btn).toHaveAttribute("aria-pressed", "false");
   const box = await btn.boundingBox();
   expect(box!.height).toBeGreaterThanOrEqual(44);
   await btn.click();
   await expect(btn).toHaveAttribute("aria-pressed", "true");
-  await expect(btn).toHaveText("Shortlisted");
   await btn.click();
   await expect(btn).toHaveAttribute("aria-pressed", "false");
 
   const tag = rows.first().getByRole("button", { name: /^Rev A/ });
-  const id = await tag.getAttribute("aria-describedby");
-  expect(id).toBeTruthy();
-  await tag.focus();
-  await expect(page.locator(`#${id}`)).toBeVisible();
-  await expect(page.locator(`#${id}`)).toContainText("published");
+  await expect(tag).toHaveAttribute("aria-expanded", "false");
+  await tag.click();
+  await expect(tag).toHaveAttribute("aria-expanded", "true");
+  await expect(rows.first().getByRole("group", { name: /^Revision history/ })).toContainText("published");
 });
 
-test("P2 cited claim: details chip opens the source, no JS needed", async ({ page }) => {
+test("P2 cited claim: details chip opens the chain, no JS needed", async ({ page }) => {
   const chip = page.locator("details.cite > summary");
   await expect(chip).toBeVisible();
   const box = await chip.boundingBox();
   expect(box!.height).toBeGreaterThanOrEqual(44);
-  await expect(page.getByText("At least 3 similar assignments in the last 10 years").first()).toBeVisible();
-  await expect(page.getByText("Sample", { exact: false }).first()).toBeVisible();
+  await expect(chip).toContainText("Met · Kenya Roads report, p. 47 · Sample");
   await chip.click();
   await expect(page.locator("details.cite")).toHaveAttribute("open", "");
-  await expect(page.locator("details.cite").getByText("[Sample excerpt]")).toBeVisible();
-  await expect(
-    page.locator("details.cite").getByRole("link", { name: /Vanuatu/ }),
-  ).toHaveAttribute("href", /pwd\.gov\.vu/);
+  const trace = page.locator("details.cite").getByRole("list");
+  await expect(trace.getByText("At least 3 similar assignments in the last 10 years")).toBeVisible();
+  await expect(trace.getByText("[Sample excerpt]")).toBeVisible();
+  await expect(trace.getByRole("link", { name: /REOI|Vanuatu/ })).toHaveAttribute("href", /pwd\.gov\.vu/);
 });
 
 test("P3 title-block footer", async ({ page }) => {
-  const table = page.getByRole("table", { name: "Sheet information" });
+  const table = page.locator("dl[aria-label='Sheet information']");
   await expect(table).toBeVisible();
   for (const t of ["A-101", "C", "Home.", "1:1", "Medborgarplatsen 25", "www.klarum.com", "2026"]) {
     await expect(table.getByText(t, { exact: false }).first()).toBeVisible();
