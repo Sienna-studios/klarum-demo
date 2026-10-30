@@ -10,7 +10,7 @@ import { PAGES, PORT, ROOT, ROUND, outDir, pageKeys, sh } from "./lib/review.mjs
 
 const base = `http://localhost:${PORT}`;
 const env = { ...process.env, BASE_URL: base };
-const tools = ["token-audit", "overlay", "squint", "stress", "census", "photo-contrast", "lighthouse"];
+const tools = ["token-audit", "overlay", "squint", "shots", "stress", "census", "photo-contrast", "lighthouse"];
 
 try { await fetch(base); throw new Error(`port ${PORT} is already serving something; stop it or set REVIEW_PORT`); } catch (e) { if (/already serving/.test(e.message)) throw e; }
 sh("npm", ["run", "build"]);
@@ -43,6 +43,10 @@ try {
     const run = spawnSync("npx", ["playwright", "test", "a11y", "--project=desktop-1280", "--reporter=list"], { cwd: ROOT, env, encoding: "utf8" });
     writeFileSync(join(outDir("dark", "axe"), "playwright-a11y.log"), run.stdout + run.stderr);
     console.log(`[axe] existing a11y spec on / (desktop-1280): ${run.status === 0 ? "pass" : "FAIL"}`);
+    // keyboard interaction tests for the three moments, plus the smoke checks, both projects
+    const it = spawnSync("npx", ["playwright", "test", "moments", "smoke", "--project=mobile-390", "--project=desktop-1280", "--reporter=list"], { cwd: ROOT, env, encoding: "utf8" });
+    writeFileSync(join(outDir("dark", "axe"), "playwright-interaction.log"), it.stdout + it.stderr);
+    console.log(`[interaction] moments + smoke: ${it.status === 0 ? "pass" : "FAIL"}`);
   }
 } finally {
   try { process.kill(-server.pid); } catch {}

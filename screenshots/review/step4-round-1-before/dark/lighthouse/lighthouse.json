@@ -1,0 +1,33 @@
+{
+ "page": "/",
+ "runs": 3,
+ "formFactor": "mobile",
+ "throttling": "simulate",
+ "median": {
+  "performance": 92,
+  "lcpMs": 1811,
+  "tbtMs": 339,
+  "cls": 0,
+  "fcpMs": 759,
+  "transferKB": 227.4,
+  "requests": 11
+ },
+ "budgetAssertions": {
+  "passed": false,
+  "output": [
+   "Checking assertions against 1 URL(s), 3 total run(s)",
+   "",
+   "1 result(s) for \u001b[1mhttp://localhost:3200/\u001b[0m :",
+   "",
+   "  \u001b[31m✘\u001b[0m  \u001b[1mtotal-blocking-time\u001b[0m failure for \u001b[1mmaxNumericValue\u001b[0m assertion",
+   "       Total Blocking Time",
+   "       https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/",
+   "",
+   "        expected: <=\u001b[32m200\u001b[0m",
+   "           found: \u001b[31m339\u001b[0m",
+   "      \u001b[2mall values: 339, 389.40364999999997, 160\u001b[0m",
+   "",
+   "Assertion failed. Exiting with status code 1."
+  ]
+ }
+}

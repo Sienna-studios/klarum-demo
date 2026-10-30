@@ -17,6 +17,7 @@
     "review:lighthouse": "node scripts/lighthouse.mjs",
     "photos": "node scripts/photos.mjs",
     "review:census": "node scripts/census.mjs",
+    "review:shots": "node scripts/shots.mjs",
     "review:contrast": "node scripts/photo-contrast.mjs",
     "photos:crops": "node scripts/crop-sheet.mjs"
   },
